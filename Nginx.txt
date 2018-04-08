@@ -1,0 +1,59 @@
+---------------------------serverlistµƒngnix≈‰÷√--------------------------------------------------
+/etc/nginx/nginx.conf	ngnix≈‰÷√
+
+server {
+		listen 80 default_server;
+		server_name _;
+		access_log off;
+	}
+        server{
+                listen  8080;
+                server_name 182.254.220.194;
+                root /opt/Bundle/ClientGameBundle;
+        }
+        server{
+                listen 8086;
+                server_name 182.254.220.194;
+                root /opt/Bundle/GamePacket;
+        }
+
+
+
+
+---------------------------website nginx…Ë÷√-----------------------------
+/etc/nginx/nginx.conf	ngnix≈‰÷√
+server {
+		listen 80 default_server;
+		server_name _;
+		access_log off;
+		root /opt/website;
+	}
+
+server{
+                listen  8080;
+                server_name 182.254.220.194;
+                root /opt/Bundle/ClientGameBundle;
+        }
+
+
+
+---------------------∂‡’æµ„≈‰÷√------------
+	include /etc/nginx/conf.d/*.conf;
+	include /etc/nginx/sites-enabled/*;
+	
+	server {
+		listen 80 default_server;
+		server_name _;
+		access_log off;
+		root /opt/website;
+	}
+	server{
+                listen  8080;
+                server_name 182.254.220.194;
+                root /opt/Bundle/ClientGameBundle;
+        }
+	server{
+                listen  8081;
+                server_name 182.254.220.194;
+                root /opt/Bundle/ClientGameBundle;
+        }
