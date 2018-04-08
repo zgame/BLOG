@@ -11,6 +11,14 @@ rm  -r **	------------------删除
 
 mv -r 原 目标	-------------------移动
 
+sudo ln -s /opt/GameServer/apps/game_nginx.conf /etc/nginx/sites-enabled/game_nginx.conf	建立软连接
+
+touch	创建一个文件
+
+
+nohup command > myout.file 2>&1 &		输出被重定向到myout.file文件中。
+
+
 
 查看线程
 ps -ef|grep svnserve
@@ -80,7 +88,7 @@ uwsgi调整works数量/etc/uwgsi/apps_enabled/game_wsgi.ini
 测试服works = 4 
 
 
-netstat -nlpt  查看端口
+netstat -nlpt  查看端口	
 
 开启日志服务
 sh /home/ubuntu/start_scribe_client.sh
@@ -91,6 +99,7 @@ tail -f /opt/GameServer/logs/new_rekoo.out
 
 
 查看TCP连接数：	netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
+
 查看当前打开文件数： lsof |wc -l 
 
 -----------------------------------------------------------------------------
