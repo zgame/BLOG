@@ -125,3 +125,4 @@ row_day = datetime.datetime.strptime(str(row_date),'%Y-%m-%d')  #½«date×ª»»Îªstr
 (create_time-row_day).days
 
 
+

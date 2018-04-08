@@ -52,3 +52,4 @@ replace(old, startnum, num_chars, new_text)
 
 //下面是如果查到就查到，查不到用0
 =IF(ISERROR(VLOOKUP(A2,Sheet4!$A$1:$B$996,2,FALSE)),0,VLOOKUP(A2,Sheet4!$A$1:$B$996,2,FALSE))
+
