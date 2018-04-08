@@ -51,3 +51,5 @@ select CONVERT(int, 123.4)  -- 123
 TOP(1)	返回最上面的一行数据
 
 ISNULL(@xx, 0)	如果为NULL那么用0填充
+
+select * from dbo.accounts where UserID like %zsw%   查找包含zsw字段的

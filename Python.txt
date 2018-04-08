@@ -126,3 +126,6 @@ row_day = datetime.datetime.strptime(str(row_date),'%Y-%m-%d')  #将date转换为str
 
 
 
+获取命令行参数
+if __name__ == "__main__":
+   main(sys.argv[1:])
