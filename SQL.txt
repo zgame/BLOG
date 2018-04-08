@@ -45,3 +45,8 @@ CONVERT(VARCHAR(24),GETDATE(),113)   °´ÕÕ²»Í¬µÄ±àºÅ¸ñÊ½±ÈÈç113£¬ ×ª»»ÈÕÆÚÎª×Ö·û´
 CAST(10.6496 AS int)
 select CAST(123.4 as int)   -- 123
 select CONVERT(int, 123.4)  -- 123 
+
+
+
+TOP(1)	·µ»Ø×îÉÏÃæµÄÒ»ÐÐÊý¾Ý
+
