@@ -57,3 +57,27 @@ server{
                 server_name 182.254.220.194;
                 root /opt/Bundle/ClientGameBundle;
         }
+
+
+---------------uwsgi---------------------------------
+
+upstream GameServer {
+    server unix:///tmp/game_pikaqiu.sock;
+}
+
+server {
+    listen    8083;
+    server_name    GameServer;
+    charset    utf-8;
+    client_max_body_size    1M;    
+
+    #path
+    location / {
+        uwsgi_pass    GameServer;		#这里标注uwsgi转发
+        include    /etc/nginx/uwsgi_params;
+        #access_log /opt/GameServer/logs/access.log;
+    	#error_log /opt/GameServer/logs/error.log crit;
+    	access_log /dev/null;
+        error_log /dev/null;
+    }
+}
