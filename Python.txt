@@ -95,9 +95,6 @@ print (lambda x: x * 2) (3)
 print "%s ,%s, %s"%(3,4,5)
 
 
-
-
-
 -------------------------------------------------------------------------
 在编写sql语句的时候，如果日期转换用%就会报错，所以要用%%
 
@@ -129,3 +126,8 @@ row_day = datetime.datetime.strptime(str(row_date),'%Y-%m-%d')  #将date转换为str
 获取命令行参数
 if __name__ == "__main__":
    main(sys.argv[1:])
+
+
+import 自定义的目录时候，2.7版本需要在目录下创建__init__.py文件
+
+2.7版本要注意，coding = utf-8 必须写在第一行
