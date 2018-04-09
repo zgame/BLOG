@@ -169,4 +169,13 @@ def classMethod(cls, name):
 def staticMethod(name):
 
 
+python可以优雅的处理文件，with来自动关闭文件，不需要写close
+with open('1.txt','r') as f:
+	tt = f.read()
 
+line.replace(old_str, new_str)		行字符串替换
+
+
+写入文件的时候要注意字符编码，又是万恶的2.7
+str = unicode(str,'utf-8')
+f.write(str.encode("utf-8"))

@@ -57,7 +57,7 @@ select * from dbo.accounts where UserID like %zsw%   查找包含zsw字段的
 set @addr = '初始值'  变量赋值
 
 select @@identity	在插入结束之后把自增加的值返回
-
+select @@rowcount	结束之后把影响多少行返回
 
 SET NOCOUNT ON 不返回受影响的行数
 
