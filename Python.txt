@@ -155,3 +155,18 @@ class Person:
 
 类的用法， 类中_是私有方法, __是私有变量
 
+
+单引号和双引号都是字符串， 单引号转义的时候用的多一些， 三引号用在多行字符串
+
+
+# 类的普通方法可以通过self访问实例属性
+def normalMethod(self, name):
+# 类方法,可以通过cls访问类属性
+@classmethod
+def classMethod(cls, name):
+# 静态方法,不可以访问类属性
+@staticmethod
+def staticMethod(name):
+
+
+
