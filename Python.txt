@@ -131,3 +131,27 @@ if __name__ == "__main__":
 import 自定义的目录时候，2.7版本需要在目录下创建__init__.py文件
 
 2.7版本要注意，coding = utf-8 必须写在第一行
+
+2.7字符串转化---python3就不用这么麻烦
+unicodestring = u"Hello world" 
+# 将Unicode转化为普通Python字符串："encode"  
+utf8string = unicodestring.encode("utf-8")  
+asciistring = unicodestring.encode("ascii")  
+isostring = unicodestring.encode("ISO-8859-1")  
+utf16string = unicodestring.encode("utf-16")  
+# 将普通Python字符串转化为Unicode："decode"  
+plainstring1 = unicode(utf8string, "utf-8")  
+plainstring2 = unicode(asciistring, "ascii")  
+plainstring3 = unicode(isostring, "ISO-8859-1")  
+plainstring4 = unicode(utf16string, "utf-16")  
+assert plainstring1 == plainstring2 == plainstring3 == plainstring4
+
+
+
+
+class Person:
+	def __init__(self, name):
+		self.name = name
+
+类的用法， 类中_是私有方法, __是私有变量
+

@@ -64,3 +64,5 @@ SET NOCOUNT ON 不返回受影响的行数
 在pyodbc开发中，如果需要insert之后返回自增加的值， 那么exec前面要加上SET NOCOUNT ON， 这样才能返回这个返回值
 
 SET IDENTITY_INSERT dbo.UserDB ON   关闭自增加
+
+update dbo.gamestoreinfo set androidcount = '40' where uid = '2003'   更新数据
