@@ -55,3 +55,10 @@ ISNULL(@xx, 0)	如果为NULL那么用0填充
 select * from dbo.accounts where UserID like %zsw%   查找包含zsw字段的
 
 set @addr = '初始值'  变量赋值
+
+select @@identity	在插入结束之后把自增加的值返回
+
+
+SET NOCOUNT ON 不返回受影响的行数
+
+在pyodbc开发中，如果需要insert之后返回自增加的值， 那么exec前面要加上SET NOCOUNT ON， 这样才能返回这个返回值

@@ -15,7 +15,6 @@ sudo ln -s /opt/GameServer/apps/game_nginx.conf /etc/nginx/sites-enabled/game_ng
 
 touch	创建一个文件
 
-
 nohup command > myout.file 2>&1 &		输出被重定向到myout.file文件中。
 直接不开后台模式就可以 看输出了
 start.sh去掉nohup 和结尾的& 就可以前台执行
