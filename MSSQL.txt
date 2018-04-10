@@ -66,3 +66,4 @@ SET NOCOUNT ON 不返回受影响的行数
 SET IDENTITY_INSERT dbo.UserDB ON   关闭自增加
 
 update dbo.gamestoreinfo set androidcount = '40' where uid = '2003'   更新数据
+

@@ -184,8 +184,8 @@ str = unicode(str,'utf-8')
 f.write(str.encode("utf-8"))
 
 
----------------------------------------------------------------------------
-python UI开发 tkinter
+------------------------python UI开发 tkinter---------------------------------------------------
+
 http://effbot.org/tkinterbook/
 
 # coding = utf-8
@@ -207,3 +207,6 @@ quit = Button(root, text='Quit',  command=callback).pack()
 
 
 root.mainloop()
+
+
+------------------------------------------------------------------------------------------------------
