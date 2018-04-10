@@ -49,6 +49,7 @@ select CONVERT(int, 123.4)  -- 123
 
 
 TOP(1)	返回最上面的一行数据
+count(*)	返回行数
 
 ISNULL(@xx, 0)	如果为NULL那么用0填充
 
@@ -66,4 +67,7 @@ SET NOCOUNT ON 不返回受影响的行数
 SET IDENTITY_INSERT dbo.UserDB ON   关闭自增加
 
 update dbo.gamestoreinfo set androidcount = '40' where uid = '2003'   更新数据
+
+select id=identity(int,1,1) ,name into #regtemp11 from table(nolock)	copy表到临时表，并新增一列列名为id的自增加列
+
 
