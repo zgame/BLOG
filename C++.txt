@@ -33,3 +33,6 @@ CString myStr(L"test string");   L""±íÊ¾¿í×Ö·û £¬ TEXT("")
 
 
 
+
+
+

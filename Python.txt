@@ -179,34 +179,11 @@ line.replace(old_str, new_str)		行字符串替换
 
 
 
-写入文件的时候要注意字符编码，又是万恶的2.7
+写入文件的时候要注意字符编码，2.7对宽字符处理不好， 所以尽量用3.6版本吧
 str = unicode(str,'utf-8')
 f.write(str.encode("utf-8"))
 
 
-------------------------python UI开发 tkinter---------------------------------------------------
-
-http://effbot.org/tkinterbook/
-
-# coding = utf-8
-from Tkinter import *
-root = Tk()
-
-***添加list列表
-movie = ['CSS', 'jQuery', 'Bootstrap']
-listb2 = Listbox(root)
-for item in movie:
-    listb2.insert(0, item)
-listb2.pack()
-
-***添加button和自定义事件
-def callback():
-	pass
-quit = Button(root, text='Quit',  command=callback).pack()
-
-
-
-root.mainloop()
 
 
 ------------------------------------------------------------------------------------------------------
