@@ -16,10 +16,25 @@ labelHello = tk.Label(top, text = "label...", height = 5, width = 20, fg = "blue
 
 
 #-----添加list列表---------------------------------------------
+
+
 movie = ['CSS', 'jQuery', 'Bootstrap']
-listb2 = Listbox(root)
+listb2 = Listbox(root, listvariable=StringVar(value=list_a))
+	# selectmode有单选，多选，可以移动，支持shift和ctr键
+listb2 .bind("<Double-Button-1>", callback)		
+# 这是listbox绑定鼠标左键双击事件， callback是回调函数，要特别注意，不能使用单击，一定要双击才可以等于确定
+ def printcurList(event):
+        print(list_all.curselection()[0])	# 注意这里的event要有
+
+
+# 从后面开始添加，因为是队列，所以正好前面的在上面
+# 另外一种不用for循环的方式，就是上面的例子listvariable=StringVar(value=list_a)
 for item in movie:
-    listb2.insert(0, item)
+    listb2.insert(END, item)			
+
+
+
+
 listb2.pack()
 
 # -----给list配合scroll---------------------------------------------------------
