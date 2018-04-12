@@ -2,22 +2,22 @@
 
 # 命令
 
-tar czvf zgame.tar.gz zgame(目录)----------压缩	
-sz zgame.tar.gz(下载)--------------sz命令发送文件到本地：	
-rz 上传， 然后出对话框--------------rz命令本地上传文件到服务器：	
-cp -r 原 目标	----------------copy	
-rm  -r **	------------------删除	
-mv -r 原 目标	-------------------移动	
-sudo ln -s /opt/GameServer/apps/game_nginx.conf /etc/nginx/sites-enabled/game_nginx.conf	建立软连接	
-touch	创建一个文件
-nohup command > myout.file 2>&1 &		输出被重定向到myout.file文件中。
-直接不开后台模式就可以 看输出了
-start.sh去掉nohup 和结尾的& 就可以前台执行	
-ps -ef|grep svnserve 查看线程
-ifconfig -----------------------------看ip	
-关机shutdown -h 0
-休眠sudo echo mem > /sys/power/state
-查看哪些端口被打开  netstat -anp
+    tar czvf zgame.tar.gz zgame(目录)----------压缩	
+    sz zgame.tar.gz(下载)--------------sz命令发送文件到本地：	
+    rz 上传， 然后出对话框--------------rz命令本地上传文件到服务器：	
+    cp -r 原 目标	----------------copy	
+    rm  -r **	------------------删除	
+    mv -r 原 目标	-------------------移动	
+    sudo ln -s /opt/GameServer/apps/game_nginx.conf /etc/nginx/sites-enabled/game_nginx.conf	建立软连接	
+    touch	创建一个文件
+    nohup command > myout.file 2>&1 &		输出被重定向到myout.file文件中。
+    直接不开后台模式就可以 看输出了
+    start.sh去掉nohup 和结尾的& 就可以前台执行	
+    ps -ef|grep svnserve 查看线程
+    ifconfig -----------------------------看ip	
+    关机shutdown -h 0
+    休眠sudo echo mem > /sys/power/state
+    查看哪些端口被打开  netstat -anp
 
 ---
 # svn
