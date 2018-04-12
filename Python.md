@@ -174,6 +174,17 @@ map也支持多个sequence，这就要求function也支持相应数量的参数�
 # 2.7版本要注意
 
 	coding = utf-8 必须写在第一行
+
+Python2的写法用的是
+
+    def __unicode__(self):
+        return self.name
+
+
+而python3中写法是
+
+    def __str__(self):
+        return self.name
 	
 # 2.7字符串转化
 

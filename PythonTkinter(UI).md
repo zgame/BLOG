@@ -118,9 +118,11 @@
     input1 = Spinbox(root, from_=0, to=100)		# 只能输入0-100的数字
     input1 = Spinbox(values=(1, 2, 4, 8))  		# 只能在这几个数字之间跳转
     input1.get()								# 通过get来获取值，这个值可以是任意的数字
+	input1.insert(0, 50)		# 设置初始值	
 # Entry文本输入框
     input2 = Entry(root)
     input2.get()				# 通过get来获取文本，可以变成密码，支持验证，变成只读
+	input1.insert(0,"sss")		# 设置初始值
 
 # 最后mainloop
     root.mainloop()
