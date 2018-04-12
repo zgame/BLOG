@@ -9,16 +9,16 @@
 			server_name _;
 			access_log off;
 		}
-	        server{
-	                listen  8080;
-	                server_name 182.254.220.194;
-	                root /opt/Bundle/ClientGameBundle;
-	        }
-	        server{
-	                listen 8086;
-	                server_name 182.254.220.194;
-	                root /opt/Bundle/GamePacket;
-	        }
+	server{
+	listen  8080;
+	server_name 182.254.220.194;
+	root /opt/Bundle/ClientGameBundle;
+	}
+	server{
+	listen 8086;
+	server_name 182.254.220.194;
+	root /opt/Bundle/GamePacket;
+	}
 
 
 
