@@ -41,6 +41,7 @@
 	list[-3:][::-1]
 	list[::-1]		# 是将列表反过来，一种是先反过来，然后取前三位；一种是先取后三位，再反过来。
 	list[-3:]		# 是取list的从后面数3个元素
+
 	list.append(obj)	# 添加到末尾
 	list.insert(1,'web')	# 插入元素到指定位置
 
@@ -57,6 +58,11 @@
 	# 利用enumerate()函数，可以在每次循环中同时得到下标和元素：
 	for (index,char) in enumerate(S): 
 		print index print char
+
+	len(list)		# 获取列表长度
+	max(list)
+	min(list)
+	list(seq)		# 元组变列表
 
 
 
