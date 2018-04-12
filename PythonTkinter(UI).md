@@ -20,7 +20,7 @@
 
 
 
-#添加list列表
+# 添加list列表
 
     movie = ['CSS', 'jQuery', 'Bootstrap']
     listb2 = Listbox(root, listvariable=StringVar(value=list_a))    	
@@ -69,12 +69,12 @@
     Message(root, text=str(input1.get())).grid(row=6, column=0)
 <font color=#A52A2A size=2>显示一文本。类似label窗口部件，但是能够自动地调整文本到给定的宽度或比率。</font>
 
-#messagebox提示框
+# messagebox提示框
     import tkinter.messagebox as msgbox					# 注意这个要单独import进来才可以
     msgbox.showinfo('Message', '恭喜！')				  # Python2中为tkMessagebox
 
 
-#grid网格化排版
+# grid网格化排版
 
 <font color=#A52A2A size=2>注意：如果使用grid的话， 就不能使用pack了</font>
 
@@ -82,7 +82,7 @@
     mm1.grid(row=0,column=1)						# 放在第0行，第一列
     grid(row=0,column=1,columnspan=4, sticky=W+E+N+S)	# 跨了3列， 一个横向很宽的控件，后面是对齐方式，带拉伸
 
-#Menu菜单栏添加
+# Menu菜单栏添加
     def hello():
         print("hello!")
 
@@ -107,18 +107,18 @@
 
     # display the menu
     root.config(menu=menubar)
-#文件选择框
+# 文件选择框
     import tkinter.filedialog as fd
     my_file_types = [('Python files', '*.py'), ('All files', '*')]
     open1 = fd.Open(root, filetypes=my_file_types)
     str1 = open1.show()								#这里就是输出文件的全路径
     Message(root, text=str1).grid(row=7, column=0)
 
-#spinbox输入框
+# spinbox输入框
     input1 = Spinbox(root, from_=0, to=100)		# 只能输入0-100的数字
     input1 = Spinbox(values=(1, 2, 4, 8))  		# 只能在这几个数字之间跳转
     input1.get()								# 通过get来获取值，这个值可以是任意的数字
-#Entry文本输入框
+# Entry文本输入框
     input2 = Entry(root)
     input2.get()				# 通过get来获取文本，可以变成密码，支持验证，变成只读
 
