@@ -1,5 +1,3 @@
----
-
 # serverlist的ngnix配置 #
 
 	/etc/nginx/nginx.conf	ngnix配置
