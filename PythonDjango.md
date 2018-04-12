@@ -1,16 +1,23 @@
-locals():--------------------------------------------------------------------
-locals()·µ»ØÒ»¸ö°üº¬µ±Ç°×÷ÓÃÓòÀïÃæµÄËùÓĞ±äÁ¿ºÍËüÃÇµÄÖµµÄ×Öµä¡£
-ËùÒÔ¿ÉÒÔ°Ñviews¸ÄĞ´Îª
-def current_datetime(request):
-    current_date = datetime.datetime.now()
-    return render_to_response('current_datetime.html', locals()) 
-ÕâÀïÒª×¢ÒâµÄÊÇÒª°ÑnowÖØÃüÃûÎªcurrent_date£¬ÒòÎªÄ£°åĞèÒªµÄÊÇÕâ¸ö±äÁ¿Ãû¡£
-ÔÚtemplateÊÇÈçÏÂ¶¨ÒåµÄ£º
-<html>
-    <body>
-        <font color = "blue">It is is now {{ current_date }}.</font>
-    </body>
-</html> 
+# locals()
+locals()è¿”å›ä¸€ä¸ªåŒ…å«å½“å‰ä½œç”¨åŸŸé‡Œé¢çš„æ‰€æœ‰å˜é‡å’Œå®ƒä»¬çš„å€¼çš„å­—å…¸ã€‚
 
+æ‰€ä»¥å¯ä»¥æŠŠviewsæ”¹å†™ä¸º
+
+    def current_datetime(request):
+	    current_date = datetime.datetime.now()
+	    return render_to_response('current_datetime.html', locals()) 
+
+è¿™é‡Œè¦æ³¨æ„çš„æ˜¯è¦æŠŠnowé‡å‘½åä¸ºcurrent_dateï¼Œå› ä¸ºæ¨¡æ¿éœ€è¦çš„æ˜¯è¿™ä¸ªå˜é‡åã€‚
+
+åœ¨templateæ˜¯å¦‚ä¸‹å®šä¹‰çš„ï¼š
+
+    <html>
+    <body>
+    <font color = "blue">It is is now {{ current_date }}.</font>
+    </body>
+    </html> 
+    
+
+---
 
 

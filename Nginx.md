@@ -1,43 +1,53 @@
----------------------------serverlistµÄngnixÅäÖÃ--------------------------------------------------
-/etc/nginx/nginx.conf	ngnixÅäÖÃ
+---
 
-server {
-		listen 80 default_server;
-		server_name _;
-		access_log off;
-	}
-        server{
-                listen  8080;
-                server_name 182.254.220.194;
-                root /opt/Bundle/ClientGameBundle;
-        }
-        server{
-                listen 8086;
-                server_name 182.254.220.194;
-                root /opt/Bundle/GamePacket;
-        }
+# serverlistçš„ngnixé…ç½® #
 
-
-
-
----------------------------website nginxÉèÖÃ-----------------------------
-/etc/nginx/nginx.conf	ngnixÅäÖÃ
-server {
-		listen 80 default_server;
-		server_name _;
-		access_log off;
-		root /opt/website;
-	}
-
-server{
-                listen  8080;
-                server_name 182.254.220.194;
-                root /opt/Bundle/ClientGameBundle;
-        }
+	/etc/nginx/nginx.conf	ngnixé…ç½®
+	
+	server {
+			listen 80 default_server;
+			server_name _;
+			access_log off;
+		}
+	        server{
+	                listen  8080;
+	                server_name 182.254.220.194;
+	                root /opt/Bundle/ClientGameBundle;
+	        }
+	        server{
+	                listen 8086;
+	                server_name 182.254.220.194;
+	                root /opt/Bundle/GamePacket;
+	        }
 
 
 
----------------------¶àÕ¾µãÅäÖÃ------------
+
+---
+
+# website nginxè®¾ç½® #
+
+	/etc/nginx/nginx.conf	ngnixé…ç½®
+	server {
+			listen 80 default_server;
+			server_name _;
+			access_log off;
+			root /opt/website;
+		}
+	
+	server{
+	                listen  8080;
+	                server_name 182.254.220.194;
+	                root /opt/Bundle/ClientGameBundle;
+	        }
+
+
+
+---
+
+# å¤šç«™ç‚¹é…ç½® #
+
+
 	include /etc/nginx/conf.d/*.conf;
 	include /etc/nginx/sites-enabled/*;
 	
@@ -59,25 +69,26 @@ server{
         }
 
 
----------------uwsgi---------------------------------
+---
+# uwsgi #
 
-upstream GameServer {
-    server unix:///tmp/game_pikaqiu.sock;
-}
-
-server {
-    listen    8083;
-    server_name    GameServer;
-    charset    utf-8;
-    client_max_body_size    1M;    
-
-    #path
-    location / {
-        uwsgi_pass    GameServer;		#ÕâÀï±ê×¢uwsgi×ª·¢
-        include    /etc/nginx/uwsgi_params;
-        #access_log /opt/GameServer/logs/access.log;
-    	#error_log /opt/GameServer/logs/error.log crit;
-    	access_log /dev/null;
-        error_log /dev/null;
-    }
-}
+	upstream GameServer {
+	    server unix:///tmp/game_pikaqiu.sock;
+	}
+	
+	server {
+	    listen    8083;
+	    server_name    GameServer;
+	    charset    utf-8;
+	    client_max_body_size    1M;    
+	
+	    #path
+	    location / {
+	        uwsgi_pass    GameServer;		#è¿™é‡Œæ ‡æ³¨uwsgiè½¬å‘
+	        include    /etc/nginx/uwsgi_params;
+	        #access_log /opt/GameServer/logs/access.log;
+	    	#error_log /opt/GameServer/logs/error.log crit;
+	    	access_log /dev/null;
+	        error_log /dev/null;
+	    }
+	}

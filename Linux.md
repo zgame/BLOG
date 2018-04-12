@@ -1,282 +1,310 @@
+---
 
-tar czvf zgame.tar.gz zgame(Ä¿Â¼)----------Ñ¹Ëõ
+# å‘½ä»¤
 
-sz zgame.tar.gz(ÏÂÔØ)--------------szÃüÁî·¢ËÍÎÄ¼şµ½±¾µØ£º
+	tar czvf zgame.tar.gz zgame(ç›®å½•)----------å‹ç¼©
+	
+	sz zgame.tar.gz(ä¸‹è½½)--------------szå‘½ä»¤å‘é€æ–‡ä»¶åˆ°æœ¬åœ°ï¼š
+	
+	rz ä¸Šä¼ ï¼Œ ç„¶åå‡ºå¯¹è¯æ¡†--------------rzå‘½ä»¤æœ¬åœ°ä¸Šä¼ æ–‡ä»¶åˆ°æœåŠ¡å™¨ï¼š
+	
+	cp -r åŸ ç›®æ ‡	----------------copy
+	
+	rm  -r **	------------------åˆ é™¤
+	
+	mv -r åŸ ç›®æ ‡	-------------------ç§»åŠ¨
+	
+	sudo ln -s /opt/GameServer/apps/game_nginx.conf /etc/nginx/sites-enabled/game_nginx.conf	å»ºç«‹è½¯è¿æ¥
+	
+	touch	åˆ›å»ºä¸€ä¸ªæ–‡ä»¶
+	
+	nohup command > myout.file 2>&1 &		è¾“å‡ºè¢«é‡å®šå‘åˆ°myout.fileæ–‡ä»¶ä¸­ã€‚
+	ç›´æ¥ä¸å¼€åå°æ¨¡å¼å°±å¯ä»¥ çœ‹è¾“å‡ºäº†
+	start.shå»æ‰nohup å’Œç»“å°¾çš„& å°±å¯ä»¥å‰å°æ‰§è¡Œ
+	
+	
+	ps -ef|grep svnserve æŸ¥çœ‹çº¿ç¨‹
 
-rz ÉÏ´«£¬ È»ºó³ö¶Ô»°¿ò--------------rzÃüÁî±¾µØÉÏ´«ÎÄ¼şµ½·şÎñÆ÷£º
+	ifconfig -----------------------------çœ‹ip
+	
+	å…³æœºshutdown -h 0
+	ä¼‘çœ sudo echo mem > /sys/power/state
 
-cp -r Ô­ Ä¿±ê	----------------copy
-
-rm  -r **	------------------É¾³ı
-
-mv -r Ô­ Ä¿±ê	-------------------ÒÆ¶¯
-
-sudo ln -s /opt/GameServer/apps/game_nginx.conf /etc/nginx/sites-enabled/game_nginx.conf	½¨Á¢ÈíÁ¬½Ó
-
-touch	´´½¨Ò»¸öÎÄ¼ş
-
-nohup command > myout.file 2>&1 &		Êä³ö±»ÖØ¶¨Ïòµ½myout.fileÎÄ¼şÖĞ¡£
-Ö±½Ó²»¿ªºóÌ¨Ä£Ê½¾Í¿ÉÒÔ ¿´Êä³öÁË
-start.shÈ¥µônohup ºÍ½áÎ²µÄ& ¾Í¿ÉÒÔÇ°Ì¨Ö´ĞĞ
-
-
-ps -ef|grep svnserve ²é¿´Ïß³Ì
-
-----------------------------------------svn-----------------------------------
-Æô¶¯svn
-svnserve -d -r /home/svn
-
-¹Ø±Õsvn
-killall svnserve
-
-´´½¨svn²Ö¿â
-sudo mkdir  repository
-sudo chown -R root:subversion repository
-sudo chown -R 777 repository
-sudo svnadmin create repository
-
-----------------------------------------svn-----------------------------------
-
-»ñµÃÈ¨ÏŞ
-sudo -s
-
-°²×°Èí¼ş
-sudo apt-get  build-dep gcc
-
-sudo chmod -R 777 /usr/local/nginx/objs	-----------ÉèÖÃÄ¿Â¼È¨ÏŞ
+	æŸ¥çœ‹å“ªäº›ç«¯å£è¢«æ‰“å¼€  netstat -anp
 
 
-linux
-su È¨ÏŞ
-./stop.sh
-./start.sh
-/opt/sites/zgame/
+---
+# svn
 
-ifconfig -----------------------------¿´ip
+	å¯åŠ¨svn
+	svnserve -d -r /home/svn
+	
+	å…³é—­svn
+	killall svnserve
+	
+	åˆ›å»ºsvnä»“åº“
+	sudo mkdir  repository
+	sudo chown -R root:subversion repository
+	sudo chown -R 777 repository
+	sudo svnadmin create repository
 
-¹Ø»úshutdown -h 0
-ĞİÃßsudo echo mem > /sys/power/state
+---
 
+# æƒé™
 
-
-
-----------------------------------------------------------------------------------------
-²é¿´´íÎóÈÕÖ¾ÎÄ¼ş£¬´úÂëÖĞ¼ÓÈëµÄ£ºtail -n 1000 /opt/GameServer/logs/game_err.log
--f Ò»Ö±²é¿´£¬ÕıÔÚ·¢ÉúµÄ
-²é¿´wsgiÈÕÖ¾£º sudo tail -n 1000 /opt/GameServer/logs/uwsgi.log
-
-ctrl+c ÍË³ö
-ctrl+z ºóÌ¨ÔİÍ£
-
-htop ²é¿´½ø³Ì£¬cpu£¬ÄÚ´æ
-f4 ¼Ó¹Ø¼ü×Ö
-f5 Ê÷ĞÎ½á¹¹
-
-sudo kill -9  ½ø³Ìpid  É±ËÀ½ø³Ì
-
-sh start_uwsgi.sh
-sh start_thread.sh
-
-sh stop_uwsgi.sh
-sh stop_thread.sh
-
-uwsgiµ÷ÕûworksÊıÁ¿/etc/uwgsi/apps_enabled/game_wsgi.ini
-
-Æ¤¿¨Çğworks = 40
-Õ½½¢works = 40
-²âÊÔ·şworks = 4 
-
-
-netstat -nlpt  ²é¿´¶Ë¿Ú	
-
-¿ªÆôÈÕÖ¾·şÎñ
-sh /home/ubuntu/start_scribe_client.sh
-
-²é¿´Ïß³Ì±¨´íÎ»ÖÃ
-tail -f /opt/GameServer/logs/new_rekoo.out
+	sudo -s
+	
+	å®‰è£…è½¯ä»¶
+	sudo apt-get  build-dep gcc
+	
+	sudo chmod -R 777 /usr/local/nginx/objs	-----------è®¾ç½®ç›®å½•æƒé™
+	
+	
+	linux
+	su æƒé™
+	./stop.sh
+	./start.sh
+	/opt/sites/zgame/
 
 
 
-²é¿´TCPÁ¬½ÓÊı£º	netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
-
-²é¿´µ±Ç°´ò¿ªÎÄ¼şÊı£º lsof |wc -l 
-
------------------------------------------------------------------------------
-
-free -m		--------------------------   	²é¿´ÄÚ´æµÄ×´Ì¬
-dd 		----------------- ÓÃÖ¸¶¨´óĞ¡µÄ¿é¿½±´Ò»¸öÎÄ¼ş£¬²¢ÔÚ¿½±´µÄÍ¬Ê±½øĞĞÖ¸¶¨µÄ×ª»»¡£
-df -hl		------------------             ²é¿´Ó²ÅÌµÄ×´Ì¬ /dev/vda1
 
 
------------Ôö¼Óswap---ĞéÄâÄÚ´æ·½·¨----------
-#cd /usr/
-#mkdir swap		´´½¨Ä¿Â¼
-#cd swap
-#dd if=/dev/zero of=swapfile bs=1G count=2	´´½¨ÎÄ¼ş
-#mkswap swapfile	´´½¨swap
-#swapon swapfile	¼¤»îswap
-/etc/fstab	Ìí¼Ó/usr/swap/swapfile            swap                 swap       defaults 0 0 ÕâÀïÊÇÔö¼Ó¿ªÆô×Ô¶¯Æô¶¯
+-----
+
+# æ—¥å¿—
+
+	æŸ¥çœ‹é”™è¯¯æ—¥å¿—æ–‡ä»¶ï¼Œä»£ç ä¸­åŠ å…¥çš„ï¼štail -n 1000 /opt/GameServer/logs/game_err.log
+	-f ä¸€ç›´æŸ¥çœ‹ï¼Œæ­£åœ¨å‘ç”Ÿçš„
+	æŸ¥çœ‹wsgiæ—¥å¿—ï¼š sudo tail -n 1000 /opt/GameServer/logs/uwsgi.log
+	
+	ctrl+c é€€å‡º
+	ctrl+z åå°æš‚åœ
+	
+	htop æŸ¥çœ‹è¿›ç¨‹ï¼Œcpuï¼Œå†…å­˜
+	f4 åŠ å…³é”®å­—
+	f5 æ ‘å½¢ç»“æ„
+	
+	sudo kill -9  è¿›ç¨‹pid  æ€æ­»è¿›ç¨‹
+	
+	sh start_uwsgi.sh
+	sh start_thread.sh
+	
+	sh stop_uwsgi.sh
+	sh stop_thread.sh
+	
+	uwsgiè°ƒæ•´worksæ•°é‡/etc/uwgsi/apps_enabled/game_wsgi.ini
+	
+	çš®å¡ä¸˜works = 40
+	æˆ˜èˆ°works = 40
+	æµ‹è¯•æœworks = 4 
+	
+	
+	netstat -nlpt  æŸ¥çœ‹ç«¯å£	
+	
+	å¼€å¯æ—¥å¿—æœåŠ¡
+	sh /home/ubuntu/start_scribe_client.sh
+	
+	æŸ¥çœ‹çº¿ç¨‹æŠ¥é”™ä½ç½®
+	tail -f /opt/GameServer/logs/new_rekoo.out
+	
+	
+	
+	æŸ¥çœ‹TCPè¿æ¥æ•°ï¼š	netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
+	
+	æŸ¥çœ‹å½“å‰æ‰“å¼€æ–‡ä»¶æ•°ï¼š lsof |wc -l 
+	
+---
+
+# å†…å­˜å’Œç¡¬ç›˜
+
+	free -m		--------------------------   	æŸ¥çœ‹å†…å­˜çš„çŠ¶æ€
+	dd 		----------------- ç”¨æŒ‡å®šå¤§å°çš„å—æ‹·è´ä¸€ä¸ªæ–‡ä»¶ï¼Œå¹¶åœ¨æ‹·è´çš„åŒæ—¶è¿›è¡ŒæŒ‡å®šçš„è½¬æ¢ã€‚
+	df -hl		------------------             æŸ¥çœ‹ç¡¬ç›˜çš„çŠ¶æ€ /dev/vda1
 
 
------------------------------------------------------------------------------
+---
 
-µ÷ÊÔ·½·¨£º
+# å¢åŠ swapè™šæ‹Ÿå†…å­˜æ–¹æ³•
 
-1.winscpÉÏ´«´úÂë
-2.secureCrtÖØÆô·şÎñÆ÷
-3.ÔËĞĞ¿Í»§¶Ëunity
-4.²é¿´uwsgi.log
+	#cd /usr/
+	#mkdir swap		åˆ›å»ºç›®å½•
+	#cd swap
+	#dd if=/dev/zero of=swapfile bs=1G count=2	åˆ›å»ºæ–‡ä»¶
+	#mkswap swapfile	åˆ›å»ºswap
+	#swapon swapfile	æ¿€æ´»swap
+	/etc/fstab	æ·»åŠ /usr/swap/swapfile            swap                 swap       defaults 0 0 è¿™é‡Œæ˜¯å¢åŠ å¼€å¯è‡ªåŠ¨å¯åŠ¨
+	
+
+---
+
+# è°ƒè¯•æ–¹æ³•ï¼š
+
+	1.winscpä¸Šä¼ ä»£ç 
+	2.secureCrté‡å¯æœåŠ¡å™¨
+	3.è¿è¡Œå®¢æˆ·ç«¯unity
+	4.æŸ¥çœ‹uwsgi.log
 
 
+
+---
+
+# é¡¹ç›®ç›¸å…³
+
+	ä¿®æ”¹modelçš„æ–‡ä»¶åå­—åï¼Œ éœ€è¦ä¿®æ”¹app/utils/model_define.py , è¿˜éœ€è¦ä¿®æ”¹apps/config/model.conf
+	
+	-----------------
+	è°ƒè¯•æ¨¡å¼ï¼Œçœ‹memcache
+	sh shell.sh
+	
+	from apps.models.player_models import Player
+	
+	a = Player.get(ç©å®¶uid)
+	
+	a.debug()
+	
+	-----------------------------------
+	è°ƒè¯•æ¨¡å¼ï¼Œç›´æ¥çœ‹è¾“å‡º
+	
+	ç›´æ¥ä¸å¼€åå°æ¨¡å¼å°±å¯ä»¥ çœ‹è¾“å‡ºäº†
+	start.shå»æ‰nohup å’Œç»“å°¾çš„& å°±å¯ä»¥å‰å°æ‰§è¡Œ
+	
+	æˆ–è€…test.sh
+
+	http://client-config.sh.1251506402.clb.myqcloud.com:8080/2.5.1115/Android/CRC.txt
 
 -----------------------------------
 
-ĞŞ¸ÄmodelµÄÎÄ¼şÃû×Öºó£¬ ĞèÒªĞŞ¸Äapp/utils/model_define.py , »¹ĞèÒªĞŞ¸Äapps/config/model.conf
+# æ—¥å¿—æœåŠ¡å™¨
 
------------------
-µ÷ÊÔÄ£Ê½£¬¿´memcache
-sh shell.sh
-
-from apps.models.player_models import Player
-
-a = Player.get(Íæ¼Òuid)
-
-a.debug()
-
------------------------------------
-µ÷ÊÔÄ£Ê½£¬Ö±½Ó¿´Êä³ö
-
-Ö±½Ó²»¿ªºóÌ¨Ä£Ê½¾Í¿ÉÒÔ ¿´Êä³öÁË
-start.shÈ¥µônohup ºÍ½áÎ²µÄ& ¾Í¿ÉÒÔÇ°Ì¨Ö´ĞĞ
-
-»òÕßtest.sh
------------------------------------
-ÈÕÖ¾·şÎñÆ÷
-¿ªÆôÈÕÖ¾·şÎñ
-sh /home/ubuntu/start_scribe_client.sh
-
-±£´æµÄµØÖ·£º
-/data/scribe/log_bak
-/home/ubuntu/data
+	å¼€å¯æ—¥å¿—æœåŠ¡
+	sh /home/ubuntu/start_scribe_client.sh
+	
+	ä¿å­˜çš„åœ°å€ï¼š
+	/data/scribe/log_bak
+	/home/ubuntu/data
 
 
-from apps.models.common import common_dat
-server_chat = common_dat.get_server_chat_model("ALLServerChat")
-chat_list_dat = server_chat.get_chat_list(refresh_time)
-server_chat.debug()
-generate_cache_key
-print chat_list_dat
-server_chat.put()
+---
 
-from apps.utils import memcache
-cmem_url = '10.66.102.119:9101'
-chat_model = memcache.get_cmem_val(cmem_url, 'pkq_si|apps.models.user.User|1000000002')
-print chat_model
-
-
-
-
-from apps.models.user import User
-friend_user = User.get(1000000002)
-friend_user.debug()
-
-
-from apps.models.server_arena_rank import ServerArenaRank
-key = str('ServerArenaRank') + "|" #+ str(server_define.MERGE_SERVER_MAPPING[int(server_id)])
-_server_arena_rank_model = ServerArenaRank.get(key)
-_server_arena_rank_model.debug()
-
-
-
-zgame_pm2|apps.models.chat_list.ChatListDat|server_chat|ALLWorldChatÊı¾İÎª¿Õ
-
-'         apps.models.chat_list.ChatListDat'>----
-
-apps.models.server_arena_rank.ServerArenaRank
-
-
-from apps.models.notice import Notice
-_notice_box = Notice.get('game_notice|')
-_notice_box.debug()
-
-
-from apps.models.union_user import UnionUser
-_union_user_model = UnionUser.get(1000000092)
-_union_user_model.debug()
+	from apps.models.common import common_dat
+	server_chat = common_dat.get_server_chat_model("ALLServerChat")
+	chat_list_dat = server_chat.get_chat_list(refresh_time)
+	server_chat.debug()
+	generate_cache_key
+	print chat_list_dat
+	server_chat.put()
+	
+	from apps.utils import memcache
+	cmem_url = '10.66.102.119:9101'
+	chat_model = memcache.get_cmem_val(cmem_url, 'pkq_si|apps.models.user.User|1000000002')
+	print chat_model
+	
+	
+	
+	
+	from apps.models.user import User
+	friend_user = User.get(1000000002)
+	friend_user.debug()
+	
+	
+	from apps.models.server_arena_rank import ServerArenaRank
+	key = str('ServerArenaRank') + "|" #+ str(server_define.MERGE_SERVER_MAPPING[int(server_id)])
+	_server_arena_rank_model = ServerArenaRank.get(key)
+	_server_arena_rank_model.debug()
+	
+	
+	
+	zgame_pm2|apps.models.chat_list.ChatListDat|server_chat|ALLWorldChatæ•°æ®ä¸ºç©º
+	
+	'         apps.models.chat_list.ChatListDat'>----
+	
+	apps.models.server_arena_rank.ServerArenaRank
+	
+	
+	from apps.models.notice import Notice
+	_notice_box = Notice.get('game_notice|')
+	_notice_box.debug()
+	
+	
+	from apps.models.union_user import UnionUser
+	_union_user_model = UnionUser.get(1000000092)
+	_union_user_model.debug()
+	
+	
+	
+	
+	from apps.models.common.server_arena.server_arena_rank import ServerArenaRank
+	key = str(arena_rank) + "|" + str(server_define.MERGE_SERVER_MAPPING[int(server_id)])
+	_server_arena_rank_model = ServerArenaRank.get(key)
 
 
 
+----
 
-from apps.models.common.server_arena.server_arena_rank import ServerArenaRank
-key = str(arena_rank) + "|" + str(server_define.MERGE_SERVER_MAPPING[int(server_id)])
-_server_arena_rank_model = ServerArenaRank.get(key)
+	æ‰€æœ‰æœåŠ¡å™¨åˆ—è¡¨æ•°æ®éƒ½åœ¨zgameçš„mysqlè¿™ä¸ªè¡¨ä¸­
+	
+	æœåŠ¡å™¨åˆ—è¡¨8081 8084 8085 8086 8087å¯ç”¨ï¼Œå¦‚æœéœ€è¦æ·»åŠ ï¼Œ åœ¨è…¾è®¯äº‘çš„è´Ÿè½½å‡è¡¡é‡Œé¢çš„serverlisté‡Œé¢æ·»åŠ 
+
+-----
+
+# sdkçš„æ¥å…¥ï¼š
 
 
-
-----------------------------------------------------------------------------
-
-ËùÓĞ·şÎñÆ÷ÁĞ±íÊı¾İ¶¼ÔÚzgameµÄmysqlÕâ¸ö±íÖĞ
-
-·şÎñÆ÷ÁĞ±í8081 8084 8085 8086 8087¿ÉÓÃ£¬Èç¹ûĞèÒªÌí¼Ó£¬ ÔÚÌÚÑ¶ÔÆµÄ¸ºÔØ¾ùºâÀïÃæµÄserverlistÀïÃæÌí¼Ó
-
-----------------------------------------------------------------------------------
-
-sdkµÄ½ÓÈë£º
-serverlistÀïÃæÖÆ×÷»Øµ÷£¬ÓÃÀ´ÑéÇ©
-ÓÎÏ··şÎñÆ÷ÀïÃæÒ²ĞèÒªÖÆ×÷»Øµ÷£¬ÓÃÀ´³äÖµ
-
-----------------------------------------------------------------------
-serverlistÓÃÀ´·µ»ØËùÓĞµÄ·şÎñÆ÷ÁĞ±í£¨mysqlÀïÃæzgameµÄserverlist±í£©£¬Í¬Ê±ÓÃÀ´×öËùÓĞÇşµÀ£¬ËùÓĞÓÎÏ·µÄµÇÂ¼ÑéÖ¤ºÍÖ§¸¶ÑéÖ¤£¨Ö÷ÒªÊÇurlÌø×ª£¬platformÊÇÆ½Ì¨ÑéÖ¤Ïà¹Ø£¬»¹ÓĞÑéÇ©£©
-serverlistÆô¶¯ÊÇstart_uwsgi
-serverlistÀïÃæ»¹ÓĞ¸÷¸öÓÎÏ·µÄgmÆ½Ì¨£¬Æô¶¯ÊÇstart84£¨¶Ë¿ÚºÅ£©£¬¶Ë¿ÚÊÇÔÚ¸ºÔØ¾ùºâÀïÃæÅäÖÃµÄ
-
-gameserverÅäÖÃµÄmemcacheºÍmysqlµØÖ·ÔÚÍâÃæµÄÒ»¸öÄ¿Â¼ÏÂÃæ£¨platformÄ¿Â¼ÏÂÃæplatform.conf,ÕâÀï¿ÉÒÔÅäÖÃ¶à¸ömysqlµÄÊı¾İ¿âµØÖ·£¬²Î¿¼Õ½½¢.
-ÔÚplatform.pyÀïÃæ¶¨ÒåÁËÅäÖÃµÄ¶ÁÈ¡£¬È»ºóÔÚconfigÄ¿Â¼ÏÂÃæÓĞstorage.confÀïÃæ¶ÔÓ¦¶ÁÈ¡Êı¾İ¿âµÄÅäÖÃ£©
-gameseverµÄuwsgiÒªÅäÖÃÊÇ·ñ´òÓ¡log£¬¿ªÆô¼¸¸öÏß³Ìworkers
-gameserverµÄthreadÊÇ¸ù¾İmerge serverlist±íÀïÃæÓĞ¶àÉÙ·şÎñÆ÷£¬¾ÍÓĞ¶àÉÙ¸öÏß³Ì
+	serverlisté‡Œé¢åˆ¶ä½œå›è°ƒï¼Œç”¨æ¥éªŒç­¾
+	æ¸¸æˆæœåŠ¡å™¨é‡Œé¢ä¹Ÿéœ€è¦åˆ¶ä½œå›è°ƒï¼Œç”¨æ¥å……å€¼
+	
+	----------------------------------------------------------------------
+	serverlistç”¨æ¥è¿”å›æ‰€æœ‰çš„æœåŠ¡å™¨åˆ—è¡¨ï¼ˆmysqlé‡Œé¢zgameçš„serverlistè¡¨ï¼‰ï¼ŒåŒæ—¶ç”¨æ¥åšæ‰€æœ‰æ¸ é“ï¼Œæ‰€æœ‰æ¸¸æˆçš„ç™»å½•éªŒè¯å’Œæ”¯ä»˜éªŒè¯ï¼ˆä¸»è¦æ˜¯urlè·³è½¬ï¼Œplatformæ˜¯å¹³å°éªŒè¯ç›¸å…³ï¼Œè¿˜æœ‰éªŒç­¾ï¼‰
+	serverlistå¯åŠ¨æ˜¯start_uwsgi
+	serverlisté‡Œé¢è¿˜æœ‰å„ä¸ªæ¸¸æˆçš„gmå¹³å°ï¼Œå¯åŠ¨æ˜¯start84ï¼ˆç«¯å£å·ï¼‰ï¼Œç«¯å£æ˜¯åœ¨è´Ÿè½½å‡è¡¡é‡Œé¢é…ç½®çš„
+	
+	gameserveré…ç½®çš„memcacheå’Œmysqlåœ°å€åœ¨å¤–é¢çš„ä¸€ä¸ªç›®å½•ä¸‹é¢ï¼ˆplatformç›®å½•ä¸‹é¢platform.conf,è¿™é‡Œå¯ä»¥é…ç½®å¤šä¸ªmysqlçš„æ•°æ®åº“åœ°å€ï¼Œå‚è€ƒæˆ˜èˆ°.
+	åœ¨platform.pyé‡Œé¢å®šä¹‰äº†é…ç½®çš„è¯»å–ï¼Œç„¶ååœ¨configç›®å½•ä¸‹é¢æœ‰storage.confé‡Œé¢å¯¹åº”è¯»å–æ•°æ®åº“çš„é…ç½®ï¼‰
+	gameseverçš„uwsgiè¦é…ç½®æ˜¯å¦æ‰“å°logï¼Œå¼€å¯å‡ ä¸ªçº¿ç¨‹workers
+	gameserverçš„threadæ˜¯æ ¹æ®merge serverlistè¡¨é‡Œé¢æœ‰å¤šå°‘æœåŠ¡å™¨ï¼Œå°±æœ‰å¤šå°‘ä¸ªçº¿ç¨‹
 
 
 
---------------------------------------------------------------------------
-
-http://client-config.sh.1251506402.clb.myqcloud.com:8080/2.5.1115/Android/CRC.txt
 
 
-==================================pingxx=====================================================================================
-
------------------°²×°pingpp--------------------------------------------------
-sudo pip install pingpp
-È»ºóĞŞ¸Ä/usr/local/lib/python2.7/dist-packages/pingpp/api_requestor.py£¨ÒòÎªplatformÃû×Ö³åÍ»ÁË£©
-cd /usr/local/lib/python2.7/dist-packages/
-sudo chmod -R 777 pingpp
 
 
-        # for attr, func in [['lang_version', platform.python_version],
-        #                    ['platform', platform.platform],
-        #                    ['uname', lambda: ' '.join(platform.uname())]]:
-        zgame_str2 = "Linux VM-25-47-ubuntu 3.13.0-36-generic #63~precise1-Ubuntu SMP Thu Sep 4 22:28:20 UTC 2014 x86_64 x86_64"
-        for attr, func in [['lang_version', '2.7.13'],
-                           ['platform', 'Linux-3.13.0-36-generic-x86_64-with-debian-wheezy-sid'],
-                           ['uname', zgame_str2]]:
-            try:
-                val = func
-            except Exception as e:
-                val = "!! %s" % (e,)
-            ua[attr] = val
+---
+
+	-----------------å®‰è£…pingpp--------------------------------------------------
+	sudo pip install pingpp
+	ç„¶åä¿®æ”¹/usr/local/lib/python2.7/dist-packages/pingpp/api_requestor.pyï¼ˆå› ä¸ºplatformåå­—å†²çªäº†ï¼‰
+	cd /usr/local/lib/python2.7/dist-packages/
+	sudo chmod -R 777 pingpp
+	
+	
+	        # for attr, func in [['lang_version', platform.python_version],
+	        #                    ['platform', platform.platform],
+	        #                    ['uname', lambda: ' '.join(platform.uname())]]:
+	        zgame_str2 = "Linux VM-25-47-ubuntu 3.13.0-36-generic #63~precise1-Ubuntu SMP Thu Sep 4 22:28:20 UTC 2014 x86_64 x86_64"
+	        for attr, func in [['lang_version', '2.7.13'],
+	                           ['platform', 'Linux-3.13.0-36-generic-x86_64-with-debian-wheezy-sid'],
+	                           ['uname', zgame_str2]]:
+	            try:
+	                val = func
+	            except Exception as e:
+	                val = "!! %s" % (e,)
+	            ua[attr] = val
 
 
----------------------¸üĞÂpython2.7-------------------------------------------------------------------------
+---
 
-ÏÂÔØ¸üĞÂ°ü£¬µ½windows£¬È»ºóÉÏ´«µ½optÄ¿Â¼ÏÂÃæ£¬ È»ºóÔÚoptÄ¿Â¼ÏÂÃæ½øĞĞ°²×°
-°²×°µ½/usr/local/python27£¬ÔÙÁ´½ÓÉÏ¼´¿É
-
---------------------------ĞŞ¸Ähosts------------------------------------------------------------------------------------
-sudo vim /etc/hosts
-121.43.74.100	api.pingxx.com	pingpp
-sudo /etc/init.d/networking restart
----------------------------------------------------------------------------------------------------------------------
-
-²é¿´ÄÄĞ©¶Ë¿Ú±»´ò¿ª  netstat -anp
+	---------------------æ›´æ–°python2.7-------------------------------------------------------------------------
+	
+	ä¸‹è½½æ›´æ–°åŒ…ï¼Œåˆ°windowsï¼Œç„¶åä¸Šä¼ åˆ°optç›®å½•ä¸‹é¢ï¼Œ ç„¶ååœ¨optç›®å½•ä¸‹é¢è¿›è¡Œå®‰è£…
+	å®‰è£…åˆ°/usr/local/python27ï¼Œå†é“¾æ¥ä¸Šå³å¯
+	
+	--------------------------ä¿®æ”¹hosts------------------------
+	sudo vim /etc/hosts
+	121.43.74.100	api.pingxx.com	pingpp
+	sudo /etc/init.d/networking restart
+	---------------------------------------------------------------
 
 
 

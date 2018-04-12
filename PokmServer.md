@@ -1,268 +1,315 @@
-*************************************************************************************************
-MainServer:-----------ÓÎÏ·Âß¼­·şÎñÆ÷
+***
+# MainServer:-----------æ¸¸æˆé€»è¾‘æœåŠ¡å™¨
 
-apps/common/middlewares/auth.py	----ÓÃ»§ÈÏÖ¤ÖĞ¼ä¼ş£¬°üÀ¨Ò»Ğ©ÇşµÀÈÏÖ¤
-apps/common/rkauth.py(game_auth.py)----Éú³ÉÈÏÖ¤µÄcookie
-apps/common/sequence.py		----sqlÊı¾İ¿âÖĞ×îĞÂµÄuid
-apps/common/sequence_union.py	----sqlÊı¾İ¿âÖĞ×îĞÂµÄÁªÃËuid
-apps/config/cache.conf		----memcacheµÄÅäÖÃ
-apps/config/game_config.py	----²ß»®ÌîĞ´ÅäÖÃ±íµÄ½á¹¹¶¨Òå£¬¼ÓÔØÅäÖÃ±íreload_game_config£¬¸üĞÂÅäÖÃ±íÊı¾İ
-apps/config/model.conf		----memcacheÊı¾İ¿âÖĞ¸÷¸ö±í½á¹¹
-apps/config/storage.conf	----´æ´¢µÄÅäÖÃÎÄ¼ş
-apps/config/system_config.py	----×÷·Ï
-apps/game_config/		----ĞÂµÄ½á¹¹ÀïÃæ¶¨Òå:²ß»®ÌîĞ´µÄÅäÖÃ±í¾ßÌåÊı¾İ
-apps/logics/*			----ÓÎÏ·Âß¼­´¦Àí²¿·Ö£¬ÊÇËùÓĞ¸ú¿Í»§¶ËµÄ½Ó¿Ú£¬½Ó¿ÚÀïÃæµ÷ÓÃlogicÀïÃæµÄ¾ßÌå²Ù×÷, È»ºó°Ñ½á¹û·µ»Ø¸ø¿Í»§¶Ë
-apps/logics/activity_logic/*	----»î¶¯²¿·ÖÂß¼­
-apps/logics/band_logic/*	----×éºÏµÄÂß¼­
-apps/logics/battle/*		----¾º¼¼³¡Õ½¶·£¬Í¨ÓÃÕ½¶·£¬¿ç·şÕ½¶·£¬¾­Ñé£¬½ğ±Ò£¬µÀ¹İ£¬Èı´ó£¬ËÄ´ó£¬¹Ø¿¨£¬¶á±¦£¬ÊÔÁ·£¬¾«»ªÊÔÁ·£¬ÁªÃË3v3£¬ÁªÃË¹Ø¿¨£¬ÊÀ½çbossµÈÕ½¶·Âß¼­
-apps/logics/battle_ship_logic/*	----Õ½½¢Õ½¶·µÄÂß¼­
-apps/logics/buddy_logic/*	----ºÃÓÑµÄÂß¼­
-apps/logics/catch_monster_logic/*----×¥³èÂß¼­
-apps/logics/chat_logic/*	----ÁÄÌìµÄÂß¼­
-apps/logics/chest_logic/*	----¿ª±¦ÏäµÄÂß¼­
-apps/logics/cross_server_arena_logic/*----¿ç·şÕ½µÄÂß¼­
-apps/logics/daily_task_logic/*	----Ã¿ÈÕÈÎÎñµÄÂß¼­
-apps/logics/draw_logic/*	----µ¥³éµÄÂß¼­
-apps/logics/exchange_code_logic/*----¶Ò»»ÂëµÄÂß¼­
-apps/logics/fishing_logic/*	----µöÓãµÄÂß¼­
-apps/logics/fragment_shop_logic/*----ËéÆ¬ÉÌµêµÄÂß¼­
-apps/logics/gift_logic/*	----Àñ°üµÄÂß¼­
-apps/logics/gym_logic/*		----µÀ¹İµÄÂß¼­ºÍµÀ¹İÉÌµêµÄÂß¼­
-apps/logics/item_logic/*	----µÀ¾ßµÄÂß¼­
-apps/logics/item_packet_drop_logic/*----µôÂä°üµÄÂß¼­
-apps/logics/king_arena_logic/*	----Èı´óµÄÂß¼­
-apps/logics/master_arena_logic/*----ËÄ´óµÄÂß¼­
-apps/logics/login_7_logic/*	----7ÌìµÇÂ¼µÄÂß¼­
-apps/logics/massage_logic/*	----°´Ä¦µÄÂß¼­
-apps/logics/notice_logic/*	----¹ã²¥µÄÂß¼­
-apps/logics/plate_shop_logic/*	----megaÉÌµêµÄÂß¼­
-apps/logics/player_arena_logic/*----¾º¼¼³¡µÄÂß¼­
-apps/logics/player_invitation_logic/*----Íæ¼ÒÑûÇë
-apps/logics/player_logic/*	----Ã¿ÈÕ³äÖµ£¬Âú¶î³äÖµ£¬ĞÂÊÖÒıµ¼£¬Íæ¼ÒÂß¼­
-apps/logics/player_reward_seven_level_logic/*----¿ª·ş7ÌìµÈ¼¶Âß¼­
-apps/logics/player_reward_seven_power_logic/*----¿ª·ş7ÌìÕ½Á¦Âß¼­
-apps/logics/pvp_shop_logic/*	----¾º¼¼³¡ÉÌµêµÄÂß¼­
-apps/logics/recharge_return_logic/*----³äÖµ·µ»¹»î¶¯µÄÂß¼­
-apps/logics/reward/*		----³É¾Í±¦²ØµÄÂß¼­
-apps/logics/server_quiz_logic/*	----ÎÊ´ğµÄÂß¼­
-apps/logics/server_world_boss_logic/*----ÊÀ½çbossºÍÊÀ½çbossÉÌµêµÄÂß¼­
-apps/logics/player_sign_30_logic/*----Èı´óµÄÂß¼­
-apps/logics/stage_logic/*	----½ğ±Ò±¾£¬¾­Ñé±¾£¬ÆÕÍ¨±¾µÄ¹Ø¿¨Âß¼­
-apps/logics/stone_shop_logic/*	----×êÊ¯ÉÌ³ÇµÄÂß¼­
-apps/logics/treasure_logic/*	----¶á±¦µÄÂß¼­
-apps/logics/trial_essense_logic/*----ÈÛÁ¶¾«»ªµÄÂß¼­
-apps/logics/trial_logic/*	----ÊÔÁ·µÄÂß¼­
-apps/logics/union_3v3_logic/*	----ÁªÃË3v3µÄÂß¼­
-apps/logics/union_logic/*	----ÁªÃËÁÄÌì£¬ÁªÃË£¬ÁªÃËÉÌµê
-apps/logics/vip_reward_logic/*	----vipÃ¿ÈÕ½±ÀøµÄÂß¼­
-apps/logics/weapon_logic/*	----×°±¸Ç¿»¯µÄÂß¼­
-apps/logics/zone_logic/*	----ÇøÓòµÄÂß¼­
-apps/logs/action/		----ËùÓĞ×ÔÉílog¼ÇÂ¼µÄ¾ßÌåÖ´ĞĞÎÄ¼ş
-apps/logs/output_action.py	----logº¯ÊıµÄÁĞ±íÎÄ¼ş,ÊÇËùÓĞlog¾ßÌå²Ù×÷µÄ½Ó¿ÚÎÄ¼ş
-apps/models/*			----ÓÎÏ·Êı¾İ´¦Àí²¿·Ö
-apps/models/activity/*		----»î¶¯²¿·ÖµÄÊı¾İÄ£ĞÍºÍ¼òµ¥²Ù×÷£¬update_datË¢ĞÂÊı¾İ£¬add_activities_num
-apps/models/base/*		----´ó²¿·Ö»ù´¡µÄÊı¾İ½á¹¹£¬Êı¾İ½á¹¹¶¨Òå£¬³õÊ¼»¯init£¬install£¬reset
-apps/models/buddy/*		----ºÃÓÑ²¿·Ö
-apps/models/common/*		----»ñÈ¡¹²ÓĞ²¿·Ö£¬°üº¬ÁÄÌì£¬ÅÅĞĞ°ñ£¬Èı´ó£¬ËÄ´ó£¬¹Ø¿¨ÅÅĞĞ,ÊÀ½çboss£¬ÅäÖÃÎÄ¼ş£¬¹ã²¥£¬Ìá½»bug£¬Íæ¼ÒºÃÓÑ£¬Íæ¼ÒêÇ³Æ£¬¸÷ÖÖ»î¶¯£¬·şÎñÆ÷Êı¾İ£¬°´ÕÕµÈ¼¶½øĞĞÍæ¼Ò·ÖÀà£¬ÎÊ´ğ£¬¹Ø¿¨£¬ÏµÍ³ÓÊ¼ş£¬ÁªÃËÃû×Ö
-apps/models/cross_battle/*	----Íæ¼Ò¿ç·şÊı¾İ
-apps/models/gym/*		----Íæ¼ÒµÄµÀ¹İÊı¾İ£¬Íæ¼ÒµÀ¹İÉÌµê£¬µÀ¹İÅÅĞĞ
-apps/models/mail/*		----Íæ¼ÒÓÊÏä£¬Íæ¼ÒË½ĞÅ
-apps/models/mysql/*		----»î¶¯ÁĞ±í£¬¹ÜÀíÔ±µÇÂ¼log£¬ÍòÄÜ¶Ò»»Âë£¬Àñ°üÀàĞÍ£¬¾ßÌå¶Ò»»Âë£¬Íæ¼Ò³äÖµ¼ÇÂ¼£¬¶Ò»»Âë¶Ò»»
-apps/models/player_world_boss/*	----ÊÀ½çboss¹ÄÎè£¬ÌôÕ½´ÎÊıµÈ£¬2¸öbossÀàÔÙ·Ö±ğ¼Ì³Ğ£¬Íæ¼ÒµÄÊÀ½çbossÉÌµê
-apps/models/recharge_return/*	----³äÖµ·µ»¹
-apps/models/slate/*		----Ê¯°å
-apps/models/thread_action/*	----¸üĞÂÁªÃËËÑË÷£¬ºÃÓÑËÑË÷£¬ÁªÃËµÈ¼¶ÅÅĞĞ£¬ÁªÃË¹Ø¿¨ÅÅĞĞ£¬Íæ¼ÒÍ¨ĞÅ£¬¾º¼¼³¡£¬Èı´ó£¬ËÄ´ó£¬µÀ¹İ£¬¹Ø¿¨ÅÅĞĞ£¬Íæ¼ÒÉı¼¶´øÀ´µÄµÈ¼¶±ä¶¯
-apps/models/treasure/*		----Íæ¼Ò¶á±¦Êı¾İ£¬Íæ¼ÒÓµÓĞµÄ±¦Îï£¬·şÎñÆ÷ÕÆÎÕµÄ¶á±¦ÁĞ±í
-apps/models/union/*		----ÁªÃËÊı¾İ£¬ÁªÃËÁÄÌì£¬ÁªÃËµÈ¼¶ÅÅĞĞ£¬ÁªÃËËÑË÷£¬ÁªÃËÉÌ³Ç£¬ÁªÃË¹Ø¿¨£¬ÁªÃË¹Ø¿¨ÅÅĞĞ£¬ÁªÃË³ÉÔ±Êı¾İ
-apps/models/union_3v3/*		----ÁªÃË3v3Êı¾İ
-apps/models/account_mapping.py	----ÕËºÅÓ³Éä
-apps/models/daily_recharge_reward.py----Ã¿ÈÕ³äÖµµÄÊı¾İ
-apps/models/daily_task.py	----Ã¿ÈÕÈÎÎñ
-apps/models/daily_vip_reward.py	----Ã¿ÈÕvip½±Àø
-apps/models/ditto_shop.py	----°Ù±ä¹ÖÉÌ³Ç
-apps/models/gift_bag.py		----Àñ°ü
-apps/models/hand_book.py	----Í¼¼ø
-apps/models/items.py		----µÀ¾ß
-apps/models/monster.py		----¹ÖÎï
-apps/models/monster_equip.py	----¹ÖÎï×°±¸
-apps/models/name_mapping.py	----Ãû×ÖÓ³Éä
-apps/models/player.py		----Íæ¼ÒÊı¾İ
-apps/models/player_arena_battle_report.py----Õ½±¨ÏµÍ³
-apps/models/player_arena_honour.py----¾º¼¼³¡ÈÙÓş
-apps/models/player_catch_monster.py----×¥³è
-apps/models/player_fragment_shop.py----ËéÆ¬ÉÌ³Ç
-apps/models/player_invitation.py----Íæ¼ÒÑûÇëºÃÓÑ¼ÓÈëÓÎÏ·
-apps/models/player_king_arena_battle_report.py----Èı´óÕ½±¨
-apps/models/player_master_arena_battle_report.py----ËÄ´óÕ½±¨
-apps/models/player_login_7.py	----ÆßÌìµÇÂ¼
-apps/models/player_payment.py	----Íæ¼Ò³äÖµÊı¾İ
-apps/models/player_plate_shop.py----Èı´ó¡¢ËÄ´óÉÌ³Ç
-apps/models/player_pvp_shop.py	----¾º¼¼³¡ÉÌ³Ç
-apps/models/player_quiz.py	----ÎÊ´ğ
-apps/models/player_random_state.py----Ëæ»úÊı
-apps/models/player_reward_seven_level.py----¿ª·ş7Ìì³å¼¶
-apps/models/player_reward_seven_power.py----¿ª·ş7ÌìÕ½Á¦
-apps/models/player_sign_30.py	----30ÌìÇ©µ½
-apps/models/player_stone_shop.py----×êÊ¯ÉÌ³Ç
-apps/models/player_team.py	----Íæ¼Ò¶ÓÎé
-apps/models/player_team_band.py	----Ğ¡»ï°é
-apps/models/player_trial_battle.py----ÊÔÁ·
-apps/models/player_trial_essence.py----¾«»ªÊÔÁ·
-apps/models/stage.py		----¹Ø¿¨
-apps/models/sum_recharge_reward.py----Ã¿ÈÕ³äÖµ
-apps/models/user.py		----Íæ¼Ò
-apps/models/zone.py		----ÇøÓòÊı¾İ
-apps/models/user_king_arena.py	----Èı´ó
-apps/models/user_master_arena.py----ËÄ´ó
-apps/platform/platform.py	----¼ÓÔØÆ½Ì¨ÅäÖÃµÄĞÅÏ¢
-../../platform/platform.conf	----Êı¾İ¿âµÈÅäÖÃµÄkey£¬memcacheºÍsqlµÄ·şÎñÆ÷µØÖ·£¬ÃÜÂë£¬server idµÈÅäÖÃ
-apps/server_thread/script/*	----Ë¢ĞÂ¹«ÓĞÊı¾İµÄ½Å±¾
-apps/server_thread/script/buddy/*----ÖØĞÂÉú³ÉÍæ¼ÒºÃÓÑËÑË÷£¬Ë¢ĞÂÓÃ»§Í¨Ñ¶²¿·Ö
-apps/server_thread/script/gym/*	----Ë¢ĞÂµÀ¹İÅÅÃû
-apps/server_thread/script/server_player_level_distribution/*----Ë¢ĞÂÍæ¼ÒµÈ¼¶·Ö×é
-apps/server_thread/script/stage/*----Ë¢ĞÂ¹Ø¿¨ÅÅĞĞ
-apps/server_thread/script/treasure/*----Ë¢ĞÂ±¦Îï·Ö²¼
-apps/server_thread/script/union/*----Ë¢ĞÂÁªÃËµÈ¼¶£¬³ÉÔ±£¬ËÑË÷£¬ÁªÃË¹Ø¿¨
-apps/settings/*			----¶¨Òå¼¸¸öconfµÄÂ·¾¶
-apps/utils/_init_.py		----¹¤¾ßº¯Êı£¨Çø¼äËæ»ú£¬È¨ÖØËæ»ú£¬memcache get£¬memcache put£¬²élist£¬¶ººÅ·Ö¸ôµÄ»¥Ïà×ª»»)
-apps/utils/battle_define.py	----Õ½¶·ÖĞÊ¹ÓÃµÄ³£Á¿¶¨Òå
-apps/utils/encryption.py	----ÁÄÌì¼ÓÃÜ
-apps/utils/game_define.py	----ÓÎÏ·³£Á¿¶¨Òå
-apps/utils/model_define.py	----¶¨ÒåmemcacheµÄ´æ´¢Â·¾¶,ºóÃæÓĞÒ»Ğ©ĞÂĞŞ¸ÄµÄÔö¼ÓÁË·şÎñÆ÷µÄÇø·Ö
-apps/utils/mysql_conncection.py	----¶¨ÒåmysqlµÄ´æ´¢Â·¾¶¶¨Òå
-apps/utils/payment_util.py	----¶¨ÒåÖ§¸¶ÑéÇ©
-apps/utils/server_define.py	----¶¨ÒåÔ­À´µÄºÏ·şÓ³Éä
-apps/utils/server_util.py	----»ñÈ¡ÓÃ»§ipµØÖ·
-apps/utils/user_ip_time_limit_check.py----ÏŞÖÆÍæ¼Ò·¢ÏûÏ¢¹ıÓÚÆµ·±
-apps/views/game_config.py	----²ß»®ÅäÖÃ±íµÄGMºóÌ¨µÄÅäÖÃ¼°ÅäÖÃ±íµÄ¸üĞÂ
-apps/views/main.py		----indexµÇÂ¼»Øµ÷½Ó¿Ú£¬api½Ó¿Ú£¬chatÁÄÌì»ñÈ¡½Ó¿ÚµÄÂß¼­ÊµÏÖ
-apps/views/platform.py		----À´×ÔserverlistµÄÖ§¸¶»Øµ÷£¬ÅĞ¶ÏÔö¼Ó×êÊ¯okºó»Ø´«serverlist¸æÖªok£¬Ö§¸¶³É¹¦Ö®ºó»á¼ÇÂ¼µ½mysqlÀïÃæplayer_charge_rmb
-apps/game_nginx.conf		----ÓÎÏ··şÎñÆ÷µÄÅäÖÃ
-apps/game_server_thread.py	----ÓÎÏ··şÎñÆ÷µÄ×Ô¶¯Æô¶¯Ïß³Ì,°üÀ¨£¨¸üĞÂ·şÎñÆ÷»î¶¯×´Ì¬£»»¹ÓĞÒ»Ğ©¹²ÓĞÊı¾İµÄ¸üĞÂ£©
-apps/game_server_thread_model_reset.py----×÷·Ï
-apps/game_wsgi.ini		----wsgiµÄÅäÖÃ±í
-apps/manage.py			----wsgi³õÊ¼»¯µÄÊ±ºò»áµ÷ÓÃ£¬³õÊ¼»¯
-apps/urls.py			----ÓÎÏ·»Øµ÷½Ó¿Ú£¬°üÀ¨Æ½Ì¨Ö§¸¶½Ó¿Ú£¬ÅäÖÃ¸üĞÂºÍ¸üĞÂÊ±¼äĞŞ¸Ä£¬»ñÈ¡ÁÄÌìĞÅÏ¢½Ó¿Ú£¬indexµÇÂ¼½Ó¿Ú£¬api½Ó¿Ú
-logs/				----ÒÔºóµÄÈÕÖ¾»á´òÓ¡µ½Õâ¸öÄ¿Â¼ÏÂÃæ£¬±ÈÈçgame_error£¬wsgiµÄlogµÈ
-rklib/				----»ù´¡¿â£¬Ò²ÓĞÆ½Ì¨µÄÖ§¸¶ÑéÖ¤µÄ¿âÎÄ¼ş
-scribe/				----ÈÕÖ¾ÊÕ¼¯£¬½«Ã¿ÌìµÄÈÕÖ¾´òÓ¡³öÀ´£¬¹©ºóÆÚ·ÖÎöºÍ¼ÇÂ¼ÓÃ
-script/				----¶ÀÁ¢ÔËĞĞµÄ½Å±¾£¬ÓÃÀ´´¦ÀíÒ»Ğ©ºÏ·ş¡¢Ë¢ÅÅĞĞ°ñµÈĞÅÏ¢µÄ´¦Àí
-script/backup_cmem/*		----memcacheµÄ±¸·İ½Å±¾
-script/clear_user/*		----É¾µô¹²ÓĞÊı¾İ£¬¸öÈËÊı¾İ£¬ÑûÇëµÈÍæ¼ÒĞÅÏ¢
-script/cross_server/*		----ÖØĞÂ¼ÆËã¹Ø¿¨µÄÅÅĞĞ£¬¸üĞÂÍæ¼ÒÕ½¶·Á¦
-script/log/*			----·ÖÎöÈÕÖ¾ÏìÓ¦Ê±¼ä
-script/merge_server/*		----ºÏ·ş£¬ºÏ²¢¹²ÓĞÊı¾İ
-script/open_server/*		----¿ª·ş½Å±¾
-script/user/*			----Íæ¼Ò½Å±¾
-script/user/arena/*		----Ë¢ĞÂ¾º¼¼³¡ÅÅĞĞ
-script/user/buddy/*		----Çå³ıºÃÓÑÖĞ²»´æÔÚµÄÓÃ»§
-script/user/gym/*		----ÖØÖÃÍæ¼ÒµÀ¹İÊı¾İ
-script/user/recharge/*		----¸øÍæ¼Ò³äÖµÖ¸¶¨½ğ¶î
-script/user/stage/*		----ÖØÖÃ¾«Ó¢¸±±¾Êı¾İ
-script/user/treasure/*		----Çå³ı¶á±¦Êı¾İ
-script/user/union/*		----ÁªÃË¸ÄÃû£¬ĞŞ¸´½±Àø
-statistics/			----´òÓ¡ÈÕÖ¾Ïà¹Ø
-*************************************************************************************************
-GameManager£¨GameLogServer£©:-----------ÓÎÏ·GMºóÌ¨ºÍÈÕÖ¾·şÎñÆ÷
-apps/game_manager/models
-apps/game_manager/mysql/mysql_connect----sqlÊı¾İ¿âÁ¬½Ó£¬ºóÌ¨µÄsqlÊı¾İ¿â·ÅÔÚÃ¿¸öÓÎÏ·¶ÔÓ¦Êı¾İ¿âÖĞ£¬°üÀ¨ºóÌ¨µÇĞÅÏ¢
-apps/game_manager/mysql/*	----ºóÌ¨½øĞĞÊı¾İ¿â²Ù×÷Ê±ºòµÄ¾ßÌåsqlÓï¾äºÍÂß¼­£¬ÕâÀïÒªÌØ±ğ×¢Òâgame_idÊÇ¶¨ÒåÁËºóÌ¨ËùĞ´ËÀµÄÓÎÏ·±àºÅ1.Æ¤¿¨Çğ2.Õ½½¢3.xyz4.´ı¶¨
-apps/game_manager/templates	----Ç°¶ËÍøÒ³µÄhtmlÄ£°å
-apps/game_manager/views		----ÍøÒ³µ÷ÓÃµÄÂß¼­Ö´ĞĞpython´úÂë£¬´¦ÀíºÃµÄÊı¾İ·µ»Ø¸øtemplatesÀïÃæµÄÍøÒ³
-apps/game_manager/game_manage_define.py----¶¨ÒåÈ¨ÏŞºÍÒ³Ãæ
-apps/game_manager/urls.py	----Ò³Ãæ»Øµ÷Ìø×ªµØÖ·µÄ¶¨Òå£¬GMºóÌ¨µÄhtmlÌø×ª
-apps/logs/*			----ÈÕÖ¾µÄ¼ÇÂ¼Âß¼­£¬ÒÔÇ°ÓĞºÜ¶àÈÕÖ¾µÄ¼ÇÂ¼µã
-apps/game_manager/views/server/version_notice.py----¹«¸æÂß¼­²Ù×÷
-apps/game_manager/mysql/server_notice.py----¹«¸æ²Ù×÷µÄÊı¾İ¿â²Ù×÷,´Ósql½øĞĞ²Ù×÷
-apps/game_manager/views/gm/get_chat_content.py----»ñÈ¡ÁÄÌìĞÅÏ¢
-apps/utils/server_define.py	----¶¨ÒåmemcacheµÄ·şÎñÆ÷´æ´¢
-apps/utils/model_define.py	----¶¨ÒåmemcacheµÄ´æ´¢Â·¾¶¶¨Òå
-apps/game_manager/util/memcache.py----¶¨ÒåmemchacheµÄ´æ´¢ºÍ¶ÁÈ¡
-apps/game_manager/util/mysql_util.py----¶¨ÒåmysqlµÄ´æ´¢,ÀïÃæÓĞ²»ÉÙ²éÑ¯sqlÊı¾İ¿â¼ÇÂ¼µÄÓÃ»§×ÜÌå¼ÇÂ¼Çé¿ö
-apps/logs/statistics_tables/product_daily_situation/statistics_total.py----×ÜÌåÍ³¼ÆµÄÂß¼­£¬ÓÃµÄmysql²éÑ¯Êı¾İ
-apps/game_manager/views/server/client_config.py----ÉÏ´«ÅäÖÃÎÄ¼ş
-apps/game_manager/views/server/server_config.py----ĞŞ¸Ä·şÎñÆ÷°æ±¾ºÅ£¬¸üĞÂ·şÎñÆ÷ÅäÖÃÉúĞ§(ÅäÖÃÎÄ¼şÍ¬²½µ½ÓÎÏ··şÎñÆ÷)£¬¸üĞÂ¿Í»§¶ËÅäÖÃÊ±¼ä(Ç¿ÖÆÍæ¼ÒÍ¬²½)£¬Í¨¹ıhttpĞ­ÒéÍ¨ÖªÓÎÏ··şÎñÆ÷ÕâĞ©ÏûÏ¢
+---
 
-ÈÕÖ¾·şÎñÆ÷Æô¶¯ºÍ¹Ø±Õ·½·¨£¨ÈÕÖ¾ºÍgmºóÌ¨Ò²ÊÇÒ»¸öÓÎÏ·Ò»¸ö£©
-ÈÕÖ¾·ş Æ¤¿¨ÇğÊÇÓÃµÄ8083¶Ë¿Ú£¬¿ªÆô¹Ø±ÕÓÃstart_uwsgi.sh stop_uwsgi.sh
-Õ½½¢ÊÇ8084¶Ë¿Ú£¬¿ªÆôÊÇstart84.sh£¬¹Ø±ÕÊÇÏÈsudo netstat -ntlp²é¿´8084¶Ë¿ÚµÄ½ø³ÌºÅ£¬ÓÃkillÃüÁîÖ±½ÓÉ±µô½ø³Ì¡£8085 8086 8087Ò²ÊÇÒ»Ñù
+	apps/common/middlewares/auth.py	----ç”¨æˆ·è®¤è¯ä¸­é—´ä»¶ï¼ŒåŒ…æ‹¬ä¸€äº›æ¸ é“è®¤è¯	
+	apps/common/rkauth.py(game_auth.py)----ç”Ÿæˆè®¤è¯çš„cookie	
+	apps/common/sequence.py		----sqlæ•°æ®åº“ä¸­æœ€æ–°çš„uid	
+	apps/common/sequence_union.py	----sqlæ•°æ®åº“ä¸­æœ€æ–°çš„è”ç›Ÿuid	
+	apps/config/cache.conf		----memcacheçš„é…ç½®	
+	apps/config/game_config.py	----ç­–åˆ’å¡«å†™é…ç½®è¡¨çš„ç»“æ„å®šä¹‰ï¼ŒåŠ è½½é…ç½®è¡¨reload_game_configï¼Œæ›´æ–°é…ç½®è¡¨æ•°æ®	
+	apps/config/model.conf		----memcacheæ•°æ®åº“ä¸­å„ä¸ªè¡¨ç»“æ„	
+	apps/config/storage.conf	----å­˜å‚¨çš„é…ç½®æ–‡ä»¶	
+	apps/config/system_config.py	----ä½œåºŸ	
+	apps/game_config/		----æ–°çš„ç»“æ„é‡Œé¢å®šä¹‰:ç­–åˆ’å¡«å†™çš„é…ç½®è¡¨å…·ä½“æ•°æ®
 
-*************************************************************************************************
-GameServerList:-----------·şÎñÆ÷ÁĞ±í£¨¸úbundle¹²ÓÃÒ»¸ö·şÎñÆ÷£©
-apps/urls.py			----Ò³Ãæ»Øµ÷Ìø×ªµØÖ·µÄ¶¨Òå£¬µÇÂ¼ºÍÖ§¸¶
-apps/views/server_list.py	----²éÕÒÆ¤¿¨ÇğµÄÊı¾İ¿âserverlist±í£¬ÕâÀïÓĞËùÓĞÓÎÏ·µÄ·şÎñÆ÷ÁĞ±í
-apps/utils/mysql_connection.py	----Á¬½Ómysql·şÎñÆ÷
-apps/utils/server_notice.py	----²éÕÒ·şÎñÆ÷¹«¸æ£¬ÕâÀïÒª±ãÀûËùÓĞµÄ±íÁË£¬ÒòÎªÊı¾İ±£´æÔÚ¸÷¸öÓÎÏ·×Ô¼ºµÄÊı¾İ¿âÖĞ
-apps/utils/payment_util.py	----Ö§¸¶ÑéÇ©µÄÂß¼­
-apps/views/platform.py		----¸÷¸öÇşµÀÆ½Ì¨µÄµÇÂ¼ºÍÖ§¸¶ÑéÖ¤Âß¼­´úÂë
-apps/views/account.py		----apple store×Ô¼ºµÄµÇÂ¼ÏµÍ³
-apps/utils/user_list.py		----apple store×ÔÑĞµÇÂ¼ÏµÍ³µÄ»ñÈ¡ÓÃ»§µÈº¯Êı
+---
+
+**apps/logics/----æ¸¸æˆé€»è¾‘å¤„ç†éƒ¨åˆ†ï¼Œæ˜¯æ‰€æœ‰è·Ÿå®¢æˆ·ç«¯çš„æ¥å£ï¼Œæ¥å£é‡Œé¢è°ƒç”¨logicé‡Œé¢çš„å…·ä½“æ“ä½œ, ç„¶åæŠŠç»“æœè¿”å›ç»™å®¢æˆ·ç«¯**
+
+	apps/logics/activity_logic/*	----æ´»åŠ¨éƒ¨åˆ†é€»è¾‘	
+	apps/logics/band_logic/*	----ç»„åˆçš„é€»è¾‘	
+	apps/logics/battle/*		----ç«æŠ€åœºæˆ˜æ–—ï¼Œé€šç”¨æˆ˜æ–—ï¼Œè·¨æœæˆ˜æ–—ï¼Œç»éªŒï¼Œé‡‘å¸ï¼Œé“é¦†ï¼Œä¸‰å¤§ï¼Œå››å¤§ï¼Œå…³å¡ï¼Œå¤ºå®ï¼Œè¯•ç»ƒï¼Œç²¾åè¯•ç»ƒï¼Œè”ç›Ÿ3v3ï¼Œè”ç›Ÿå…³å¡ï¼Œä¸–ç•Œbossç­‰æˆ˜æ–—é€»è¾‘	
+	apps/logics/battle_ship_logic/*	----æˆ˜èˆ°æˆ˜æ–—çš„é€»è¾‘	
+	apps/logics/buddy_logic/*	----å¥½å‹çš„é€»è¾‘	
+	apps/logics/catch_monster_logic/*----æŠ“å® é€»è¾‘	
+	apps/logics/chat_logic/*	----èŠå¤©çš„é€»è¾‘	
+	apps/logics/chest_logic/*	----å¼€å®ç®±çš„é€»è¾‘	
+	apps/logics/cross_server_arena_logic/*----è·¨æœæˆ˜çš„é€»è¾‘	
+	apps/logics/daily_task_logic/*	----æ¯æ—¥ä»»åŠ¡çš„é€»è¾‘	
+	apps/logics/draw_logic/*	----å•æŠ½çš„é€»è¾‘	
+	apps/logics/exchange_code_logic/*----å…‘æ¢ç çš„é€»è¾‘	
+	apps/logics/fishing_logic/*	----é’“é±¼çš„é€»è¾‘	
+	apps/logics/fragment_shop_logic/*----ç¢ç‰‡å•†åº—çš„é€»è¾‘	
+	apps/logics/gift_logic/*	----ç¤¼åŒ…çš„é€»è¾‘	
+	apps/logics/gym_logic/*		----é“é¦†çš„é€»è¾‘å’Œé“é¦†å•†åº—çš„é€»è¾‘	
+	apps/logics/item_logic/*	----é“å…·çš„é€»è¾‘	
+	apps/logics/item_packet_drop_logic/*----æ‰è½åŒ…çš„é€»è¾‘	
+	apps/logics/king_arena_logic/*	----ä¸‰å¤§çš„é€»è¾‘	
+	apps/logics/master_arena_logic/*----å››å¤§çš„é€»è¾‘	
+	apps/logics/login_7_logic/*	----7å¤©ç™»å½•çš„é€»è¾‘	
+	apps/logics/massage_logic/*	----æŒ‰æ‘©çš„é€»è¾‘	
+	apps/logics/notice_logic/*	----å¹¿æ’­çš„é€»è¾‘	
+	apps/logics/plate_shop_logic/*	----megaå•†åº—çš„é€»è¾‘	
+	apps/logics/player_arena_logic/*----ç«æŠ€åœºçš„é€»è¾‘	
+	apps/logics/player_invitation_logic/*----ç©å®¶é‚€è¯·	
+	apps/logics/player_logic/*	----æ¯æ—¥å……å€¼ï¼Œæ»¡é¢å……å€¼ï¼Œæ–°æ‰‹å¼•å¯¼ï¼Œç©å®¶é€»è¾‘	
+	apps/logics/player_reward_seven_level_logic/*----å¼€æœ7å¤©ç­‰çº§é€»è¾‘	
+	apps/logics/player_reward_seven_power_logic/*----å¼€æœ7å¤©æˆ˜åŠ›é€»è¾‘	
+	apps/logics/pvp_shop_logic/*	----ç«æŠ€åœºå•†åº—çš„é€»è¾‘	
+	apps/logics/recharge_return_logic/*----å……å€¼è¿”è¿˜æ´»åŠ¨çš„é€»è¾‘	
+	apps/logics/reward/*		----æˆå°±å®è—çš„é€»è¾‘	
+	apps/logics/server_quiz_logic/*	----é—®ç­”çš„é€»è¾‘	
+	apps/logics/server_world_boss_logic/*----ä¸–ç•Œbosså’Œä¸–ç•Œbosså•†åº—çš„é€»è¾‘	
+	apps/logics/player_sign_30_logic/*----ä¸‰å¤§çš„é€»è¾‘	
+	apps/logics/stage_logic/*	----é‡‘å¸æœ¬ï¼Œç»éªŒæœ¬ï¼Œæ™®é€šæœ¬çš„å…³å¡é€»è¾‘	
+	apps/logics/stone_shop_logic/*	----é’»çŸ³å•†åŸçš„é€»è¾‘	
+	apps/logics/treasure_logic/*	----å¤ºå®çš„é€»è¾‘	
+	apps/logics/trial_essense_logic/*----ç†”ç‚¼ç²¾åçš„é€»è¾‘	
+	apps/logics/trial_logic/*	----è¯•ç»ƒçš„é€»è¾‘	
+	apps/logics/union_3v3_logic/*	----è”ç›Ÿ3v3çš„é€»è¾‘	
+	apps/logics/union_logic/*	----è”ç›ŸèŠå¤©ï¼Œè”ç›Ÿï¼Œè”ç›Ÿå•†åº—	
+	apps/logics/vip_reward_logic/*	----vipæ¯æ—¥å¥–åŠ±çš„é€»è¾‘	
+	apps/logics/weapon_logic/*	----è£…å¤‡å¼ºåŒ–çš„é€»è¾‘	
+	apps/logics/zone_logic/*	----åŒºåŸŸçš„é€»è¾‘	
+	apps/logs/action/		----æ‰€æœ‰è‡ªèº«logè®°å½•çš„å…·ä½“æ‰§è¡Œæ–‡ä»¶	
+	apps/logs/output_action.py	----logå‡½æ•°çš„åˆ—è¡¨æ–‡ä»¶,æ˜¯æ‰€æœ‰logå…·ä½“æ“ä½œçš„æ¥å£æ–‡ä»¶
+
+---
+
+**apps/models/----æ¸¸æˆæ•°æ®å¤„ç†éƒ¨åˆ†**
+
+    apps/models/activity/*		----æ´»åŠ¨éƒ¨åˆ†çš„æ•°æ®æ¨¡å‹å’Œç®€å•æ“ä½œï¼Œupdate_datåˆ·æ–°æ•°æ®ï¼Œadd_activities_num    
+    apps/models/base/*		----å¤§éƒ¨åˆ†åŸºç¡€çš„æ•°æ®ç»“æ„ï¼Œæ•°æ®ç»“æ„å®šä¹‰ï¼Œåˆå§‹åŒ–initï¼Œinstallï¼Œreset    
+    apps/models/buddy/*		----å¥½å‹éƒ¨åˆ†    
+    apps/models/common/*		----è·å–å…±æœ‰éƒ¨åˆ†ï¼ŒåŒ…å«èŠå¤©ï¼Œæ’è¡Œæ¦œï¼Œä¸‰å¤§ï¼Œå››å¤§ï¼Œå…³å¡æ’è¡Œ,ä¸–ç•Œbossï¼Œé…ç½®æ–‡ä»¶ï¼Œå¹¿æ’­ï¼Œæäº¤bugï¼Œç©å®¶å¥½å‹ï¼Œç©å®¶æ˜µç§°ï¼Œå„ç§æ´»åŠ¨ï¼ŒæœåŠ¡å™¨æ•°æ®ï¼ŒæŒ‰ç…§ç­‰çº§è¿›è¡Œç©å®¶åˆ†ç±»ï¼Œé—®ç­”ï¼Œå…³å¡ï¼Œç³»ç»Ÿé‚®ä»¶ï¼Œè”ç›Ÿåå­—    
+    apps/models/cross_battle/*	----ç©å®¶è·¨æœæ•°æ®    
+    apps/models/gym/*		----ç©å®¶çš„é“é¦†æ•°æ®ï¼Œç©å®¶é“é¦†å•†åº—ï¼Œé“é¦†æ’è¡Œ    
+    apps/models/mail/*		----ç©å®¶é‚®ç®±ï¼Œç©å®¶ç§ä¿¡    
+    apps/models/mysql/*		----æ´»åŠ¨åˆ—è¡¨ï¼Œç®¡ç†å‘˜ç™»å½•logï¼Œä¸‡èƒ½å…‘æ¢ç ï¼Œç¤¼åŒ…ç±»å‹ï¼Œå…·ä½“å…‘æ¢ç ï¼Œç©å®¶å……å€¼è®°å½•ï¼Œå…‘æ¢ç å…‘æ¢    
+    apps/models/player_world_boss/*	----ä¸–ç•Œbossé¼“èˆï¼ŒæŒ‘æˆ˜æ¬¡æ•°ç­‰ï¼Œ2ä¸ªbossç±»å†åˆ†åˆ«ç»§æ‰¿ï¼Œç©å®¶çš„ä¸–ç•Œbosså•†åº—    
+    apps/models/recharge_return/*	----å……å€¼è¿”è¿˜    
+    apps/models/slate/*		----çŸ³æ¿    
+    apps/models/thread_action/*	----æ›´æ–°è”ç›Ÿæœç´¢ï¼Œå¥½å‹æœç´¢ï¼Œè”ç›Ÿç­‰çº§æ’è¡Œï¼Œè”ç›Ÿå…³å¡æ’è¡Œï¼Œç©å®¶é€šä¿¡ï¼Œç«æŠ€åœºï¼Œä¸‰å¤§ï¼Œå››å¤§ï¼Œé“é¦†ï¼Œå…³å¡æ’è¡Œï¼Œç©å®¶å‡çº§å¸¦æ¥çš„ç­‰çº§å˜åŠ¨    
+    apps/models/treasure/*		----ç©å®¶å¤ºå®æ•°æ®ï¼Œç©å®¶æ‹¥æœ‰çš„å®ç‰©ï¼ŒæœåŠ¡å™¨æŒæ¡çš„å¤ºå®åˆ—è¡¨    
+    apps/models/union/*		----è”ç›Ÿæ•°æ®ï¼Œè”ç›ŸèŠå¤©ï¼Œè”ç›Ÿç­‰çº§æ’è¡Œï¼Œè”ç›Ÿæœç´¢ï¼Œè”ç›Ÿå•†åŸï¼Œè”ç›Ÿå…³å¡ï¼Œè”ç›Ÿå…³å¡æ’è¡Œï¼Œè”ç›Ÿæˆå‘˜æ•°æ®    
+    apps/models/union_3v3/*		----è”ç›Ÿ3v3æ•°æ®    
+    apps/models/account_mapping.py	----è´¦å·æ˜ å°„    
+    apps/models/daily_recharge_reward.py----æ¯æ—¥å……å€¼çš„æ•°æ®    
+    apps/models/daily_task.py	----æ¯æ—¥ä»»åŠ¡    
+    apps/models/daily_vip_reward.py	----æ¯æ—¥vipå¥–åŠ±    
+    apps/models/ditto_shop.py	----ç™¾å˜æ€ªå•†åŸ    
+    apps/models/gift_bag.py		----ç¤¼åŒ…    
+    apps/models/hand_book.py	----å›¾é‰´    
+    apps/models/items.py		----é“å…·    
+    apps/models/monster.py		----æ€ªç‰©    
+    apps/models/monster_equip.py	----æ€ªç‰©è£…å¤‡    
+    apps/models/name_mapping.py	----åå­—æ˜ å°„    
+    apps/models/player.py		----ç©å®¶æ•°æ®    
+    apps/models/player_arena_battle_report.py----æˆ˜æŠ¥ç³»ç»Ÿ    
+    apps/models/player_arena_honour.py----ç«æŠ€åœºè£èª‰    
+    apps/models/player_catch_monster.py----æŠ“å®     
+    apps/models/player_fragment_shop.py----ç¢ç‰‡å•†åŸ    
+    apps/models/player_invitation.py----ç©å®¶é‚€è¯·å¥½å‹åŠ å…¥æ¸¸æˆ    
+    apps/models/player_king_arena_battle_report.py----ä¸‰å¤§æˆ˜æŠ¥    
+    apps/models/player_master_arena_battle_report.py----å››å¤§æˆ˜æŠ¥    
+    apps/models/player_login_7.py	----ä¸ƒå¤©ç™»å½•    
+    apps/models/player_payment.py	----ç©å®¶å……å€¼æ•°æ®    
+    apps/models/player_plate_shop.py----ä¸‰å¤§ã€å››å¤§å•†åŸ    
+    apps/models/player_pvp_shop.py	----ç«æŠ€åœºå•†åŸ    
+    apps/models/player_quiz.py	----é—®ç­”    
+    apps/models/player_random_state.py----éšæœºæ•°    
+    apps/models/player_reward_seven_level.py----å¼€æœ7å¤©å†²çº§    
+    apps/models/player_reward_seven_power.py----å¼€æœ7å¤©æˆ˜åŠ›    
+    apps/models/player_sign_30.py	----30å¤©ç­¾åˆ°    
+    apps/models/player_stone_shop.py----é’»çŸ³å•†åŸ    
+    apps/models/player_team.py	----ç©å®¶é˜Ÿä¼    
+    apps/models/player_team_band.py	----å°ä¼™ä¼´    
+    apps/models/player_trial_battle.py----è¯•ç»ƒ    
+    apps/models/player_trial_essence.py----ç²¾åè¯•ç»ƒ    
+    apps/models/stage.py		----å…³å¡    
+    apps/models/sum_recharge_reward.py----æ¯æ—¥å……å€¼    
+    apps/models/user.py		----ç©å®¶    
+    apps/models/zone.py		----åŒºåŸŸæ•°æ®    
+    apps/models/user_king_arena.py	----ä¸‰å¤§    
+    apps/models/user_master_arena.py----å››å¤§
+
+---
+
+	apps/platform/platform.py	----åŠ è½½å¹³å°é…ç½®çš„ä¿¡æ¯	
+	../../platform/platform.conf	----æ•°æ®åº“ç­‰é…ç½®çš„keyï¼Œmemcacheå’Œsqlçš„æœåŠ¡å™¨åœ°å€ï¼Œå¯†ç ï¼Œserver idç­‰é…ç½®	
+	apps/server_thread/script/*	----åˆ·æ–°å…¬æœ‰æ•°æ®çš„è„šæœ¬	
+	apps/server_thread/script/buddy/*----é‡æ–°ç”Ÿæˆç©å®¶å¥½å‹æœç´¢ï¼Œåˆ·æ–°ç”¨æˆ·é€šè®¯éƒ¨åˆ†	
+	apps/server_thread/script/gym/*	----åˆ·æ–°é“é¦†æ’å	
+	apps/server_thread/script/server_player_level_distribution/*----åˆ·æ–°ç©å®¶ç­‰çº§åˆ†ç»„	
+	apps/server_thread/script/stage/*----åˆ·æ–°å…³å¡æ’è¡Œ	
+	apps/server_thread/script/treasure/*----åˆ·æ–°å®ç‰©åˆ†å¸ƒ	
+	apps/server_thread/script/union/*----åˆ·æ–°è”ç›Ÿç­‰çº§ï¼Œæˆå‘˜ï¼Œæœç´¢ï¼Œè”ç›Ÿå…³å¡	
+	apps/settings/*			----å®šä¹‰å‡ ä¸ªconfçš„è·¯å¾„
+
+---
+
+	apps/utils/_init_.py		----å·¥å…·å‡½æ•°ï¼ˆåŒºé—´éšæœºï¼Œæƒé‡éšæœºï¼Œmemcache getï¼Œmemcache putï¼ŒæŸ¥listï¼Œé€—å·åˆ†éš”çš„äº’ç›¸è½¬æ¢)
+	apps/utils/battle_define.py	----æˆ˜æ–—ä¸­ä½¿ç”¨çš„å¸¸é‡å®šä¹‰	
+	apps/utils/encryption.py	----èŠå¤©åŠ å¯†	
+	apps/utils/game_define.py	----æ¸¸æˆå¸¸é‡å®šä¹‰	
+	apps/utils/model_define.py	----å®šä¹‰memcacheçš„å­˜å‚¨è·¯å¾„,åé¢æœ‰ä¸€äº›æ–°ä¿®æ”¹çš„å¢åŠ äº†æœåŠ¡å™¨çš„åŒºåˆ†	
+	apps/utils/mysql_conncection.py	----å®šä¹‰mysqlçš„å­˜å‚¨è·¯å¾„å®šä¹‰	
+	apps/utils/payment_util.py	----å®šä¹‰æ”¯ä»˜éªŒç­¾	
+	apps/utils/server_define.py	----å®šä¹‰åŸæ¥çš„åˆæœæ˜ å°„	
+	apps/utils/server_util.py	----è·å–ç”¨æˆ·ipåœ°å€	
+	apps/utils/user_ip_time_limit_check.py----é™åˆ¶ç©å®¶å‘æ¶ˆæ¯è¿‡äºé¢‘ç¹
+
+---
+
+	apps/views/game_config.py	----ç­–åˆ’é…ç½®è¡¨çš„GMåå°çš„é…ç½®åŠé…ç½®è¡¨çš„æ›´æ–°	
+	apps/views/main.py		----indexç™»å½•å›è°ƒæ¥å£ï¼Œapiæ¥å£ï¼ŒchatèŠå¤©è·å–æ¥å£çš„é€»è¾‘å®ç°	
+	apps/views/platform.py		----æ¥è‡ªserverlistçš„æ”¯ä»˜å›è°ƒï¼Œåˆ¤æ–­å¢åŠ é’»çŸ³okåå›ä¼ serverlistå‘ŠçŸ¥okï¼Œæ”¯ä»˜æˆåŠŸä¹‹åä¼šè®°å½•åˆ°mysqlé‡Œé¢player_charge_rmb	
+	apps/game_nginx.conf		----æ¸¸æˆæœåŠ¡å™¨çš„é…ç½®	
+	apps/game_server_thread.py	----æ¸¸æˆæœåŠ¡å™¨çš„è‡ªåŠ¨å¯åŠ¨çº¿ç¨‹,åŒ…æ‹¬ï¼ˆæ›´æ–°æœåŠ¡å™¨æ´»åŠ¨çŠ¶æ€ï¼›è¿˜æœ‰ä¸€äº›å…±æœ‰æ•°æ®çš„æ›´æ–°ï¼‰	
+	apps/game_server_thread_model_reset.py----ä½œåºŸ	
+	apps/game_wsgi.ini		----wsgiçš„é…ç½®è¡¨	
+	apps/manage.py			----wsgiåˆå§‹åŒ–çš„æ—¶å€™ä¼šè°ƒç”¨ï¼Œåˆå§‹åŒ–	
+	apps/urls.py			----æ¸¸æˆå›è°ƒæ¥å£ï¼ŒåŒ…æ‹¬å¹³å°æ”¯ä»˜æ¥å£ï¼Œé…ç½®æ›´æ–°å’Œæ›´æ–°æ—¶é—´ä¿®æ”¹ï¼Œè·å–èŠå¤©ä¿¡æ¯æ¥å£ï¼Œindexç™»å½•æ¥å£ï¼Œapiæ¥å£	
+	logs/				----ä»¥åçš„æ—¥å¿—ä¼šæ‰“å°åˆ°è¿™ä¸ªç›®å½•ä¸‹é¢ï¼Œæ¯”å¦‚game_errorï¼Œwsgiçš„logç­‰	
+	rklib/				----åŸºç¡€åº“ï¼Œä¹Ÿæœ‰å¹³å°çš„æ”¯ä»˜éªŒè¯çš„åº“æ–‡ä»¶	
+	scribe/				----æ—¥å¿—æ”¶é›†ï¼Œå°†æ¯å¤©çš„æ—¥å¿—æ‰“å°å‡ºæ¥ï¼Œä¾›åæœŸåˆ†æå’Œè®°å½•ç”¨
+
+---
+
+**script/				----ç‹¬ç«‹è¿è¡Œçš„è„šæœ¬ï¼Œç”¨æ¥å¤„ç†ä¸€äº›åˆæœã€åˆ·æ’è¡Œæ¦œç­‰ä¿¡æ¯çš„å¤„ç†**
+
+	script/backup_cmem/*		----memcacheçš„å¤‡ä»½è„šæœ¬
+	script/clear_user/*		----åˆ æ‰å…±æœ‰æ•°æ®ï¼Œä¸ªäººæ•°æ®ï¼Œé‚€è¯·ç­‰ç©å®¶ä¿¡æ¯
+	script/cross_server/*		----é‡æ–°è®¡ç®—å…³å¡çš„æ’è¡Œï¼Œæ›´æ–°ç©å®¶æˆ˜æ–—åŠ›
+	script/log/*			----åˆ†ææ—¥å¿—å“åº”æ—¶é—´
+	script/merge_server/*		----åˆæœï¼Œåˆå¹¶å…±æœ‰æ•°æ®
+	script/open_server/*		----å¼€æœè„šæœ¬
+	script/user/*			----ç©å®¶è„šæœ¬
+	script/user/arena/*		----åˆ·æ–°ç«æŠ€åœºæ’è¡Œ
+	script/user/buddy/*		----æ¸…é™¤å¥½å‹ä¸­ä¸å­˜åœ¨çš„ç”¨æˆ·
+	script/user/gym/*		----é‡ç½®ç©å®¶é“é¦†æ•°æ®
+	script/user/recharge/*		----ç»™ç©å®¶å……å€¼æŒ‡å®šé‡‘é¢
+	script/user/stage/*		----é‡ç½®ç²¾è‹±å‰¯æœ¬æ•°æ®
+	script/user/treasure/*		----æ¸…é™¤å¤ºå®æ•°æ®
+	script/user/union/*		----è”ç›Ÿæ”¹åï¼Œä¿®å¤å¥–åŠ±
+	statistics/			----æ‰“å°æ—¥å¿—ç›¸å…³
+
+***
+# GameManagerï¼ˆGameLogServerï¼‰:-----------æ¸¸æˆGMåå°å’Œæ—¥å¿—æœåŠ¡å™¨ #
+
+    apps/game_manager/models
+    apps/game_manager/mysql/mysql_connect----sqlæ•°æ®åº“è¿æ¥ï¼Œåå°çš„sqlæ•°æ®åº“æ”¾åœ¨æ¯ä¸ªæ¸¸æˆå¯¹åº”æ•°æ®åº“ä¸­ï¼ŒåŒ…æ‹¬åå°ç™»ä¿¡æ¯
+    apps/game_manager/mysql/*	----åå°è¿›è¡Œæ•°æ®åº“æ“ä½œæ—¶å€™çš„å…·ä½“sqlè¯­å¥å’Œé€»è¾‘ï¼Œè¿™é‡Œè¦ç‰¹åˆ«æ³¨æ„game_idæ˜¯å®šä¹‰äº†åå°æ‰€å†™æ­»çš„æ¸¸æˆç¼–å·1.çš®å¡ä¸˜2.æˆ˜èˆ°3.xyz4.å¾…å®š    
+    apps/game_manager/templates	----å‰ç«¯ç½‘é¡µçš„htmlæ¨¡æ¿    
+    apps/game_manager/views		----ç½‘é¡µè°ƒç”¨çš„é€»è¾‘æ‰§è¡Œpythonä»£ç ï¼Œå¤„ç†å¥½çš„æ•°æ®è¿”å›ç»™templatesé‡Œé¢çš„ç½‘é¡µ    
+    apps/game_manager/game_manage_define.py----å®šä¹‰æƒé™å’Œé¡µé¢    
+    apps/game_manager/urls.py	----é¡µé¢å›è°ƒè·³è½¬åœ°å€çš„å®šä¹‰ï¼ŒGMåå°çš„htmlè·³è½¬    
+    apps/logs/*			----æ—¥å¿—çš„è®°å½•é€»è¾‘ï¼Œä»¥å‰æœ‰å¾ˆå¤šæ—¥å¿—çš„è®°å½•ç‚¹    
+    apps/game_manager/views/server/version_notice.py----å…¬å‘Šé€»è¾‘æ“ä½œ    
+    apps/game_manager/mysql/server_notice.py----å…¬å‘Šæ“ä½œçš„æ•°æ®åº“æ“ä½œ,ä»sqlè¿›è¡Œæ“ä½œ    
+    apps/game_manager/views/gm/get_chat_content.py----è·å–èŠå¤©ä¿¡æ¯    
+    apps/utils/server_define.py	----å®šä¹‰memcacheçš„æœåŠ¡å™¨å­˜å‚¨    
+    apps/utils/model_define.py	----å®šä¹‰memcacheçš„å­˜å‚¨è·¯å¾„å®šä¹‰    
+    apps/game_manager/util/memcache.py----å®šä¹‰memchacheçš„å­˜å‚¨å’Œè¯»å–    
+    apps/game_manager/util/mysql_util.py----å®šä¹‰mysqlçš„å­˜å‚¨,é‡Œé¢æœ‰ä¸å°‘æŸ¥è¯¢sqlæ•°æ®åº“è®°å½•çš„ç”¨æˆ·æ€»ä½“è®°å½•æƒ…å†µ    
+    apps/logs/statistics_tables/product_daily_situation/statistics_total.py----æ€»ä½“ç»Ÿè®¡çš„é€»è¾‘ï¼Œç”¨çš„mysqlæŸ¥è¯¢æ•°æ®    
+    apps/game_manager/views/server/client_config.py----ä¸Šä¼ é…ç½®æ–‡ä»¶    
+    apps/game_manager/views/server/server_config.py----ä¿®æ”¹æœåŠ¡å™¨ç‰ˆæœ¬å·ï¼Œæ›´æ–°æœåŠ¡å™¨é…ç½®ç”Ÿæ•ˆ(é…ç½®æ–‡ä»¶åŒæ­¥åˆ°æ¸¸æˆæœåŠ¡å™¨)ï¼Œæ›´æ–°å®¢æˆ·ç«¯é…ç½®æ—¶é—´(å¼ºåˆ¶ç©å®¶åŒæ­¥)ï¼Œé€šè¿‡httpåè®®é€šçŸ¥æ¸¸æˆæœåŠ¡å™¨è¿™äº›æ¶ˆæ¯   
+    
+    æ—¥å¿—æœåŠ¡å™¨å¯åŠ¨å’Œå…³é—­æ–¹æ³•ï¼ˆæ—¥å¿—å’Œgmåå°ä¹Ÿæ˜¯ä¸€ä¸ªæ¸¸æˆä¸€ä¸ªï¼‰    
+
+    æ—¥å¿—æœ çš®å¡ä¸˜æ˜¯ç”¨çš„8083ç«¯å£ï¼Œå¼€å¯å…³é—­ç”¨start_uwsgi.sh stop_uwsgi.sh
+    
+    æˆ˜èˆ°æ˜¯8084ç«¯å£ï¼Œå¼€å¯æ˜¯start84.shï¼Œå…³é—­æ˜¯å…ˆsudo netstat -ntlpæŸ¥çœ‹8084ç«¯å£çš„è¿›ç¨‹å·ï¼Œç”¨killå‘½ä»¤ç›´æ¥æ€æ‰è¿›ç¨‹ã€‚8085 8086 8087ä¹Ÿæ˜¯ä¸€æ ·
+    
+****
+
+# GameServerList:-----------æœåŠ¡å™¨åˆ—è¡¨ï¼ˆè·Ÿbundleå…±ç”¨ä¸€ä¸ªæœåŠ¡å™¨ï¼‰ #
+
+    apps/urls.py			----é¡µé¢å›è°ƒè·³è½¬åœ°å€çš„å®šä¹‰ï¼Œç™»å½•å’Œæ”¯ä»˜
+    apps/views/server_list.py	----æŸ¥æ‰¾çš®å¡ä¸˜çš„æ•°æ®åº“serverlistè¡¨ï¼Œè¿™é‡Œæœ‰æ‰€æœ‰æ¸¸æˆçš„æœåŠ¡å™¨åˆ—è¡¨
+    apps/utils/mysql_connection.py	----è¿æ¥mysqlæœåŠ¡å™¨
+    apps/utils/server_notice.py	----æŸ¥æ‰¾æœåŠ¡å™¨å…¬å‘Šï¼Œè¿™é‡Œè¦ä¾¿åˆ©æ‰€æœ‰çš„è¡¨äº†ï¼Œå› ä¸ºæ•°æ®ä¿å­˜åœ¨å„ä¸ªæ¸¸æˆè‡ªå·±çš„æ•°æ®åº“ä¸­
+    apps/utils/payment_util.py	----æ”¯ä»˜éªŒç­¾çš„é€»è¾‘
+    apps/views/platform.py		----å„ä¸ªæ¸ é“å¹³å°çš„ç™»å½•å’Œæ”¯ä»˜éªŒè¯é€»è¾‘ä»£ç 
+    apps/views/account.py		----apple storeè‡ªå·±çš„ç™»å½•ç³»ç»Ÿ
+    apps/utils/user_list.py		----apple storeè‡ªç ”ç™»å½•ç³»ç»Ÿçš„è·å–ç”¨æˆ·ç­‰å‡½æ•°
 
 
-µÇÂ¼Á÷³Ì£º
-¿Í»§¶Ë·¢ÇëÇó->serverlist->ÇşµÀµÇÂ¼£¬¸ù¾İÇşµÀ·µ»Ø²ÎÊıÕûÀí£¨timeout=10£©->serverlistÑéÖ¤ºó»Øµ÷->¿Í»§¶Ë
-Ö§¸¶Á÷³Ì£º
-¿Í»§¶Ë·¢ÇëÇó->ÇşµÀÖ§¸¶£¬ÇşµÀÖ§¸¶Íê³É»Øµ÷->serverlist,Ö§¸¶Í¨Öª->gameserver¼Ó×êÊ¯->¼Ó³É¹¦·µ»Øserverlist³É¹¦->·µ»ØÇşµÀÍ¨Öª³É¹¦->ÇşµÀ·µ»Ø¿Í»§¶Ë
+ç™»å½•æµç¨‹ï¼š
+	
+å®¢æˆ·ç«¯å‘è¯·æ±‚->serverlist->æ¸ é“ç™»å½•ï¼Œæ ¹æ®æ¸ é“è¿”å›å‚æ•°æ•´ç†ï¼ˆtimeout=10ï¼‰->serverlistéªŒè¯åå›è°ƒ->å®¢æˆ·ç«¯
+	
+æ”¯ä»˜æµç¨‹ï¼š
+	
+å®¢æˆ·ç«¯å‘è¯·æ±‚->æ¸ é“æ”¯ä»˜ï¼Œæ¸ é“æ”¯ä»˜å®Œæˆå›è°ƒ->serverlist,æ”¯ä»˜é€šçŸ¥->gameserveråŠ é’»çŸ³->åŠ æˆåŠŸè¿”å›serverlistæˆåŠŸ->è¿”å›æ¸ é“é€šçŸ¥æˆåŠŸ->æ¸ é“è¿”å›å®¢æˆ·ç«¯
+	
+	
+	serverlistå¯åŠ¨å’Œå…³é—­æ–¹æ³•ï¼ˆå…¶ä¸­æ¶‰åŠå¤šä¸ªæ¸¸æˆçš„æœåŠ¡å™¨åˆ—è¡¨ï¼‰
+	
+	åªæœ‰çš®å¡ä¸˜ç›®å½•ä¸‹é¢çš„æ˜¯æœ‰ç”¨çš„ï¼Œæ•°æ®åº“ä¸­ä¹Ÿæ˜¯çš®å¡ä¸˜çš„serverlistæœ‰ç”¨
+	
+	serverlistå¼€å¯å…³é—­æ˜¯start_uwsgi.sh stop_uwsgi.sh
+
+***
+
+# SQLæ•°æ®åº“éƒ¨åˆ†ï¼š #
+
+    MySQL(log_server)		----æŒ‰ç…§æ¯å¤©çš„æƒ…å†µè®°å½•æ—¥å¿—ï¼Œæ¯ä¸ªæ¸¸æˆä¸€ä¸ªåº“ï¼Œæ¯ä¸ªåº“ä¸€å¤©ä¸€ä¸ªè¡¨è®°å½•å½“å¤©æ¯ä¸€ä¸ªç™»å½•çš„ç©å®¶ä¿¡æ¯ï¼Œç­‰çº§ï¼ŒæŒ‰ç…§æ—¥æœŸï¼Œidï¼Œè®¾å¤‡idï¼Œuidï¼Œipï¼Œæœˆå¡ï¼Œè¿ç»­ç™»é™†æ—¶é—´
+    MySQLï¼ˆgame_managerï¼‰		----æ¯ä¸ªæ¸¸æˆæœ‰ä¸€ä¸ªåº“ï¼Œæ¯ä¸ªåº“æœ‰ä¸€ç³»åˆ—è¡¨
+    activity_list	----åå°æ§åˆ¶çš„å„ä¸ªå……å€¼ç­‰æ´»åŠ¨çš„å¼€å¯æ§åˆ¶
+    admin_log	----è®°å½•ç®¡ç†å‘˜ç™»å½•
+    admin_manager	----ç®¡ç†å‘˜è¡¨
+    all_exchange_code----å›ºå®šçš„æ–°æ‰‹ç¤¼åŒ…
+    all_gift_package----æ¨å¹¿ç¤¼åŒ…ï¼Œæ°¸ä¹…ç¤¼åŒ…ï¼Œå›ºå®šè¾“å…¥çš„
+    cross_server	----è·¨æœæˆ˜çš„åå°è®¾ç½®
+    cross_server_rank----è·¨æœæˆ˜çš„å‘å¥–
+    exchange_code	----æ‰€æœ‰å…‘æ¢ç å’Œå¯¹åº”çš„ç¤¼åŒ…ç 
+    gift_package	----ç¤¼åŒ…ç ç¼–å·
+    mail		----ç©º
+    player_charge_rmb----ç”¨æˆ·çš„å……å€¼è¡¨
+    sequence	----ç©å®¶æœ€æ–°uidåºåˆ—
+    sequence_union	----è”ç›Ÿæœ€æ–°uidåºåˆ—
+    server_list	----server list æœåŠ¡å™¨åˆ—è¡¨,åªæœ‰çš®å¡ä¸˜ä¸‹é¢æ˜¯æœ‰ç”¨çš„ï¼Œçš®å¡ä¸˜çš„è¡¨serverlistä¿å­˜æ‰€æœ‰æ¸¸æˆçš„æœåŠ¡å™¨æ•°æ®
+    server_merge_mapping----æœåŠ¡å™¨æ˜ å°„è¡¨
+    server_notice	----æœåŠ¡å™¨å…¬å‘Š
+    union_battle_3v3----3v3è”ç›Ÿæˆ˜é…ç½®
+    union_battle_3v3_rank----3v3è”ç›Ÿæˆ˜çš„æ’è¡Œ
 
 
-serverlistÆô¶¯ºÍ¹Ø±Õ·½·¨£¨ÆäÖĞÉæ¼°¶à¸öÓÎÏ·µÄ·şÎñÆ÷ÁĞ±í£©
-Ö»ÓĞÆ¤¿¨ÇğÄ¿Â¼ÏÂÃæµÄÊÇÓĞÓÃµÄ£¬Êı¾İ¿âÖĞÒ²ÊÇÆ¤¿¨ÇğµÄserverlistÓĞÓÃ
-serverlist¿ªÆô¹Ø±ÕÊÇstart_uwsgi.sh stop_uwsgi.sh
 
-*************************************************************************************************
-SQLÊı¾İ¿â²¿·Ö£º
+# CrossServer:-----------æ¸¸æˆè·¨æœPKæœåŠ¡å™¨ #
 
-MySQL(log_server)		----°´ÕÕÃ¿ÌìµÄÇé¿ö¼ÇÂ¼ÈÕÖ¾£¬Ã¿¸öÓÎÏ·Ò»¸ö¿â£¬Ã¿¸ö¿âÒ»ÌìÒ»¸ö±í¼ÇÂ¼µ±ÌìÃ¿Ò»¸öµÇÂ¼µÄÍæ¼ÒĞÅÏ¢£¬µÈ¼¶£¬°´ÕÕÈÕÆÚ£¬id£¬Éè±¸id£¬uid£¬ip£¬ÔÂ¿¨£¬Á¬ĞøµÇÂ½Ê±¼ä
-MySQL£¨game_manager£©		----Ã¿¸öÓÎÏ·ÓĞÒ»¸ö¿â£¬Ã¿¸ö¿âÓĞÒ»ÏµÁĞ±í
-activity_list	----ºóÌ¨¿ØÖÆµÄ¸÷¸ö³äÖµµÈ»î¶¯µÄ¿ªÆô¿ØÖÆ
-admin_log	----¼ÇÂ¼¹ÜÀíÔ±µÇÂ¼
-admin_manager	----¹ÜÀíÔ±±í
-all_exchange_code----¹Ì¶¨µÄĞÂÊÖÀñ°ü
-all_gift_package----ÍÆ¹ãÀñ°ü£¬ÓÀ¾ÃÀñ°ü£¬¹Ì¶¨ÊäÈëµÄ
-cross_server	----¿ç·şÕ½µÄºóÌ¨ÉèÖÃ
-cross_server_rank----¿ç·şÕ½µÄ·¢½±
-exchange_code	----ËùÓĞ¶Ò»»ÂëºÍ¶ÔÓ¦µÄÀñ°üÂë
-gift_package	----Àñ°üÂë±àºÅ
-mail		----¿Õ
-player_charge_rmb----ÓÃ»§µÄ³äÖµ±í
-sequence	----Íæ¼Ò×îĞÂuidĞòÁĞ
-sequence_union	----ÁªÃË×îĞÂuidĞòÁĞ
-server_list	----server list ·şÎñÆ÷ÁĞ±í,Ö»ÓĞÆ¤¿¨ÇğÏÂÃæÊÇÓĞÓÃµÄ£¬Æ¤¿¨ÇğµÄ±íserverlist±£´æËùÓĞÓÎÏ·µÄ·şÎñÆ÷Êı¾İ
-server_merge_mapping----·şÎñÆ÷Ó³Éä±í
-server_notice	----·şÎñÆ÷¹«¸æ
-union_battle_3v3----3v3ÁªÃËÕ½ÅäÖÃ
-union_battle_3v3_rank----3v3ÁªÃËÕ½µÄÅÅĞĞ
+	apps/logics/			----æ¸¸æˆè·¨æœé€»è¾‘éƒ¨åˆ†
+	è·¨æœå¦å¤–ç”¨ä¸€ä¸ªmemcacheï¼Œç§°ä¸ºå…±æœ‰æ•°æ®
+	apps/utils/server_define.py	----æœåŠ¡å™¨çš„å®šä¹‰ï¼ŒæœåŠ¡å™¨æ˜ å°„åœ¨æ¸¸æˆçš„mysqlæ•°æ®åº“ä¸­æœ‰server_merge_mappingè¡¨
+	apps/utils/union_3v3.py		----é€šè¿‡mysqlè·å–è”ç›Ÿæˆ˜çš„ä¸€äº›é…ç½®æ•°æ®
+	apps/common/common_dat.py	----æ¸¸æˆæœåŠ¡å™¨éƒ¨åˆ†å­˜å‚¨è°ƒç”¨æ–¹æ³•ï¼Œè·å¾—å„ç§åˆ†ç»„æ•°æ®ï¼Œæ’è¡Œæ¦œç­‰
+	apps/models/*			----æ•°æ®æ¨¡å—çš„å®šä¹‰ï¼Œéƒ½æ˜¯ç±»çš„å½¢å¼å®šä¹‰çš„ï¼Œé‡Œé¢ä¹Ÿæœ‰æˆå‘˜å‡½æ•°
+	apps/script/send_union_3v3_mail.py----3v3ç»“æŸä¹‹åå‘å¥–çš„é€»è¾‘ï¼Œè°ƒç”¨modelçš„mailæ·»åŠ æ“ä½œï¼Œç„¶åä¿å­˜
 
-*************************************************************************************************
-CrossServer:-----------ÓÎÏ·¿ç·şPK·şÎñÆ÷
-apps/logics/			----ÓÎÏ·¿ç·şÂß¼­²¿·Ö
-¿ç·şÁíÍâÓÃÒ»¸ömemcache£¬³ÆÎª¹²ÓĞÊı¾İ
-apps/utils/server_define.py	----·şÎñÆ÷µÄ¶¨Òå£¬·şÎñÆ÷Ó³ÉäÔÚÓÎÏ·µÄmysqlÊı¾İ¿âÖĞÓĞserver_merge_mapping±í
-apps/utils/union_3v3.py		----Í¨¹ımysql»ñÈ¡ÁªÃËÕ½µÄÒ»Ğ©ÅäÖÃÊı¾İ
-apps/common/common_dat.py	----ÓÎÏ··şÎñÆ÷²¿·Ö´æ´¢µ÷ÓÃ·½·¨£¬»ñµÃ¸÷ÖÖ·Ö×éÊı¾İ£¬ÅÅĞĞ°ñµÈ
-apps/models/*			----Êı¾İÄ£¿éµÄ¶¨Òå£¬¶¼ÊÇÀàµÄĞÎÊ½¶¨ÒåµÄ£¬ÀïÃæÒ²ÓĞ³ÉÔ±º¯Êı
-apps/script/send_union_3v3_mail.py----3v3½áÊøÖ®ºó·¢½±µÄÂß¼­£¬µ÷ÓÃmodelµÄmailÌí¼Ó²Ù×÷£¬È»ºó±£´æ
 
-*************************************************************************************************
-GameLogParse:-----------ÈÕÖ¾½âÎöÂß¼­
-½«ÈÕÖ¾·şÎñÆ÷´òÓ¡³öÀ´µÄÈÕÖ¾ÎÄ¼ş½øĞĞ½âÎö£¬È»ºó±£´æµ½¶ÔÓ¦µÄĞ¡ÎÄ¼şÖĞ£¬·½±ãÈÕºó¶ÁÈ¡
 
-*************************************************************************************************
-pycharmÉèÖÃ£º
+# GameLogParse:-----------æ—¥å¿—è§£æé€»è¾‘ #
+
+å°†æ—¥å¿—æœåŠ¡å™¨æ‰“å°å‡ºæ¥çš„æ—¥å¿—æ–‡ä»¶è¿›è¡Œè§£æï¼Œç„¶åä¿å­˜åˆ°å¯¹åº”çš„å°æ–‡ä»¶ä¸­ï¼Œæ–¹ä¾¿æ—¥åè¯»å–
+
+
+
+# pycharmè®¾ç½®ï¼š #
+
 project: Project Interpreter:Django,pip,setuptools,simplejson,xlrd
 
 
-*************************************************************************************************
-mem_engine_obj = app.get_engine("mem").client
-common_dat.py
-game_config_version_model.py
-player_nick_name.py
-union_name.py
+
+
+# memcache
+
+	mem_engine_obj = app.get_engine("mem").client
+	common_dat.py
+	game_config_version_model.py
+	player_nick_name.py
+	union_name.py
 
 
 
--------------------------------gmºóÌ¨ĞŞ¸ÄÈ¨ÏŞ------------------------------------------------------------
-apps/game_manager/urls.py µØÖ·µ½python´úÂëµÄÓ³Éä
 
-apps/game_manager/game_manage_define.py¶¨ÒåÁËËùÓĞµÄÈ¨ÏŞ£¬°üÀ¨µØÖ·ÊÇ·ñ¿ÉÒÔ·ÃÎÊ£»VIEW_BUTTONÊÇ°´Å¥£¨×ó²àÁĞ±í£©ÊÇ·ñ¿ÉÒÔÏÔÊ¾
-apps/game_manager/templates/base/base.html¶¨ÒåÁËËùÓĞ½çÃæµÄÌø×ªµØÖ·£¬ÊÇ·ñÏÖÊµºÍ¿ªÆô
+
+# gmåå°ä¿®æ”¹æƒé™ #
+
+	apps/game_manager/urls.py åœ°å€åˆ°pythonä»£ç çš„æ˜ å°„
+	
+	apps/game_manager/game_manage_define.pyå®šä¹‰äº†æ‰€æœ‰çš„æƒé™ï¼ŒåŒ…æ‹¬åœ°å€æ˜¯å¦å¯ä»¥è®¿é—®ï¼›VIEW_BUTTONæ˜¯æŒ‰é’®ï¼ˆå·¦ä¾§åˆ—è¡¨ï¼‰æ˜¯å¦å¯ä»¥æ˜¾ç¤º
+	apps/game_manager/templates/base/base.htmlå®šä¹‰äº†æ‰€æœ‰ç•Œé¢çš„è·³è½¬åœ°å€ï¼Œæ˜¯å¦ç°å®å’Œå¼€å¯

@@ -1,55 +1,62 @@
-Ñ§ÓÃifÓï¾ä£º
+# å­¦ç”¨ifè¯­å¥ï¼š
 
-=IF(OR(B2="",B2=" "),$AA$8,IF(B2="¡ð",$AA$7, IF(B2="¡÷",$AA$9,IF(B2="X",$AA$10))))
-×¢ÊÍ£º
-or£¨Ìõ¼þ1£¬Ìõ¼þ2£©
-if£¨Ìõ¼þ1£¬·ûºÏ£¬²»·ûºÏ£©
-Ç¶Ì×if£¨Ìõ¼þ1£¬·ûºÏ£¬if£¨Ìõ¼þ2£¬·ûºÏ£¬²»·ûºÏ£©£©
-µã»÷¹«Ê½¸ñ×ÓµÄÓÒÏÂ½Ç¿ÉÒÔÍÏ×§¸´ÖÆ
-Èç¹û²ÉÓÃ¹Ì¶¨ÒýÓÃ£¬ÄÇÃ´²ÉÓÃ$bb$10µÄ¸ñÊ½
-Èç¹ûÊÇ¹«Ê½¼ÆËã³öÀ´µÄÊýÖµ£¬ÄÇÃ´copyµ½ÎÄ±¾ÀïÃæ£¬È»ºóÔÙcopy»ØÈ¥£¬¾Í³É×îºóµÄÊýÖµÁË
+	=IF(OR(B2="",B2=" "),$AA$8,IF(B2="â—‹",$AA$7, IF(B2="â–³",$AA$9,IF(B2="X",$AA$10))))
+	æ³¨é‡Šï¼š
+	orï¼ˆæ¡ä»¶1ï¼Œæ¡ä»¶2ï¼‰
+	ifï¼ˆæ¡ä»¶1ï¼Œç¬¦åˆï¼Œä¸ç¬¦åˆï¼‰
+	åµŒå¥—ifï¼ˆæ¡ä»¶1ï¼Œç¬¦åˆï¼Œifï¼ˆæ¡ä»¶2ï¼Œç¬¦åˆï¼Œä¸ç¬¦åˆï¼‰ï¼‰
 
+# æŠ€å·§
 
-
-»ñÈ¡Ëæ»úÕûÊý·¶Î§
-=RANDBETWEEN(0,31)
-
-
-Ëø¶¨Ä³Ð©Êý¾Ý²»ÈÃÈËÐÞ¸Ä
-ÓÒ¼üÑ¡ÔñËùÓÐµ¥Ôª¸ñ½â³ýËø¶¨£¬ È»ºóÑ¡ÔñÒªËø¶¨µÄ¸ñ×Ó£¬Ñ¡ÔñËø¶¨
-È»ºó¡°ÉóÔÄ¡±-¡·¡°±£»¤¹¤×÷±í¡±£¬Ö»¹´Ñ¡Î´Ëø¶¨µÄµ¥Ôª¸ñ£¬È»ºóÉèÖÃÃÜÂë¾Í¿ÉÒÔÁË
-
-
-ÒýÓÃ±ðµÄ±íµÄÊý¾Ý
-=¹¤×÷±í1!a1
-×¢ÊÍ£º¹¤×÷±íºóÃæ½Ó!¼´¿ÉÒýÓÃ¸Ã¹¤×÷±íµÄÊý¾ÝÁË
-
-
-ÈçºÎ²éÕÒ¶ÔÓ¦Êý¾Ý
-=vlookup("c",a2:b6,2,true)
-×¢ÊÍ£º
-²éÕÒa2µ½b6·¶Î§ÄÚµÄÊý¾Ý £¬ÓÐ·ûºÏ¡°c¡±µÄ£¬·µ»Ø·ûºÏÌõ¼þÐÐµÄµÚ2ÁÐÊý¾Ý£¬
-falseÊÇÍêÈ«Æ¥Åä
-×¢Òâ£¬ Èç¹ûÊÇÆ¥Åä×Ö·û´®µÄ»°£¬ Ò»¶¨ÒªÆ¥ÅäµÄÔ­Ê¼±í£¬µÚÒ»ÁÐÊÇ×Ö·û´®
+	ç‚¹å‡»å…¬å¼æ ¼å­çš„å³ä¸‹è§’å¯ä»¥æ‹–æ‹½å¤åˆ¶
+	å¦‚æžœé‡‡ç”¨å›ºå®šå¼•ç”¨ï¼Œé‚£ä¹ˆé‡‡ç”¨$bb$10çš„æ ¼å¼
+	å¦‚æžœæ˜¯å…¬å¼è®¡ç®—å‡ºæ¥çš„æ•°å€¼ï¼Œé‚£ä¹ˆcopyåˆ°æ–‡æœ¬é‡Œé¢ï¼Œç„¶åŽå†copyå›žåŽ»ï¼Œå°±æˆæœ€åŽçš„æ•°å€¼äº†
 
 
 
-CONCATENATE(TEXT(A4,"0"),"S") ºÏ²¢×Ö·û´®£¬ °ÑÊý×Ö×ª»»³É×Ö·û
-ROW()·µ»Øµ±Ç°ÐÐºÅ
-MOD(4£¬2) = 0 ÓàÊý
-QUOTIENT(4,2) = 2  ÉÌµÄÕûÊý
-MID(text,start_num,num_chars)  ½ØÈ¡×Ö·û´®
-replace(old, startnum, num_chars, new_text)
+# èŽ·å–éšæœºæ•´æ•°èŒƒå›´
+	
+	=RANDBETWEEN(0,31)
 
 
+# é”å®šæŸäº›æ•°æ®ä¸è®©äººä¿®æ”¹
+
+	å³é”®é€‰æ‹©æ‰€æœ‰å•å…ƒæ ¼è§£é™¤é”å®šï¼Œ ç„¶åŽé€‰æ‹©è¦é”å®šçš„æ ¼å­ï¼Œé€‰æ‹©é”å®š
+	ç„¶åŽâ€œå®¡é˜…â€-ã€‹â€œä¿æŠ¤å·¥ä½œè¡¨â€ï¼Œåªå‹¾é€‰æœªé”å®šçš„å•å…ƒæ ¼ï¼Œç„¶åŽè®¾ç½®å¯†ç å°±å¯ä»¥äº†
 
 
-=IF(MOD(ROW(),2)=1,CONCATENATE(vlookup(QUOTIENT(ROW(),2),a2:b129,1,true),vlookup(QUOTIENT(ROW(),2),a2:b129,2,true),"|ÆÕÍ¨¹¥»÷"),CONCATENATE(vlookup(QUOTIENT(ROW(),2),a2:b129,1,true),vlookup(QUOTIENT(ROW(),2),a2:b129,2,true),"|¼¼ÄÜ¹¥»÷"))
+# å¼•ç”¨åˆ«çš„è¡¨çš„æ•°æ®
+
+	=å·¥ä½œè¡¨1!a1
+	æ³¨é‡Šï¼šå·¥ä½œè¡¨åŽé¢æŽ¥!å³å¯å¼•ç”¨è¯¥å·¥ä½œè¡¨çš„æ•°æ®äº†
 
 
-=IF(MOD(ROW(),2)=1,CONCATENATE("AQUOTIENT(ROW(),2)",B$(QUOTIENT(ROW(),2),"|ÆÕÍ¨¹¥»÷"),CONCATENATE(A2,B2,"|¼¼ÄÜ"))
+# å¦‚ä½•æŸ¥æ‰¾å¯¹åº”æ•°æ®
+
+	=vlookup("c",a2:b6,2,true)
+	æ³¨é‡Šï¼š
+	æŸ¥æ‰¾a2åˆ°b6èŒƒå›´å†…çš„æ•°æ® ï¼Œæœ‰ç¬¦åˆâ€œcâ€çš„ï¼Œè¿”å›žç¬¦åˆæ¡ä»¶è¡Œçš„ç¬¬2åˆ—æ•°æ®ï¼Œ
+	falseæ˜¯å®Œå…¨åŒ¹é…
+	æ³¨æ„ï¼Œ å¦‚æžœæ˜¯åŒ¹é…å­—ç¬¦ä¸²çš„è¯ï¼Œ ä¸€å®šè¦åŒ¹é…çš„åŽŸå§‹è¡¨ï¼Œç¬¬ä¸€åˆ—æ˜¯å­—ç¬¦ä¸²
+
+---
+
+	CONCATENATE(TEXT(A4,"0"),"S") åˆå¹¶å­—ç¬¦ä¸²ï¼Œ æŠŠæ•°å­—è½¬æ¢æˆå­—ç¬¦
+	ROW()è¿”å›žå½“å‰è¡Œå·
+	MOD(4ï¼Œ2) = 0 ä½™æ•°
+	QUOTIENT(4,2) = 2  å•†çš„æ•´æ•°
+	MID(text,start_num,num_chars)  æˆªå–å­—ç¬¦ä¸²
+	replace(old, startnum, num_chars, new_text)
 
 
-//ÏÂÃæÊÇÈç¹û²éµ½¾Í²éµ½£¬²é²»µ½ÓÃ0
-=IF(ISERROR(VLOOKUP(A2,Sheet4!$A$1:$B$996,2,FALSE)),0,VLOOKUP(A2,Sheet4!$A$1:$B$996,2,FALSE))
+---
+
+	=IF(MOD(ROW(),2)=1,CONCATENATE(vlookup(QUOTIENT(ROW(),2),a2:b129,1,true),vlookup(QUOTIENT(ROW(),2),a2:b129,2,true),"|æ™®é€šæ”»å‡»"),CONCATENATE(vlookup(QUOTIENT(ROW(),2),a2:b129,1,true),vlookup(QUOTIENT(ROW(),2),a2:b129,2,true),"|æŠ€èƒ½æ”»å‡»"))
+	
+	
+	=IF(MOD(ROW(),2)=1,CONCATENATE("AQUOTIENT(ROW(),2)",B$(QUOTIENT(ROW(),2),"|æ™®é€šæ”»å‡»"),CONCATENATE(A2,B2,"|æŠ€èƒ½"))
+	
+	
+	//ä¸‹é¢æ˜¯å¦‚æžœæŸ¥åˆ°å°±æŸ¥åˆ°ï¼ŒæŸ¥ä¸åˆ°ç”¨0
+	=IF(ISERROR(VLOOKUP(A2,Sheet4!$A$1:$B$996,2,FALSE)),0,VLOOKUP(A2,Sheet4!$A$1:$B$996,2,FALSE))
 

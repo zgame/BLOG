@@ -1,4 +1,4 @@
-## 关于内存控制
+# 关于内存控制
 
 用malloc或new申请内存之后，应该立即检查指针值是否为NULL。防止使用指针值为NULL的内存。
 不要忘记为数组和动态内存赋初值。防止将未被初始化的内存作为右值使用。
@@ -11,8 +11,8 @@ delete []objects; // 正确的用法
 
 auto_ptr 智能指针 不用delete
 
-
-## 定义
+---
+# 定义
 指针常量 & 常量指针 const 离谁近，就修饰谁
 
 函数指针：指向函数的指针变量。
@@ -22,15 +22,15 @@ typedef不是简单的替换，要看成一种新的命名
 
 explicit 只对构造函数起作用，用来抑制隐式转换
 
-
-## 字符串
+---
+# 字符串
 char,TCHAR,WCHAR的不同之处
 CHAR实施上就是unsigned char,WCHAR为宽字符，而TCHAR根据是否支持unicode而不同。 
 
 CString myStr(L"test string");   L""表示宽字符 ， TEXT("")
 
 
-##
+---
 
 
 

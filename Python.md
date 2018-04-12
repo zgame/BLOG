@@ -1,189 +1,236 @@
-³ı·¨¸ù¾İÇ°ÃæµÄÀàĞÍ¶¨Òå 
-
-1/2 = 0 (¸ù¾İ1È¡Õû)
-
-×Ö·û´®Ò²ÊÇÊı×é
-
-s = 'Python'
-s[-1]='n'
-s[1:4]='yth'
-s[3:-1]='ho'
-list[::-1][:3]
-list[-3:][::-1]
-list[::-1]ÊÇ½«ÁĞ±í·´¹ıÀ´£¬Ò»ÖÖÊÇÏÈ·´¹ıÀ´£¬È»ºóÈ¡Ç°ÈıÎ»£»Ò»ÖÖÊÇÏÈÈ¡ºóÈıÎ»£¬ÔÙ·´¹ıÀ´¡£
-
-list[-3:]ÊÇÈ¡listµÄ´ÓºóÃæÊı3¸öÔªËØ
 
 
-s.split()×Ö·û´®°´ÕÕ¿Õ¸ñ·Ö¸ô
-' '.join(s)×é³É×Ö·û´®, ×÷ÓÃÊÇ½«sÕâ¸ölistÓÃ¿Õ¸ñÀ´Çø·ÖÃ¿¸öÊı×éÖĞµÄitem£¬×îºó×é³ÉÒ»¸östring
-s.upper()´óĞ´
-s.title()´óĞ´Ê××ÖÄ¸
+# å­—ç¬¦ä¸²ä¹Ÿæ˜¯æ•°ç»„
+
+	s = 'Python'
+	s[-1]='n'
+	s[1:4]='yth'
+	s[3:-1]='ho'
+
+# å­—ç¬¦ä¸²æ“ä½œ
+
+	s.split()		# å­—ç¬¦ä¸²æŒ‰ç…§ç©ºæ ¼åˆ†éš”
+	' '.join(s)		# ç»„æˆå­—ç¬¦ä¸², ä½œç”¨æ˜¯å°†sè¿™ä¸ªlistç”¨ç©ºæ ¼æ¥åŒºåˆ†æ¯ä¸ªæ•°ç»„ä¸­çš„itemï¼Œæœ€åç»„æˆä¸€ä¸ªstring
+	s.upper()		# å¤§å†™
+	s.title()		# å¤§å†™é¦–å­—æ¯
+
+<font color=#A52A2A size=2>å­—ç¬¦ä¸²æ”¯æŒ +ï¼ˆè¿æ¥å­—ç¬¦ä¸²ï¼‰ å’Œ *ï¼ˆä¹˜æ³•ï¼Œé‡å¤å­—ç¬¦ä¸²ï¼‰</font>
+
+<font color=#A52A2A size=2>å¦‚æœä½ ä¸æƒ³è®©åæ–œæ å‘ç”Ÿè½¬ä¹‰ï¼Œå¯ä»¥åœ¨å­—ç¬¦ä¸²å‰é¢æ·»åŠ ä¸€ä¸ªrï¼Œè¡¨ç¤ºåŸå§‹å­—ç¬¦ä¸²ï¼š</font>
+
+	>>> print('C:\some\name')
+	C:\some
+	ame
+	>>> print(r'C:\some\name')
+	C:\some\name
+
+å•å¼•å·å’ŒåŒå¼•å·éƒ½æ˜¯å­—ç¬¦ä¸²ï¼Œ å•å¼•å·è½¬ä¹‰çš„æ—¶å€™ç”¨çš„å¤šä¸€äº›ï¼Œ ä¸‰å¼•å·ç”¨åœ¨å¤šè¡Œå­—ç¬¦ä¸²
 
 
+# å­—ç¬¦ä¸²çš„æ›¿æ¢
 
-×Ö·û´®Ö§³Ö +£¨Á¬½Ó×Ö·û´®£© ºÍ *£¨³Ë·¨£¬ÖØ¸´×Ö·û´®£©
+	print "%s ,%s, %s"%(3,4,5)
 
-
-list.append()
-list.insert(1,'web')
-list.remove(8)
-list.extend(list2)
+	str = 'test{0},{1}'
+	str = str.format("place0", "place1")
 
 
-Èç¹ûÄã²»ÏëÈÃ·´Ğ±¸Ü·¢Éú×ªÒå£¬¿ÉÒÔÔÚ×Ö·û´®Ç°ÃæÌí¼ÓÒ»¸ör£¬±íÊ¾Ô­Ê¼×Ö·û´®£º
->>> print('C:\some\name')
-C:\some
-ame
->>> print(r'C:\some\name')
-C:\some\name
+# æ•°ç»„æ“ä½œ
 
+	list[::-1][:3]
+	list[-3:][::-1]
+	list[::-1]		# æ˜¯å°†åˆ—è¡¨åè¿‡æ¥ï¼Œä¸€ç§æ˜¯å…ˆåè¿‡æ¥ï¼Œç„¶åå–å‰ä¸‰ä½ï¼›ä¸€ç§æ˜¯å…ˆå–åä¸‰ä½ï¼Œå†åè¿‡æ¥ã€‚
+	list[-3:]		# æ˜¯å–listçš„ä»åé¢æ•°3ä¸ªå…ƒç´ 
+	list.append()
+	list.insert(1,'web')
+	list.remove(8)
+	list.extend(list2)
 
-clsÊÇclassµÄËõĞ´
-
-
-set() setºÍlist¿ÉÒÔ»¥Ïà×ª»»£¬ setµÄËÙ¶È±Èlist¿ì·Ç³£¶à
-
-
-list(set(list1))   È¥µôÖØ¸´µÄÔªËØ
-
-----------------------------------------------------------------------
-dict.get(key, default=None)
-key -- ÕâÊÇÒªËÑË÷ÔÚ×ÖµäÖĞµÄ¼ü¡£
-default -- ÕâÊÇÒª·µ»Ø¼ü²»´æÔÚµÄµÄÇé¿öÏÂÄ¬ÈÏÖµ¡£
-
-----------------------------------------------------------------------
-
-ÀûÓÃisinstanceº¯Êı£¬À´ÅĞ¶ÏÒ»¸ö¶ÔÏóÊÇ·ñÊÇÒ»¸öÒÑÖªµÄÀàĞÍ¡£  
-
-----------------------------------------------------------------------
-1 filter(function, sequence)£º
-str = ['a', 'b','c', 'd']
-def fun1(s): return s if s != 'a' else None
-ret = filter(fun1, str)
-print ret
-## ['b', 'c', 'd']
-¶ÔsequenceÖĞµÄitemÒÀ´ÎÖ´ĞĞfunction(item)£¬½«Ö´ĞĞ½á¹ûÎªTrueµÄitem×é³ÉÒ»¸öList/String/Tuple£¨È¡¾öÓÚsequenceµÄÀàĞÍ£©·µ»Ø¡£
-¿ÉÒÔ¿´×÷ÊÇ¹ıÂËº¯Êı¡£ 
- 2 map(function, sequence) 
-str = ['a', 'b','c', 'd'] 
-def fun2(s): return s + ".txt"
-ret = map(fun2, str)
-print ret
-## ['a.txt', 'b.txt', 'c.txt', 'd.txt']
-¶ÔsequenceÖĞµÄitemÒÀ´ÎÖ´ĞĞfunction(item)£¬¼ûÖ´ĞĞ½á¹û×é³ÉÒ»¸öList·µ»Ø£º
-mapÒ²Ö§³Ö¶à¸ösequence£¬Õâ¾ÍÒªÇófunctionÒ²Ö§³ÖÏàÓ¦ÊıÁ¿µÄ²ÎÊıÊäÈë£º
-def add(x, y): return x+y 
- print map(add, range(10), range(10)) 
-##[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
-3 reduce(function, sequence, starting_value)£ºdef add1(x,y): return x + y 
-print reduce(add1, range(1, 100)) 
-print reduce(add1, range(1, 100), 20)
-## 4950 £¨×¢£º1+2+...+99£©
-## 4970 £¨×¢£º1+2+...+99+20£©
-¶ÔsequenceÖĞµÄitemË³Ğòµü´úµ÷ÓÃfunction£¬Èç¹ûÓĞstarting_value£¬»¹¿ÉÒÔ×÷Îª³õÊ¼Öµµ÷ÓÃ£¬ÀıÈç¿ÉÒÔÓÃÀ´¶ÔListÇóºÍ£º 
-4 lambda£º
-g = lambda s: s + ".fsh" 
-print g("haha") 
-print (lambda x: x * 2) (3)
-## haha.fsh 
-## 6
-ÕâÊÇPythonÖ§³ÖÒ»ÖÖÓĞÈ¤µÄÓï·¨£¬ËüÔÊĞíÄã¿ìËÙ¶¨Òåµ¥ĞĞµÄ×îĞ¡º¯Êı£¬ÀàËÆÓëCÓïÑÔÖĞµÄºê£¬ÕâĞ©½Ğ×ölambdaµÄº¯Êı.
-
-----------------------------------------------------------------------
-
-×Ö·û´®µÄÌæ»»
-print "%s ,%s, %s"%(3,4,5)
-str = 'test{0},{1}'
-str = str.format("place0", "place1")
-
--------------------------------------------------------------------------
-ÔÚ±àĞ´sqlÓï¾äµÄÊ±ºò£¬Èç¹ûÈÕÆÚ×ª»»ÓÃ%¾Í»á±¨´í£¬ËùÒÔÒªÓÃ%%
-
-
------------------------------------------------------------------------
-Êı×Ö±äÎª×Ö·û´® str(4)
-×Ö·û´®±äÎªÊı×Ö string.atoi(s,[£¬base]) //baseÎª½øÖÆ»ùÊı
-¸¡µãÊı×ª»» string.atof(s)
-×Ö·û×ªÊı×Ö int(str)
-
----------------------------------------------------------
-ÀûÓÃenumerate()º¯Êı£¬¿ÉÒÔÔÚÃ¿´ÎÑ­»·ÖĞÍ¬Ê±µÃµ½ÏÂ±êºÍÔªËØ£º
-for (index,char) in enumerate(S): 
-	print index print char
-
-
-for k,v in dict.iteritems():
-
-
-random.randint
-print random.randint(12,20)#Éú³ÉµÄËæ»úÊın:12<=n<=20
-
------------------------------------------------------------------------
-row_day = datetime.datetime.strptime(str(row_date),'%Y-%m-%d')  #½«date×ª»»Îªstr£¬ÔÚÓÉstr×ª»»Îªdatetime
-(create_time-row_day).days
+	# åˆ©ç”¨enumerate()å‡½æ•°ï¼Œå¯ä»¥åœ¨æ¯æ¬¡å¾ªç¯ä¸­åŒæ—¶å¾—åˆ°ä¸‹æ ‡å’Œå…ƒç´ ï¼š
+	for (index,char) in enumerate(S): 
+		print index print char
 
 
 
-»ñÈ¡ÃüÁîĞĞ²ÎÊı
-if __name__ == "__main__":
-   main(sys.argv[1:])
+# é›†åˆ
+
+set() setå’Œlistå¯ä»¥äº’ç›¸è½¬æ¢ï¼Œ setçš„é€Ÿåº¦æ¯”listå¿«éå¸¸å¤š
+
+	list(set(list1))   å»æ‰é‡å¤çš„å…ƒç´ 
+
+# å­—å…¸
+	dict.get(key, default=None)
+	key -- è¿™æ˜¯è¦æœç´¢åœ¨å­—å…¸ä¸­çš„é”®ã€‚
+	default -- è¿™æ˜¯è¦è¿”å›é”®ä¸å­˜åœ¨çš„çš„æƒ…å†µä¸‹é»˜è®¤å€¼ã€‚
+
+	# å¯¹å­—å…¸è¿›è¡Œéå†
+	for k,v in dict.iteritems():
 
 
-import ×Ô¶¨ÒåµÄÄ¿Â¼Ê±ºò£¬2.7°æ±¾ĞèÒªÔÚÄ¿Â¼ÏÂ´´½¨__init__.pyÎÄ¼ş
+# ç±»å‹
 
-2.7°æ±¾Òª×¢Òâ£¬coding = utf-8 ±ØĞëĞ´ÔÚµÚÒ»ĞĞ
+	åˆ©ç”¨isinstanceå‡½æ•°ï¼Œæ¥åˆ¤æ–­ä¸€ä¸ªå¯¹è±¡æ˜¯å¦æ˜¯ä¸€ä¸ªå·²çŸ¥çš„ç±»å‹ã€‚ 
+	æ•°å­—å˜ä¸ºå­—ç¬¦ä¸² str(4)
+	å­—ç¬¦ä¸²å˜ä¸ºæ•°å­— string.atoi(s,[ï¼Œbase]) //baseä¸ºè¿›åˆ¶åŸºæ•°
+	æµ®ç‚¹æ•°è½¬æ¢ string.atof(s)
+	å­—ç¬¦è½¬æ•°å­— int(str)
 
-2.7×Ö·û´®×ª»¯---python3¾Í²»ÓÃÕâÃ´Âé·³
-unicodestring = u"Hello world" 
-# ½«Unicode×ª»¯ÎªÆÕÍ¨Python×Ö·û´®£º"encode"  
-utf8string = unicodestring.encode("utf-8")  
-asciistring = unicodestring.encode("ascii")  
-isostring = unicodestring.encode("ISO-8859-1")  
-utf16string = unicodestring.encode("utf-16")  
-# ½«ÆÕÍ¨Python×Ö·û´®×ª»¯ÎªUnicode£º"decode"  
-plainstring1 = unicode(utf8string, "utf-8")  
-plainstring2 = unicode(asciistring, "ascii")  
-plainstring3 = unicode(isostring, "ISO-8859-1")  
-plainstring4 = unicode(utf16string, "utf-16")  
-assert plainstring1 == plainstring2 == plainstring3 == plainstring4
+	é™¤æ³•æ ¹æ®å‰é¢çš„ç±»å‹å®šä¹‰æ¥è®¡ç®—ç»“æœçš„ç±»å‹çš„ 
+	1/2 = 0  # æ ¹æ®1å–æ•´
+
+	åœ¨ç¼–å†™sqlè¯­å¥çš„æ—¶å€™ï¼Œå¦‚æœæ—¥æœŸè½¬æ¢ç”¨%å°±ä¼šæŠ¥é”™ï¼Œæ‰€ä»¥è¦ç”¨%%
+
+---
+
+
+
+ 
+
+# å‡½æ•°å¼ç¼–ç¨‹
+
+**filter:**
+
+	filter(function, sequence)ï¼š
+	str = ['a', 'b','c', 'd']
+	def fun1(s): return s if s != 'a' else None
+	ret = filter(fun1, str)
+	print ret
+	## ['b', 'c', 'd']
+
+å¯¹sequenceä¸­çš„itemä¾æ¬¡æ‰§è¡Œfunction(item)ï¼Œ
+
+å°†æ‰§è¡Œç»“æœä¸ºTrueçš„itemç»„æˆä¸€ä¸ªList/String/Tupleï¼ˆå–å†³äºsequenceçš„ç±»å‹ï¼‰è¿”å›ã€‚
+
+å¯ä»¥çœ‹ä½œæ˜¯è¿‡æ»¤å‡½æ•°ã€‚ 
+
+---
+**map:**
+
+	map(function, sequence) 
+	str = ['a', 'b','c', 'd'] 
+	def fun2(s): return s + ".txt"
+	ret = map(fun2, str)
+	print ret
+	## ['a.txt', 'b.txt', 'c.txt', 'd.txt']
+
+å¯¹sequenceä¸­çš„itemä¾æ¬¡æ‰§è¡Œfunction(item)ï¼Œè§æ‰§è¡Œç»“æœç»„æˆä¸€ä¸ªListè¿”å›ï¼š
+
+mapä¹Ÿæ”¯æŒå¤šä¸ªsequenceï¼Œè¿™å°±è¦æ±‚functionä¹Ÿæ”¯æŒç›¸åº”æ•°é‡çš„å‚æ•°è¾“å…¥ï¼š
+
+	def add(x, y): return x+y 
+	 print map(add, range(10), range(10)) 
+	##[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+---
+**reduce:**
+
+	reduce(function, sequence, starting_value)ï¼šdef add1(x,y): return x + y 
+	print reduce(add1, range(1, 100)) 
+	print reduce(add1, range(1, 100), 20)
+	## 4950 ï¼ˆæ³¨ï¼š1+2+...+99ï¼‰
+	## 4970 ï¼ˆæ³¨ï¼š1+2+...+99+20ï¼‰
+
+å¯¹sequenceä¸­çš„itemé¡ºåºè¿­ä»£è°ƒç”¨functionï¼Œå¦‚æœæœ‰starting_valueï¼Œè¿˜å¯ä»¥ä½œä¸ºåˆå§‹å€¼è°ƒç”¨ï¼Œä¾‹å¦‚å¯ä»¥ç”¨æ¥å¯¹Listæ±‚å’Œï¼š 
+
+---
+
+**lambdaï¼š**
+
+	g = lambda s: s + ".fsh" 
+	print g("haha") 
+	print (lambda x: x * 2) (3)
+	## haha.fsh 
+	## 6
+
+è¿™æ˜¯Pythonæ”¯æŒä¸€ç§æœ‰è¶£çš„è¯­æ³•ï¼Œå®ƒå…è®¸ä½ å¿«é€Ÿå®šä¹‰å•è¡Œçš„æœ€å°å‡½æ•°ï¼Œç±»ä¼¼ä¸Cè¯­è¨€ä¸­çš„å®ï¼Œè¿™äº›å«åšlambdaçš„å‡½æ•°.
+
+---
 
 
 
 
-class Person:
-	def __init__(self, name):
-		self.name = name
+# éšæœºæ•°
 
-ÀàµÄÓÃ·¨£¬ ÀàÖĞ_ÊÇË½ÓĞ·½·¨, __ÊÇË½ÓĞ±äÁ¿
+	random.randint
+	print random.randint(12,20)#ç”Ÿæˆçš„éšæœºæ•°n:12<=n<=20
 
+# æ—¥æœŸçš„è½¬åŒ–
 
-µ¥ÒıºÅºÍË«ÒıºÅ¶¼ÊÇ×Ö·û´®£¬ µ¥ÒıºÅ×ªÒåµÄÊ±ºòÓÃµÄ¶àÒ»Ğ©£¬ ÈıÒıºÅÓÃÔÚ¶àĞĞ×Ö·û´®
-
-
-# ÀàµÄÆÕÍ¨·½·¨¿ÉÒÔÍ¨¹ıself·ÃÎÊÊµÀıÊôĞÔ
-def normalMethod(self, name):
-# Àà·½·¨,¿ÉÒÔÍ¨¹ıcls·ÃÎÊÀàÊôĞÔ
-@classmethod
-def classMethod(cls, name):
-# ¾²Ì¬·½·¨,²»¿ÉÒÔ·ÃÎÊÀàÊôĞÔ
-@staticmethod
-def staticMethod(name):
+	row_day = datetime.datetime.strptime(str(row_date),'%Y-%m-%d')  #å°†dateè½¬æ¢ä¸ºstrï¼Œåœ¨ç”±strè½¬æ¢ä¸ºdatetime
+	(create_time-row_day).days
 
 
-python¿ÉÒÔÓÅÑÅµÄ´¦ÀíÎÄ¼ş£¬withÀ´×Ô¶¯¹Ø±ÕÎÄ¼ş£¬²»ĞèÒªĞ´close
-with open('1.txt','r') as f:
-	tt = f.read()
+# è·å–å‘½ä»¤è¡Œå‚æ•°
 
-line.replace(old_str, new_str)		ĞĞ×Ö·û´®Ìæ»»
-
+	if __name__ == "__main__":
+	   main(sys.argv[1:])
 
 
-Ğ´ÈëÎÄ¼şµÄÊ±ºòÒª×¢Òâ×Ö·û±àÂë£¬2.7¶Ô¿í×Ö·û´¦Àí²»ºÃ£¬ ËùÒÔ¾¡Á¿ÓÃ3.6°æ±¾°É
-str = unicode(str,'utf-8')
-f.write(str.encode("utf-8"))
+# import 
+	
+	importè‡ªå®šä¹‰çš„ç›®å½•æ—¶å€™ï¼Œ2.7ç‰ˆæœ¬éœ€è¦åœ¨ç›®å½•ä¸‹åˆ›å»º__init__.pyæ–‡ä»¶
+
+
+# 2.7ç‰ˆæœ¬è¦æ³¨æ„
+
+	coding = utf-8 å¿…é¡»å†™åœ¨ç¬¬ä¸€è¡Œ
+	
+# 2.7å­—ç¬¦ä¸²è½¬åŒ–
+
+	unicodestring = u"Hello world" 
+	# å°†Unicodeè½¬åŒ–ä¸ºæ™®é€šPythonå­—ç¬¦ä¸²ï¼š"encode"  
+	utf8string = unicodestring.encode("utf-8")  
+	asciistring = unicodestring.encode("ascii")  
+	isostring = unicodestring.encode("ISO-8859-1")  
+	utf16string = unicodestring.encode("utf-16")  
+	# å°†æ™®é€šPythonå­—ç¬¦ä¸²è½¬åŒ–ä¸ºUnicodeï¼š"decode"  
+	plainstring1 = unicode(utf8string, "utf-8")  
+	plainstring2 = unicode(asciistring, "ascii")  
+	plainstring3 = unicode(isostring, "ISO-8859-1")  
+	plainstring4 = unicode(utf16string, "utf-16")  
+	assert plainstring1 == plainstring2 == plainstring3 == plainstring4
+
+
+
+# é¢å‘å¯¹è±¡
+
+
+	class Person:
+		def __init__(self, name):
+			self.name = name
+
+ç±»çš„ç”¨æ³•ï¼Œ ç±»ä¸­_æ˜¯ç§æœ‰æ–¹æ³•, __æ˜¯ç§æœ‰å˜é‡
+
+
+clsæ˜¯classçš„ç¼©å†™
 
 
 
 
-------------------------------------------------------------------------------------------------------
+	# ç±»çš„æ™®é€šæ–¹æ³•å¯ä»¥é€šè¿‡selfè®¿é—®å®ä¾‹å±æ€§
+	def normalMethod(self, name):
+	# ç±»æ–¹æ³•,å¯ä»¥é€šè¿‡clsè®¿é—®ç±»å±æ€§
+	@classmethod
+	def classMethod(cls, name):
+	# é™æ€æ–¹æ³•,ä¸å¯ä»¥è®¿é—®ç±»å±æ€§
+	@staticmethod
+	def staticMethod(name):
+
+# æ–‡ä»¶å¤„ç†
+
+	# pythonå¯ä»¥ä¼˜é›…çš„å¤„ç†æ–‡ä»¶ï¼Œwithæ¥è‡ªåŠ¨å…³é—­æ–‡ä»¶ï¼Œä¸éœ€è¦å†™close
+	with open('1.txt','r') as f:
+		tt = f.read()
+	
+	line.replace(old_str, new_str)		#è¡Œå­—ç¬¦ä¸²æ›¿æ¢
+	
+	
+	
+	# å†™å…¥æ–‡ä»¶çš„æ—¶å€™è¦æ³¨æ„å­—ç¬¦ç¼–ç ï¼Œ2.7å¯¹å®½å­—ç¬¦å¤„ç†ä¸å¥½ï¼Œ æ‰€ä»¥å°½é‡ç”¨3.6ç‰ˆæœ¬å§
+	str = unicode(str,'utf-8')
+	f.write(str.encode("utf-8"))
+
+
+
+
+---

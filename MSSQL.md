@@ -1,73 +1,88 @@
-CREATE	´´½¨Ò»¸öÐÂµÄ±í£¬±íµÄÊÓÍ¼£¬»òÕßÔÚÊý¾Ý¿âÖÐµÄ¶ÔÏó
-ALTER	ÐÞ¸ÄÏÖÓÐµÄÊý¾Ý¿â¶ÔÏó£¬ÀýÈçÒ»¸ö±í
-DROP	É¾³ýÕû¸ö±í£¬Êý¾Ý¿âÖÐµÄ±í»òÆäËû¶ÔÏó»òÊÓÍ¼
+---
+# è¡¨çš„æ“ä½œ
+
+	CREATE	åˆ›å»ºä¸€ä¸ªæ–°çš„è¡¨ï¼Œè¡¨çš„è§†å›¾ï¼Œæˆ–è€…åœ¨æ•°æ®åº“ä¸­çš„å¯¹è±¡
+	ALTER	ä¿®æ”¹çŽ°æœ‰çš„æ•°æ®åº“å¯¹è±¡ï¼Œä¾‹å¦‚ä¸€ä¸ªè¡¨
+	DROP	åˆ é™¤æ•´ä¸ªè¡¨ï¼Œæ•°æ®åº“ä¸­çš„è¡¨æˆ–å…¶ä»–å¯¹è±¡æˆ–è§†å›¾
+
+---
+
+# èŒƒå¼
+
+	ç¬¬ä¸€èŒƒå¼(1NF)ï¼šå®šä¹‰æ‰€éœ€è¦çš„æ•°æ®é¡¹ï¼Œå› ä¸ºå®ƒä»¬æˆä¸ºåœ¨è¡¨ä¸­çš„åˆ—ã€‚æ”¾åœ¨ä¸€ä¸ªè¡¨ä¸­çš„ç›¸å…³çš„æ•°æ®é¡¹ã€‚
+	ç¡®ä¿æœ‰æ•°æ®æ²¡æœ‰é‡å¤çš„ç»„ã€‚
+	ç¡®ä¿æœ‰ä¸€ä¸ªä¸»é”®ã€‚
+	ç¬¬äºŒèŒƒå¼æŒ‡å‡ºï¼Œå®ƒåº”æ»¡è¶³æ‰€æœ‰1NFçš„è§„åˆ™ï¼Œå¿…é¡»æœ‰ä»»æ„åˆ—ä¸ä¾èµ–ä¸»é”®å…³ç³»ï¼š
+	è¡¨æ»¡è¶³ä»¥ä¸‹æ¡ä»¶æ—¶å°±æ˜¯ç¬¬ä¸‰èŒƒå¼ï¼šæ‰€æœ‰éžä¸»å­—æ®µéƒ½æ˜¯ä¾èµ–äºŽä¸»é”®
 
 
+---
+
+# select
+
+	DISTINCTå…³é”®å­—ä¸ŽSELECTè¯­å¥ä¸€èµ·ä½¿ç”¨ï¼Œä»¥æ¶ˆé™¤æ‰€æœ‰é‡å¤çš„è®°å½•å’ŒèŽ·å–çš„å”¯ä¸€è®°å½•ã€‚
+	as åˆ«åç”¨æ³•
+	TOP(1)	è¿”å›žæœ€ä¸Šé¢çš„ä¸€è¡Œæ•°æ®
+	count(*)	è¿”å›žè¡Œæ•°
+	select * from dbo.accounts where UserID like %zsw%   æŸ¥æ‰¾åŒ…å«zswå­—æ®µçš„
+	select id=identity(int,1,1) ,name into #regtemp11 from table(nolock)	copyè¡¨åˆ°ä¸´æ—¶è¡¨ï¼Œå¹¶æ–°å¢žä¸€åˆ—åˆ—åä¸ºidçš„è‡ªå¢žåŠ åˆ—
+
+---
+
+# é€šé…ç¬¦
+
+	ç™¾åˆ†å· (%)	åŒ¹é…ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦ã€‚éœ€è¦æ³¨æ„çš„æ˜¯MS Accessä½¿ç”¨æ˜Ÿå·(*)é€šé…ç¬¦ä»£æ›¿ç™¾åˆ†å·(%)é€šé…ç¬¦ã€‚
+	ä¸‹åˆ’çº¿ (_)	åŒ¹é…ä¸€ä¸ªå­—ç¬¦ã€‚è¯·æ³¨æ„ï¼ŒMS Accessä½¿ç”¨ä¸€ä¸ªé—®å·(ï¼Ÿ)è€Œä¸æ˜¯ä¸‹åˆ’çº¿(_)æ¥åŒ¹é…ä»»ä½•ä¸€ä¸ªå­—ç¬¦ã€‚
+
+---
+
+# è®¾å®š
+
+	SET ROWCOUNT @Count   ä½¿å‘½ä»¤çš„å¤„ç†åœ¨å“åº”æŒ‡å®šçš„è¡Œæ•°ä¹‹åŽåœæ­¢å¤„ç†å‘½ä»¤, å¯ä»¥ç”¨æ¥åšåˆ†é¡µ
+	
+	DECLAREï¼š å®šä¹‰å˜é‡ï¼Œå˜é‡ç¬¬ä¸€ä¸ªå­—æ¯æ˜¯â€œ@â€
+	SETï¼šè®¾ç½®å˜é‡
+	IF NOT EXISTSï¼šå¦‚æžœä¸å­˜åœ¨æ•°æ®ï¼Œæ‰§è¡ŒBEGIN-ENDæ¨¡å—ä¸­çš„è¯­å¥
+	GOï¼šæ‰¹è§£é‡Šä¿¡å·ï¼Œå‘Šè¯‰ç¼–è¾‘å™¨ä»£ç å·²ç»“æŸã€‚
+
+	ISNULL(@xx, 0)	å¦‚æžœä¸ºNULLé‚£ä¹ˆç”¨0å¡«å……
+	
+	set @addr = 'åˆå§‹å€¼'  å˜é‡èµ‹å€¼
+	
+	select @@identity	åœ¨æ’å…¥ç»“æŸä¹‹åŽæŠŠè‡ªå¢žåŠ çš„å€¼è¿”å›ž
+	select @@rowcount	ç»“æŸä¹‹åŽæŠŠå½±å“å¤šå°‘è¡Œè¿”å›ž
+	
+	SET NOCOUNT ON ä¸è¿”å›žå—å½±å“çš„è¡Œæ•°
+	åœ¨pyodbcå¼€å‘ä¸­ï¼Œå¦‚æžœéœ€è¦insertä¹‹åŽè¿”å›žè‡ªå¢žåŠ çš„å€¼ï¼Œ é‚£ä¹ˆexecå‰é¢è¦åŠ ä¸ŠSET NOCOUNT ONï¼Œ è¿™æ ·æ‰èƒ½è¿”å›žè¿™ä¸ªè¿”å›žå€¼
+	
+	SET IDENTITY_INSERT dbo.UserDB ON   å…³é—­è‡ªå¢žåŠ 
+
+---
+
+# å­—ç¬¦ç±»åž‹
+
+	CHARï¼ŒNCHAR å®šé•¿ï¼Œé€Ÿåº¦å¿«ï¼Œå ç©ºé—´å¤§ï¼Œéœ€å¤„ç†
+	VARCHARï¼ŒNVARCHARï¼ŒTEXT ä¸å®šé•¿ï¼Œç©ºé—´å°ï¼Œé€Ÿåº¦æ…¢ï¼Œæ— éœ€å¤„ç†
+	NCHARã€NVARCHARã€NTEXTå¤„ç†Unicodeç 
+
+---
 
 
-µÚÒ»·¶Ê½(1NF)£º¶¨ÒåËùÐèÒªµÄÊý¾ÝÏî£¬ÒòÎªËüÃÇ³ÉÎªÔÚ±íÖÐµÄÁÐ¡£·ÅÔÚÒ»¸ö±íÖÐµÄÏà¹ØµÄÊý¾ÝÏî¡£
-È·±£ÓÐÊý¾ÝÃ»ÓÐÖØ¸´µÄ×é¡£
-È·±£ÓÐÒ»¸öÖ÷¼ü¡£
-µÚ¶þ·¶Ê½Ö¸³ö£¬ËüÓ¦Âú×ãËùÓÐ1NFµÄ¹æÔò£¬±ØÐëÓÐÈÎÒâÁÐ²»ÒÀÀµÖ÷¼ü¹ØÏµ£º
-±íÂú×ãÒÔÏÂÌõ¼þÊ±¾ÍÊÇµÚÈý·¶Ê½£ºËùÓÐ·ÇÖ÷×Ö¶Î¶¼ÊÇÒÀÀµÓÚÖ÷¼ü
+# å­—ç¬¦è½¬æ¢
+
+	CONVERT(VARCHAR(24),GETDATE(),113)   æŒ‰ç…§ä¸åŒçš„ç¼–å·æ ¼å¼æ¯”å¦‚113ï¼Œ è½¬æ¢æ—¥æœŸä¸ºå­—ç¬¦ä¸²
+	
+	CAST(10.6496 AS int)
+	select CAST(123.4 as int)   -- 123
+	select CONVERT(int, 123.4)  -- 123 
+
+---
 
 
+# update
 
-DISTINCT¹Ø¼ü×ÖÓëSELECTÓï¾äÒ»ÆðÊ¹ÓÃ£¬ÒÔÏû³ýËùÓÐÖØ¸´µÄ¼ÇÂ¼ºÍ»ñÈ¡µÄÎ¨Ò»¼ÇÂ¼¡£
-
-
-as ±ðÃûÓÃ·¨
+	update dbo.gamestoreinfo set androidcount = '40' where uid = '2003'   æ›´æ–°æ•°æ®
 
 
-°Ù·ÖºÅ (%)	Æ¥ÅäÒ»¸ö»ò¶à¸ö×Ö·û¡£ÐèÒª×¢ÒâµÄÊÇMS AccessÊ¹ÓÃÐÇºÅ(*)Í¨Åä·û´úÌæ°Ù·ÖºÅ(%)Í¨Åä·û¡£
-ÏÂ»®Ïß (_)	Æ¥ÅäÒ»¸ö×Ö·û¡£Çë×¢Òâ£¬MS AccessÊ¹ÓÃÒ»¸öÎÊºÅ(£¿)¶ø²»ÊÇÏÂ»®Ïß(_)À´Æ¥ÅäÈÎºÎÒ»¸ö×Ö·û¡£
-
-
-
-SET ROWCOUNT @Count   Ê¹ÃüÁîµÄ´¦ÀíÔÚÏìÓ¦Ö¸¶¨µÄÐÐÊýÖ®ºóÍ£Ö¹´¦ÀíÃüÁî, ¿ÉÒÔÓÃÀ´×ö·ÖÒ³
-
-
-DECLARE£º ¶¨Òå±äÁ¿£¬±äÁ¿µÚÒ»¸ö×ÖÄ¸ÊÇ¡°@¡±
-SET£ºÉèÖÃ±äÁ¿
-IF NOT EXISTS£ºÈç¹û²»´æÔÚÊý¾Ý£¬Ö´ÐÐBEGIN-ENDÄ£¿éÖÐµÄÓï¾ä
-GO£ºÅú½âÊÍÐÅºÅ£¬¸æËß±à¼­Æ÷´úÂëÒÑ½áÊø¡£
-
-
-CHAR£¬NCHAR ¶¨³¤£¬ËÙ¶È¿ì£¬Õ¼¿Õ¼ä´ó£¬Ðè´¦Àí
-VARCHAR£¬NVARCHAR£¬TEXT ²»¶¨³¤£¬¿Õ¼äÐ¡£¬ËÙ¶ÈÂý£¬ÎÞÐè´¦Àí
-NCHAR¡¢NVARCHAR¡¢NTEXT´¦ÀíUnicodeÂë
-
-
-
-
-CONVERT(VARCHAR(24),GETDATE(),113)   °´ÕÕ²»Í¬µÄ±àºÅ¸ñÊ½±ÈÈç113£¬ ×ª»»ÈÕÆÚÎª×Ö·û´®
-
-CAST(10.6496 AS int)
-select CAST(123.4 as int)   -- 123
-select CONVERT(int, 123.4)  -- 123 
-
-
-
-TOP(1)	·µ»Ø×îÉÏÃæµÄÒ»ÐÐÊý¾Ý
-count(*)	·µ»ØÐÐÊý
-
-ISNULL(@xx, 0)	Èç¹ûÎªNULLÄÇÃ´ÓÃ0Ìî³ä
-
-select * from dbo.accounts where UserID like %zsw%   ²éÕÒ°üº¬zsw×Ö¶ÎµÄ
-
-set @addr = '³õÊ¼Öµ'  ±äÁ¿¸³Öµ
-
-select @@identity	ÔÚ²åÈë½áÊøÖ®ºó°Ñ×ÔÔö¼ÓµÄÖµ·µ»Ø
-select @@rowcount	½áÊøÖ®ºó°ÑÓ°Ïì¶àÉÙÐÐ·µ»Ø
-
-SET NOCOUNT ON ²»·µ»ØÊÜÓ°ÏìµÄÐÐÊý
-
-ÔÚpyodbc¿ª·¢ÖÐ£¬Èç¹ûÐèÒªinsertÖ®ºó·µ»Ø×ÔÔö¼ÓµÄÖµ£¬ ÄÇÃ´execÇ°ÃæÒª¼ÓÉÏSET NOCOUNT ON£¬ ÕâÑù²ÅÄÜ·µ»ØÕâ¸ö·µ»ØÖµ
-
-SET IDENTITY_INSERT dbo.UserDB ON   ¹Ø±Õ×ÔÔö¼Ó
-
-update dbo.gamestoreinfo set androidcount = '40' where uid = '2003'   ¸üÐÂÊý¾Ý
-
-select id=identity(int,1,1) ,name into #regtemp11 from table(nolock)	copy±íµ½ÁÙÊ±±í£¬²¢ÐÂÔöÒ»ÁÐÁÐÃûÎªidµÄ×ÔÔö¼ÓÁÐ
 
 
