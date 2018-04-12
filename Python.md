@@ -41,10 +41,18 @@
 	list[-3:][::-1]
 	list[::-1]		# 是将列表反过来，一种是先反过来，然后取前三位；一种是先取后三位，再反过来。
 	list[-3:]		# 是取list的从后面数3个元素
-	list.append()
-	list.insert(1,'web')
-	list.remove(8)
-	list.extend(list2)
+	list.append(obj)	# 添加到末尾
+	list.insert(1,'web')	# 插入元素到指定位置
+
+	list.remove(8)	# 把8这个元素删掉
+	list.pop(0)		# 把0位置上的元素删掉
+	del(list[0])	# 同上
+
+	list.extend(list2)	# 合并
+	list.index(obj)		# 返回元素的位置
+
+	list.reverse()		#反向
+	list.sort([func])	# func可选，排序
 
 	# 利用enumerate()函数，可以在每次循环中同时得到下标和元素：
 	for (index,char) in enumerate(S): 
