@@ -61,9 +61,11 @@
     mbutton.grid(row=8, column=1)								# 定义位置
     list1 = ["a", "b", "c"]
     for (index,value) in enumerate(list1):						# 添加列表元素
-    	picks.add_command(label=value, command=lambda index=index: menu_button_fuc(index))   
+    	picks.add_command(label=value, command=lambda value=value: menu_button_fuc(index))   
 
-<font color=#A52A2A size=2>绑定菜单按钮的事件，并通过匿名函数返回参数</font>
+
+<font color=#A52A2A size=2>绑定菜单按钮的事件，并通过匿名函数返回参数，这里需要比较注意一点，绑定的匿名函数不能用index，因为删除掉一个按钮之后，index会变化， 导致绑定事件的变化， 所以，每删掉一个menubutton，都要把后面的重置一下index，因为index变了
+</font>
 
 # Message：
     Message(root, text=str(input1.get())).grid(row=6, column=0)

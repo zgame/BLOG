@@ -241,12 +241,16 @@ cls是class的缩写
 	@staticmethod
 	def staticMethod(name):
 
-# 文件处理
+# 文件处理，注意python2和python3的区别
 
 	# python可以优雅的处理文件，with来自动关闭文件，不需要写close
-	with open('1.txt','r') as f:
+	with open('1.txt','r') as f:	# python2
 		tt = f.read()
 	
+	with open('1.txt','r', encoding='utf-8') as f:  # python3	
+		tt = f.read()
+
+
 	line.replace(old_str, new_str)		#行字符串替换
 	
 	
