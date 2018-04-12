@@ -1,86 +1,88 @@
-------------------------python UI¿ª·¢ tkinter---------------------------------------------------
+#python UIå¼€å‘ tkinterçš„è¯•ç”¨
 
-²Î¿¼ÎÄµµ
-http://effbot.org/tkinterbook/
-https://blog.csdn.net/wuxiushu/article/details/52516652
+----------
 
+**å‚è€ƒæ–‡æ¡£**
 
---------------------------------------------------------------------------------------------------
-
-# coding=utf-8
-from Tkinter import *
-root = Tk()
-
-# -----Ìí¼Ólabel---------------------------------------------------------
-labelHello = tk.Label(top, text = "label...", height = 5, width = 20, fg = "blue").pack()
+[http://effbot.org/tkinterbook/](http://effbot.org/tkinterbook/)
 
 
-#-----Ìí¼ÓlistÁĞ±í---------------------------------------------
+----------
 
 
-movie = ['CSS', 'jQuery', 'Bootstrap']
-listb2 = Listbox(root, listvariable=StringVar(value=list_a))
-	# selectmodeÓĞµ¥Ñ¡£¬¶àÑ¡£¬¿ÉÒÔÒÆ¶¯£¬Ö§³ÖshiftºÍctr¼ü
-listb2 .bind("<Double-Button-1>", callback)		
-# ÕâÊÇlistbox°ó¶¨Êó±ê×ó¼üË«»÷ÊÂ¼ş£¬ callbackÊÇ»Øµ÷º¯Êı£¬ÒªÌØ±ğ×¢Òâ£¬²»ÄÜÊ¹ÓÃµ¥»÷£¬Ò»¶¨ÒªË«»÷²Å¿ÉÒÔµÈÓÚÈ·¶¨
- def printcurList(event):
-        print(list_all.curselection()[0])	# ×¢ÒâÕâÀïµÄeventÒªÓĞ
+    # coding=utf-8
+    from Tkinter import *
+    root = Tk()
 
+# æ·»åŠ label
 
-# ´ÓºóÃæ¿ªÊ¼Ìí¼Ó£¬ÒòÎªÊÇ¶ÓÁĞ£¬ËùÒÔÕıºÃÇ°ÃæµÄÔÚÉÏÃæ
-# ÁíÍâÒ»ÖÖ²»ÓÃforÑ­»·µÄ·½Ê½£¬¾ÍÊÇÉÏÃæµÄÀı×Ólistvariable=StringVar(value=list_a)
-for item in movie:
-    listb2.insert(END, item)			
+    labelHello = tk.Label(top, text = "label...", height = 5, width = 20, fg = "blue").pack()
 
 
 
+#æ·»åŠ liståˆ—è¡¨
 
-listb2.pack()
+    movie = ['CSS', 'jQuery', 'Bootstrap']
+    listb2 = Listbox(root, listvariable=StringVar(value=list_a))    	
 
-# -----¸ølistÅäºÏscroll---------------------------------------------------------
-  sl = Scrollbar(root)						#¶¨Òåscroll
-    sl.config(command=listb.yview)			# ÉèÖÃ¸úlistµÄ¹ØÏµ
-    sl.grid(row=1, column=2, sticky=W+N+S)		# ¶¨ÒåÎ»ÖÃ£¬»¹ÓĞ¹Ø¼üµÄsticky  WÊÇ×ó²à¶ÔÆä£¬N+SÊÇ´¹Ö±·½ÏòÀ­³¤
-listb.config(yscrollcommand=sl.set)
+<font color=#A52A2A size=2>SELECTMODEæœ‰å•é€‰ï¼Œå¤šé€‰ï¼Œå¯ä»¥ç§»åŠ¨ï¼Œæ”¯æŒSHIFTå’ŒCTRé”®</font>
+
+    listb2 .bind("<Double-Button-1>", callback)		
+    def printcurList(event):
+    	print(list_all.curselection()[0])		# æ³¨æ„è¿™é‡Œçš„eventè¦æœ‰
+
+<font color=#A52A2A size=2>è¿™æ˜¯listboxç»‘å®šé¼ æ ‡å·¦é”®åŒå‡»äº‹ä»¶ï¼Œ callbackæ˜¯å›è°ƒå‡½æ•°ï¼Œè¦ç‰¹åˆ«æ³¨æ„ï¼Œä¸èƒ½ä½¿ç”¨å•å‡»ï¼Œä¸€å®šè¦åŒå‡»æ‰å¯ä»¥ç­‰äºç¡®å®š</font>
+
+    # ä»åé¢å¼€å§‹æ·»åŠ ï¼Œå› ä¸ºæ˜¯é˜Ÿåˆ—ï¼Œæ‰€ä»¥æ­£å¥½å‰é¢çš„åœ¨ä¸Šé¢
+    # å¦å¤–ä¸€ç§ä¸ç”¨forå¾ªç¯çš„æ–¹å¼ï¼Œå°±æ˜¯ä¸Šé¢çš„ä¾‹å­listvariable=StringVar(value=list_a)
+    for item in movie:
+    	listb2.insert(END, item)			
+    listb2.pack()
+
+# ç»™listé…åˆscroll
+    sl = Scrollbar(root)						# å®šä¹‰scroll
+    sl.config(command=listb.yview)				# è®¾ç½®è·Ÿlistçš„å…³ç³»
+    sl.grid(row=1, column=2, sticky=W+N+S)		# å®šä¹‰ä½ç½®ï¼Œè¿˜æœ‰å…³é”®çš„sticky  Wæ˜¯å·¦ä¾§å¯¹å…¶ï¼ŒN+Sæ˜¯å‚ç›´æ–¹å‘æ‹‰é•¿
+    listb.config(yscrollcommand=sl.set)			# å®šä¹‰scrollè·Ÿlistçš„åé¦ˆ
 
 
-#------Ìí¼ÓbuttonºÍ×Ô¶¨ÒåÊÂ¼ş£¬Èç¹ûĞèÒª²ÎÊıÓÃÄäÃûº¯Êı¼´¿É£¬¿´ÏÂÃæÀı×Ó----------------------------------
-def callback():
-	print 'callback'
-quit = Button(root, text='Quit',  command=callback).pack()
+# æ·»åŠ buttonå’Œè‡ªå®šä¹‰äº‹ä»¶ï¼Œå¦‚æœéœ€è¦å‚æ•°ç”¨åŒ¿åå‡½æ•°å³å¯ï¼Œçœ‹ä¸‹é¢ä¾‹å­
+    def callback():
+    	print 'callback'
+    quit = Button(root, text='Quit',  command=callback).pack()
 
-# ---Menubutton	²Ëµ¥°´Å¥ºÍÊÂ¼ş·µ»Ø´ø²ÎÊı--------------------------------------------------
+# Menubutton	èœå•æŒ‰é’®å’Œäº‹ä»¶è¿”å›å¸¦å‚æ•°
     def menu_button_fuc(index):
-        mbutton.config(text=list1[int(index)])			# °Ñµ±Ç°Ñ¡ÔñµÄ°´Å¥Ãû×ÖÏÔÊ¾³öÀ´
-
-    mbutton = Menubutton(root, text='Food', relief=RAISED)		# ¶¨Òå
-    picks = Menu(mbutton)					# ×Ó°´Å¥
+    	mbutton.config(text=list1[int(index)])					# æŠŠå½“å‰é€‰æ‹©çš„æŒ‰é’®åå­—æ˜¾ç¤ºå‡ºæ¥
+    
+    mbutton = Menubutton(root, text='Food', relief=RAISED)		# å®šä¹‰
+    picks = Menu(mbutton)										# å­æŒ‰é’®
     mbutton.config(menu=picks)
-    mbutton.grid(row=8, column=1)				#Î»ÖÃ
+    mbutton.grid(row=8, column=1)								# å®šä¹‰ä½ç½®
     list1 = ["a", "b", "c"]
-    for (index,value) in enumerate(list1):			# Ìí¼ÓÁĞ±íÔªËØ
-        picks.add_command(label=value, command=lambda index=index: menu_button_fuc(index))   
+    for (index,value) in enumerate(list1):						# æ·»åŠ åˆ—è¡¨å…ƒç´ 
+    	picks.add_command(label=value, command=lambda index=index: menu_button_fuc(index))   
+
+<font color=#A52A2A size=2>ç»‘å®šèœå•æŒ‰é’®çš„äº‹ä»¶ï¼Œå¹¶é€šè¿‡åŒ¿åå‡½æ•°è¿”å›å‚æ•°</font>
+
+# Messageï¼š
+    Message(root, text=str(input1.get())).grid(row=6, column=0)
+<font color=#A52A2A size=2>æ˜¾ç¤ºä¸€æ–‡æœ¬ã€‚ç±»ä¼¼labelçª—å£éƒ¨ä»¶ï¼Œä½†æ˜¯èƒ½å¤Ÿè‡ªåŠ¨åœ°è°ƒæ•´æ–‡æœ¬åˆ°ç»™å®šçš„å®½åº¦æˆ–æ¯”ç‡ã€‚</font>
+
+#messageboxæç¤ºæ¡†
+    import tkinter.messagebox as msgbox					# æ³¨æ„è¿™ä¸ªè¦å•ç‹¬importè¿›æ¥æ‰å¯ä»¥
+    msgbox.showinfo('Message', 'æ­å–œï¼')				  # Python2ä¸­ä¸ºtkMessagebox
 
 
+#gridç½‘æ ¼åŒ–æ’ç‰ˆ
 
-# ---Message£º----------
-Message(root, text=str(input1.get())).grid(row=6, column=0)
-ÏÔÊ¾Ò»ÎÄ±¾¡£ÀàËÆlabel´°¿Ú²¿¼ş£¬µ«ÊÇÄÜ¹»×Ô¶¯µØµ÷ÕûÎÄ±¾µ½¸ø¶¨µÄ¿í¶È»ò±ÈÂÊ¡£
+<font color=#A52A2A size=2>æ³¨æ„ï¼šå¦‚æœä½¿ç”¨gridçš„è¯ï¼Œ å°±ä¸èƒ½ä½¿ç”¨packäº†</font>
 
-#--------messageboxÌáÊ¾¿ò-----------------------------------
-import tkinter.messagebox as msgbox	#×¢ÒâÕâ¸öÒªµ¥¶Àimport½øÀ´²Å¿ÉÒÔ
-msgbox.showinfo('Message', '¹§Ï²£¡')		(Python2ÖĞÎªtkMessagebox)
+    b1.grid(row=3,column=4, padx=10, pady=10)		# æ”¾åœ¨ç¬¬ä¸‰è¡Œï¼Œç¬¬å››åˆ—
+    mm1.grid(row=0,column=1)						# æ”¾åœ¨ç¬¬0è¡Œï¼Œç¬¬ä¸€åˆ—
+    grid(row=0,column=1,columnspan=4, sticky=W+E+N+S)	# è·¨äº†3åˆ—ï¼Œ ä¸€ä¸ªæ¨ªå‘å¾ˆå®½çš„æ§ä»¶ï¼Œåé¢æ˜¯å¯¹é½æ–¹å¼ï¼Œå¸¦æ‹‰ä¼¸
 
-
-#-------gridÍø¸ñ»¯ÅÅ°æ---------------------------------------------------
-
-×¢Òâ£ºÈç¹ûÊ¹ÓÃgridµÄ»°£¬ ¾Í²»ÄÜÊ¹ÓÃpackÁË
-b1.grid(row=3,column=4, padx=10, pady=10)	·ÅÔÚµÚÈıĞĞ£¬µÚËÄÁĞ
-mm1.grid(row=0,column=1)		·ÅÔÚµÚ0ĞĞ£¬µÚÒ»ÁĞ
-
-grid(row=0,column=1,columnspan=4, sticky=W+E+N+S)	¿äÁË3ÁĞ£¬ Ò»¸öºáÏòºÜ¿íµÄ¿Ø¼ş£¬ºóÃæÊÇ¶ÔÆë·½Ê½£¬´øÀ­Éì
-
-#---------Menu²Ëµ¥À¸Ìí¼Ó--------------------------
+#Menuèœå•æ æ·»åŠ 
     def hello():
         print("hello!")
 
@@ -105,19 +107,20 @@ grid(row=0,column=1,columnspan=4, sticky=W+E+N+S)	¿äÁË3ÁĞ£¬ Ò»¸öºáÏòºÜ¿íµÄ¿Ø¼ş£¬
 
     # display the menu
     root.config(menu=menubar)
-# --------ÎÄ¼şÑ¡Ôñ¿ò--------------------------------------------
-import tkinter.filedialog as fd
-	my_file_types = [('Python files', '*.py'), ('All files', '*')]
-        open1 = fd.Open(root, filetypes=my_file_types)
-        str1 = open1.show()			#ÕâÀï¾ÍÊÇÊä³öÎÄ¼şµÄÈ«Â·¾¶
-        Message(root, text=str1).grid(row=7, column=0)
+#æ–‡ä»¶é€‰æ‹©æ¡†
+    import tkinter.filedialog as fd
+    my_file_types = [('Python files', '*.py'), ('All files', '*')]
+    open1 = fd.Open(root, filetypes=my_file_types)
+    str1 = open1.show()								#è¿™é‡Œå°±æ˜¯è¾“å‡ºæ–‡ä»¶çš„å…¨è·¯å¾„
+    Message(root, text=str1).grid(row=7, column=0)
 
-#---------spinboxÊäÈë¿ò--------------------------
-input1 = Spinbox(root, from_=0, to=100)    Ö»ÄÜÊäÈë0-100µÄÊı×Ö
-input1 = Spinbox(values=(1, 2, 4, 8))      Ö»ÄÜÔÚÕâ¼¸¸öÊı×ÖÖ®¼äÌø×ª
-input1.get()			Í¨¹ıgetÀ´»ñÈ¡Öµ£¬Õâ¸öÖµ¿ÉÒÔÊÇÈÎÒâµÄÊı×Ö
-#-------------EntryÎÄ±¾ÊäÈë¿ò---------------------------------------------------------------
-input2 = Entry(root)
-input2.get()				Í¨¹ıgetÀ´»ñÈ¡ÎÄ±¾£¬¿ÉÒÔ±ä³ÉÃÜÂë£¬Ö§³ÖÑéÖ¤£¬±ä³ÉÖ»¶Á
-#----------------------------------------------------------------------------
-root.mainloop()
+#spinboxè¾“å…¥æ¡†
+    input1 = Spinbox(root, from_=0, to=100)		# åªèƒ½è¾“å…¥0-100çš„æ•°å­—
+    input1 = Spinbox(values=(1, 2, 4, 8))  		# åªèƒ½åœ¨è¿™å‡ ä¸ªæ•°å­—ä¹‹é—´è·³è½¬
+    input1.get()								# é€šè¿‡getæ¥è·å–å€¼ï¼Œè¿™ä¸ªå€¼å¯ä»¥æ˜¯ä»»æ„çš„æ•°å­—
+#Entryæ–‡æœ¬è¾“å…¥æ¡†
+    input2 = Entry(root)
+    input2.get()				# é€šè¿‡getæ¥è·å–æ–‡æœ¬ï¼Œå¯ä»¥å˜æˆå¯†ç ï¼Œæ”¯æŒéªŒè¯ï¼Œå˜æˆåªè¯»
+
+# æœ€åmainloop
+    root.mainloop()
