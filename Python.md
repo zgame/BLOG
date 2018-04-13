@@ -94,7 +94,8 @@ set() set和list可以互相转换， set的速度比list快非常多
 	字符转数字 int(str)
 
 	除法根据前面的类型定义来计算结果的类型的 
-	1/2 = 0  # 根据1取整
+	1/2 = 0  # 根据1取整	# 这是python2
+	1/2 = 0.5	#这是python3
 
 	在编写sql语句的时候，如果日期转换用%就会报错，所以要用%%
 
@@ -277,7 +278,27 @@ cls是class的缩写
 
 ----
 
+# gevent
 
+	gevent	基于事件的非阻塞网络io高性能的Python并发框架	http://www.gevent.org/contents.html
+	gevent  是一个网络库：libevent是一个事件分发引擎，greenlet提供了轻量级线程的支持
+	gevent的特点总结是：事件驱动+协程+非阻塞IO，事件驱动值得是libvent对epool的封装，来基于事件的方式处理IO。
+	
+# python GIL 全局锁
+	
+	GIL导致python性能很差， 所以尽量用multiprocess替代Thread， 但是缺点是多进程不能共享变量， 导致操作复杂
+	
+# Twisted 
+	
+	严格遵循类继承结构的组织，非常像java
+	Twisted提供了很多协议的实现，过于复杂
+	Twisted是异步编程模型，后来出现了协程，使用起来更加方便快捷
+	
+# firefly引擎
 
+	sdf
+	
+---	
+	
 	
 	
