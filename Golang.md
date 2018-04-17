@@ -312,12 +312,60 @@
 	fmt.Println(Sqrt(-9))		//输出： 0 出错了，不能小于0
 
 
-### 文件外函数引用
+### 文件外函数引用，运行，编译
 
 	多个文件组成的项目，直接调用即可，编译的时候一起编译	//go run test.go main.go test2.go
 	程序只能有一个main入口点, 多文件的函数名不能重名
+	go build test.go main.go test2.go		//编译成exe
 
 
 ### 反射
 
-		
+
+### 并发
+
+	go 创建一个goroutine
+	
+
+### Channel
+
+	是Go中的一个核心类型，你可以把它看成一个管道，通过它并发核心单元就可以发送或者接收数据进行通讯(communication)。	
+
+	ch := make(chan int)
+	make(chan int, 100)
+	ch <- v    // 发送值v到Channel ch中
+	v := <-ch  // 从Channel ch中接收数据，并将数据赋值给v
+
+	chan T          // 可以接收和发送类型为 T 的数据
+	chan<- float64  // 只可以用来发送 float64 类型的数据
+	<-chan int      // 只可以用来接收 int 类型的数据
+	<-总是优先和最左边的类型结合。(The <- operator associates with the leftmost chan possible)
+	chan<- chan int    // 等价 chan<- (chan int)
+	chan<- <-chan int  // 等价 chan<- (<-chan int)
+	<-chan <-chan int  // 等价 <-chan (<-chan int)
+	chan (<-chan int)
+
+	
+	c := make(chan int)
+	defer close(c)
+	go func() { c <- 3 + 4 }()
+	i := <-c
+	fmt.Println(i)
+
+
+	x, ok := <-ch
+	x, ok = <-ch
+	var x, ok = <-ch	//如果OK 是false，表明接收的x是产生的零值，这个channel被关闭了或者为空。
+
+
+
+### 关键字
+
+	defer一般用于在函数结束时执行必要的处理工作。例如，关闭文件描述符，关闭网络连接等等。
+	函数中可以定义多个defer，执行的时候按照先进后出的顺序。
+
+	go:用于并行
+	chan用于channel通讯
+	select：用于选择不同类型的通讯
+
+	map用于声明自定义类型
