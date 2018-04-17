@@ -69,6 +69,16 @@
 	fmt.Printf("sdfsdf --:%s", ss)						//输出格式化
 	fmt.Println("")										//换行
 
+### 字符串
+
+	// int转换成字符串
+	x := 123
+	y := fmt.Sprintf("%d", x)
+	// 字符串转换成int
+	x, err := strconv.Atoi("123")
+
+ 
+
 
 ### 变量声明和赋值
 
@@ -234,6 +244,15 @@
 	    }
 	}
 
+	//可变参，参数数量可变
+	func sum(vals...int) int {
+	total := 0
+	for _, val := range vals {
+	total += val
+	}
+	return total
+	}
+
 
 ### 方法 (类的成员函数)
 
@@ -265,6 +284,19 @@
 	
 	var Book1 Books        /* 声明 Book1 为 Books 类型 */
 	Book1.title = "Go 语言"
+
+
+	//结构体的嵌入， 
+	type Circle struct {
+	Point		//匿名嵌入， 包含 X,Y
+	Radius int
+	}
+	type Wheel struct {
+	Circle		//匿名嵌入
+	Spokes int
+	}
+	var w Wheel
+	w.X = 8		//这样就不用写全路径了
 
 ### 接口
 
@@ -310,6 +342,10 @@
 
 
 	fmt.Println(Sqrt(-9))		//输出： 0 出错了，不能小于0
+
+### panic
+
+	虽然Go的panic机制类似于其他语言的异常，但panic的适用场景有一些不同。由于panic会引起程序的崩溃，因此panic一般用于严重错误
 
 
 ### 文件外函数引用，运行，编译
@@ -369,3 +405,11 @@
 	select：用于选择不同类型的通讯
 
 	map用于声明自定义类型
+
+
+### websocket
+
+	https://github.com/golang/net	下载repository到gopath目录$GOPATH/src/golang.org/x/net下面
+	https://github.com/golang-samples/websocket	下载例子
+
+### 
