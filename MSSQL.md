@@ -63,6 +63,10 @@
 	VARCHAR，NVARCHAR，TEXT 不定长，空间小，速度慢，无需处理
 	NCHAR、NVARCHAR、NTEXT处理Unicode码
 
+# 字符串拼接
+
+	concat('','')
+
 ---
 
 
