@@ -412,4 +412,35 @@
 	https://github.com/golang/net	下载repository到gopath目录$GOPATH/src/golang.org/x/net下面
 	https://github.com/golang-samples/websocket	下载例子
 
+### json
+
+	将一个Go语言中类似movies的
+	结构体slice转为JSON的过程叫编组（marshaling）。
+
+	//结构体的成员首字母一定要大写
+
+	type book struct {
+		Id   int
+		Name string
+		Li   []int
+	}
+
+	var book1 book
+	book1.Id = 31
+	book1.Name = "SS"
+	book1.Li = []int{1,2,3,4}
+
+	data, err := json.MarshalIndent(book1, "", " ")
+	if err != nil {
+		log.Fatalf("JSON marshaling failed: %s", err)
+	}
+	fmt.Printf("%s\n", data)
+
+	var book2 book
+	if err := json.Unmarshal(data, &book2); err != nil {
+		log.Fatalf("JSON unmarshaling failed: %s", err)
+	}
+	fmt.Println(book2) 
+
+
 ### 
