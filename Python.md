@@ -301,7 +301,7 @@ cls是class的缩写
 	
 # firefly引擎
 
-	sdf
+	采用Twisted， gevent开发的引擎，很久不维护
 	
 ---	
 	

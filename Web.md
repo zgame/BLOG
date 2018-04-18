@@ -1,3 +1,4 @@
+
 #HTML标签
 
 	<html>	定义 HTML 文档
@@ -11,6 +12,7 @@
 	<p>这是一个段落。</p>
 	<a href="http://www.w3cschool.cn">这是一个链接</a>
 	<img src="w3cschool.png" width="104" height="142">
+
 
 ### HTML head 元素	
 
