@@ -101,3 +101,18 @@ FishManager_form.cpp
 
 	生成鱼的各种阵
 
+
+
+# 白名单和维护逻辑
+
+	游戏服务器OnEventControl,控制事件
+	CT_CONTROL_SAVE_SERVER被通知游戏服务器维护
+	CServerRule::SetForfendGameEnter(m_pGameServiceOption->llServerRule, true);  //设置不能进入
+
+	CT_LOAD_SERVICE_CONFIG被通知加载配置，并关闭维护状态
+
+	白名单的判断有问题，一共5个地方要改（游戏服务器的OnTCPNetworkSubLogonUserID, 登录服务器的DoSDKLogin,OnTCPNetworkSubMBGuessLogin,OnTCPNetworkSubMBRegisterAccounts,OnTCPNetworkSubMBLogonAccounts）
+
+
+
+	
