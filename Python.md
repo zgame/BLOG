@@ -106,6 +106,7 @@ set() set和list可以互相转换， set的速度比list快非常多
 	1/2 = 0.5	#这是python3
 
 	在编写sql语句的时候，如果日期转换用%就会报错，所以要用%%
+	round(0.3433, 2)	# 0.34 小数点保留后两位
 
 ---
 
@@ -212,6 +213,7 @@ Python2的写法用的是
 
     def __str__(self):
         return self.name
+	result = str(request, encoding='utf-8')
 	
 # 2.7字符串转化
 
@@ -303,6 +305,83 @@ cls是class的缩写
 # byte
 
 	文件和网络经常读取数据流，读出到byte数组之后， 可以通过byte[:10]对数组进行分割， 然后struct进行转换和处理
+
+
+# 协程
+
+	import asyncio
+
+	async def loopt():
+	    while True:
+	        print("sssssss")
+	        await asyncio.sleep(1)
+	        print("111")
+	        await asyncio.sleep(1)
+	
+	asyncio.get_event_loop().run_until_complete(loopt())
+	asyncio.get_event_loop().run_forever()
+
+# 多进程
+
+	from multiprocessing import Process
+	import time
+	
+	def piao(s):
+	    print("111111")
+	    time.sleep(1)
+	
+	def piao2(s):
+	    print('2222222222')
+	    time.sleep(1)
+	
+	def piao3(s):
+	    print('33')
+	    time.sleep(1)
+	
+	def main():
+	    p1 = Process(target=piao, args=(1,))
+	    p2 = Process(target=piao2, args=(1,))
+	    p3 = Process(target=piao3, args=(1,))
+	
+	    p1.start()
+	    p2.start()
+	    p3.start()
+	
+	if __name__ == '__main__':
+	    main()
+
+# 多线程
+
+	import threading
+	import time
+	class myThread(threading.Thread):  # 继承父类threading.Thread
+	    def __init__(self, threadID, name, counter):
+	        threading.Thread.__init__(self)
+	        self.threadID = threadID
+	        self.name = name
+	        self.counter = counter
+	
+	    def run(self):  # 把要执行的代码写到run函数里面 线程在创建后会直接运行run函数
+	        while True:
+	            time.sleep(1)
+	            print("%s: %s" % (self.name, time.ctime(time.time())))
+	
+	thread1 = myThread(1, "Thread-1", 1)
+	thread2 = myThread(2, "Thread-2", 2)
+	
+	thread1.start()
+	thread2.start()
+
+	def pp():
+	    while 1:
+	        print("2222")
+	        time.sleep(1)
+	
+	
+	thread3 = threading.Thread(target=pp,args=())
+	thread3.start()
+
+
 
 
 ----

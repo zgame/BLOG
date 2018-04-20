@@ -44,6 +44,7 @@ https://github.com/google/protobuf/releases
 	newbook = bk.AddressBook()
 	newbook.ParseFromString(sss)
 	print(newbook)
+	print(newbook.people.id)
 
 ### 输出
 
