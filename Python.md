@@ -300,6 +300,10 @@ cls是class的缩写
 	print repr(buffer)
 	print struct.unpack("!ihb", buffer)
 
+# byte
+
+	文件和网络经常读取数据流，读出到byte数组之后， 可以通过byte[:10]对数组进行分割， 然后struct进行转换和处理
+
 
 ----
 
