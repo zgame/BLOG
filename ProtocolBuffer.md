@@ -6,6 +6,11 @@ https://github.com/google/protobuf/releases
 设置环境变量
 
 
+# 编辑工具
+
+	eclipse有专门的插件可以用来高亮编辑
+
+
 ###编译
 
 	cd 到文件目录

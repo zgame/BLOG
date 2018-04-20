@@ -1,3 +1,6 @@
+# 包管理
+
+	python的包在Lib/site-packages目录下面， 自己的目录copy给别人就可以了
 
 
 # 字符串也是数组
@@ -280,6 +283,23 @@ cls是class的缩写
 	安装python3的目录下面python.exe改名为python3.exe
 	大部分代码在调用str = unicode(str, "utf-8")的改为调用自定义接口函数zsw_python2_3_unicode_str(str)
 	接口里面会定义平台不同使用的函数 ，也是分开的文件， 在启动的时候， import进去的
+
+
+# struct
+
+	python中的struct主要是用来处理C结构数据的，读入时先转换为Python的字符串类型，然后再转换为Python的结构化类型，比如元组(tuple)啥的~。一般输入的渠道来源于文件或者网络的二进制流。
+
+	import struct
+	# native byteorder
+	buffer = struct.pack("ihb", 1, 2, 3)
+	print repr(buffer)
+	print struct.unpack("ihb", buffer)
+	# data from a sequence, network byteorder
+	data = [1, 2, 3]
+	buffer = struct.pack("!ihb", *data)		//网络字节序
+	print repr(buffer)
+	print struct.unpack("!ihb", buffer)
+
 
 ----
 

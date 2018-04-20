@@ -38,9 +38,39 @@
 
 	GetBuffer，MFC函数，这个函数是为一个CString对象重新获取其内部字符缓冲区的指针，返回的LPTSTR为非const的，从而允许直接修改CString中的内容。
 
----
 
 	ZeroMemory // 内存地址清零
+
+# MFC
+
+	InitCommonControlsex 如果一个运行在 Windows XP 上的应用程序清单指定要使用 ComCtl32.dll 版本 6 或更高版本来启用可视化方式
+
+	AfxSocketInit()MFC中的函数 AfxSocketInit() 包装了函数 WSAStartup(), 在支持WinSock的应用程序的初始化函数IninInstance()中调用AfxSocketInit()进行初始化, 程序则不必调用WSACleanUp()
+
+	AfxInitRichEdit2() 调用此函数加载 RICHED20.DLL，并初始化 2.0 版的 rich edit 控件。
+
+	WSAStartup，即WSA(Windows Sockets Asynchronous，Windows异步套接字)的启动命令。
+
+	AfxEnableControlContainer()函数是允许应用程序作为控件容器来使用
+
+	利用GetPrivateProfileString读取配置文件(.ini)
+	GetPrivateProfileString("NETWORK", "LocalHost", "", add, sizeof(add), "e:\\test.ini");  
+
+
+# socket
+
+	如果称某个系统所采用的字节序为主机字节序，则它可能是小端模式的，也可能是大端模式的。 
+	而端口号和IP地址都是以网络字节序存储的，不是主机字节序，网络字节序都是大端模式。 
+	要把主机字节序和网络字节序相互对应起来，需要对这两个字节存储优先顺序进行相互转化。 
+	这里用到四个函数：htons(),ntohs(),htonl()和ntohl(). 
+	这四个地址分别实现网络字节序和主机字节序的转化，这里的h代表host,n代表network，s代表short，l代表long。 
+
+	htonl 表示 host to network long ，用于将主机 unsigned int 型数据转换成网络字节顺序； 
+	htons 表示 host to network short ，用于将主机 unsigned short 型数据转换成网络字节顺序； 
+	ntohl、ntohs 的功能分别与 htonl、htons 相反。
+
+
+
 	
 
 
