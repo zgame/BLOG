@@ -383,6 +383,153 @@ cls是class的缩写
 
 
 
+---
+
+# socket
+
+### client
+
+	# 导入 socket、sys 模块
+	import socket
+	import sys
+	
+	# 创建 socket 对象
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	
+	# 获取本地主机名
+	host = socket.gethostname()
+	
+	# 设置端口好
+	port = 9999
+	
+	# 连接服务，指定主机和端口
+	s.connect((host, port))
+	
+	
+	msg = '我来了！' + "\r\n"
+	s.send(msg.encode('utf-8'))
+	# 接收小于 1024 字节的数据
+	msg = s.recv(1024)
+	
+	s.close()
+	
+	print (msg.decode('utf-8'))
+	
+	
+	# 跟C服务器的数据格式同步问题
+	import struct
+	
+	# native byteorder
+	buffer = struct.pack("BBHHHH", 0, 1, 0, 1100, 3, 0)
+	print(buffer)
+	print(struct.unpack("BBHHHH", buffer))
+	# data from a sequence, network byteorder
+	data = [0, 1, 0, 1100, 10, 0]
+	buffer = struct.pack("!BBHHHH", *data)
+	print(repr(buffer))
+	print(struct.unpack("!BBHHHH", buffer))
+
+###server
+
+	# 创建 socket 对象
+	serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	
+	# 获取本地主机名
+	host = socket.gethostname()
+	port = 9999
+	
+	# 绑定端口
+	serversocket.bind((host, port))
+	
+	# 设置最大连接数，超过后排队
+	serversocket.listen(5)
+	
+	while True:
+	    # 建立客户端连接
+	    clientsocket, addr = serversocket.accept()
+	    data = clientsocket.recv(1024)  # 把接收的数据实例化
+	
+	    print(data)
+	    print("连接地址: %s" % str(addr))
+	
+	    msg = '欢迎！' + "\r\n"
+	    clientsocket.send(msg.encode('utf-8'))
+	    clientsocket.close()
+
+
+# websocket
+
+###server
+
+	import asyncio
+	import websockets
+	import procotol.books_pb2 as bk
+	
+	async def hello(websocket, path):
+	    name = await websocket.recv()
+	    print("< {}".format(name))
+	    await websocket.send(name)
+	    print("> {}".format(name))
+	
+	start_server = websockets.serve(hello, 'localhost', 8765)
+	
+	asyncio.get_event_loop().run_until_complete(start_server)
+	asyncio.get_event_loop().run_forever()
+	
+
+
+###client
+
+	# http://websockets.readthedocs.io/en/stable/intro.html
+	
+	import asyncio
+	import websockets
+	from procotol.test_person import PromptForAddress
+	import procotol.books_pb2 as bk
+	
+	async def hello():
+	    async with websockets.connect('ws://localhost:8765') as websocket:
+	        address1 = bk.AddressBook()
+	        PromptForAddress(address1.people.add())
+	        name = address1.SerializeToString()
+	        await websocket.send(name)
+	        print("> {}".format(name))
+	
+	        greeting = await websocket.recv()
+	        print("< {}".format(greeting))
+	
+	        address1.ParseFromString(name)
+	        print(address1)
+	
+	
+	asyncio.get_event_loop().run_until_complete(hello())
+
+
+# protocol buffer
+
+	import procotol.books_pb2 as bk
+	
+	def PromptForAddress(person):
+	  person.id = 20
+	  person.name = "333"
+	  person.email = 'sdfsdfsdf'
+	
+	  phone_number = person.phones.add()
+	  phone_number.number = '5555555555'
+	  phone_number.type = bk.Person.WORK
+	
+	
+	
+	address_book = bk.AddressBook()
+	PromptForAddress(address_book.people.add())
+	
+	sss = address_book.SerializeToString()
+	print(sss)
+	
+	newbook = bk.AddressBook()
+	newbook.ParseFromString(sss)
+	print(newbook)
+
 
 ----
 
