@@ -62,3 +62,15 @@ https://github.com/google/protobuf/releases
 	  }
 	}
 
+
+
+# golang
+
+	先下载编译工具
+	go get -u github.com/golang/protobuf/protoc-gen-go
+
+	会在GOPATH/bin目录下面新建一个exe文件
+	设置GOPATH/bin目录添加为系统path
+
+	cd到proto文件目录下面，然后再编译：protoc --go_out=. *.proto
+
