@@ -42,7 +42,8 @@
 
 #  语法
 
-### 入门  
+  
+### import
 
 	package main
 	//GoLand编辑器会自动引入包，不需要手动填写
@@ -54,6 +55,11 @@
 	package 别名：
 	// 为fmt起别名为fmt2
 	import fmt2 "fmt"
+
+	import不同的包名的时候， 包名要跟目录名一样， 然后引用目录就可以了
+	import (""./tutorial"")		tutorial目录下面是package tutorial的go代码
+
+### 入门
 
 	// 常量定义
 	const PI = 3.14
