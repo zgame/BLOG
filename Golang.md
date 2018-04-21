@@ -1,3 +1,10 @@
+# 进程、线程、协程的关系和区别：
+
+	进程拥有自己独立的堆和栈，既不共享堆，亦不共享栈，进程由操作系统调度。
+	线程拥有自己独立的栈和共享的堆，共享堆，不共享栈，线程亦由操作系统调度(标准线程是的)。
+	协程和线程一样共享堆，不共享栈，协程由程序员在协程的代码里显示调度。
+	
+
 # Web框架
 
 ### Revel
@@ -495,8 +502,94 @@ client
 
 ### socket
 
+server
 
+	func main() {
+		service := "172.16.140.63:8081"
+		listener, err := net.Listen("tcp", service)
+		checkError(err)
+		for {
+			conn, err := listener.Accept()
+			if err != nil {
+				continue
+			}
+			handlerClient(conn)
+			go handler_timer(conn)
+		}
+	}
+	func handler_timer(conn net.Conn)  {
+		for {
+			sInfo := "I am server, tick！"
+			clientInfo := []byte(sInfo)
+			_, err := conn.Write(clientInfo)
+			fmt.Println("send:"+sInfo)
+			checkError(err)
+	
+			time.Sleep(1*time.Second)
+		}
+	}
+	
+	func handlerClient(conn net.Conn) {
+		//defer conn.Close()
+	
+		buf := make([]byte,1024) //定义一个切片的长度是1024。
+		n,err :=conn.Read(buf)
+		//result, err := ioutil.ReadAll(conn)
+		checkError(err)
+		fmt.Println("收到客户端消息："+string(buf[:n]))
+	
+		sInfo := "你已经连接服务器，你的消息是！"+string(buf[:n])
+		clientInfo := []byte(sInfo)
+		_,err = conn.Write(clientInfo)
+		checkError(err)
+	}
+	
+	func checkError(err error) {
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Fatal error: %s", err.Error())
+			os.Exit(1)
+		}
+	}
+
+client
+
+	func main() {
+		service := "172.16.140.63:8081"
+		conn, err := net.Dial("tcp", service)
+		checkError(err)
+	
+		_, err = conn.Write([]byte("我是客户端!"))
+		checkError(err)
+	
+		for{
+			go handlerRead(conn)
+			time.Sleep(1*time.Second)
+		}
+		//defer conn.Close()  //断开TCP链接。
+	}
+	
+	func handlerRead(conn net.Conn) {
+		buf := make([]byte,1024) //定义一个切片的长度是1024。
+		n,err :=conn.Read(buf)
+	
+		if err != nil && err != io.EOF {  //io.EOF在网络编程中表示对端把链接关闭了。
+			log.Fatal(err)
+		}
+		fmt.Println(string(buf[:n])) //将接受的内容都读取出来。
+		fmt.Println("")
+	}
 
 ### protocol buffer
 
 
+
+### UI
+
+	https://github.com/lxn/walk
+
+
+### go get git
+
+	https://github.com/golang/go/wiki/GoGetTools
+
+###
