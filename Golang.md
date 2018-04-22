@@ -43,23 +43,23 @@
 #  语法
 
   
-### import
+# import
 
 	package main
-	//GoLand编辑器会自动引入包，不需要手动填写
-	import "fmt"	
+	
+	import "fmt"	//GoLand编辑器会自动引入包，不需要手动填写
 	func main(){
 		fmt.Println("dddddddddddddd")
 	}
 
 	package 别名：
-	// 为fmt起别名为fmt2
-	import fmt2 "fmt"
+	
+	import fmt2 "fmt"	// 为fmt起别名为fmt2
 
 	import不同的包名的时候， 包名要跟目录名一样， 然后引用目录就可以了
 	import (""./tutorial"")		tutorial目录下面是package tutorial的go代码
 
-### 入门
+# 入门
 
 	// 常量定义
 	const PI = 3.14
@@ -75,14 +75,16 @@
 	// 接口的声明
 	type golang interface{}
 
-### 输出
+# 输出
 
 	fmt.Println("dddddddddddddd", "fffffff","33333")	//输出字符串连接
 	fmt.Println("d",":",balance)						//字符串连接带变量
 	fmt.Printf("sdfsdf --:%s", ss)						//输出格式化
 	fmt.Println("")										//换行
+	fmt.Printf("%v\n", p) 					// {1 2}	打印数组，切片，结构体都可以
+ 	fmt.Printf("%T\n", p) 					// main.point 打印类型
 
-### 字符串
+# 字符串
 
 	// int转换成字符串
 	x := 123
@@ -93,7 +95,7 @@
  
 
 
-### 变量声明和赋值
+# 变量声明和赋值
 
 	
 	var a					// = 使用必须使用先var声明例如：
@@ -147,22 +149,26 @@
 	0 1 2 ha ha 100 100 7 8
 
 # 数组
-
+	Go 数组的长度不可改变
 	var balance [10] float32
 	numbers := [6]int{1, 2, 3, 5} 
 	var balance = []float32{1000.0, 2.0, 3.4, 7.0, 50.0}	//[]或者[...]都可以
 
+	bb := []int{2,3,4}
+	fmt.Printf("%v",list2)
+
 	//初始化二维数组
-	a = [3][4]int{  
+	var a = [3][4]int{  
 	 {0, 1, 2, 3} ,   /*  第一行索引为 0 */
 	 {4, 5, 6, 7} ,   /*  第二行索引为 1 */
-	 {8, 9, 10, 11}   /*  第三行索引为 2 */
+	 {8, 9, 10, 11},   /*  第三行索引为 2 */
 	}
 
 # 切片
 
 	var identifier []type
 	var slice1 []type = make([]type, len)	// len 是数组的长度并且也是切片的初始长度。
+
 	slice1 := make([]type, len)		//简写为
 
 	numbers[1:4]	//从索引1(包含) 到索引4(不包含)
@@ -173,7 +179,7 @@
 	copy(numbers1,numbers)				// copy切片
 
 
-### map
+# map
 
 	/* 声明变量，默认 map 是 nil */
 	var map_variable map[key_data_type]value_data_type
@@ -193,7 +199,7 @@
 	delete(countryCapitalMap,"France")			//删除
 
 
-### 运算符
+# 运算符
 
 	&	返回变量存储地址	&a; 将给出变量的实际地址。
 	*	指针变量。	*a; 是一个指针变量
@@ -202,7 +208,7 @@
 	||	逻辑 OR 运算符。 如果两边的操作数有一个 True，则条件 True，否则为 False。	(A || B) 为 True
 	!	逻辑 NOT 运算符。 如果条件为 True，则逻辑 NOT 条件 False，否则为 True。	!(A && B) 为 True
 
-### 循环
+# 循环
 
 	import "fmt"func main() {
 	   for i := 1; i <= 9; i++ { // i 控制行，以及计算的最大值
@@ -219,7 +225,7 @@
 	}
 
 
-### 函数私有和公共
+# 函数私有和公共
 
 	函数名首字母小写即为 private :
 	func getId() {}
@@ -267,7 +273,7 @@
 	}
 
 
-### 方法 (类的成员函数)
+# 方法 (类的成员函数)
 
 	/* 定义结构体 */
 	type Circle struct {
@@ -285,18 +291,23 @@
 	  //c.radius 即为 Circle 类型对象中的属性
 	  return 3.14 * c.radius * c.radius
 	}
+# 结构体 	
 
-### 结构体 （类的成员变量）
+###结构体的成员首字母一定要大写，否则没法用json输出
+###结构体最好的输出方式就是json
 
 	type Books struct {
-	   title string
-	   author string
-	   subject string
-	   book_id int
+	   title string		//结构体的成员首字母一定要大写
+	   author string		//结构体的成员首字母一定要大写
+	   subject string		//结构体的成员首字母一定要大写
+	   book_id int			//结构体的成员首字母一定要大写
 	}
 	
 	var Book1 Books        /* 声明 Book1 为 Books 类型 */
 	Book1.title = "Go 语言"
+
+	//使用new创建一个Student对象,结果为指针类型
+	var s *Student = new(Student)
 
 
 	//结构体的嵌入， 
@@ -311,7 +322,49 @@
 	var w Wheel
 	w.X = 8		//这样就不用写全路径了
 
-### 接口
+
+	//结构体另外的定义方法
+	w = Wheel{Circle{Point{8, 8}, 5}, 20}
+	w = Wheel{
+	Circle: Circle{
+	Point: Point{X: 8, Y: 8},
+	Radius: 5,
+	},
+	Spokes: 20, // NOTE: trailing comma necessary here (and at Radius)
+	}
+
+
+
+# json
+
+	将一个Go语言中类似movies的
+	结构体slice转为JSON的过程叫编组（marshaling）。
+
+	type book struct {
+		Id   int			//结构体的成员首字母一定要大写
+		Name string			//结构体的成员首字母一定要大写
+		Li   []int			//结构体的成员首字母一定要大写
+	}
+
+	var book1 book
+	book1.Id = 31
+	book1.Name = "SS"
+	book1.Li = []int{1,2,3,4}
+
+	data, err := json.MarshalIndent(book1, "", " ")
+	if err != nil {
+		log.Fatalf("JSON marshaling failed: %s", err)
+	}
+	fmt.Printf("%s\n", data)
+
+	var book2 book
+	if err := json.Unmarshal(data, &book2); err != nil {
+		log.Fatalf("JSON unmarshaling failed: %s", err)
+	}
+	fmt.Println(book2) 
+
+
+# 接口
 
 	type Phone interface {
     call()
@@ -343,7 +396,7 @@
 	}
 
 
-### 错误处理
+# 错误处理
 
 	func Sqrt(f float64) (float64, error) {
 	if f < 0 {
@@ -355,28 +408,26 @@
 
 
 	fmt.Println(Sqrt(-9))		//输出： 0 出错了，不能小于0
-
-### panic
+## panic
 
 	虽然Go的panic机制类似于其他语言的异常，但panic的适用场景有一些不同。由于panic会引起程序的崩溃，因此panic一般用于严重错误
 
 
-### 文件外函数引用，运行，编译
+# 文件外函数引用，运行，编译
 
 	多个文件组成的项目，直接调用即可，编译的时候一起编译	//go run test.go main.go test2.go
 	程序只能有一个main入口点, 多文件的函数名不能重名
 	go build test.go main.go test2.go		//编译成exe
 
+## 反射
 
-### 反射
 
-
-### 并发
+# 并发
 
 	go 创建一个goroutine
 	
 
-### Channel
+# Channel
 
 	是Go中的一个核心类型，你可以把它看成一个管道，通过它并发核心单元就可以发送或者接收数据进行通讯(communication)。	
 
@@ -408,7 +459,7 @@
 
 
 
-### 关键字
+# 关键字
 
 	defer一般用于在函数结束时执行必要的处理工作。例如，关闭文件描述符，关闭网络连接等等。
 	函数中可以定义多个defer，执行的时候按照先进后出的顺序。
@@ -420,12 +471,12 @@
 	map用于声明自定义类型
 
 
-### websocket
+# websocket
 
 	https://github.com/golang/net	下载repository到gopath目录$GOPATH/src/golang.org/x/net下面
 	https://github.com/golang-samples/websocket	下载例子
 
-server
+###server
 
 	func echoHandler(ws *websocket.Conn) {
 		msg := make([]byte, 512)
@@ -450,7 +501,7 @@ server
 		}
 	}
 
-client
+###client
 
 	func main() {
 	ws, err := websocket.Dial("ws://localhost:8080/echo", "", "http://11.com")
@@ -475,40 +526,10 @@ client
 
 
 
-### json
 
-	将一个Go语言中类似movies的
-	结构体slice转为JSON的过程叫编组（marshaling）。
+# socket
 
-	//结构体的成员首字母一定要大写
-
-	type book struct {
-		Id   int
-		Name string
-		Li   []int
-	}
-
-	var book1 book
-	book1.Id = 31
-	book1.Name = "SS"
-	book1.Li = []int{1,2,3,4}
-
-	data, err := json.MarshalIndent(book1, "", " ")
-	if err != nil {
-		log.Fatalf("JSON marshaling failed: %s", err)
-	}
-	fmt.Printf("%s\n", data)
-
-	var book2 book
-	if err := json.Unmarshal(data, &book2); err != nil {
-		log.Fatalf("JSON unmarshaling failed: %s", err)
-	}
-	fmt.Println(book2) 
-
-
-### socket
-
-server
+###server
 
 	func main() {
 		service := "172.16.140.63:8081"
@@ -557,7 +578,7 @@ server
 		}
 	}
 
-client
+###client
 
 	func main() {
 		service := "172.16.140.63:8081"
@@ -585,17 +606,82 @@ client
 		fmt.Println("")
 	}
 
-### protocol buffer
+# time
+
+	//时间戳 UnixNano的精度很高 , Unix()精度只到秒比较低
+	stamp := strconv.FormatInt(time.Now().UnixNano(),10)
+
+	t1 := time.Now()	//2018-04-22 14:27:28.7273956 +0800 CST m=+0.005000301
+	t2 := t1.Unix()	//1524378448
+	t3 := t1.UnixNano()	//1524378448727395600
+	t4 := t1.String()	//2018-04-22 14:27:28.7273956 +0800 CST m=+0.005000301
+	t5 := time.Millisecond		//1ms
+	t6:=time.Now().UnixNano() / int64(time.Millisecond)	//1524378448805
+	t7 := t1.Year()		//2018
+	t8 := t1.Format("2006-01-02 15:04:05")		//2018-04-22 14:32:05
+	t9 := time.Date(2017,2,4,5,7,8,0,time.Local)	//2017-02-04 05:07:08 +0800 CST
+
+# protocol buffer
+	
+	test := &t.AddressBook {
+		People:[]* t.Person{
+			{
+				Name:"zsw",
+				Id:20,
+				Email:"emaildd1",
+				Phones:[]*t.Person_PhoneNumber{
+					{
+						Number:"112",
+						Type:t.Person_PhoneType(t.Person_WORK),
+					},
+					{
+						Number:"119",
+						Type:t.Person_PhoneType(t.Person_HOME),
+					},
+				},
+			},
+			{
+				Name:"zsw2",
+				Id:2,
+				Email:"emaildd2",
+				Phones:[]*t.Person_PhoneNumber{
+					{
+						Number: "112",
+						Type:t.Person_WORK,
+					},
+				},
+			},
+		},
+	}
 
 
+	data, err := proto.Marshal(test)
+	if err != nil {
+		log.Fatal("marshaling error: ", err)
+	}
 
-### UI
+	fmt.Printf("%v",data)
+	fmt.Println("")
+	
+	newTest := &t.AddressBook{}
+	err = proto.Unmarshal(data, newTest)
+	if err != nil {
+		log.Fatal("unmarshaling error: ", err)
+	}
+	data_j, err := json.MarshalIndent(newTest, "", " ")
+	fmt.Printf("%s",data_j)
+	fmt.Println("")
+
+	
+
+
+# UI
 
 	https://github.com/lxn/walk
 
 
-### go get git
+# go get git
 
 	https://github.com/golang/go/wiki/GoGetTools
 
-###
+#

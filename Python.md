@@ -187,6 +187,13 @@ map也支持多个sequence，这就要求function也支持相应数量的参数�
 	row_day = datetime.datetime.strptime(str(row_date),'%Y-%m-%d')  #将date转换为str，在由str转换为datetime
 	(create_time-row_day).days
 
+	
+# time
+
+	print("time.time(): %f " %  time.time())      #time.time(): 1524393061.444515 
+	print(time.localtime( time.time() ))      # time.struct_time(tm_year=2018, tm_mon=4, tm_mday=22, tm_hour=18, tm_min=31, tm_sec=1, tm_wday=6, tm_yday=112, tm_isdst=0)
+	print(time.asctime( time.localtime(time.time()) ))    # Sun Apr 22 18:31:01 2018
+
 
 # 获取命令行参数
 
