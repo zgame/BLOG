@@ -366,18 +366,18 @@
 
 # 接口
 
-	type Phone interface {
+	type Phone interface {		//定义接口
     call()
 	}
 	
-	type NokiaPhone struct {
+	type NokiaPhone struct {	//定义结构1
 	}
 	
 	func (nokiaPhone NokiaPhone) call() {
 	    fmt.Println("I am Nokia, I can call you!")
 	}
 	
-	type IPhone struct {
+	type IPhone struct {		//定义结构2
 	}
 	
 	func (iPhone IPhone) call() {
@@ -385,7 +385,7 @@
 	}
 	
 	func main() {
-    var phone Phone
+    var phone Phone				//声明接口
 
     phone = new(NokiaPhone)
     phone.call()
@@ -678,6 +678,28 @@
 # UI
 
 	https://github.com/lxn/walk
+	安装
+	go get github.com/lxn/walk	
+	go get github.com/akavel/rsrc
+	rsrc -manifest test.manifest -o rsrc.syso
+
+	编辑和编译好manifest文件, 重命名test_ui.exe.manifest, 
+	注意： rsrc.syso或者test_ui.exe.manifest是用来编译用的， 所以目录下面有一个build.bat，里面写着go build
+	用goland编辑器的时候，在run设置里面不要设定运行文件，而是要选择运行设置，运行整个目录，就可以了，平时run的时候用Shift+f10
+
+	具体代码看https://github.com/zgame/GoLangCode/test_ui
+
+	walk.MsgBox(mw, "Value", value, walk.MsgBoxIconInformation)  //msgbox
+
+	databinding	 //弹出一个可以编辑很多控件的窗体，返回编辑数据
+	listbox			//列表选项，支持点击，双击
+	settinglist		// 类似excel表格的数据显示
+	logview			//日志文件的显示，带滚动条的编辑框
+	
+	布局非常容易布局， 想横着占一行就用HSplitter
+	平时就一直添加就是竖着增加了
+	默认控件就是比较小，但是如果整体窗体过大，会平均分配
+	如果想让某一个控件变大，设置Minsize就可以了
 
 
 # go get git
