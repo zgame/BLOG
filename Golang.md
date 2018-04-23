@@ -40,7 +40,10 @@
 
 ---
 
-#  语法
+#  设定path
+
+	设定好GOROOT和GOPATH到系统路径
+	GOPATH是引入库文件的存放地点
 
   
 # import

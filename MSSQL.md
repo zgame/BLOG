@@ -14,16 +14,6 @@
 	表满足以下条件时就是第三范式：所有非主字段都是依赖于主键
 
 
----
-
-# select
-
-	DISTINCT关键字与SELECT语句一起使用，以消除所有重复的记录和获取的唯一记录。
-	as 别名用法
-	TOP(1)	返回最上面的一行数据
-	count(*)	返回行数
-	select * from dbo.accounts where UserID like %zsw%   查找包含zsw字段的
-	select id=identity(int,1,1) ,name into #regtemp11 from table(nolock)	copy表到临时表，并新增一列列名为id的自增加列
 
 ---
 
@@ -81,10 +71,44 @@
 ---
 
 
+# 创建表
+
+	-- 判断要创建的表名是否存在 
+	if exists(select * from dbo.sysobjects where id = object_id(N'dbo.AaWhiteIPList') 
+		print 'exists'
+	else
+		begin
+			create table AaWhiteIPList(
+				ip varchar(15) not null default '',
+				comments varchar(100) null
+		end
+
+	
+# select
+
+	DISTINCT关键字与SELECT语句一起使用，以消除所有重复的记录和获取的唯一记录。
+	as 别名用法
+	TOP(1)	返回最上面的一行数据
+	count(*)	返回行数
+	select * from dbo.accounts where UserID like %zsw%   查找包含zsw字段的
+	select id=identity(int,1,1) ,name into #regtemp11 from table(nolock)	copy表到临时表，并新增一列列名为id的自增加列
+
+
 # update
 
 	update dbo.gamestoreinfo set androidcount = '40' where uid = '2003'   更新数据
 
+# insert
+
+	insert into dbo.AaWhiteIPList (ip,comments) values ('127.0.0.1','')
 
 
+# 存储过程和函数
+
+	区别很小， 存储过程可以返回多个参数， 函数限制比较多
+	Alter procedure dbo.GetWhiteList
+	as
+	begin
+		...
+	end
 
