@@ -39,6 +39,9 @@
     	listb2.insert(END, item)			
     listb2.pack()
 
+	list_all.delete(END,END)	//删除
+
+
 # 给list配合scroll
     sl = Scrollbar(root)						# 定义scroll
     sl.config(command=listb.yview)				# 设置跟list的关系

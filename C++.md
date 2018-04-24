@@ -56,6 +56,35 @@
 	利用GetPrivateProfileString读取配置文件(.ini)
 	GetPrivateProfileString("NETWORK", "LocalHost", "", add, sizeof(add), "e:\\test.ini");  
 
+# 编译
+
+	速度慢可以用联合编译工具incredibuild
+	
+# bat
+	
+	@echo off	
+	echo  -- 创建快捷方式
+	::创建快捷方式
+	set tp="%cd%\Debug.url"
+	echo [internetshortcut]>> %tp%
+	echo URL="E:\libs">>%tp%
+	echo IconIndex=4>>%tp%
+	echo IconFile=%SystemRoot%\system32\SHELL32.dll>>%tp%
+
+	启动exe
+	start LogService.exe
+	ping -n 2 127.0.0.1 > nul
+	start CenterServer.exe
+	ping -n 2 127.0.0.1 > nul
+
+	关闭exe
+	set "d=%cd:\=\\%\\"
+	@Wmic Process Where "Name='GameServer.exe' And ExecutablePath='%d%GameServer.exe'" Call Terminate
+
+# 调试
+
+	应用程序报错可以，调试->附件到进程进行查看
+
 
 # socket
 
