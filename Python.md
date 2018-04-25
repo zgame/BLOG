@@ -313,6 +313,11 @@ cls是class的缩写
 
 	文件和网络经常读取数据流，读出到byte数组之后， 可以通过byte[:10]对数组进行分割， 然后struct进行转换和处理
 
+	bytes跟string之间的转换
+	bytes_gb2312 = base_str.encode(encoding="gb2312")
+	str_from_gb2312 = bytes_gb2312.decode(encoding="gb2312")
+
+	2个bytes要连接在一起，+就可以了
 
 # 协程
 
