@@ -233,7 +233,7 @@
 	}
 
 
-# 函数私有和公共
+# 函数私有和公共(函数定义风格为驼峰， python为小写下划线)
 
 	函数名首字母小写即为 private :
 	func getId() {}
@@ -744,12 +744,24 @@
 	//Engine, err := xorm.NewEngine("odbc", "driver={SQL Server};Server="+ServerIP+";Database="+Database+";uid="+uid+";pwd="+pwd+";")
 	Engine, err := xorm.NewEngine("mysql", uid+":"+pwd+"@tcp("+ServerIP+")/"+Database+"?charset=utf8")
 
+	Engine.ShowSQL(true)	//调试的时候一定要把sql给显示出来，才方便调试
+
+	//表跟结构的映射
 	//数据库表名：test_ip , 字段ip
-	type Test_ip struct {				//结构名大写
-		Ip string
+	type Test_ip struct {				//结构名大写，注意 结构的item name也要大写才可以
+		Ip string	`xorm:"varchar(40)"`		//这里是建表用的，注意``是数字1前面的符号		
 	}
-	err = Engine.Sync(new(Test_ip))		//同步结构与表名
-	
+	err = Engine.Sync2(new(Test_ip))		//同步结构与表名，同步绑定的时候要注意上面结构的定义，首字母大写和备注
+
+	// 这里尤其要注意名称映射规则
+	//SnakeMapper 支持struct为驼峰式命名，表结构为下划线命名之间的转换，这个是默认的Maper； * 
+	//SameMapper 支持结构体名称和对应的表名称以及结构体field名称与对应的表字段名称相同的命名； * 
+	engine.SetMapper(core.SameMapper{})
+
+	engine.IsTableExist(new(AaWhiteIPList))	//判断是否存在这个表
+	engine.CreateTables(new(Aaa))		//创建一个Aaa表
+
+
 	var test_ii Test_ip
 	var test_iii []Test_ip
 	Engine.Get(&test_ii)		//获取单条数据
