@@ -182,6 +182,11 @@
 	copy(numbers1,numbers)				// copy切片
 
 
+	// 切片的删除函数，要自己写
+	mw.model.ip=append(mw.model.ip[:i],mw.model.ip[i+1:]...)
+
+
+
 # map
 
 	/* 声明变量，默认 map 是 nil */
@@ -422,7 +427,17 @@
 	程序只能有一个main入口点, 多文件的函数名不能重名
 	go build test.go main.go test2.go		//编译成exe
 
-## 反射
+# 反射
+
+# 单元测试
+
+	GoConvey
+	是一款针对Golang的测试框架，可以管理和运行测试用例，同时提供了丰富的断言函数，并支持很多 Web 界面特性。
+	func TestAdd(t *testing.T) {
+	    Convey("将两数相加", t, func() {
+	        So(Add(1, 2), ShouldEqual, 3)
+	    })
+	}
 
 
 # 并发
@@ -705,8 +720,58 @@
 	如果想让某一个控件变大，设置Minsize就可以了
 
 
+	HSplitter{			//横着布局
+				Children: []Widget{
+	VSplitter{			// 竖着布局
+						Children: []Widget{
+
+	//listbox
+	i := mw.lb.CurrentIndex()
+		if i>=0{					//每次获取玩index要判断一下，因为不选是-1
+	mw.model.PublishItemsReset()	// listbox每次需要更新的时候，就用这个函数来刷新一下
+
+
 # go get git
 
 	https://github.com/golang/go/wiki/GoGetTools
 
-#
+# SQL数据库
+
+	go get github.com/go-xorm/xorm
+	go get -u github.com/go-sql-driver/mysql	//也需要同时安装对应的数据库支持
+
+	//数据库连接
+	//Engine, err := xorm.NewEngine("odbc", "driver={SQL Server};Server="+ServerIP+";Database="+Database+";uid="+uid+";pwd="+pwd+";")
+	Engine, err := xorm.NewEngine("mysql", uid+":"+pwd+"@tcp("+ServerIP+")/"+Database+"?charset=utf8")
+
+	//数据库表名：test_ip , 字段ip
+	type Test_ip struct {				//结构名大写
+		Ip string
+	}
+	err = Engine.Sync(new(Test_ip))		//同步结构与表名
+	
+	var test_ii Test_ip
+	var test_iii []Test_ip
+	Engine.Get(&test_ii)		//获取单条数据
+	println(test_ii.Ip)
+	
+	Engine.Find(&test_iii)		//获取多条数据
+	println(len(test_iii))
+	println(test_iii[0].Ip)
+
+	_,err = engine.Exec("update test_ip set ip = ? where ip = ?", "192.2.0.0", "192.1.0.0")  // 更新数据
+
+	engine.Insert(&test_ii)  //插入单条，因为test_ii是单个结构，不是数组
+	engine.Insert(&test_iii)  //插入多条，因为test_iii是结构数组
+	
+	engine.Query("delete  from test_ip")		// 删除全部
+
+
+		
+
+# ini
+
+	go get github.com/go-ini/ini
+
+	f, _ := ini.Load("Setting.ini")
+	println(f.Section("author").Key("E-MAIL").Value())
