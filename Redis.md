@@ -77,6 +77,10 @@
 	//有序集合zset 和 set 一样也是string类型元素的集合,且不允许重复的成员。
 
 
+	incr // 对存储在指定key的数值执行原子的加1操作。
+	INCR mykey
+
+
 # 备份和恢复
 
 	save	
@@ -116,7 +120,9 @@
 # 事务
 
 	类似存储过程
-
+	multi
+	....
+	exec
 
 
 
@@ -129,6 +135,8 @@
 	https://godoc.org/github.com/gomodule/redigo/redis#pkg-examples
 
 	n, err := conn.Do("APPEND", "key", "value")
+	n, err = redis.String(c.Do("get", "key"))		//获取返回值
+
 
 	c.Send("SET", "foo", "bar")
 	c.Send("GET", "foo")
