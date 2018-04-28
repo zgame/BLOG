@@ -1,0 +1,194 @@
+
+
+# 基础
+
+	-- 注释
+
+	local tbl1 = {}		-- 定义局部变量
+	
+	-- 可以多变量赋值 ，下面就可以进行两个值的交换
+	x, y = y, x                     -- swap 'x' for 'y'
+
+	
+	
+
+# 表
+
+	-- 定义表 
+	a = {}			
+	a["key"] = "value"		
+	key = 10
+	a[key] = 22
+	a[key] = a[key] + 11
+
+	-- 语法糖
+	a["key"] 也可以写成 a.key
+
+
+	-- 在末尾插入
+	table.insert(fruits,"mango")
+	
+	-- 在索引为 2 的键处插入
+	table.insert(fruits,2,"grapes")
+	
+	-- 删除最后一个
+	table.remove(fruits)
+	table.remove(fruits,1)	-- 删除1位置上的
+	
+	
+	table.sort(fruits)
+
+
+# 条件判断
+
+	-- and or not	
+
+	if( 布尔表达式 1)
+	then
+	   --[ 在布尔表达式 1 为 true 时执行该语句块 --]
+	
+	else if( 布尔表达式 2)
+	   --[ 在布尔表达式 2 为 true 时执行该语句块 --]
+	
+	else if( 布尔表达式 3)
+	   --[ 在布尔表达式 3 为 true 时执行该语句块 --]
+	else 
+	   --[ 如果以上布尔表达式都不为 true 则执行该语句块 --]
+	end	
+
+
+# 循环
+
+	a3 = {}
+	for i = 1, 10 do
+	    a3[i] = i
+	end
+
+	--打印数组a的所有值  
+	for i,v in ipairs(a) 
+		do print(v) 
+	end  
+
+	--打印哈希表的所有键值
+	for k, v in pairs(a) do
+	    print(k .. " : " .. v)
+	end
+
+
+	--不同于其他语言的数组把 0 作为数组的初始索引，在 Lua 里表的默认初始索引一般以 1 开始。
+
+
+# 函数
+
+	-- 函数里面定义的全局变量， 也是全局变量， 所以一定要用local
+	
+	-- 函数可以被赋值成一个变量， 也可以作为参数传递到另外的函数中
+
+	-- 多返回值跟python，golang一样
+
+	-- 可变参
+	function average(...)
+	   result = 0
+	   local arg={...}
+	   for i,v in ipairs(arg) do
+	      result = result + v
+	   end
+	   print("总共传入 " .. #arg .. " 个数")
+	   return result/#arg
+	end
+
+	-- 函数结束要有end
+
+	
+# 字符串
+
+	-- 字符串连接  ..
+	-- 字符串长度 #
+
+	string.format("the value is:%d",4)
+	the value is:4
+
+
+# model
+
+	-- 文件名为 module.lua
+	-- 定义一个名为 module 的模块
+	module = {}
+	 
+	-- 定义一个常量
+	module.constant = "这是一个常量"
+	 
+	-- 定义一个函数
+	function module.func1()
+	    io.write("这是一个公有函数！\n")
+	end
+	 
+	local function func2()
+	    print("这是一个私有函数！")
+	end
+	 
+	 
+	return module 
+	
+	--- 其他模块调用
+	local m = require("module")
+	 
+	print(m.constant)
+	 
+	m.func3()
+
+
+
+# 类
+
+
+	Shape = {area = 0}
+
+	
+	function Shape:new (o,side)			-- 基础类方法 new
+	  o = o or {}
+	  setmetatable(o, self)
+	  self.__index = self
+	  side = side or 0
+	  self.area = side*side;
+	  return o
+	end
+
+	
+	function Shape:printArea ()			-- 基础类方法 printArea
+	  print("面积为 ",self.area)
+	end
+	
+	
+	myshape = Shape:new(nil,10)		-- 创建对象
+	myshape:printArea()
+	
+	Square = Shape:new()		-- 派生类
+	function Square:new (o,side)
+	  o = o or Shape:new(o,side)
+	  setmetatable(o, self)
+	  self.__index = self
+	  return o
+	end
+	
+	
+	function Square:printArea ()		-- 派生类方法 printArea
+	  print("正方形面积为 ",self.area)
+	end
+	
+	
+	mysquare = Square:new(nil,10)		-- 创建派生类对象
+	mysquare:printArea()
+	
+
+
+
+# 命名规范
+
+
+
+	1．所有lua文件命名时使用小写字母、下划线
+	2．类名、变量名尽可能使用有意义的英文，类名使用帕斯卡命名法，变量名使用骆驼式命名法 
+	3．常量、消息号定义时用大写，单词间 _ 分割  eg:KIND_PET_FOOD
+	4．枚举值定义时 加前缀 enum_ 
+	5. 函数名使用骆驼式命名法
