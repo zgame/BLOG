@@ -1,3 +1,32 @@
+# 安装
+
+	Ubuntu上安装MySQL非常简单只需要几条命令就可以完成。
+
+	sudo apt-get install mysql-server
+	apt-get isntall mysql-client
+	sudo apt-get install libmysqlclient-dev
+	
+	安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否安装成功：
+	sudo netstat -tap | grep mysql
+	tcp        0      0 localhost:mysql         *:*                     LISTEN      19217/mysqld   
+
+	
+	mysql -u root -p		//登录
+	show databases;			//显示所有数据库
+	create database zsw_database;	//创建新的数据库
+	use  zsw_database;			//切换进入数据库
+	show tables;			//显示表
+
+	create table zsw_table(			//创建表结构
+		ip varchar(45) not null 
+     )engine=innodb;
+	
+	
+
+	
+
+
+
 # 远程登录的允许
 
 	在装有MySQL的机器上登录MySQL mysql -u root -p密码
