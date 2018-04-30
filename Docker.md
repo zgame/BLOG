@@ -1,3 +1,8 @@
+# 国内镜像
+
+	https://get.daocloud.io/
+
+
 
 # 安装windows
 
