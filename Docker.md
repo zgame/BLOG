@@ -3,6 +3,10 @@
 	https://get.daocloud.io/
 
 
+# ubuntu 安装
+
+	curl -sSL https://get.docker.com/ | sh 
+
 
 # 安装windows
 
