@@ -59,23 +59,35 @@
 	HMSET zsw:1 username w3cschool.cn password w3cschool.cn points 200
 	HGETALL zsw:1
 
-	keys *zsw*	//列出所有包含zsw的key
-	keys ***    // list all
-
 	//hdel:删除指定hash的field。
 	hdel user:002 sex
 
+
+	keys *zsw*	//列出所有包含zsw的key
+	keys ***    // list all
+	keys *    
+
+
 	
 	// 列表--------------------------------
-	lpush list_name sdfsdf
-	lrange list_name 0 10
+	lpush list_name sdfsdf			//增加元素到列表头部
+	rpush list_name value			// 增加元素到列表尾部
+	lrange list_name 0 10			// 列出列表
+	llen list_name					// 返回列表长度
+	
+	
 
 	// set 集合--------------------------
-	sadd set_name redis
-	smembers redis
+	sadd zsw_set value			// 增加元素
+	smembers zsw_set			//列出所有元素
+	srem zsw_set value1 value2		//删除元素
 
 	//有序集合zset 和 set 一样也是string类型元素的集合,且不允许重复的成员。
-
+	zadd zsw_zset 0 value			// 插入到0位置
+	zrange zsw_zset 0 10			// 0-10范围的数据输出
+	zScore zsw_zset value			// 返回value的score（排序编号）
+	zRemRangeByRank zsw_zset 20 22   // 删除范围20-22的所有元素
+	zRangeByScore zsw_zset 0 22		// 按照范围返回排序之后的元素列表, 跟zrange一样啊
 
 	incr // 对存储在指定key的数值执行原子的加1操作。
 	INCR mykey
@@ -138,22 +150,26 @@
 	// 例子
 	https://godoc.org/github.com/gomodule/redigo/redis#pkg-examples
 
+	
+	// string
 	n, err := conn.Do("APPEND", "key", "value")
 	n, err = redis.String(c.Do("get", "key"))		//获取返回值
 
-
+	// pipline
 	c.Send("SET", "foo", "bar")
 	c.Send("GET", "foo")
 	c.Flush()
 	c.Receive() // reply from SET
-	v, err = c.Receive() // reply from GET
+	v, err = redis.String(c.Receive())		 // reply from GET
 
-
+	// 存储过程
 	c.Send("MULTI")
 	c.Send("INCR", "foo")
 	c.Send("INCR", "bar")
 	r, err := c.Do("EXEC")
 	fmt.Println(r) // prints [1, 1]
+
+	
 
 
 ---
@@ -199,11 +215,6 @@
 
 
 
-
-
-
-
-
 # windows版本redis
 
 	https://github.com/MicrosoftArchive/redis/releases
@@ -212,5 +223,9 @@
 	redis-server.exe redis.windows.conf		//开启服务器
 	
 	redis-cli.exe -h 127.0.0.1 -p 6379 			//开启客户端
+
+	redis-cli   //即可
+
+	有redis windows的gui， RedisClient软件可以更方便的查看redis数据
 
 	
