@@ -90,3 +90,10 @@
 	        error_log /dev/null;
 	    }
 	}
+
+
+
+# 命令
+
+	ps -ef | grep nginx
+	service nginx -s  reload

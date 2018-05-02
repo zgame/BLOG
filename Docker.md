@@ -47,3 +47,19 @@
 	docker inspect id。。。   //用id查看容器的具体信息
 
 	
+# toolbox 设置镜像
+
+
+	docker-machine ssh default
+	sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='--registry-mirror=http://56768f80.m.daocloud.io  |g" /var/lib/boot2docker/profile
+	exit
+	docker-machine restart default
+
+
+# win10 设置镜像
+
+	setting
+
+	registry-mirrors
+
+	http://56768f80.m.daocloud.io 
