@@ -31,3 +31,19 @@
 
 	docker pull learn/tutorial   //下载容器	learn/tutorial	
 
+	docker run learn/tutorial echo "hello word"  // 运行容器
+
+	docker run learn/tutorial apt-get install -y ping   // 容器中安装新的应用
+
+	docker ps -l		//获得容器的id
+
+	docker commit 698 learn/ping		//无需拷贝完整的id，通常来讲最开始的三至四个字母即可区分
+
+	docker run learn/ping ping www.google.com
+
+
+	docker ps   // 运行的容器
+
+	docker inspect id。。。   //用id查看容器的具体信息
+
+	
