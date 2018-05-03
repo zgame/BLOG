@@ -575,3 +575,17 @@ cls是class的缩写
 	只能是跟打包的机器一样的环境， 所以不具备太好的可移植性
 
 	pyinstaller /path/to/yourscript.py
+
+
+# ini
+
+	import iniparser
+	
+	conf = iniparser.INIParser()
+	conf.read('Setting.ini')           
+	
+	print(conf)
+	name = conf.get("author")
+	print(name)
+	Database = conf.get_section("author")
+	print(Database.get("ServerIP"))
