@@ -62,4 +62,21 @@
 
 	registry-mirrors
 
-	http://56768f80.m.daocloud.io 
+	http://56768f80.m.daocloud.io
+
+
+# 命令
+
+	docker ps -a   //所有的容器
+
+	docker run -it ubuntu       //attach到ubuntu里面了  
+
+	exit      //退出到docker
+
+	docker images   //列出所有的镜像
+
+	docker rm  容器id前3-4即可       // 删除对应的容器
+	
+	docker rmi 镜像id前3-4即可		//删除对应id的镜像
+
+	
