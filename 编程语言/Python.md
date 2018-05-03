@@ -573,3 +573,5 @@ cls是class的缩写
 	
 	https://github.com/pyinstaller/pyinstaller/
 	只能是跟打包的机器一样的环境， 所以不具备太好的可移植性
+
+	pyinstaller /path/to/yourscript.py
