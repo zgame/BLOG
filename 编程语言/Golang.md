@@ -87,14 +87,23 @@
 	fmt.Printf("%v\n", p) 					// {1 2}	打印数组，切片，结构体都可以
  	fmt.Printf("%T\n", p) 					// main.point 打印类型
 
+
 # 字符串
 
-	// int转换成字符串
-	x := 123
-	y := fmt.Sprintf("%d", x)
-	// 字符串转换成int
-	x, err := strconv.Atoi("123")
 
+	int,err:=strconv.Atoi(string)  		//string到int  
+	int64, err := strconv.ParseInt(string, 10, 64)  	//string到int64  
+	string:=strconv.Itoa(int)  				//int到string 
+	string:=strconv.FormatInt(int64,10)			//int64到string 
+
+
+	string -> int -> int32(int)			// string 到int32
+	strconv.Itoa(int(i))				// int32 到string
+	
+	string(bytes)				// []byte -> string
+	 []byte(str)			// string -> []byte
+
+	strings.Contains(str, "!!")  //字符串包含
  
 
 
@@ -640,6 +649,16 @@
 	t9 := time.Date(2017,2,4,5,7,8,0,time.Local)	//2017-02-04 05:07:08 +0800 CST
 
 # protocol buffer
+
+	先下载编译工具
+	go get -u github.com/golang/protobuf/protoc-gen-go
+
+	会在GOPATH/bin目录下面新建一个exe文件
+	设置GOPATH/bin目录添加为系统path
+
+	cd到proto文件目录下面，然后再编译：
+	protoc --go_out=. *.proto
+
 	
 	test := &t.AddressBook {
 		People:[]* t.Person{
@@ -787,3 +806,40 @@
 
 	f, _ := ini.Load("Setting.ini")
 	println(f.Section("author").Key("E-MAIL").Value())
+
+
+# log
+
+	file, err := os.OpenFile("test.log",os.O_CREATE|os.O_RDWR|os.O_APPEND, os.ModeAppend|os.ModePerm)
+	logger := log.New(file, "", log.LstdFlags|log.Llongfile)
+
+	logger.Println("logs...")
+
+
+# bytes
+
+	// 发送的时候组合成头数据
+	bufferT := new(bytes.Buffer)
+	binary.Write(bufferT,binary.LittleEndian,uint8(0))
+	binary.Write(bufferT,binary.LittleEndian,uint8(2))
+	binary.Write(bufferT,binary.LittleEndian,size)
+	binary.Write(bufferT,binary.LittleEndian,maincmd)
+	binary.Write(bufferT,binary.LittleEndian,childcmd)
+	binary.Write(bufferT,binary.LittleEndian,uint16(0))
+	return bufferT.Bytes()				//组合成[]byte
+
+	// 接收的时候，读取头数据，变换成struct
+	var hh TCPHeader					//struct结构
+	buf1 := bytes.NewBuffer(msg[:10])		// 用收到的[]byte变换成bytes.buffer
+	binary.Read(buf1,binary.LittleEndian,&hh)		//编程struct
+	bufferSize := hh.PackSize
+
+	// bytes 包用法
+	http://www.cnblogs.com/golove/p/3287729.html
+
+
+	// []byte 和 []byte 连接在一起
+	bufferEnd := make([]byte,size+10)
+	copy(bufferEnd, bufferT)
+	copy(bufferEnd[len(bufferT):], data)
+

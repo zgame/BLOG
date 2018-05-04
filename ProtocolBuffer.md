@@ -1,9 +1,9 @@
 # 下载地址
 
-https://github.com/google/protobuf/releases
-
-下载proc编译器
-设置环境变量
+	https://github.com/google/protobuf/releases
+	
+	下载proc编译器
+	设置环境变量
 
 
 # 编辑工具
@@ -74,3 +74,11 @@ https://github.com/google/protobuf/releases
 
 	cd到proto文件目录下面，然后再编译：protoc --go_out=. *.proto
 
+
+
+
+# proto2 proto3
+
+	syntax = "proto3";			//proto3必须用这个起头
+	proto3不用optional
+	proto3 不支持 //中文注释在单行里面
