@@ -62,6 +62,11 @@
 	import不同的包名的时候， 包名要跟目录名一样， 然后引用目录就可以了
 	import (""./tutorial"")		tutorial目录下面是package tutorial的go代码
 
+	package就是目录的名字，同一个目录下面的可以跨文件调用
+
+	跨package调用，首先需要import“./目录”， 然后需要外部package的变量或者函数需要首字母大写
+
+
 # 入门
 
 	// 常量定义
