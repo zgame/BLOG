@@ -3,6 +3,10 @@
 	进程拥有自己独立的堆和栈，既不共享堆，亦不共享栈，进程由操作系统调度。
 	线程拥有自己独立的栈和共享的堆，共享堆，不共享栈，线程亦由操作系统调度(标准线程是的)。
 	协程和线程一样共享堆，不共享栈，协程由程序员在协程的代码里显示调度。
+
+	1.栈区（stack）  —   由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。 
+	2.堆区（heap）   —   一般由程序员分配释放，若程序员不释放，程序结束时可能由OS回  
+
 	
 
 # Web框架
@@ -386,7 +390,7 @@
 	fmt.Println(book2) 
 
 
-# 接口
+# 接口 有点类似模板，泛型
 
 	type Phone interface {		//定义接口
     call()
@@ -457,6 +461,7 @@
 # 并发
 
 	go 创建一个goroutine
+	runtime.GOMAXPROCS(runtime.NumCPU()) //设置cpu的核的数量，从而实现高并发
 	
 
 # Channel
@@ -464,7 +469,7 @@
 	是Go中的一个核心类型，你可以把它看成一个管道，通过它并发核心单元就可以发送或者接收数据进行通讯(communication)。	
 
 	ch := make(chan int)
-	make(chan int, 100)
+	make(chan int, 100)				//信道缓冲
 	ch <- v    // 发送值v到Channel ch中
 	v := <-ch  // 从Channel ch中接收数据，并将数据赋值给v
 
@@ -488,6 +493,8 @@
 	x, ok := <-ch
 	x, ok = <-ch
 	var x, ok = <-ch	//如果OK 是false，表明接收的x是产生的零值，这个channel被关闭了或者为空。
+
+	信道如果没有缓冲， 那么如果里面有数据而没有取走的话， 就会阻塞等待数据取走，容易形成死锁
 
 
 
@@ -729,23 +736,49 @@
 	注意： rsrc.syso或者test_ui.exe.manifest是用来编译用的， 所以目录下面有一个build.bat，里面写着go build
 	用goland编辑器的时候，在run设置里面不要设定运行文件，而是要选择运行设置，运行整个目录，就可以了，平时run的时候用Shift+f10
 
-	具体代码看https://github.com/zgame/GoLangCode/test_ui
+
+	------------------------控件--------------------------------
 
 	walk.MsgBox(mw, "Value", value, walk.MsgBoxIconInformation)  //msgbox
-
-	databinding	 //弹出一个可以编辑很多控件的窗体，返回编辑数据
+	DataBinder		//struct结构跟控件输入绑定
+	PushButton		//按钮
+	Label			
+	LineEdit		//单行输入
+	DateEdit		// 日期选择
+	ComboBox		//下拉
+	Slider			// 滑动条
+	RadioButtonGroupBox	//单选组合框
+	NumberEdit		// 数字输入
+	CheckBox		//单选
+	VSpacer			// 空白
+	TextEdit		// 文本输入
+	Composite		// frame
+	------------------------例子--------------------------------
+	
+	databinding	 	//弹出一个可以编辑很多控件的窗体，返回编辑数据
+	dropfiles		// 文件拖拽
+	externalwidgets //特殊控件点击事件
+	filebrowers		// 文件夹和文件列表
+	gradientcomposite  // 控件背景渐变颜色
 	listbox			//列表选项，支持点击，双击
 	settinglist		// 类似excel表格的数据显示
 	logview			//日志文件的显示，带滚动条的编辑框
+	notifyicon		//window通知栏上多一个图标
+	tableView		// 功能强大的列表控件
 	
+
+	---------------------------布局------------------------------
+
 	布局非常容易布局， 想横着占一行就用HSplitter
 	平时就一直添加就是竖着增加了
 	默认控件就是比较小，但是如果整体窗体过大，会平均分配
 	如果想让某一个控件变大，设置Minsize就可以了
 
-
 	HSplitter{			//横着布局
-				Children: []Widget{
+		Children: []Widget{
+		Layout: Grid{Columns: 2},
+		Layout:  VBox{},
+		Layout:  HBox{},
 	VSplitter{			// 竖着布局
 						Children: []Widget{
 
@@ -753,6 +786,13 @@
 	i := mw.lb.CurrentIndex()
 		if i>=0{					//每次获取玩index要判断一下，因为不选是-1
 	mw.model.PublishItemsReset()	// listbox每次需要更新的时候，就用这个函数来刷新一下
+
+	--------------------------后台处理同步-----------------------------------
+
+	// 开启协程运行TCP处理
+	go startTcp()
+	// 启动UI
+	startUI()
 
 
 # go get git
