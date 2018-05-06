@@ -774,18 +774,28 @@
 	默认控件就是比较小，但是如果整体窗体过大，会平均分配
 	如果想让某一个控件变大，设置Minsize就可以了
 
-	HSplitter{			//横着布局
-		Children: []Widget{
-		Layout: Grid{Columns: 2},
-		Layout:  VBox{},
-		Layout:  HBox{},
+	HSplitter{			//横着布局		
 	VSplitter{			// 竖着布局
-						Children: []Widget{
+
+	Layout: Grid{Columns: 2},
+	Layout:  VBox{},			//竖着排
+	Layout:  HBox{},			//横着排
+	
+
+	Layout: Grid{Columns: 8},			//最底层的格子
+			Children: []Widget{			// 子物体
+				Composite{				// frame，要建多个composite
+					ColumnSpan:6,		// 占几个格子
+					Layout: Grid{Columns:0},	//composite的布局方式
+					Children: []Widget{			// composite的子控件
 
 	//listbox
 	i := mw.lb.CurrentIndex()
 		if i>=0{					//每次获取玩index要判断一下，因为不选是-1
 	mw.model.PublishItemsReset()	// listbox每次需要更新的时候，就用这个函数来刷新一下
+
+	// tableview
+	看源代码， 里面有新增，删除，更新对应的刷新事件
 
 	--------------------------后台处理同步-----------------------------------
 
