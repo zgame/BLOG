@@ -6,6 +6,8 @@
 
 	<script src="myScript.js"></script>   // 调用外部的js文件
 
+	voteable=(age<18)?"年龄太小":"年龄已达到";    //三元
+
 # 输出
 
 	console.log(c); 
@@ -105,7 +107,7 @@
 
 # string
 
-	length	字符串的长度
+	.length	字符串的长度
 	concat()	连接两个或更多字符串，并返回新的字符串。
 	fromCharCode()	将 Unicode 编码转为字符。
 	search()	查找与正则表达式相匹配的值。
@@ -115,6 +117,16 @@
 	substring()	提取字符串中两个指定的索引号之间的字符。
 
 	支持str+int的输出格式
+
+	string(123)
+	(123).toString()		//转成字符串
+
+	Number("3.14")  		//字符串转数字
+	parseInt()
+
+	d = new Date(); 		//时间转数字
+	Number(d)   
+	getTime()  
 
 
 # 全局函数
@@ -132,11 +144,15 @@
 
 # for
 
+	for (x in person) 
+
+
+
+# 函数
+
+	for (i = 1; i < arguments.length; i++)   //可变参
+
 	
-
-
-
-
 
 
 
