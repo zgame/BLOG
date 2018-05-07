@@ -113,6 +113,10 @@
 	 []byte(str)			// string -> []byte
 
 	strings.Contains(str, "!!")  //字符串包含
+
+
+	enc := mahonia.NewDecoder("gb2312")		// 转换一下编码格式 decoder是解码 ， encoder是编码成**格式，默认utf-8
+	output := enc.ConvertString(string(v.ServerName))
  
 
 
@@ -223,6 +227,18 @@
 
 	countryCapitalMap["France"]					//使用
 	delete(countryCapitalMap,"France")			//删除
+
+
+# switch
+
+	switch i { 
+	    case 0: 
+	        fmt.Printf("0") 
+	    case 4, 5, 6: 
+	        fmt.Printf("4, 5, 6") 
+	    default: 
+	        fmt.Printf("Default") 
+	} 
 
 
 # 运算符
