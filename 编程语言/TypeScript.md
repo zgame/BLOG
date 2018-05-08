@@ -34,3 +34,7 @@
 	let notSure: any = 4;
 	void类型像是与any类型相反，它表示没有任何类型
 	never类型表示的是那些永不存在的值的类型
+
+# 常量
+
+	const numLivesForCat = 9;
