@@ -1,6 +1,8 @@
 
 #HTML标签
 
+	<meta charset="UTF-8">		// 设置浏览器的编码格式为utf-8
+
 	<html>	定义 HTML 文档
 	<body>	定义文档的主体
 	<br>	这是一个换行标签
@@ -117,6 +119,11 @@
 ---
 
 # jQuary
+
+	jQuery是使用选择器（$）选取DOM对象，对其进行赋值、取值、事件绑定等操作，其实和原生的HTML的区别只在于可以更方便的选取和操作DOM对象，而数据和界面是在一起的。比如需要获取label标签的内容：$("lable").val();,它还是依赖DOM元素的值。 
+	
+	Vue则是通过Vue对象将数据和View完全分离开来了。对数据进行操作不再需要引用相应的DOM对象，可以说数据和View是分离的，他们通过Vue对象这个vm实现相互的绑定。这就是传说中的MVVM。
+
 
 ### jQuary选择器和事件
 
@@ -271,7 +278,7 @@
 
 ---
 
-# MVC 框架
+# MVVM 框架
 
 ### react
 	
@@ -301,9 +308,9 @@
 
 ### Python + Flask
 
-### Node.js
+### Node.js + Express
 
-### PHP
+### PHP + Laravel
 
 ### Ruby on Rails
 
