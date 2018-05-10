@@ -3,6 +3,7 @@
 	python的包在Lib/site-packages目录下面， 自己的目录copy给别人就可以了
 
 
+
 # 字符串也是数组
 
 	s = 'Python'
@@ -80,10 +81,12 @@
 
 # 集合
 
-set() set和list可以互相转换， set的速度比list快非常多
+	set() set和list可以互相转换， set的速度比list快非常多
 
 	list(set(list1))   去掉重复的元素
 
+	(a, b) = (b, a)		//一行代码交换a， b的值
+	
 # 字典
 	dict.get(key, default=None)
 	key -- 这是要搜索在字典中的键。
@@ -205,6 +208,8 @@ map也支持多个sequence，这就要求function也支持相应数量的参数�
 	
 	import自定义的目录时候，2.7版本需要在目录下创建__init__.py文件
 
+	如果要排除某个文件不加载 __all__ = ['file1','fiel3']
+
 
 # 2.7版本要注意
 
@@ -243,15 +248,44 @@ Python2的写法用的是
 
 
 	class Person:
-		def __init__(self, name):
+		def __init__(self, name):		//被称为类的构造函数或初始化方法
 			self.name = name
+		def __del__(self):				//析构函数
 
-类的用法， 类中_是私有方法, __是私有变量
+	def __call__(self, friend):		// 一个类实例也可以变成一个可调用对象，只需要实现一个特殊方法__call__()。
+	def __cmp__(self, y):			//比较
+    def __str__(self):				//输出 简单的调用方法 : str(obj)
+	o.__class__			#对象的类属性指向类对象
+
+	__dict__ : 类的属性（包含一个字典，由类的数据属性组成）
+	__doc__ :类的文档字符串
+	__name__: 类名
+	__module__: 类定义所在的模块（类的全名是'__main__.className'，如果类位于一个导入模块mymod中，那么className.__module__ 等于 mymod）
+	__bases__ : 类的所有父类构成元素（包含了以个由所有父类组成的元组）
+
+		
+
+	init 和new 的区别
+   	def __init__(self):
+    def __new__(cls,*args, **kwargs):
+
+	new()是在新式类中新出现的方法，它作用在构造方法init()建造实例之前，可以这么理解，在Python 中存在于类里面的构造方法init()负责将类的实例化，而在init()调用之前，new()决定是否要使用该init()方法，
+	__new__至少要有一个参数cls，代表要实例化的类，此参数在实例化时由Python解释器自动提供
+	__new__必须要有返回值，返回实例化出来的实例，这点在自己实现__new__时要特别注意，可以return父类__new__出来的实例，或者直接是object的__new__出来的实例
+	__init__有一个参数self，就是这个__new__返回的实例，__init__在__new__的基础上可以完成一些其它初始化的动作，__init__不需要返回值
+	若__new__没有正确返回当前类cls的实例，那__init__是不会被调用的，即使是父类的实例也不行
 
 
-cls是class的缩写
+	__getattr__方法		//获取属性
+	__setattr__方法		会拦截所有属性的的赋值语句,不可使用self.attr = value,因为他会再次调用self,__setattr__("attr", value),则会形成无穷递归循环,也就是使用self.__dict__['name'] = value.
+
+	------------
 
 
+	类的用法， 类中_是私有方法, __是私有变量
+	
+	
+	cls是class的缩写
 
 
 	# 类的普通方法可以通过self访问实例属性
@@ -263,7 +297,9 @@ cls是class的缩写
 	@staticmethod
 	def staticMethod(name):
 
+
 # 文件处理，注意python2和python3的区别
+
 
 	# python可以优雅的处理文件，with来自动关闭文件，不需要写close
 	with open('1.txt','r') as f:	# python2
@@ -287,6 +323,7 @@ cls是class的缩写
 ---
 
 # 兼容python2 和python3
+
 
 	建立2个名字类似的文件，	一个python2，一个python3， 启动的时候也是分别启动，那个平台启动对应的py
 	安装python3的目录下面python.exe改名为python3.exe

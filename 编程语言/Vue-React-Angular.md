@@ -1,6 +1,7 @@
 
 # 比较
 
+
 	Vue 是最容易上手，最具亲和度的。工具链方面最近刚发布了 vue-cli，1 分钟搞定 webpack 配置。轻量级框架。Vue 也支持双向绑定，默认为单向绑定
 	Vue 由于采用依赖追踪，默认就是优化状态：动了多少数据，就触发多少更新，不多也不少。
 	Vue.js 不使用 Virtual DOM 而是使用真实 DOM 作为模板，数据绑定到真实节点。Vue.js 的应用环境必须提供 DOM。Vue.js 有时性能会比 React 好**，而且几乎不用手工优化。
@@ -24,5 +25,27 @@
 
 
 # vue
+
+	不支持ie8， 所以使用chrome浏览器
+
+	https://vuejs.org/js/vue.js		//可以下载开发版本到本地
+	<script src="vue.js"></script>		//调用开发版本vue
+
+	<div id="app">
+    {{ message }}
+	</div>
+	<!-- JavaScript 代码需要放在尾部（指定的HTML元素之后） -->
+	<script>
+	    new Vue({
+	        el:'#app',
+	        data: {
+	            message:'Hello World!'
+	        }
+	    });
+	</script>
+
+
+	
+	
 
 	
