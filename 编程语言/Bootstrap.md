@@ -75,7 +75,7 @@
 	轮播图carousel.js
 
 
-# 包含
+# 调用
 
 	<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
