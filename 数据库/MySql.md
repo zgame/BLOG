@@ -81,7 +81,9 @@
 
 # MySQL + Inforbright/Greenplum 统计分析架构
 
+
 	Inforbright数据仓库比较轻量级，与MySQL使用类似；Greenplum分布式MPP数据仓库可以支撑海量数据的统计分析，功能、性能、容量等也比Inforbright要更强一下，成本也更大一些。
+
 
 # 横向扩展
 
@@ -95,6 +97,14 @@
 # 行锁
 
 	每次单条记录的update操作，会对分区表数目相同的行数进行上锁。
+
+
+# 表锁
+
+	另外，InnoDB表的行锁也不是绝对的，假如在执行一个SQL语句时MySQL不能确定要扫描的范围，InnoDB表同样会锁全表，例如update table set num=1 where name like “%aaa%”
+
+
+	select count(*) 和order by 是最频繁的，大概能占了整个sql总语句的60%以上的操作，而这种操作Innodb其实也是会锁表的，很多人以为Innodb是行级锁，那个只是where对它主键是有效，非主键的都会锁全表的。
 
 
 
@@ -143,3 +153,72 @@
 	merge合并表的要求
 	1.合并的表使用的必须是MyISAM引擎
 	2.表的结构必须一致，包括索引、字段类型、引擎和字符集
+
+	假如我有一张用户表user，有50W条数据，现在要拆成二张表user1和user2，每张表25W条数据，
+	INSERT INTO user1(user1.id,user1.name,user1.sex)SELECT (user.id,user.name,user.sex)FROM user where user.id <= 250000
+	INSERT INTO user2(user2.id,user2.name,user2.sex)SELECT (user.id,user.name,user.sex)FROM user where user.id > 250000
+
+
+
+	mysql> CREATE TABLE IF NOT EXISTS `user1` (  
+	 ->   `id` int(11) NOT NULL AUTO_INCREMENT,  
+	 ->   `name` varchar(50) DEFAULT NULL,  
+	 ->   `sex` int(1) NOT NULL DEFAULT '0',  
+	 ->   PRIMARY KEY (`id`)  
+	 -> ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;  
+	Query OK, 0 rows affected (0.05 sec)  
+	  
+	mysql> CREATE TABLE IF NOT EXISTS `user2` (  
+	 ->   `id` int(11) NOT NULL AUTO_INCREMENT,  
+	 ->   `name` varchar(50) DEFAULT NULL,  
+	 ->   `sex` int(1) NOT NULL DEFAULT '0',  
+	 ->   PRIMARY KEY (`id`)  
+	 -> ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;  
+	Query OK, 0 rows affected (0.01 sec)  
+	  
+	mysql> INSERT INTO `user1` (`name`, `sex`) VALUES('张映', 0);  
+	Query OK, 1 row affected (0.00 sec)  
+	  
+	mysql> INSERT INTO `user2` (`name`, `sex`) VALUES('tank', 1);  
+	Query OK, 1 row affected (0.00 sec)  
+	  
+	mysql> CREATE TABLE IF NOT EXISTS `alluser` (  
+	 ->   `id` int(11) NOT NULL AUTO_INCREMENT,  
+	 ->   `name` varchar(50) DEFAULT NULL,  
+	 ->   `sex` int(1) NOT NULL DEFAULT '0',  
+	 ->   INDEX(id)  
+	 -> ) TYPE=MERGE UNION=(user1,user2) INSERT_METHOD=LAST AUTO_INCREMENT=1 ;  
+	Query OK, 0 rows affected, 1 warning (0.00 sec)  
+	  
+	mysql> select id,name,sex from alluser;  
+	+----+--------+-----+  
+	| id | name   | sex |  
+	+----+--------+-----+  
+	|  1 | 张映 |   0 |  
+	|  1 | tank   |   1 |  
+	+----+--------+-----+  
+	2 rows in set (0.00 sec)  
+	  
+	mysql> INSERT INTO `alluser` (`name`, `sex`) VALUES('tank2', 0);  
+	Query OK, 1 row affected (0.00 sec)  
+	  
+	mysql> select id,name,sex from user2  
+	 -> ;  
+	+----+-------+-----+  
+	| id | name  | sex |  
+	+----+-------+-----+  
+	|  1 | tank  |   1 |  
+	|  2 | tank2 |   0 |  
+	+----+-------+-----+  
+	2 rows in set (0.00 sec)  
+
+
+
+# MyISAM与InnoDB区别
+
+	MyISAM类型不支持事务处理等高级处理，而InnoDB类型支持。MyISAM类型的表强调的是性能，其执行数度比InnoDB类型更快，但是不提供事务支持，而InnoDB提供事务支持以及外部键等高级数据库功能。
+
+
+	两种类型最主要的差别就是Innodb 支持事务处理与外键和行级锁。而MyISAM不支持.所以MyISAM往往就容易被人认为只适合在小项目中使用。
+
+	
