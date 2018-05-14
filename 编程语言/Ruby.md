@@ -132,3 +132,34 @@
 
 	include modulename
 	
+
+
+# Ruby on Rails
+
+	gem install rails 开始安装rails
+	rails new www 
+	rails server 
+	http://localhost:3000/
+
+
+
+
+# tabler
+
+	Download and install Node.js
+	Navigate to the root /tabler directory and run npm install 
+	Install Ruby, install Bundler with gem install bundler, and finally run bundle install
+	From the root /tabler directory, run npm run serve
+
+	如果 public_suffix 3.0.2报错，修改package.json为
+	"jekyll-serve": "bundle exec jekyll serve --livereload",
+
+	
+	如果eventmachine报错，
+	gem uninstall eventmachine
+	at the prompt tell it to uninstall all versions (it tells you about dependencies)
+	gem install eventmachine --platform ruby
+
+
+
+
