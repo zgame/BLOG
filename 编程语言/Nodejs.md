@@ -115,6 +115,14 @@
 
 
 
+# NPM
+
+	npm install express -g  //全局安装， 包在电脑任意一个文件夹都可以被引用
+	如果没有用到-g，那么就会安装到命令行所显示的文件夹里。
+
+	npm list -g        //全局包安装路径
+
+
 # express框架
 
 	$ npm install express --save
@@ -185,15 +193,73 @@
 
 	set DEBUG=myapp & npm start   // windows 启动express服务器
 
-	或者直接用webstorm创建一个nodejs+express app
+	或者直接用webstorm创建一个nodejs+express app，然后run bin/www
 
 
 
-# NPM
 
-	npm install express -g  //全局安装， 包在电脑任意一个文件夹都可以被引用
-	如果没有用到-g，那么就会安装到命令行所显示的文件夹里。
-
-	npm list -g        //全局包安装路径
 
 	
+
+# jade
+
+	http://jade-lang.com/reference/attributes	//手册
+
+	node 模板引擎，动态加载，改完不用重启服务器，是精简的html
+
+	// html格式
+	div(id="content", class='main')
+	    a(href='http://csdn.net', title='csdn主页'， target='_blank') 软件联盟
+	    form(action="/login")
+	        button(type="submit", value="提交")
+
+	// 普通注释，会输出到渲染后生成的HTML页面
+
+	---------------------------------------------------
+	// 添加javascript代码
+	script.
+    console.log("Hello world!");
+    setTiemout(function() {
+        window.location.href = "http://csdn.net"
+    }, 1000);
+
+    console.log("Good bye!");
+	---------------------------------------------------
+	// ID，class简写
+	div#content
+    p.lead.center
+        | Pandora_galen
+        #side-bar.pull-right  // 没有标签名，默认为“div”
+        span.contact.span4
+            a(href="/contact") contact me
+	---------------------------------------------------
+	
+
+
+
+	each value, key in languages
+        p= key + ":" + value
+	--------------------------------------------------- 
+	
+
+# sails
+
+	npm install sails -g		//安装
+
+	sails new test-project		//创建
+
+	cd test-project
+
+	sails lift				//开启
+	webstorm run app.js
+
+	
+	api/controllers ：控制层，该层是Http请求的入口。Sails官方建议该层只处理请求的转发和页面的渲染，具体的逻辑实现应该交给Service层。
+	api/models：模型层，在Sails中，对于Model采用的是充血模型，除了可以在模型中定于属性之外，还可以定义包含逻辑处理的函数。在Sails中，所有Model都可以全局性访问。
+	api/policies：过滤层，该层在Controller层之前对Http请求做处理，在这一层中，可以定于一些规则来过滤Http请求，比如身份认证什么的。
+	api/responses：http响应的方法都放这里，例如服务器错误、请求错误、404错误等，定义在responses文件夹里面的方法，都会赋值到controller层的req对象中。
+	api/services：服务层，该层包含逻辑处理的方法，在Sails中，所有Service都可以全局性访问。
+	
+	assets/
+	资源文件夹，在Sails启动的时候，会启动某一个Grunt任务，把assets文件夹里的内容或压缩或编译或复制到根目录下的.tmp目录，这是前端可以直接通过路由访问的资源，HTML、JS、CSS以及图片等静态资源都放在这里了。
+		
