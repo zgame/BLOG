@@ -251,7 +251,7 @@
 	cd test-project
 
 	sails lift				//开启
-	webstorm run app.js
+	webstorm run app.js		// webstorm 编辑器运行
 
 	
 	api/controllers ：控制层，该层是Http请求的入口。Sails官方建议该层只处理请求的转发和页面的渲染，具体的逻辑实现应该交给Service层。
@@ -263,3 +263,8 @@
 	assets/
 	资源文件夹，在Sails启动的时候，会启动某一个Grunt任务，把assets文件夹里的内容或压缩或编译或复制到根目录下的.tmp目录，这是前端可以直接通过路由访问的资源，HTML、JS、CSS以及图片等静态资源都放在这里了。
 		
+
+	sails generate page ***    //增加一个页面，会在view\pages,api\controllers,assets\styles\pages\***.less , assets\js\pages\***.page.js增加4个文件
+	
+	config/routes.js  //手动增加路由
+	GET /***: { action: '****' }, 
