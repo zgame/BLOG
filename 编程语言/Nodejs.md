@@ -262,13 +262,17 @@
 	
 	assets/
 	资源文件夹，在Sails启动的时候，会启动某一个Grunt任务，把assets文件夹里的内容或压缩或编译或复制到根目录下的.tmp目录，这是前端可以直接通过路由访问的资源，HTML、JS、CSS以及图片等静态资源都放在这里了。
+
+
+	/api/responsers 中添加自定义的响应
+	waterline //可以跨多个数据库而几乎没有感知
 		
 
 	// 增加页面
 	sails generate page ***    //增加一个页面，会在view\pages,api\controllers,assets\styles\pages\***.less , assets\js\pages\***.page.js增加4个文件
 	
 	config/routes.js  //手动增加路由
-	GET /***: { action: '****' }, 
+	GET /***: { view: '****' }, 
 
 
 	//增加控制器
