@@ -123,6 +123,21 @@
 	npm list -g        //全局包安装路径
 
 
+	package.json文件记录项目的配置信息， 在部署的时候，运行npm install 即可安装依赖， 自动下载node_modules内容
+
+
+# promise 把异步的语法， 写成同步处理语法
+
+	http://liubin.org/promises-book/        教程电子书
+
+	var promise = getAsyncPromise("fileA.txt"); 
+	promise.then(function(result){
+	    // 获取文件内容成功时的处理
+	}).catch(function(error){
+	    // 获取文件内容失败时的处理
+	});
+
+
 # express框架
 
 	$ npm install express --save
@@ -133,6 +148,12 @@
 	app.get('/', function (req, res) {			//这里的目录地址，代表着路由,django里面的urls
 	   res.send('Hello World');
 	})
+
+
+	app.get('/users/:name', function (req, res) {   //这里的路由:代表着参数
+	  res.send('hello, ' + req.params.name)
+	})
+
 	
 	var server = app.listen(8081, function () {
 	
@@ -141,6 +162,13 @@
 	
 	  console.log("应用实例，访问地址为 http://%s:%s", host, port)
 	
+	})
+
+
+	// 加载中间件 ， next是进行下一个中间件的处理
+	app.use(function (req, res, next) {
+	  console.log('1')
+	  next()
 	})
 
 
@@ -201,7 +229,7 @@
 
 	
 
-# jade
+# jade （html模板）
 
 	http://jade-lang.com/reference/attributes	//手册
 
@@ -242,6 +270,31 @@
 	--------------------------------------------------- 
 	
 
+
+# ejs （html模板）
+
+	ejs 有 3 种常用标签：
+	<% code %>：运行 JavaScript 代码，不输出
+	<%= code %>：显示转义后的 HTML内容
+	<%- code %>：显示原始 HTML 内容
+
+
+	<% '脚本' 标签，用于流程控制，无输出。
+	<%_ 删除其前面的空格符
+	<%= 输出数据到模板（输出是转义 HTML 标签）
+	<%- 输出非转义的数据到模板
+	<%# 注释标签，不执行、不输出内容
+	<%% 输出字符串 '<%'
+
+	%> 一般结束标签
+	-%> 删除紧随其后的换行符
+	_%> 将结束标签后面的空格符删除
+
+
+
+	<%- include('header') %>    // 拆分模板组件，模板可复用，减少重复代码
+
+
 # sails
 
 	npm install sails -g		//安装
@@ -275,11 +328,55 @@
 	GET /***: { view: '****' }, 
 
 
-	//增加控制器
-	sails generate controller comment create destroy tag like
-	Sails将会生成api/controllers/CommentController.js
-	里面有后面的4个函数定义
+
 
 
 	//sails 中文文档
 	https://github.com/linxiaowu66/sails-docs-zh-cn/tree/master/concepts
+
+
+	blueprint  // restful格式路由
+
+
+# sails  controller and action
+	
+	控制器里面可以定义好几个action，控制器文件名为ZswCT1Controller
+	路由绑定规则为'GET /zsw2': {action: 'ZswCT1/bye'}, //文件名前面的部分+/+action
+
+
+	//增加控制器 ,  注意，必须是驼峰， 首字母大写
+	sails generate controller Comment create destroy tag like
+	Sails将会生成api/controllers/CommentController.js
+	里面有后面的4个函数定义,就是action
+
+
+	// 单独增加action
+	sails generate action 
+
+
+# sails routes自定义路由
+
+	'GET /contact':         { view:   'pages/contact' },			//view
+	'GET /dashboard/zsw_1': {action: 'ZswCT2/hello1'},				//controller 的action
+    'GET /hello': 'ZswCT2.hello2',									//同上, 有几种写法, 加不加Controller都可以
+  	'GET /zswAction': {action: 'zsw-action'},						// action
+	'GET /bar/go': 'foo/go-action'									//同上 ,有几种写法
+
+
+
+
+
+
+
+# sails blueprint隐式路由
+
+	RESTful routes
+	比如一个POST请求到/user将会创建一个新的用户
+
+	Shortcut routes
+	比如，/user/create?name=joe快捷方式创建一个新的用户
+
+	上面两个需要绑定model和controller, 下面的有controller就可以
+
+	如果你有一个FooController.js文件并带有一个bar方法，那么一条/foo/bar的路由
+		
