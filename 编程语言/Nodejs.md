@@ -344,13 +344,15 @@
 	路由绑定规则为'GET /zsw2': {action: 'ZswCT1/bye'}, //文件名前面的部分+/+action
 
 
-	//增加控制器 ,  注意，必须是驼峰， 首字母大写
+	//增加控制器 
+ 	**注意，必须是驼峰， 首字母大写 **
 	sails generate controller Comment create destroy tag like
 	Sails将会生成api/controllers/CommentController.js
 	里面有后面的4个函数定义,就是action
 
 
 	// 单独增加action
+	** 注意，action不能用驼峰， 可以用下划线**
 	sails generate action 
 
 
@@ -365,9 +367,6 @@
 
 
 
-
-
-
 # sails blueprint隐式路由
 
 	RESTful routes
@@ -377,6 +376,12 @@
 	比如，/user/create?name=joe快捷方式创建一个新的用户
 
 	上面两个需要绑定model和controller, 下面的有controller就可以
+	** 注意， 需要在config里面设置blueprint.js打开action: true， 才会开启自动action映射**
+	如果你有一个FooController.js文件并带有一个bar方法，那么blueprint会自动创建一条/foo/bar的路由
 
-	如果你有一个FooController.js文件并带有一个bar方法，那么一条/foo/bar的路由
+
+	/Controller/Action		// 这是controller的隐式路由
+	/Action					// 这是直接定义的Action的
+
+
 		
