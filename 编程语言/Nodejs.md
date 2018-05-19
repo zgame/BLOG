@@ -321,21 +321,9 @@
 	waterline //可以跨多个数据库而几乎没有感知
 		
 
-	// 增加页面
-	sails generate page ***    //增加一个页面，会在view\pages,api\controllers,assets\styles\pages\***.less , assets\js\pages\***.page.js增加4个文件
-	
-	config/routes.js  //手动增加路由
-	GET /***: { view: '****' }, 
-
-
-
-
 
 	//sails 中文文档
 	https://github.com/linxiaowu66/sails-docs-zh-cn/tree/master/concepts
-
-
-	blueprint  // restful格式路由
 
 
 # sails  controller and action
@@ -352,11 +340,13 @@
 
 
 	// 单独增加action
-	** 注意，action不能用驼峰， 可以用下划线**
+	** 注意，action不能用驼峰， 不要用下划线，不要用数字， 要用目录**
 	sails generate action 
 
 
 # sails routes自定义路由
+
+	config/routes.js  //手动增加路由
 
 	'GET /contact':         { view:   'pages/contact' },			//view
 	'GET /dashboard/zsw_1': {action: 'ZswCT2/hello1'},				//controller 的action
@@ -384,4 +374,20 @@
 	/Action					// 这是直接定义的Action的
 
 
+# sails view 页面
+
+	
+	// 增加页面 
+	** 注意，文件名必须是小写， 不能用驼峰，不能用数字，不能用下划线， 要用目录 **
+	sails generate page zsw_p2
+    //增加一个页面，会在view\pages,api\controllers,assets\styles\pages\***.less , assets\js\pages\***.page.js增加4个文件
+	
+	
+	
+
 		
+
+# 页面
+
+	1. 用view下面的模板copy一个文件出来，改名zsw1
+	2. 新增一个action， 设置success: {viewTemplatePath: 'pages/zsw1',},
