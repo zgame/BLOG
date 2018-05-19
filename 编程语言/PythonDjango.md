@@ -1,3 +1,20 @@
+# run
+
+	python manage.py runserver 0.0.0.0:8000
+	http://127.0.0.1:8000/
+
+
+
+
+
+
+
+
+
+
+
+
+
 # locals()
 locals()返回一个包含当前作用域里面的所有变量和它们的值的字典。
 
