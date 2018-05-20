@@ -3,9 +3,16 @@
 	python manage.py runserver 0.0.0.0:8000
 	http://127.0.0.1:8000/
 
+	html-----------------------------
+	<h1>{{ hello }}</h1>
+
+	view------------------------------
+	context          = {}
+    context['hello'] = 'Hello World!'
+    return render(request, 'hello.html', context)
 
 
-
+	
 
 
 
