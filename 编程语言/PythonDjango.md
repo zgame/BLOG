@@ -7,13 +7,16 @@
 	<h1>{{ hello }}</h1>
 
 	view------------------------------
-	context          = {}
-    context['hello'] = 'Hello World!'
-    return render(request, 'hello.html', context)
+	from django.shortcuts import render
+	def hello(request):
+		context          = {}
+	    context['hello'] = 'Hello World!'
+	    return render(request, 'hello.html', context)
 
 
 # 路由urls	
 
+	url(r'^$', views.hello),
 
 
 # locals()
@@ -37,6 +40,17 @@
 	    </html> 
     
 
----
+# action
+
+	<form class = 'button_one_line' action="/Tyranitar6/server/notice_del_confirm/" method="post" onsubmit="return checkForm()">
+    	<input name="uid" type="hidden" value={{row.0}}>
+        <button type="submit" class="btn btn-primary" >删除</button>
+    </form>
 
 
+	//路由绑定python的代码函数	notice_del_confirm
+	urlpatterns += patterns('game_manager.views.server.notice',
+           (r'^server/notice_del_confirm/$', 'notice_del_confirm'),
+    
+
+	

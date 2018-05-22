@@ -178,3 +178,14 @@
 
 	<%- include('header') %>    // 拆分模板组件，模板可复用，减少重复代码
 
+
+
+
+
+# 输出
+
+	var debug = require('debug')('exp:server');
+	debug('Listening on ' + bind);
+
+
+
