@@ -120,3 +120,40 @@
 
 
 	<%- include('header') %>    // 拆分模板组件，模板可复用，减少重复代码
+
+
+
+
+
+
+# 例子
+
+	// routes
+ 	'GET /signup':             { action: 'entrance/view-signup' },
+
+	// action
+	api/controller/entrance/view-signup.js
+	viewTemplatePath: 'pages/entrance/signup',
+	
+	// vue js
+	assets/js/pages/signup.page.js文件定义vue的js代码
+	有data，methodes
+
+	// views data
+	view/pages/signup.ejs里面编写html模板，判断cloudSuccess标志
+	<div class="container" v-if="cloudSuccess">
+
+	// views methodes
+	<ajax-form action="signup" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm()" :handle-parsing="handleParsingForm">
+
+
+	// cloud.setup.js
+	自动生成的ejs调用上面的action函数
+
+	// 调用服务器处理action路由 
+  	'PUT   /api/v1/account/update-profile':             { action: 'account/update-profile' },
+
+	
+
+
+
