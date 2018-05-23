@@ -260,9 +260,24 @@
 	oldVnode: 上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。
 
 
-# 路由 
 
 
-# vue-element-admin
+
+# 例子
+
+	<div id = "zswtest" v-cloak>
+	  <p v-if = "zswp_open"> zswp open</p>
+	  <p v-if = "!zswp_open"> zswp close</p>
+
+	<span>Message is: {{ zswp_open }}</span>
+      <input type="text" v-model="zswp_open" placeholder="edit me">
+
+
+ 	<div class="form-group">
+        <button class="btn-success" @click="zsw_meth">bt</button>
+	  <a class="btn btn-info" href="/account/profile">Update my email</a>
+
+
+	
 
 	

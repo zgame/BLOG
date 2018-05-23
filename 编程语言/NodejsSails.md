@@ -83,7 +83,7 @@
 	
 	// 增加页面 
 	** 注意，文件名必须是小写， 不能用驼峰，不能用数字，不能用下划线， 要用目录 **
-	sails generate page zsw_p2
+	sails generate page zswp
     //增加一个页面，会在view\pages,api\controllers,assets\styles\pages\***.less , assets\js\pages\***.page.js增加4个文件
 	
 	
