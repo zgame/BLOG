@@ -261,23 +261,78 @@
 
 
 
+# vue2-ajax-form
+	
+	https://www.npmjs.com/package/vue2-ajax-form
+	npm install vue2-ajax-form --save
+
+	<template>
+	    <ajax-form :action="action" :method="method" :enctype="enctype" :responsetype="responsetype" :before="before" :error="error" :complete="complete" :progress="progress" :after="after">
+	        <input name="username" type="text" />
+	        <input value="submit" type="submit" />
+	    </ajax-form>
+	</template>
+	<script>
+	import ajaxForm from 'vue2-ajax-form'
+	export default {
+	    data() {
+	        action: '/api', // ajax 请求地址 (必须)
+	        method: 'POST', // ajax 请求方法 POST | GET (默认: POST)
+	        enctype: 'multipart/form-data', // ajax 请求编码 application/x-www-form-urlencoded | multipart/form-data | text/plain (默认: multipart/form-data)
+	        responsetype: 'json' // ajax 请求数据类型 blob | document | json | text (默认: json)
+	    },
+	    components: {
+	        ajaxForm
+	    },
+	    methods: {
+	        before() {
+	            console.log('before')
+	            // ajax请求前
+	        },
+	        error(err) {
+	            console.log(err)
+	            // ajax请求出现错误
+	        },
+	        complete(response) {
+	            console.log(response)
+	            // ajax请求完成
+	        },
+	        progress(percent) {
+	            console.log(percent)
+	            // ajax请求进度
+	        },
+	        after() {
+	            console.log('after')
+	            // ajax请求后, 请求未完成
+	        },
+	    }
+	}
+	</script>
+
 
 
 # 例子
 
 	<div id = "zswtest" v-cloak>
-	  <p v-if = "zswp_open"> zswp open</p>
+	  <p v-if = "zswp_open"> zswp open</p>			//label
 	  <p v-if = "!zswp_open"> zswp close</p>
 
-	<span>Message is: {{ zswp_open }}</span>
+	<span>Message is: {{ zswp_open }}</span>         // 输入框
       <input type="text" v-model="zswp_open" placeholder="edit me">
 
 
- 	<div class="form-group">
+ 	<div class="form-group">			// 按钮
         <button class="btn-success" @click="zsw_meth">bt</button>
-	  <a class="btn btn-info" href="/account/profile">Update my email</a>
+	  <a class="btn btn-info" href="/account/profile">Update my email</a>   //地址跳转的按钮,比如取消
 
 
-	
+	<p class= badge-info>zsw_map:{{ zsw_map}}</p>
+    <p class= badge-info>zsw_map['sss']:{{ zsw_map['sss']}}</p>
+
+	<ul id="example-1">
+    <li v-for="item in zsw_list">		//列表
+      {{ item.message }}
+    </li>
+  	</ul>
 
 	

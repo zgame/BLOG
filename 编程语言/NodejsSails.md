@@ -84,17 +84,62 @@
 	// 增加页面 
 	** 注意，文件名必须是小写， 不能用驼峰，不能用数字，不能用下划线， 要用目录 **
 	sails generate page zswp
+	sails generate page zsw/zswp
     //增加一个页面，会在view\pages,api\controllers,assets\styles\pages\***.less , assets\js\pages\***.page.js增加4个文件
 	
 	
 	
-		
+# models		
 
-# 页面
+	sails generate model student
 
-	1. 用view下面的模板copy一个文件出来，改名zsw1
-	2. 新增一个action， 设置success: {viewTemplatePath: 'pages/zsw1',},
+	attributes: {
+    id: {
+      type: 'number',
+      required: true,
+      unique: true,
+      example: '1',
+      autoIncrement: true,
+      columnName: 'id'
+    },
+    name: {
+      type: 'string',
+      required: true,
+      maxLength: 45,
+      example: 'name',
+      columnName: 'name'
+    },
+    age: {
+      type: 'number',
+      required: true,
+      example: '22',
+      columnName: 'age'
+    },
 
+	
+	// 修改config下面datastore文件， 还有config/env/production文件
+	adapter: 'sails-mysql',
+    url: 'mysql://zsw1:zsw123@localhost:3306/zsw_db',
+
+	// 修改config/models.js
+	去掉createAt,updateAt等默认列
+
+	// 安装依赖
+	npm install sails-mysql --save
+	npm install --save waterline
+	npm install --save-dev sails-disk
+
+	// action才能访问数据库
+	var ss = await Student.find({ age: { '>=': 0 } });
+    for (var x of ss){
+      sails.log.info(""+x.id);
+      sails.log.info(""+x.name);
+      sails.log.info(""+x.age);
+    }
+
+	
+	
+	
 
 
 
@@ -123,37 +168,135 @@
 
 
 
+# component ajax-form ajax-button
+
+	
+
+	
+
 
 
 
 # 例子
+	// 生成4个page页面
+	sails generate page zsw/zswp
 
-	// routes
+	// routes-------------------路由--------------------------
  	'GET /signup':             { action: 'entrance/view-signup' },
 
-	// action
-	api/controller/entrance/view-signup.js
-	viewTemplatePath: 'pages/entrance/signup',
+	// view-action------------- 用处不大-----------------------------------
+	api/controller/entrance/view-zswp.js
+	viewTemplatePath: 'pages/zsw/zswp',   // 返回绑定的ejs
 	
-	// vue js
-	assets/js/pages/signup.page.js文件定义vue的js代码
-	有data，methodes
+	// vue js-------------------vue的数据和函数----------------------------
+	assets/js/pages/zswp.page.js文件定义vue的js代码
+	定义data，methodes，用于绑定vue的数据和事件
 
-	// views data
-	view/pages/signup.ejs里面编写html模板，判断cloudSuccess标志
-	<div class="container" v-if="cloudSuccess">
+		 data: {
+		    // Main syncing/loading state for this page.
+		    syncing: false,
+		
+		    // Form data
+		    formData: { /* … */ },
+		
+		    // For tracking client-side validation errors in our form.
+		    // > Has property set to `true` for each invalid property in `formData`.
+		    formErrors: { /* … */ },
+		
+		    // Server error state for the form
+		    cloudError: '',
+		
+		    // Success state when form has been submitted
+		    cloudSuccess: false,
+		
+		    //…
+		    zsw_open: true,
+		    zsw_list:[
+		      { message: 'Foo' },
+		      { message: 'Bar' },
+		      { message: 'Bar2' },
+		    ],
+		    zsw_map:{sss:222},
+		    zsw_list_add:[],
+		  },
+
+
+		------------------------------------
+
+		  methods: {
+		    //…
+		    zsw_method : function () {
+		      this.zsw_map['sss'] --;
+		      this.zsw_list_add.push(this.zsw_map['sss']);
+		    },
+		
+		
+		    submittedForm: async function() {
+		      this.syncing = true;
+		      window.location = '/';			//成功之后跳转到页面
+		    },
+		
+		    handleParsingForm: function() {			//进行输入的客户端校验工作
+		      // Clear out any pre-existing error messages.
+		      this.formErrors = {};
+		      var argins = this.formData;
+		
+		      // Validate email:
+		      if(!argins.emailAddress) {
+		        this.formErrors.emailAddress = true;
+		      }
+		   
+		      if (Object.keys(this.formErrors).length > 0) {
+		        return;
+		      }
+		
+		      return argins;
+		    },
+		  }
+
+	// views data-------------------html模板----------------------------
+	view/pages/signup.ejs里面编写html模板，使用vue语法显示数据，绑定事件
 
 	// views methodes
-	<ajax-form action="signup" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm()" :handle-parsing="handleParsingForm">
+	<div id="zswp" v-cloak>		//一定要注意这个id
+	<ajax-form action="zswpcb" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm()" :handle-parsing="handleParsingForm">
+	<ajax-button :syncing="syncing" class="btn-dark btn-lg btn-block">Sign in</ajax-button>
+
+	// 生成1个action, 里面编写上面ajax-form对应的action函数
+	sails generate action zsw/zswpcb
+
+	 inputs: {
+	    emailAddress: {
+	      required: true,
+	      type: 'string',
+	      description: 'A return email address where we can respond.',
+	      example: 'hermione@hogwarts.edu'
+	    },},
+
+	  exits: {
+	    success: {
+	      description: 'zsw successfully ',
+	      extendedDescription:  'zswp callback'
+	    },
+	  },
+	
+	
+	  fn: async function (inputs, exits) {
+	
+	    sails.log.info(inputs.emailAddress);
+	    sails.log.info('ffffffffffff');
+	    
+	    return exits.success();
+	  }
 
 
-	// cloud.setup.js
-	自动生成的ejs调用上面的action函数
-
-	// 调用服务器处理action路由 
-  	'PUT   /api/v1/account/update-profile':             { action: 'account/update-profile' },
+	// 调用服务器处理action路由 --------------客户端的事件------------------------
+  	'PUT   /api/v1/zsw/zswpcb':             { action: 'zsw/zswpcb' },
 
 	
+	// 生成 cloud-sdk
+	sails run rebuild-cloud-sdk
+
 
 
 

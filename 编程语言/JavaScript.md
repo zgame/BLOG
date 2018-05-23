@@ -145,7 +145,13 @@
 # for
 
 	for (x in person) 
+	{
+		 console.log(person[i]);
+	}
 
+	for(var value of Arr){
+	    console.log(value);
+	}  
 
 
 # 函数
