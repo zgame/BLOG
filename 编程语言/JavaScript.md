@@ -96,6 +96,7 @@
 	push()	向数组的末尾添加一个或更多元素，并返回新的长度。
 	slice()	选取数组的的一部分，并返回一个新数组。
 	toString()	把数组转换为字符串，并返回结果。
+	unshift()	向数组的开头添加一个或更多元素，并返回新的长度。
 
 
 
@@ -149,7 +150,7 @@
 		 console.log(person[i]);
 	}
 
-	for(var value of Arr){
+	for(let value of Arr){
 	    console.log(value);
 	}  
 
@@ -158,13 +159,63 @@
 
 	for (i = 1; i < arguments.length; i++)   //可变参
 
+
+	for (let i = 0; i < 5; ++i) 		
+	// let 和var 的区别 ，  let是区块作用域，  var是局部变量
+	// ES6新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。
+	
+
 	
 
 
+# es6 
+
+	http://www.runoob.com/w3cnote/es6-concise-tutorial.html
+
+
+# =>
+
+	var getPrice = function() {
+	  return 4.55;
+	};
+	 
+	// Implementation with Arrow Function
+	var getPrice = () => 4.55;
+
+
+# map weakmap
+
+	WeakMap 就是一个 Map，只不过它的所有 key 都是弱引用，意思就是 WeakMap 中的东西垃圾回收时不考虑，使用它不用担心内存泄漏问题。
 
 
 
+# Set 和 WeakSet
 
+	类似于 WeakMap，WeakSet 对象可以让你在一个集合中保存对象的弱引用，在 WeakSet 中的对象只允许出现一次
 
+#  迭代器
 
+	var arr = [11,12,13];
+	var itr = arr[Symbol.iterator]();
+	 
+	itr.next(); // { value: 11, done: false }
+	itr.next(); // { value: 12, done: false }
+	itr.next(); // { value: 13, done: false }
+	 
+	itr.next(); // { value: undefined, done: true }
 
+# Promises
+
+	ES6 对 Promise 有了原生的支持，一个 Promise 是一个等待被异步执行的对象，当它执行完成后，其状态会变成 resolved 或者rejected。
+	var p = new Promise(function(resolve, reject) {  
+	  if (/* condition */) {
+	    // fulfilled successfully
+	    resolve(/* value */);  
+	  } else {
+	    // error, rejected
+	    reject(/* reason */);  
+	  }
+	});
+	每一个 Promise 都有一个 .then 方法，这个方法接受两个参数，第一个是处理 resolved 状态的回调，一个是处理 rejected 状态的回调：
+	p.then((val) => console.log("Promise Resolved", val),
+	       (err) => console.log("Promise Rejected", err));

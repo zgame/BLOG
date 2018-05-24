@@ -171,7 +171,7 @@
 # component ajax-form ajax-button
 
 	
-
+	具体看下面的ejs模板例子
 	
 
 
@@ -299,4 +299,137 @@
 
 
 
+# model User
 
+	friends: { collection: 'User', description: 'All of the other users this user can share things with.' },
+
+
+# 点击按钮打开modal弹窗
+
+ 
+	<div id="friends" v-cloak>
+	  <div class="container">
+		<button class="btn btn-outline-primary" @click="clickInviteButton()">Invite friends</button>	//调用vuejs不用ajax
+
+	assets/js
+
+	virtualPages: true,
+	  html5HistoryMode: 'history',
+	  virtualPagesRegExp: new RegExp(/^\/friends\/?([^\/]+)?/),
+
+
+	  clickInviteButton: function() {
+      // Open the modal.
+      this.goto('/friends/new');
+    },
+
+  	'GET /friends/:virtualPageSlug?':   { action: 'friends/view-friends' },     // config/rout设定虚拟路由
+
+# modal弹窗里面
+
+
+	 <modal v-if="virtualPageSlug === 'new'" v-cloak key="new" @close="closeAddFriendsModal()">
+	 <div class="modal-header">
+      <h5 class="modal-title">Invite friends</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span>&times;</span>									  // X的关闭按钮			
+      </button>
+     </div>
+
+	<div class="modal-body">
+ 	<span class="add-more-button" @click="clickAddMoreButton()"><span class="fa fa-plus text-info mr-1"></span> Add more</span> // + 加一行的按钮
+
+	<button data-dismiss="modal" class="btn btn-outline-secondary mr-1">Cancel</button>   //取消按钮
+	<div class="modal-footer flex-row-reverse justify-content-start">	
+
+	
+# 数据处理流程vue js
+
+		// vue 直接通过me来获取列表
+		 <tr v-for="friend in me.friends">    
+	
+		// 想增加数据的时候，通过vue js文件中预定义的data来操作
+		<div class="form-group" v-for="(friend, index) in addFriendsFormData.friends">
+
+		// 增加好友点击提交--------------------------------------------------------------
+ 		 <ajax-form action="addFriends" :syncing.sync="syncing" :cloud-error.sync="cloudError" :handle-parsing="handleParsingAddFriendsForm" @submitted="submittedAddFriendsForm()">
+		vue js文件中定义的submittedAddFriendsForm函数， 可以获取自己data中this.addFriendsFormData的数据
+	  
+	  var invitedFriends = _.filter(this.addFriendsFormData.friends, (friend)=>{
+        return friend.fullName !== '' && friend.emailAddress !== '';
+      });
+	  this.me.outboundFriendRequests = this.me.outboundFriendRequests.concat(invitedFriends);
+      this.$forceUpdate();
+
+
+
+
+		// 删除好友  ---------有确认框------------------------------------
+	<button class="btn btn-sm btn-outline-danger" @click="clickRemoveFriend(friend.id)">Remove friend</button>
+
+    clickRemoveFriend: function(friendId) {
+      this.selectedFriend = _.find(this.me.friends, {id: friendId});
+      console.log('selectedFriend',this.selectedFriend);
+
+      // Open the modal.
+      this.confirmRemoveFriendModalOpen = true;
+    },
+
+	<modal v-if="confirmRemoveFriendModalOpen && selectedFriend" v-cloak key="remove" @close="closeRemoveFriendModal()">
+	 <button data-dismiss="modal" class="btn btn-outline-secondary mr-1">Nevermind</button>
+	 closeRemoveFriendModal: function() {   //关闭或取消确认框
+	      this.selectedFriend = undefined;
+	      this.confirmRemoveFriendModalOpen = false;
+	      this.cloudError = '';
+	    },
+				
+
+		// 删除好友确认框，指定了action，还有后面的vue js
+		<ajax-form action="removeFriend" :syncing.sync="syncing" :cloud-error.sync="cloudError" :handle-parsing="handleParsingRemoveFriendForm" @submitted="submittedRemoveFriendForm($event)">
+		
+		// 删除好友 vue js
+		handleParsingRemoveFriendForm: function() {
+	      return {
+	        id: this.selectedFriend.id
+	      };
+	    },
+		submittedRemoveFriendForm: function() {
+	      // Remove this user from our friends list.
+	      _.remove(this.me.friends, {id: this.selectedFriend.id});
+	
+	      // Close the modal.
+	      this.selectedFriend = undefined;
+	      this.confirmRemoveFriendModalOpen = false;
+	      this.cloudError = '';
+	    },
+		
+
+
+		// 同意加好友------没有确认框-----------------------------------------------------
+		 <button :disabled="syncing" class="btn btn-sm btn-outline-primary" @click="clickApproveFriend(potentialFriend.id)">Confirm</button>
+		 // Prevent double-posting
+	      if(this.syncing) {
+	        return;
+	      }
+	      this.syncing = true;
+
+		 await Cloud.approveFriend.with({ id: userId });   // 调用cloud 绑定的action
+
+	      // Add this user to our approved friends list.
+	      var approvedFriend =_.find(this.me.inboundFriendRequests, {id: userId});
+	      this.me.friends.unshift({
+	        id: approvedFriend.id,
+	        fullName: approvedFriend.fullName,
+	        emailAddress: approvedFriend.emailAddress
+	      });
+	      // Remove this user from our friends list.
+	      _.remove(this.me.inboundFriendRequests, {id: userId});
+	      // Clear loading state
+	      this.syncing = false;
+		-------------------------------------------------------------------------------
+
+
+
+# action	
+
+	
