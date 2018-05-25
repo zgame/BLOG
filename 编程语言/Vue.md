@@ -58,6 +58,9 @@
 	$ cd my-project
 	$ cnpm install
 	$ cnpm run dev						//然后用cnpm启动
+
+	也可以在webstorm里面配置npm的run项目
+
 	 DONE  Compiled successfully in 4388ms
 
 
@@ -336,3 +339,49 @@
   	</ul>
 
 	
+
+
+#  路由
+
+	Vue.js 路由需要载入 vue-router 库
+
+
+# vuex状态管理
+
+	Getters：用来从 store 获取 Vue 组件数据。 
+	Mutators：事件处理器用来驱动状态的变化。 
+	Actions：可以给组件使用的函数，以此用来驱动事件处理器 mutations
+
+
+# vue-resource
+
+	请求API是按照REST风格设计的，它提供了7种请求API： 
+	· get(url,[options]) 
+	· head(url,[options]) 
+	· delete(url,[options]) 
+	· jsonp(url,[options]) 
+	· post(url,[body], [options]) 
+	· put(url, [body],[options]) 
+	· patch(url,[body], [options])
+
+# Axios插件
+
+	上面的替代
+
+
+# vuex状态管理
+
+	虽然 Vuex 可以帮助我们管理共享状态，但也附带了更多的概念和框架。这需要对短期和长期效益进行权衡。
+
+	如果您不打算开发大型单页应用，使用 Vuex 可能是繁琐冗余的。确实是如此——如果您的应用够简单，您最好不要使用 Vuex。一个简单的 global event bus 就足够您所需了。
+
+
+# ESLint
+
+	自动对齐的一个插件
+
+# 文档生成工具
+
+	swagger是一个REST APIs文档生成工具
+
+ 
