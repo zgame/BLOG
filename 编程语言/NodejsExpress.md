@@ -33,6 +33,8 @@
 	})
 
 
+ 	res.render('page-login', { title: 'Express', list:[1,2,3,4,5] });
+
 	// 加载中间件 ， next是进行下一个中间件的处理
 	app.use(function (req, res, next) {
 	  console.log('1')

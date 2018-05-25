@@ -430,6 +430,128 @@
 
 
 
-# action	
+# action
+		
+	// --------------------------create
+	 var newUserRecord = await User.create(Object.assign({
+      emailAddress: newEmailAddress,
+      password: await sails.helpers.passwords.hashPassword(inputs.password),
+      fullName: inputs.fullName,
+      tosAcceptedByIp: this.req.ip
+    }, sails.config.custom.verifyEmailAddresses? {
+      emailProofToken: await sails.helpers.strings.random('url-friendly'),
+      emailProofTokenExpiresAt: Date.now() + sails.config.custom.emailProofTokenTTL,
+      emailStatus: 'unconfirmed'
+    }:{}))
+    .intercept('E_UNIQUE', 'emailAlreadyInUse')
+    .intercept({name: 'UsageError'}, 'invalid')
+    .fetch();
+
+	// --------------------------find findone
+	await User.findOne({ emailProofToken: inputs.token });
+
+	// --------------------------update
+	await User.update(newUserRecord.id).set({
+        stripeCustomerId
+      });
+
+	await User.update({ id: userRecord.id }).set({
+      password: hashed,
+      passwordResetToken: '',
+      passwordResetTokenExpiresAt: 0
+    });
+
+	await User.update({ id: userRecord.id }).set({
+      passwordResetToken: token,
+      passwordResetTokenExpiresAt: Date.now() + sails.config.custom.passwordResetTokenTTL,
+    });
+
+
+	// --------------------------count
+	await User.count({ emailAddress: user.emailChangeCandidate }) > 0
+
+
+
+
+	--------?---------
+	if (_.contains(['beginChange', 'changeImmediately', 'modifyPendingChange'], desiredEffectReEmail)) {
+      let conflictingUser = await User.findOne({
+        or: [
+          { emailAddress: newEmailAddress },
+          { emailChangeCandidate: newEmailAddress }
+        ]
+      });
+      if (conflictingUser) {
+        throw 'emailAlreadyInUse';
+      }
+    }
+	
+	// object.assign 为对象之间的合并， 把后面的对象，合并到前面去
+	  Object.assign(valuesToSet, {
+          emailAddress: newEmailAddress,
+          emailChangeCandidate: '',
+          emailProofToken: '',
+          emailProofTokenExpiresAt: 0,
+          emailStatus: this.req.me.emailStatus === 'unconfirmed' ? 'unconfirmed' : 'confirmed'
+        });
+
+
+	// -----------collection----------
+	 await User.addToCollection(existingUser.id, 'inboundFriendRequests')
+        .members([this.req.me.id]);
+
+
+
+	// ----_.pluck   model owner-----------------------
+    var things = await Thing.find({
+      or: [
+        // Friend things:
+        { owner: { 'in': _.pluck(this.req.me.friends, 'id') } },
+        // My things:
+        { owner: this.req.me.id }
+      ]
+    })
+    .populate('owner')
+    .populate('borrowedBy');
+
+
+	// _.each
+	_.each(things, (thing)=> {
+      thing.imageSrc = url.resolve(sails.config.custom.baseUrl, '/api/v1/things/'+thing.id+'/photo');
+      delete thing.imageUploadFd;
+      delete thing.imageUploadMime;
+    });
+
+
+	// Upload the image.
+    var info = await sails.uploadOne(photo, {
+      maxBytes: 500000
+    })
+    .intercept('E_EXCEEDS_UPLOAD_LIMIT', 'tooBig')
+    .intercept((err)=>new Error('The photo upload failed: '+util.inspect(err)));
+
+	// _.any
+	 var itemBelongsToFriend = _.any(this.req.me.friends, {id: thing.owner});
+
+	// startdownload
+	await sails.startDownload(thing.imageUploadFd);
+
+	//destroy
+	await Thing.destroy({ id: inputs.id });
 
 	
+
+
+
+
+# sails.helpers
+
+	await sails.helpers.strings.random('url-friendly');
+ 	await sails.helpers.sendTemplateEmail.with({
+	await sails.helpers.fs.write.with
+	var hasTestFolder = await sails.helpers.fs.exists
+	var lastRunBootstrapInfo = await sails.helpers.fs.readJson
+	await sails.helpers.passwords.hashPassword
+	 let stripeCustomerId = await sails.helpers.stripe.saveBillingInfo.with
+	sails.helpers.stripe.configure
+	sails.helpers.mailgun.configure
