@@ -914,3 +914,8 @@
 	copy(bufferEnd, bufferT)
 	copy(bufferEnd[len(bufferT):], data)
 
+
+# ssh
+
+	"golang.org/x/crypto/ssh"
+	cmd := "cmd.exe /c \"cd d:/server && d:/zswzsw\""			// windows

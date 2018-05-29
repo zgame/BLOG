@@ -626,3 +626,10 @@ Python2的写法用的是
 	print(name)
 	Database = conf.get_section("author")
 	print(Database.get("ServerIP"))
+
+
+# ssh
+
+	import paramiko
+	execmd = 'cmd.exe /c "cd d:/server && d:/zsw/zsw.bat"'		// windows
+
