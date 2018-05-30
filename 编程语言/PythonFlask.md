@@ -60,4 +60,4 @@
 
 # response
 
-	return Response(data, mimetype='text/plain')
+	 return Response(json.dumps(data), mimetype='text/plain')

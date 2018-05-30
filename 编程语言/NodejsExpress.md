@@ -191,3 +191,22 @@
 
 
 
+# request
+
+	let user = req.query.user;			//获取参数
+    let idx = req.query.id;
+
+    console.log("user:",user);
+    console.log("id:",idx);
+
+    let re = [];
+    re.push(user);
+    re.push(idx);
+
+
+# response
+
+	let str_json = JSON.stringify(re, null, 4);     //使用四个空格缩进
+    res.send(str_json);
+
+

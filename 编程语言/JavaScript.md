@@ -99,6 +99,13 @@
 	unshift()	向数组的开头添加一个或更多元素，并返回新的长度。
 
 
+# json
+
+	var obj = JSON.parse(text);		//将一个JSON字符串转换为 JavaScript对象。
+
+	//用于将 JavaScript 值转换为 JSON 字符串。
+	let str_json = JSON.stringify(re, null, 4);     //使用四个空格缩进
+
 
 # 对象
 

@@ -54,3 +54,13 @@
     
 
 	
+# request
+
+	def echoz(request):
+	    if request.method == 'GET':
+	        user = request.GET.get('user')
+        	idx = request.GET.get('id')
+
+# response
+
+	 return HttpResponse(json.dumps(data), content_type="text/plain")

@@ -8,11 +8,13 @@
 
 	php artisan serve		//启动
 
+	artisan  phpscript  arguments填serve  // webstorm运行
+
 	
 
 # 路由
 
-	app/Http/routes.php
+	/routes/web.php
 	
 	Route::get('/', function()
 	{
@@ -36,8 +38,12 @@
 	return response()->view('hello')->header('Content-Type', $type);
 
 # view
-
+	
+	 // 路由指定	
 	 return view('greeting', ['name' => 'James']);
+
+	/resources/views/welcome.blade.php
+	
 
 # blade
 
@@ -47,3 +53,23 @@
 ---
 
 
+# 例子
+
+
+	Route::get('/search','Home\zswController@zswget');
+
+	namespace App\Http\Controllers\Home;
+
+	public function zswget(Request $request){
+        $name=$request->input('user');
+        $idx=$request->input('id');
+
+        //echo "user:", $name,"    id:" , $idx;
+
+        $array = [];
+        array_push($array,$name);
+        array_push($array,$idx);
+
+        //print_r($array);
+
+        return response()->json($array);
