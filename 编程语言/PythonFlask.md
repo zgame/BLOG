@@ -50,4 +50,14 @@
 	
 # 信号
 
+# get
 
+	@app.route('/login', methods=['POST', 'GET'])
+	def login():
+	    if request.method == 'GET':
+	        user = request.args.get('user')
+	        idx = request.args.get('id')
+
+# response
+
+	return Response(data, mimetype='text/plain')
