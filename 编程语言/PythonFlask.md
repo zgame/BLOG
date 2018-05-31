@@ -85,3 +85,33 @@
 	@app.route('/login', methods=['POST', 'GET'])
 	@allow_cross_domain
 	def login_route():
+
+
+# mysql数据库
+
+
+	//app.py程序入口点
+
+	from flask import Flask
+	from flaskext.mysql import MySQL
+	
+	mysql = MySQL()
+	app = Flask(__name__)
+	app.config['MYSQL_DATABASE_USER'] = 'zsw1'
+	app.config['MYSQL_DATABASE_PASSWORD'] = 'zsw123'
+	app.config['MYSQL_DATABASE_DB'] = 'zsw_db'
+	app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
+	mysql.init_app(app)
+
+
+	// action里面获取数据库数据
+	cursor = mysql.connect().cursor()
+    cursor.execute("SELECT * from student where true")
+    data = cursor.fetchall()
+    # data = cursor.fetchone()
+
+
+# pycharm 数据库工具
+
+	view - tool window - database
+	可以在pycharm里面进行sql语句的调试，测试，输出

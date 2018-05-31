@@ -5,7 +5,6 @@
 
 
 
-	
 	var server = app.listen(8081, function () {
 	
 	  var host = server.address().address
@@ -107,11 +106,6 @@
 
 	//public目录下面放css, js等外部文件
 	<link rel="stylesheet" href="/css/normalize.css">
-
-	
-
-
-
 
 	
 
@@ -221,5 +215,69 @@
 	    next();
 	};
 	app.use(allowCrossDomain);
+
+
+# mysql 
+
+	npm install mysql --save
+
+	//建model目录，db.js--------------------------------
+	let mysql = require('mysql');
+	let db = {}
+	
+	//插入操作，注意使用异步返回查询结果
+	db.insert = function (connection, sql, paras, callback) {
+	    connection.query(sql, paras, function (error, results, fields) {
+	        if (error) throw error;
+	        callback(results.insertId);//返回插入的id
+	    });
+	}
+	
+	//关闭数据库
+	db.close = function (connection) {
+	    //关闭连接
+	    connection.end(function (err) {
+	        if (err) {
+	            return;
+	        } else {
+	            console.log('关闭连接');
+	        }
+	    });
+	}
+	
+	//获取数据库连接
+	db.connection = function () {
+	    //数据库配置
+	    let connection = mysql.createConnection({
+	        host: 'localhost',
+	        user: 'zsw1',
+	        password: 'zsw123',
+	        database: 'zsw_db',
+	        port: 3306
+	    });
+	    //数据库连接
+	    connection.connect(function (err) {
+	        if (err) {
+	            console.log(err);
+	            return;
+	        }
+	    });
+	    return connection;
+	}
+	module.exports = db;
+
+
+	//action-----------------------------------
+	let db = require('../model/db');
+	let connection = db.connection();
+    let  sql = 'SELECT * FROM student';
+    connection.query(sql,function (err, result) {
+        if (err) {
+            console.log('[SELECT  ERROR] - ', err.message);
+            return;
+        }
+        let str_json = JSON.stringify(result, null, 4);     //使用四个空格缩进
+        res.send(str_json);
+    });
 
 
