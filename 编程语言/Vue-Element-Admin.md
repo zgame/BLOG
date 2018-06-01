@@ -37,13 +37,12 @@
 
 # Admin目录结构
 
-	/api
-	/components
-	/router
-	/store
-	/utils
-	/views
-	main.js
+	/api			action连接后端请求, 常用***
+	/components		自定义组件
+	/router			路由设定, 常用***
+	/store			model数据层，常用***
+	/utils			增加一个axios拦截器中间件
+	/views			各个页面, 常用***
 	permission.js
 
 
@@ -59,6 +58,32 @@
 	   code = 50008 非法token，code = 50012 其他客户端登录了
 	   code = 50014 token过期了，message为错误信息
 
+
+# api
+
+	export function getInfo(token) {
+	  return request({
+	    url: '/user/info',
+	    method: 'get',
+	    params: { token }
+	  })
+	}
+
+
+# store
+
+	/modules/app.js		 侧边栏的大小调整记录cookies
+	/modules/user.js	 登录之后设置token
+	index.js			 定义全局的store
+
+
+
+# dispatch
+
+	寻找所有父级，直到找到要找的父组件，并在其身上触发指定事件
+
+
+# 
 
 
 
