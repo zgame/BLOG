@@ -2,8 +2,11 @@
 # express框架
 
 	$ npm install express --save
+
 	用了 --save 选项， 它还会更新 package.json 文件
 	
+
+
 	var server = app.listen(8081, function () {
 	
 	  var host = server.address().address
@@ -108,11 +111,6 @@
 
 	
 
-
-
-
-	
-
 # jade （html模板）
 
 	http://jade-lang.com/reference/attributes	//手册
@@ -187,5 +185,101 @@
 	var debug = require('debug')('exp:server');
 	debug('Listening on ' + bind);
 
+
+
+# request
+
+	let user = req.query.user;			//获取参数
+    let idx = req.query.id;
+
+    console.log("user:",user);
+    console.log("id:",idx);
+
+    let re = [];
+    re.push(user);
+    re.push(idx);
+
+
+# response
+
+	let str_json = JSON.stringify(re, null, 4);     //使用四个空格缩进
+    res.send(str_json);
+
+
+# 前后端分离，跨域设置
+
+	// app.js
+	let allowCrossDomain = function (req, res, next) {
+	    res.header('Access-Control-Allow-Origin', 'http://localhost:8080'); //必须重新设置，把origin的域加上去
+	    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+	    res.header('Access-Control-Allow-Headers', 'x-custom');
+	    res.header('Access-Control-Allow-Credentials', 'true');//和客户端对应，必须设置以后，才能接收cookie.
+	    next();
+	};
+	app.use(allowCrossDomain);
+
+
+# mysql 
+
+	npm install mysql --save
+
+	//建model目录，db.js--------------------------------
+	let mysql = require('mysql');
+	let db = {}
+	
+	//插入操作，注意使用异步返回查询结果
+	db.insert = function (connection, sql, paras, callback) {
+	    connection.query(sql, paras, function (error, results, fields) {
+	        if (error) throw error;
+	        callback(results.insertId);//返回插入的id
+	    });
+	}
+	
+	//关闭数据库
+	db.close = function (connection) {
+	    //关闭连接
+	    connection.end(function (err) {
+	        if (err) {
+	            return;
+	        } else {
+	            console.log('关闭连接');
+	        }
+	    });
+	}
+	
+	//获取数据库连接
+	db.connection = function () {
+	    //数据库配置
+	    let connection = mysql.createConnection({
+	        host: 'localhost',
+	        user: 'zsw1',
+	        password: 'zsw123',
+	        database: 'zsw_db',
+	        port: 3306
+	    });
+	    //数据库连接
+	    connection.connect(function (err) {
+	        if (err) {
+	            console.log(err);
+	            return;
+	        }
+	    });
+	    return connection;
+	}
+	module.exports = db;
+
+
+	//action-----------------------------------
+	let db = require('../model/db');
+	let connection = db.connection();
+    let  sql = 'SELECT * FROM student';
+    connection.query(sql,function (err, result) {
+        if (err) {
+            console.log('[SELECT  ERROR] - ', err.message);
+            return;
+        }
+        let str_json = JSON.stringify(result, null, 4);     //使用四个空格缩进
+        res.send(str_json);
+    });
 
 

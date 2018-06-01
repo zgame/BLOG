@@ -50,4 +50,68 @@
 	
 # 信号
 
+# get
 
+	@app.route('/login', methods=['POST', 'GET'])
+	def login():
+	    if request.method == 'GET':
+	        user = request.args.get('user')
+	        idx = request.args.get('id')
+
+# response
+
+	 return Response(json.dumps(data), mimetype='text/plain')
+
+
+# 前后端分离，跨域
+
+	//新建一个python文件cross_domain
+	from functools import wraps
+	from flask import make_response
+	
+	def allow_cross_domain(fun):
+	    @wraps(fun)
+	    def wrapper_fun(*args, **kwargs):
+	        rst = make_response(fun(*args, **kwargs))
+	        rst.headers['Access-Control-Allow-Origin'] = '*'
+	        rst.headers['Access-Control-Allow-Methods'] = 'PUT,GET,POST,DELETE'
+	        allow_headers = "Referer,Accept,Origin,User-Agent"
+	        rst.headers['Access-Control-Allow-Headers'] = allow_headers
+	        return rst
+	    return wrapper_fun
+
+
+	//路由的时候，调用装饰器
+	@app.route('/login', methods=['POST', 'GET'])
+	@allow_cross_domain
+	def login_route():
+
+
+# mysql数据库
+
+
+	//app.py程序入口点
+
+	from flask import Flask
+	from flaskext.mysql import MySQL
+	
+	mysql = MySQL()
+	app = Flask(__name__)
+	app.config['MYSQL_DATABASE_USER'] = 'zsw1'
+	app.config['MYSQL_DATABASE_PASSWORD'] = 'zsw123'
+	app.config['MYSQL_DATABASE_DB'] = 'zsw_db'
+	app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
+	mysql.init_app(app)
+
+
+	// action里面获取数据库数据
+	cursor = mysql.connect().cursor()
+    cursor.execute("SELECT * from student where true")
+    data = cursor.fetchall()
+    # data = cursor.fetchone()
+
+
+# pycharm 数据库工具
+
+	view - tool window - database
+	可以在pycharm里面进行sql语句的调试，测试，输出

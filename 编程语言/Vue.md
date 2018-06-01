@@ -353,7 +353,7 @@
 	Actions：可以给组件使用的函数，以此用来驱动事件处理器 mutations
 
 
-# vue-resource
+# vue-resource，已经不推荐了，下面用 Axios插件
 
 	请求API是按照REST风格设计的，它提供了7种请求API： 
 	· get(url,[options]) 
@@ -364,9 +364,7 @@
 	· put(url, [body],[options]) 
 	· patch(url,[body], [options])
 
-# Axios插件
 
-	上面的替代
 
 
 # vuex状态管理
@@ -379,9 +377,64 @@
 # ESLint
 
 	自动对齐的一个插件
+	
+	Setting - Languages & Frameworks - JavaScript - Code Quality Tools - JSLint - 开启Enable
+
+	平时可以点击右键选择Fix EsLint problems, 然后webpack会热更新
+
 
 # 文档生成工具
 
 	swagger是一个REST APIs文档生成工具
+
+
+
+# Axios插件http
+
+	main.js
+	import axios from 'axios'
+	Vue.prototype.$axios = axios
+	
+	
+	.vue
+	export default {
+	  name: 'form',
+	  data: function () {
+	    return {
+	      message: 'this is a zsw form',
+	      message2: 'zsw\r\n form test',
+		  resz: ['zsw', '']
+	    }
+	  },
+	   methods: {
+	    get () {
+	      // let url = 'http://127.0.0.1:8000/zsw?user=' + this.message + '&id=' + this.idx
+	      let url = 'http://127.0.0.1:8000/zsw'
+	
+	      this.$axios.get(url, {
+	        params: {
+	          user: this.message,
+	          id: this.idx
+	        }
+	      }).then((response) => {
+	        console.log(response)
+	        console.log('response:' + response.data)
+	        this.resz = response.data
+	
+	        console.log('ddddddddddddddddddd')
+	      })
+	        .catch(function (error) {
+	          console.log(error)
+	        })
+	    }
+	  }
+	}
+
+
+# vuex
+
+	
+
+	
 
  
