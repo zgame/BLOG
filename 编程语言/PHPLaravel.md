@@ -92,3 +92,10 @@
 
 
 	// 加入到kernel.php 中	
+
+
+# mysql
+
+	config/database.php  配置数据库
+
+	
