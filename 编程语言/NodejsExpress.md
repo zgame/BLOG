@@ -3,6 +3,8 @@
 
 	$ npm install express --save
 
+	用了 --save 选项， 它还会更新 package.json 文件
+	
 
 
 	var server = app.listen(8081, function () {
