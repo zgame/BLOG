@@ -433,8 +433,22 @@
 
 # vuex
 
-	
+	const store = new Vuex.Store    // 创建store
 
+	mutations: { increment (state)   		// 定义mutation
+	store.commit('increment')			//提交mutation
+	state				//获取属性   
+	this.$store.state.count
+	getter				//Getter 接受 state 作为其第一个参数
+	this.$store.getters.doneTodosCount
+
+	action		//可以异步的执行很多复杂操作
+	store.dispatch('increment')		//触发
+
+	应用层级的状态应该集中到单个 store 对象中。
+	提交 mutation 是更改状态的唯一方法，并且这个过程是同步的。
+	异步逻辑都应该封装到 action 里面。
+	
 	
 
  

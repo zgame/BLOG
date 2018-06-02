@@ -187,8 +187,12 @@
 
 # request
 
-	let user = req.query.user;			//获取参数
+	let user = req.query.user;			//获取get请求参数
     let idx = req.query.id;
+
+ 	let user_name = req.body.username;		// post请求
+    let pwd = req.body.password;
+
 
     console.log("user:",user);
     console.log("id:",idx);
@@ -202,6 +206,8 @@
 
 	let str_json = JSON.stringify(re, null, 4);     //使用四个空格缩进
     res.send(str_json);
+
+
 
 
 # 前后端分离，跨域设置

@@ -226,3 +226,5 @@
 	每一个 Promise 都有一个 .then 方法，这个方法接受两个参数，第一个是处理 resolved 状态的回调，一个是处理 rejected 状态的回调：
 	p.then((val) => console.log("Promise Resolved", val),
 	       (err) => console.log("Promise Rejected", err));
+
+

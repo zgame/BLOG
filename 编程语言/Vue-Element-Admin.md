@@ -48,7 +48,6 @@
 
 
 
-
 # utils
 
 	request.js
@@ -61,6 +60,7 @@
 
 # api
 
+	// axios 连接后端请求数据用
 	export function getInfo(token) {
 	  return request({
 	    url: '/user/info',
@@ -80,15 +80,50 @@
 
 # dispatch
 
-	寻找所有父级，直到找到要找的父组件，并在其身上触发指定事件
+	寻找所有父级，直到找到要找的父组件，并在其身上触发指定事件action
+	action就是在store/modules下面定义的action
+
+# mutation
+	
+	vuex的状态变化只能通过mutation
+	state.sidebar.opened = false
+
+# action
+
+	commit('TOGGLE_SIDEBAR')		//提交mutation
 
 
-# 
+# router
+
+	index.js里面增加一个路由，侧边栏会自动出现这个选项
+
+
+# view
+
+	form 表单页面	       	
+	layout 布局不用动
+	table 表格				// 启动就请求create		
+	login					// 输入验证，
 
 
 
 
+# 数据例子
 
+	  "code": 20000,
+	  "data": {
+	    "items": [
+	      {
+	        "id": "54000020040629841X",
+	        "title": "Yprmmwrmdf tksutufjw shh meigkut grqgjbxtq wygsp opcdexjvfq hvwdt swlqaono hvhndwuxiu disedjwb.",
+	        "status": "draft",
+	        "author": "name",
+	        "display_time": "2008-08-07 08:01:02",
+	        "pageviews": 3156
+	      },
+
+
+	
 
 
 
