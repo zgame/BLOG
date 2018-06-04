@@ -123,7 +123,37 @@
 	      },
 
 
+# 登录
+
+	/views/login/index.vue   登录界面vue，先登录，获得token，然后getinfo
+	/api/login.js			 请求服务器登录的协议格式
+	/store/modules/user.js   登录之后保存name，token等信息
 	
+	
+# 权限
+
+	/router/index.js 
+	export const asyncRouterMap = []   // 这里增加带权限的路由，设置可以不可以访问
+	meta: { title: '表单', icon: 'form', roles: ['admin','view'] },
+	
+	
+	store/index.js
+	import permission from './modules/permission'  // 针对权限进行的一些计算
+	在modules里面增加permission
+
+	store/getter.js
+	permission_routers: state => state.permission.routers,
+    addRouters: state => state.permission.addRouters,
+
+	/views/layout/componets/Sidebar/index.vue 
+	采用permission_routers，将权限路由显示出来
+
+	
+	
+
+# 数据库的嵌套
+
+# 表格，图表， 标签，form, dashboard
 
 
 

@@ -11,6 +11,8 @@
 # 输出
 
 	console.log(c); 
+	// 把object输出成json格式
+	let str_json = JSON.stringify(object, null, 4);     //使用四个空格缩进
 
 
 # 属性
