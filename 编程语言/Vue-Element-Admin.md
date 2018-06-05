@@ -95,7 +95,7 @@
 
 # router
 
-	index.js里面增加一个路由，侧边栏会自动出现这个选项
+	index.js里面增加一个路由，侧边栏会自动出现这个选项，后面会增加带权限验证的路由
 
 
 # view
@@ -126,8 +126,12 @@
 # 登录
 
 	/views/login/index.vue   登录界面vue，先登录，获得token，然后getinfo
-	/api/login.js			 请求服务器登录的协议格式
+
+	通过this.$store.dispatch('Login', this.loginForm).then(() => {调用module层
 	/store/modules/user.js   登录之后保存name，token等信息
+	
+	module层调用api层
+	/api/login.js			 请求服务器登录的协议格式
 	
 	
 # 权限
@@ -149,13 +153,46 @@
 	采用permission_routers，将权限路由显示出来
 
 	
+
+# 显示时间格式
+
+	 <span>{{scope.row.login_time | parseTime('{y}-{m}-{d} {h}:{i}')}}</span>
 	
+
+
+# get,post
+
+	method: 'post',
+    data: { id, username, pwd, dashboard, statis, edit }		// data是用于post
+
+	method: 'get',
+    params: { username, pwd, dashboard, statis, edit }			// params是地址带参数，用于get
+
+
+# form 
+
+	
+
+
+
+
+
+# 表单 验证
+
+#  编辑数据
+
+
+# 表格，图标，标签页
+
 
 # 数据库的嵌套
 
-# 表格，图表， 标签，form, dashboard
 
 
+# 用户权限的设置
+
+
+# 收入显示
 
 
 

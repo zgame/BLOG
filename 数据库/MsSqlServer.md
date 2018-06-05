@@ -96,11 +96,15 @@
 
 # update
 
-	update dbo.gamestoreinfo set androidcount = '40' where uid = '2003'   更新数据
+	update dbo.gamestoreinfo set androidcount = '40',pay='1' where uid = '2003'   更新数据
 
 # insert
 
 	insert into dbo.AaWhiteIPList (ip,comments) values ('127.0.0.1','')
+
+# delete
+
+	DELETE FROM runoob_tbl WHERE runoob_id=3;
 
 
 # 存储过程和函数

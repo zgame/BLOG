@@ -128,6 +128,9 @@
 
 	支持str+int的输出格式
 
+
+# 格式转换
+
 	string(123)
 	(123).toString()		//转成字符串
 
@@ -229,4 +232,9 @@
 	p.then((val) => console.log("Promise Resolved", val),
 	       (err) => console.log("Promise Rejected", err));
 
+
+# 时间戳
+
+	 let login_time = new date().getTime();
+	 这个获取的时间戳是13位， 数据库记得要用bigint（20）
 
