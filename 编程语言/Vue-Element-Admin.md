@@ -4,7 +4,7 @@
 
 	this.$message('这是一条消息提示');
 
-	// 确认框
+	// 二次确认框
 	methods: {			
       open2() {
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
@@ -32,6 +32,14 @@
           message: '这是一条成功的提示消息',
           type: 'success'
         });
+
+
+	// 可以设定数值的开关
+	<el-switch v-model="dlgData.edit" active-color="#13ce66" inactive-color="#ff4949" active-value="1" inactive-value="0"></el-switch>
+
+
+	// 开关的初始状态设定
+	this.dlgData.dashboard = '1'	//开启
 
 ---
 
@@ -171,25 +179,81 @@
 
 # form 
 
-	
+	<el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
+      <el-form :rules="rules" ref="dataForm" :model="dlgData" label-position="left" label-width="90px" style='width: 300px; margin-left:50px;'>
+
+
+        <el-form-item label="账号" >
+          <el-input v-model="dlgData.username"></el-input>
+        </el-form-item>
+ 	  </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">{{$t('table.cancel')}}</el-button>
+        <el-button v-if="dialogStatus=='create'" type="primary" @click="AddUserAction">{{$t('table.confirm')}}</el-button>
+        <el-button v-else type="primary" @click="EditUserAction">{{$t('table.confirm')}}</el-button>
+      </div>
+    </el-dialog>
 
 
 
+# 表单验证
 
 
-# 表单 验证
+	<el-form :rules="rules" ref="dataForm" :model="dlgData"   	//设置rules
+
+	<el-form-item label="账号" prop="username">			//设置prop
+          <el-input v-model="dlgData.username"></el-input>
+        </el-form-item>
+
+	 rules: {
+          username: [{ required: true, message: '必须有名字', trigger: 'change' }, { min: 5, max: 9, message: '长度在 5 到 9 个字符', trigger: 'blur' }],
+          // timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
+          pwd: [{ required: true, message: '必须有密码', trigger: 'blur' }]
+        }
+	 
+	this.$refs['dataForm'].validate((valid) => {
+          if (valid) {
+	}
+	})
+
+
 
 #  编辑数据
 
+	this.dlgData.dashboard = '' + row.is_dashboard
+	// 要注意前面部分是vue的变量， row是数据库的字段名
+	// 开关默认开启是'1'
 
-# 表格，图标，标签页
+# 表格
+
+	   <div class="app-container">
+          <el-table :data="list" v-loading.body="listLoading" element-loading-text="Loading" border fit highlight-current-row  stripe>	//  stripe是带间隔颜色的标志
+            <el-table-column align="center" label='ID' width="50">
+              <template slot-scope="scope">
+                {{scope.row.id}}
+              </template>
+            </el-table-column>
+		   <el-table-column label="操作" align="center">
+              <template slot-scope="scope">
+                <el-button size="mini" type="primary" @click="addUser(scope.$index, scope.row)">新增</el-button>
+                <el-button size="mini" @click="editUser(scope.$index, scope.row)">编辑</el-button>
+                <el-button size="mini" type="danger" @click="deleteUser(scope.$index, scope.row)">删除</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
+
+
+# 表格搜索和过滤
+
+
+
 
 
 # 数据库的嵌套
 
 
 
-# 用户权限的设置
 
 
 # 收入显示
