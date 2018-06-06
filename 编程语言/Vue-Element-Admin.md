@@ -201,7 +201,7 @@
 
 	<el-form :rules="rules" ref="dataForm" :model="dlgData"   	//设置rules
 
-	<el-form-item label="账号" prop="username">			//设置prop
+	<el-form-item label="账号" prop="username">			//设置prop验证用
           <el-input v-model="dlgData.username"></el-input>
         </el-form-item>
 
@@ -242,6 +242,36 @@
             </el-table-column>
           </el-table>
         </div>
+
+# 表格排序
+
+	<el-table-column align="center" label='ID' width="50" sortable prop="id">
+	排序只要设定sortable 还有prop="id"就可以了
+
+
+# 表格分页
+
+	 <!--**************************分页*******************************-->
+          <div class="pagination-container">
+            <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="listQuery.page"
+                           :page-sizes="[5,10,20,50,100,200]" :page-size="listQuery.limit" layout="total, sizes, prev, pager, next, jumper" :total="total">
+            </el-pagination>
+          </div>
+	// 参数
+	 listQuery: {
+          page: 1,
+          limit: 5
+        },
+        total: 0
+	// 函数
+	  handleSizeChange(val) {
+        this.listQuery.limit = val
+        this.getUserList()
+      },
+      handleCurrentChange(val) {
+        this.listQuery.page = val
+        this.getUserList()
+      }
 
 
 # 表格搜索和过滤
