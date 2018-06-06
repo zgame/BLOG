@@ -274,7 +274,36 @@
       }
 
 
-# 表格搜索和过滤
+# 导出excel
+	  <el-button class="filter-item" type="warning" :loading="downloadLoading" v-waves icon="el-icon-download" @click="handleDownload">导出Excel</el-button>
+
+
+	   handleDownload() {
+        this.downloadLoading = true
+        import('@/vendor/Export2Excel').then(excel => {
+          const tHeader = ['user_id', 'platform_id', 'server_id', 'shop_index', 'shop_event', 'pay_id', 'stone_change', 'time', 'rmb']
+          const filterVal = ['user_id', 'platform_id', 'server_id', 'shop_index', 'shop_event', 'pay_id', 'stone_change', 'time', 'rmb']
+          const data = this.formatJson(filterVal, this.list)
+          excel.export_json_to_excel({
+            header: tHeader,
+            data,
+            filename: 'table-list'
+          })
+          this.downloadLoading = false
+        })
+      },
+      formatJson(filterVal, jsonData) {
+        return jsonData.map(v => filterVal.map(j => {
+          // if (j === 'timestamp') {
+          //   return parseTime(v[j])
+          // } else {
+          return v[j]
+          // }
+        }))
+      }
+
+
+# 表格搜索
 
 
 

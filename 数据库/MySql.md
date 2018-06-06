@@ -224,4 +224,19 @@
 	
 # 保存时间戳
 
-	保存时间戳可以设置字段 bigint(20) 
+	保存时间戳可以设置字段 bigint(20)
+
+
+
+# select by time
+
+
+	SELECT * FROM player_charge_rmb where time between '2015-03-07 00:00:00' and '2015-04-07 00:00:00'
+
+	
+# select limit
+
+	SELECT * FROM player_charge_rmb limit 75100,75400
+
+
+ 
