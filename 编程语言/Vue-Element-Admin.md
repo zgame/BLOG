@@ -275,6 +275,7 @@
 
 
 # 导出excel
+
 	  <el-button class="filter-item" type="warning" :loading="downloadLoading" v-waves icon="el-icon-download" @click="handleDownload">导出Excel</el-button>
 
 
@@ -301,6 +302,34 @@
           // }
         }))
       }
+
+
+# 表格内容替换和标签
+
+	<span class="link-type">{{scope.row.title}}</span>
+          <el-tag>{{scope.row.platform_id | typeFilter}}</el-tag>
+
+	  const calendarTypeOptions = [
+	    { key: '20', display_name: 'UC' },
+	    { key: '888888', display_name: '自有渠道' },
+	    { key: '255', display_name: '华为' },
+	    { key: '368', display_name: 'vivo' }
+	  ]
+	
+	  // arr to obj ,such as { CN : "China", US : "USA" }
+	  const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
+	    acc[cur.key] = cur.display_name
+	    return acc
+	  }, {})
+
+
+  	filters: {
+
+      typeFilter(type) {
+        return calendarTypeKeyValue[type]
+      }
+    },
+
 
 
 # 表格搜索
