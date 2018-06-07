@@ -177,7 +177,7 @@
     params: { username, pwd, dashboard, statis, edit }			// params是地址带参数，用于get
 
 
-# form 
+# 表单 
 
 	<el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form :rules="rules" ref="dataForm" :model="dlgData" label-position="left" label-width="90px" style='width: 300px; margin-left:50px;'>
@@ -315,6 +315,9 @@
 	    { key: '255', display_name: '华为' },
 	    { key: '368', display_name: 'vivo' }
 	  ]
+
+
+		channelTypeOptions,     //data定义变量
 	
 	  // arr to obj ,such as { CN : "China", US : "USA" }
 	  const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
@@ -334,14 +337,26 @@
 
 # 表格搜索
 
+	listQuery的几个参数，在请求服务器的时候带上参数， sql用这些参数来进行条件查询
+	<el-input @keyup.enter.native="handleFilter" style="width: 200px;" class="filter-item" placeholder="按UID查询" v-model="listQuery.uid"></el-input>
+	<el-button class="filter-item" type="primary" v-waves icon="el-icon-search" @click="handleFilter">搜索</el-button>
 
 
+# 下拉选择
+
+	<el-select clearable class="filter-item" style="width: 130px" v-model="listQuery.channel" placeholder="按渠道查询">
+        <el-option v-for="item in  channelTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key">
+        </el-option>
+      </el-select>
 
 
-# 数据库的嵌套
+# 水波纹按钮
 
-
-
+	<el-button class="filter-item" type="primary" v-waves icon="el-icon-search" @click="handleFilter">搜索</el-button>
+	 import waves from '@/directive/waves' // 水波纹指令
+	 directives: {
+	      waves
+	    },
 
 
 # 收入显示

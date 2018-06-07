@@ -238,3 +238,11 @@
 	 let login_time = new date().getTime();
 	 这个获取的时间戳是13位， 数据库记得要用bigint（20）
 
+
+# date
+
+		const end = new Date()
+        const start = new Date()
+        start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+
+
