@@ -359,7 +359,24 @@
 	    },
 
 
-# 收入显示
+# panel group
+
+	<el-row class="panel-group" :gutter="40">
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class='card-panel' @click="handleSetLineChartData('newVisitis')">
+        <div class="card-panel-icon-wrapper icon-people">
+          <svg-icon icon-class="peoples" class-name="card-panel-icon" />
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">新增用户数</div>
+          <count-to class="card-panel-num" :startVal="0" :endVal="102400" :duration="2600"></count-to>
+        </div>
+      </div>
+    </el-col>
+
+# 线图
+
+	
 
 
 
