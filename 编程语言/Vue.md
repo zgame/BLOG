@@ -456,3 +456,8 @@
 	{{$t('table.search')}}		//语法
 
 
+
+# 生命周期
+
+	beforeCreate -> created -> beforeMount -> mounted -> beforeDestroy -> destroyed
+
