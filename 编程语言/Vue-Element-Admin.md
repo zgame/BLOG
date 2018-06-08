@@ -376,8 +376,28 @@
 
 # 线图
 
-	
+	把线图规定好，放到components/Charts里面了
+	调用的时候直接用
+	<el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
+      <line-chart :chart-data="lineChartData"></line-chart>
+    </el-row>
 
+	  import LineChart from '@/components/Charts/Line3Chart'
+
+	components: {
+      LineChart
+    },
+
+	lineChartData: {
+          Data1: [130, 140, 141, 142, 145, 150, 160],
+          Data2: [120, 82, 91, 154, 162, 140, 130],
+          Data3: [620, 182, 291, 1254, 1262, 1140, 1130],
+          chartTitle: ['预期', '实际'],
+          chartXaxis: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        }
+
+
+# 
 
 
 
