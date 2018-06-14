@@ -211,6 +211,9 @@
 	mw.model.ip=append(mw.model.ip[:i],mw.model.ip[i+1:]...)
 
 
+	// 切片是可以作为可变参数传递进去的，但是要注意写法， 后面加...
+	m.SetHeader("To", mTo...)		
+
 
 # map
 
@@ -922,3 +925,8 @@
 
 	"golang.org/x/crypto/ssh"
 	cmd := "cmd.exe /c \"cd d:/server && d:/zswzsw\""			// windows
+
+# mail
+
+	自己的代码仓库里面有例子
+	https://github.com/go-gomail/gomail
