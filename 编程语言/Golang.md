@@ -456,6 +456,7 @@
 
 
 	fmt.Println(Sqrt(-9))		//输出： 0 出错了，不能小于0
+
 ## panic
 
 	虽然Go的panic机制类似于其他语言的异常，但panic的适用场景有一些不同。由于panic会引起程序的崩溃，因此panic一般用于严重错误
@@ -468,6 +469,7 @@
 	go build test.go main.go test2.go		//编译成exe
 
 # 反射
+
 
 # 单元测试
 
@@ -519,6 +521,30 @@
 	信道如果没有缓冲， 那么如果里面有数据而没有取走的话， 就会阻塞等待数据取走，容易形成死锁
 
 
+# sync 同步
+
+	mutex 互斥锁
+
+# os 系统
+
+	Chdir	将当前工作目录更改为dir目录
+	Getwd	获取当前目录
+	Mkdir	创建一个新目录
+	Chmod	更改文件的权限
+	Environ 返回所有环境变量
+	Setenv	设定环境变量
+	Exit	退出
+	Getpid	获取进程id
+	Hostname获取主机名
+	Remove	删除文件或者目录
+	Rename	重命名
+	SysUsage主要用来获取进程使用系统资源
+
+# flag
+	
+	解析命令行参数
+	-name=zsw -age=22 -married=false
+	
 
 # 关键字
 
@@ -530,6 +556,19 @@
 	select：用于选择不同类型的通讯
 
 	map用于声明自定义类型
+
+
+# select
+
+	golang 的 select 就是监听 IO 操作，当 IO 操作发生时，触发相应的动作。 
+	select {
+	case SendStmt:
+	  //statements
+	case RecvStmt:
+	  //statements
+	default:
+	  //statements
+	}
 
 
 # websocket
@@ -930,3 +969,4 @@
 
 	自己的代码仓库里面有例子
 	https://github.com/go-gomail/gomail
+
