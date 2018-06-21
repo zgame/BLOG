@@ -59,3 +59,11 @@
 	::打包zip
 	set rarPath=!fpath!_[@!version!]_
 	"D:\winrar.exe" u -r -m5 -y -afzip -agYYYYMMDDHHMM %rarPath%.rar   .\%fpath%
+
+
+# powershell
+
+	开始菜单， powershell，点右键以管理员身份运行
+
+	可以批量删除系统补丁
+
