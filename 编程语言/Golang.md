@@ -931,6 +931,14 @@
 
 	logger.Println("logs...")
 
+# log4go
+	
+	第三方log，含有log4go.json配置
+
+# seelog 目前最好用的
+
+	seelog， 用xml做配置， 在代码里面server里面有例子， 配置xml， 还可以支持发邮件提醒
+
 
 # bytes
 
@@ -970,3 +978,8 @@
 	自己的代码仓库里面有例子
 	https://github.com/go-gomail/gomail
 
+# atomic 原子性比mutex锁更有效率
+
+	函数atomic.LoadInt32接受一个*int32类型的指针值，并会返回该指针值指向的那个值
+	有了“原子的”这个形容词就意味着，在这里读取value的值的同时，当前计算机中的任何CPU都不会进行其它的针对此值的读或写操作。
+	这样的约束是受到底层硬件的支持的。
