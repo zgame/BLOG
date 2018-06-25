@@ -457,9 +457,10 @@
 
 	fmt.Println(Sqrt(-9))		//输出： 0 出错了，不能小于0
 
-## panic
+## panic和recover
 
 	虽然Go的panic机制类似于其他语言的异常，但panic的适用场景有一些不同。由于panic会引起程序的崩溃，因此panic一般用于严重错误
+	当程序遇到panic的时候（当然，也可以正常的调用出现的异常情况），系统将跳过后面的代码，进入defer，如果defer函数中recover()，则返回捕获到的panic的值， 并且只挂掉当前goroutine， 而不是整个进程
 
 
 # 文件外函数引用，运行，编译
@@ -524,6 +525,10 @@
 # sync 同步
 
 	mutex 互斥锁
+	WaitGroup总共有三个方法：Add(delta int),Done()相当于Add(-1),Wait()执行阻塞，直到所有的WaitGroup数量变成0
+	WaitGroup的特点是Wait()可以用来阻塞直到队列中的所有任务都完成时才解除阻塞，而不需要sleep一个固定的时间来等待
+
+
 
 # os 系统
 
