@@ -574,6 +574,9 @@
 	default:
 	  //statements
 	}
+	SendStmt : channelVariable <- value
+	case e1 := <-ch1:        //如果ch1通道成功读取数据，则执行该case处理语句
+	RecvStmt : variable <-channelVariable
 
 
 # websocket
@@ -988,3 +991,15 @@
 	函数atomic.LoadInt32接受一个*int32类型的指针值，并会返回该指针值指向的那个值
 	有了“原子的”这个形容词就意味着，在这里读取value的值的同时，当前计算机中的任何CPU都不会进行其它的针对此值的读或写操作。
 	这样的约束是受到底层硬件的支持的。
+
+
+# 函数作为参数 ，并执行
+
+	AddTask(f func())   // f为函数类型
+	f.Value.(func())()	
+	
+	type TaskFunc func()   
+	func (this TaskFunc) Exec() {
+		this()
+	}
+
