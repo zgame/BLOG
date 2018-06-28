@@ -1003,3 +1003,11 @@
 		this()
 	}
 
+
+# 高级用法
+
+	type World struct {
+		component.Base
+		*nano.Group				// 有点像继承，可以用这里的方法
+	}
+	
