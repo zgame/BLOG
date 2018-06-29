@@ -528,6 +528,12 @@
 	WaitGroup总共有三个方法：Add(delta int),Done()相当于Add(-1),Wait()执行阻塞，直到所有的WaitGroup数量变成0
 	WaitGroup的特点是Wait()可以用来阻塞直到队列中的所有任务都完成时才解除阻塞，而不需要sleep一个固定的时间来等待
 
+# context
+
+	使用context可以使开发者方便的在这些goroutine里传递request相关的数据、取消goroutine的signal或timeout
+	 ctx, _ := context.WithTimeout(context.Background(), timeout)
+ 	 ctx, cancel := context.WithCancel(context.Background())
+
 
 
 # os 系统
@@ -947,6 +953,8 @@
 
 	seelog， 用xml做配置， 在代码里面server里面有例子， 配置xml， 还可以支持发邮件提醒
 
+# github.com/sirupsen/logrus
+
 
 # bytes
 
@@ -1008,6 +1016,8 @@
 
 	type World struct {
 		component.Base
-		*nano.Group				// 有点像继承，可以用这里的方法
+		*nano.Group				// 有点像继承，可以用Group这里的方法
 	}
 	
+
+	if err, ok := err.(net.Error); ok && err.Timeout() {}  // 检查timeout的方法
