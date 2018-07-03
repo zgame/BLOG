@@ -67,8 +67,10 @@
 	import (""./tutorial"")		tutorial目录下面是package tutorial的go代码
 
 	package就是目录的名字，同一个目录下面的可以跨文件调用
-
 	跨package调用，首先需要import“./目录”， 然后需要外部package的变量或者函数需要首字母大写
+
+
+	如果是同一个package，想分不同的目录，直接import目录地址到本目录即可 . "./const"
 
 
 # 入门
@@ -745,6 +747,8 @@
 
 	cd到proto文件目录下面，然后再编译：
 	protoc --go_out=. *.proto
+
+	注意： proto文件必须是utf-8格式， 否则会提示--go_out: protoc-gen-go: Plugin failed with status code 1.
 
 	
 	test := &t.AddressBook {
