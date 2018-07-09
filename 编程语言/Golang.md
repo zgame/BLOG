@@ -749,6 +749,7 @@
 	protoc --go_out=. *.proto
 
 	注意： proto文件必须是utf-8格式， 否则会提示--go_out: protoc-gen-go: Plugin failed with status code 1.
+	注意： proto文件不要import文件， 编译之后，运行会报循环引用的错误
 
 	
 	test := &t.AddressBook {
