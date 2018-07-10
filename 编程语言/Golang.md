@@ -97,7 +97,7 @@
 	fmt.Println("")										//换行
 	fmt.Printf("%v\n", p) 					// {1 2}	打印数组，切片，结构体都可以
  	fmt.Printf("%T\n", p) 					// main.point 打印类型
-
+	fmt.Printf("%b\n", p) 					// byte 打印
 
 # 字符串
 
@@ -750,6 +750,7 @@
 
 	注意： proto文件必须是utf-8格式， 否则会提示--go_out: protoc-gen-go: Plugin failed with status code 1.
 	注意： proto文件不要import文件， 编译之后，运行会报循环引用的错误
+		proto文件如果import其他proto文件，那么要修改一下编译好的go文件，把go的import “.”去掉，都改成同目录引用，然后冲突的命名要改一下，可以用1.2.3.4.5等
 
 	
 	test := &t.AddressBook {
