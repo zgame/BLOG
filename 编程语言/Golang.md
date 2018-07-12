@@ -97,7 +97,12 @@
 	fmt.Println("")										//换行
 	fmt.Printf("%v\n", p) 					// {1 2}	打印数组，切片，结构体都可以
  	fmt.Printf("%T\n", p) 					// main.point 打印类型
-	fmt.Printf("%b\n", p) 					// byte 打印
+	fmt.Printf("%b\n", p) 					// 二进制
+	fmt.Printf("%d\n", p) 					// 十进制
+	fmt.Printf("%x\n", p) 					// 十六进制
+	fmt.Printf("%s\n", p) 					// 字符串
+	fmt.Printf("%c\n", p) 					// char
+
 
 # 字符串
 
@@ -1005,6 +1010,8 @@
 	函数atomic.LoadInt32接受一个*int32类型的指针值，并会返回该指针值指向的那个值
 	有了“原子的”这个形容词就意味着，在这里读取value的值的同时，当前计算机中的任何CPU都不会进行其它的针对此值的读或写操作。
 	这样的约束是受到底层硬件的支持的。
+	tmp := atomic.LoadInt32(&num)
+	num = atomic.AddInt32(&tmp, 1)
 
 
 # 函数作为参数 ，并执行
