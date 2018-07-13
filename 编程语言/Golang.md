@@ -742,6 +742,10 @@
 	t8 := t1.Format("2006-01-02 15:04:05")		//2018-04-22 14:32:05
 	t9 := time.Date(2017,2,4,5,7,8,0,time.Local)	//2017-02-04 05:07:08 +0800 CST
 
+	time.Now().Add(time.Second)
+	time.Now().After(time.Now().Add(time.Second))
+
+
 # protocol buffer
 
 	先下载编译工具
@@ -1034,3 +1038,9 @@
 	
 
 	if err, ok := err.(net.Error); ok && err.Timeout() {}  // 检查timeout的方法
+
+
+# random
+
+	   rand.Seed(time.Now().UnixNano()) 	//利用当前时间的UNIX时间戳初始化rand包
+       x := rand.Intn(100)
