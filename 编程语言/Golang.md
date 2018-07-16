@@ -120,6 +120,7 @@
 	 []byte(str)			// string -> []byte
 
 	strings.Contains(str, "!!")  //字符串包含
+	strings.ToUpper				//转大写
 
 
 	enc := mahonia.NewDecoder("gb2312")		// 转换一下编码格式 decoder是解码 ， encoder是编码成**格式，默认utf-8
@@ -1044,3 +1045,15 @@
 
 	   rand.Seed(time.Now().UnixNano()) 	//利用当前时间的UNIX时间戳初始化rand包
        x := rand.Intn(100)
+
+
+# md5
+
+	w := md5.New()
+	io.WriteString(w, str)   //将str写入到w中
+	md5str2: = fmt.Sprintf("%x", w.Sum(nil))  //w.Sum(nil)将w的hash转成[]byte格式
+
+
+
+
+
