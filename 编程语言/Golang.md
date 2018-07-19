@@ -121,6 +121,7 @@
 
 	strings.Contains(str, "!!")  //字符串包含
 	strings.ToUpper				//转大写
+	strings.Split(s, ".")		//字符串分割
 
 
 	enc := mahonia.NewDecoder("gb2312")		// 转换一下编码格式 decoder是解码 ， encoder是编码成**格式，默认utf-8
