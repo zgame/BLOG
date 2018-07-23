@@ -1056,5 +1056,11 @@
 
 
 
+# 文件内容
 
+	b, err := ioutil.ReadFile("test.log")
+    if err != nil {
+        fmt.Print(err)
+    }
+    str := string(b)
 
