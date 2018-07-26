@@ -748,6 +748,16 @@
 	time.Now().After(time.Now().Add(time.Second))
 
 
+	//定时器
+	ticker := time.NewTicker(time.Second)
+	defer ticker.Stop()
+	select {
+		case t:= <-ticker.C:
+			fmt.Println("",t)
+		}
+	
+
+
 # protocol buffer
 
 	先下载编译工具
