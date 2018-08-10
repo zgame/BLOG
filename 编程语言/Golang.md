@@ -392,6 +392,15 @@
 
 
 
+	// 构造函数
+	func (tt *CommonTable) NewTable(uid uint64, gameid int) TableInterface{
+		return &CommonTable{TableID:uid, GameID:gameid}
+	}
+
+	// 结构体的多态采用接口的设计， 创建构造函数返回接口， 然后接口再进行函数调用
+	NewTable(uid uint64, gameid int)  TableInterface
+
+
 # json
 
 	将一个Go语言中类似movies的
