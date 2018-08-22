@@ -397,7 +397,17 @@
         }
 
 
-# 
+# 流程
+
+	主要页面侧边栏
+	router/index.js里面定义地址path和views/vue文件直接的连接
+	
+	右上角小菜单
+	layout/components/Navbar.vue
+	
+	
+
+	
 
 
 

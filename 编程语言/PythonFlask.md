@@ -58,6 +58,12 @@
 	        user = request.args.get('user')
 	        idx = request.args.get('id')
 
+
+# post
+
+	
+
+
 # response
 
 	 return Response(json.dumps(data), mimetype='text/plain')
