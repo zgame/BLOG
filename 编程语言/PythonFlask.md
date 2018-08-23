@@ -52,7 +52,7 @@
 
 # get
 
-	@app.route('/login', methods=['POST', 'GET'])
+	@app.route('/login', methods=['POST', 'GET', 'OPTIONS'])
 	def login():
 	    if request.method == 'GET':
 	        user = request.args.get('user')
@@ -60,7 +60,10 @@
 
 
 # post
-
+  	if request.method == 'POST':
+        received_json_data = json.loads(request.data)
+        user = received_json_data.get('username')
+        pwd = received_json_data.get('password')
 	
 
 
