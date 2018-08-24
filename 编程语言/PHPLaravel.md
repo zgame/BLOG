@@ -49,11 +49,20 @@
 
 	Blade 是 Laravel 提供的一个既简单又强大的模板引擎。
 
+# 输出
+
+	dd($outt);		//可以用dd来显示到浏览器上面， 但是会停止运行
+
+	print_r($outt);		// 不会停止运行，推荐使用
+    print_r("\n");
+
+	echo		也是会输出到浏览器上
+
 
 ---
 
 
-# 例子
+# get
 
 
 	Route::get('/search','Home\zswController@zswget');
@@ -73,6 +82,11 @@
         //print_r($array);
 
         return response()->json($array);
+
+
+# post
+
+	任何指向 web 中 POST, PUT 或 DELETE 路由的 HTML 表单请求都应该包含一个 CSRF 令牌(CSRF token)，否则，这个请求将会被拒绝。
 
 
 # 跨域
@@ -98,4 +112,20 @@
 
 	config/database.php  配置数据库
 
+	记住，重要，完事之后，还要配置根目录下面的.env文件
+	DB_CONNECTION=mysql
+	DB_HOST=127.0.0.1
+	DB_PORT=3306
+	DB_DATABASE=by_statis_db
+	DB_USERNAME=zsw1
+	DB_PASSWORD=zsw123
+
 	
+	 $users = DB::select("select * from user where name = ?",['zsw']);
+     print_r($users);
+
+
+# 修改端口
+
+	serve --port=5000
+
