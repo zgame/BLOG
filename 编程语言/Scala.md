@@ -85,6 +85,7 @@
 	   }
 	}
 
+
 # 接口	Scala Traits
 
 	Traits就像Java中的接口，它也可以包含代码。
