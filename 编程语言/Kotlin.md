@@ -42,3 +42,8 @@
 	object Resource {
 		val name = "Name"
 	}
+
+
+
+
+# http://www.kotlindoc.cn/
