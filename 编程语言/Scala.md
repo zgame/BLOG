@@ -19,11 +19,39 @@
     v = 1 until 10        //  (1 to 9) 
      val v1 = 1 to 10 by 3   // step by 3
 
-# 元组
+# 元组tuple
 
 	元组是具有相同或不同类型的两个或更多个值的有序容器。
 	然而，与列表和数组不同，没有办法迭代元组中的元素。
 	它的目的只是作为一个多个值的容器。
+ 	val tuple1 = (2323, 33, "dsfs" ,true)
+    println(tuple1._1)			// _1, _2, _3 是第几个元素
+
+
+# array
+
+	 val array = Array("ss","sg")
+
+# list 
+
+	
+    val list1 = List( 2,3,4)
+    val list2 = List(5,6)
+    val list3 =1 :: 2 :: 3 :: list2
+    val list4 = list1 ::: list2
+
+
+# set
+	
+	var set1  = Set("sdf", "ffdf")
+    set1 += "fdfdfdf"
+
+
+# map
+
+	var map1 = Map(1->"11",2->"22")
+    map1 += (3->"3333")
+
 
 # for循环
 
@@ -44,7 +72,8 @@
 
 # foreach
 
-	 str.foreach(f => println(f) )
+	str.foreach(f => println(f) )
+	str.foreach(println)
 
 
 # 模式匹配
