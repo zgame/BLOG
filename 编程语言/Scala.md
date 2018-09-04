@@ -42,6 +42,10 @@
        if breed.contains("T") &&  !breed.startsWith("Y") 
      } yield breed
 
+# foreach
+
+	 str.foreach(f => println(f) )
+
 
 # 模式匹配
 
