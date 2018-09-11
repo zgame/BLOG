@@ -92,6 +92,7 @@
 	numpy.sin
 	numpy.cos
 	numpy.tan
+	numpy.random
 
 # 矩阵算数
 
@@ -155,5 +156,6 @@
 
 # IO
 
-	load()和save()函数处理 numPy 二进制文件(带npy扩展名)loadtxt()和savetxt()函数处理正常的文本文件
+	load()和save()函数处理 numPy 二进制文件(带npy扩展名)
+	loadtxt()和savetxt()函数处理正常的文本文件
 
