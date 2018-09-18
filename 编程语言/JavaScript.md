@@ -248,3 +248,8 @@
         start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
 
 
+# || 
+
+	 false || "string" = "string"    //或的时候如果有字符串，结果就是第一个遇到的字符串
+
+# 

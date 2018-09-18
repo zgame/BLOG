@@ -11,7 +11,7 @@
 
 # 访问限制
 
-	默认的，也称为default，跟私有一样
+	默认的，也称为default，无修饰符就是默认权限，也叫包访问权限，只能被同一包内类访问
 	私有的，以private修饰符指定，子类都不可见。
 	共有的，以public修饰符指定，对所有类可见。
 	受保护的，以protected修饰符指定，对同一包内的类和所有子类可见。
@@ -110,3 +110,13 @@
 
 	1. 采用实现 Runnable、Callable 接口的方式创建多线程时，线程类只是实现了 Runnable 接口或 Callable 接口，还可以继承其他类。
 	2. 使用继承 Thread 类的方式创建多线程时，编写简单，如果需要访问当前线程，则无需使用 Thread.currentThread() 方法，直接使用 this 即可获得当前线程。
+
+
+
+# 线程同步器
+
+	A.  semaphore:信号量。用于表示共享资源数量。用acquire()获取资源，用release()释放资源。
+	B.  CyclicBarrier  线程到达屏障后等待，当一组线程都到达屏障后才一起恢复执行
+	C. CountDownLatch  初始时给定一个值，每次调用countDown值减1，当值为0时阻塞的线程恢复执行
+
+# 
