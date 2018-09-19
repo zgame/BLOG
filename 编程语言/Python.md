@@ -201,7 +201,7 @@ map也支持多个sequence，这就要求function也支持相应数量的参数�
 # 获取命令行参数
 
 	if __name__ == "__main__":
-	   main(sys.argv[1:])
+	   main(sys.argv[1:])			// 注意这里是从1开始的，0是获取脚本自身路径
 
 
 # import 
