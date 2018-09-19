@@ -226,10 +226,11 @@
 
 # map
 
-	/* 声明变量，默认 map 是 nil */
-	var map_variable map[key_data_type]value_data_type
-	/* 使用 make 函数 */
-	map_variable := make(map[key_data_type]value_data_type)
+	map在使用前必须make
+
+	
+	var map_variable map[key_data_type]value_data_type			/* 声明变量，默认 map 是 nil */
+	map_variable := make(map[key_data_type]value_data_type)			/* 使用 make 函数 */
 
 
 	var countryCapitalMap map[string]string
@@ -466,6 +467,8 @@
     phone.call()
 
 	}
+
+	类型断言语法为：expression.(Type)
 
 
 # 错误处理
@@ -1088,4 +1091,9 @@
         fmt.Print(err)
     }
     str := string(b)
+
+# vet
+
+	vet是一个优雅的工具，每个Go开发者都要知道并会使用它。它会做代码静态检查发现可能的bug或者可疑的构造。
+	go tool vet false.go  //命令
 
