@@ -5,6 +5,7 @@
 	类变量：类变量也声明在类中，方法体之外，但必须声明为static类型。
 
 
+
 # 常量
 
 	final double PI = 3.1415927;
@@ -101,6 +102,35 @@
 	HashMap 继承了HashMap，并且使用一个哈希表。
 	TreeMap 继承了AbstractMap，并且使用一颗树。
 
+# 基本数据类型
+
+	byte，short，int，long，float，double，boolean，char
+
+
+# Integer类
+	
+	1、Integer是int的包装类，int则是java的一种基本数据类型 
+	2、Integer变量必须实例化后才能使用，而int变量不需要 
+	3、Integer实际是对象的引用，当new一个Integer时，实际上是生成一个指针指向此对象；而int则是直接存储数据值 
+	4、Integer的默认值是null，int的默认值是0
+
+
+# 数组array,不可变
+
+	dataType[] arrayRefVar = new dataType[arraySize];
+	dataType[] arrayRefVar = {value0, value1, ..., valuek};
+	
+	//binarySearch 二分法查找，数组必须有序，且存在此数组中，否则返回负数下标
+	int binarySearch = Arrays.binarySearch(arr, 3);
+	
+
+# 可变数组vector , arraylist
+
+	Vector类中的方法是同步的(线程安全)，而ArrayList中的方法不同步。
+	Vector<Integer> vv = new Vector<Integer>();
+       vv.add(1);
+
+
 # 序列化对象，反序列化对象
 
 	DeserializeDemo程序实例了反序列化
@@ -119,4 +149,12 @@
 	B.  CyclicBarrier  线程到达屏障后等待，当一组线程都到达屏障后才一起恢复执行
 	C. CountDownLatch  初始时给定一个值，每次调用countDown值减1，当值为0时阻塞的线程恢复执行
 
-# 
+# 知识点
+
+	int溢出， 注意10亿以上要用long，否则会变负数，abs也不行
+	1/0 运行时异常报错，  1.0/0.0 是infinity无穷大
+	-14%3 = -2   14%-3=2 ， 跟前面的保持一致
+	println('a')  //显示a     
+	println('a'+'b') // 显示195
+	println("a"+'b') // 显示ab
+
