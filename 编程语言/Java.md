@@ -114,6 +114,20 @@
 	3、Integer实际是对象的引用，当new一个Integer时，实际上是生成一个指针指向此对象；而int则是直接存储数据值 
 	4、Integer的默认值是null，int的默认值是0
 
+# String
+
+	 String s = "zsw ok";   // 注意String是不可变的
+	 String s1 = s.toUpperCase();   // 要将字符串做变化， 都是通过返回新的字符串来实现的
+
+# Stack Queue 栈（先进后出）和队列（先进先出）
+
+	Stack<Integer> ss = new Stack<Integer>();
+        ss.push(8);
+        ss.pop();
+ 	Queue<String> ss2 = new LinkedList<String>();
+        ss2.offer("ssssss3");
+        ss2.poll();
+
 
 # 数组array,不可变
 
@@ -129,6 +143,26 @@
 	Vector类中的方法是同步的(线程安全)，而ArrayList中的方法不同步。
 	Vector<Integer> vv = new Vector<Integer>();
        vv.add(1);
+
+
+# map
+
+        Map mm = new HashMap();
+        mm.put(1,"ss");
+        mm.put(2,"ss2");
+        mm.remove(2);
+        System.out.println(mm);
+
+# 链表LinkedList
+
+        LinkedList<String> ll = new LinkedList<String>();
+        ll.add("1");
+        ll.add("2");
+        ll.add("3");
+        ll.remove("1");    // remove（index）也可以
+	 	ll.addFirst("-1");
+        System.out.println(ll);
+
 
 
 # 序列化对象，反序列化对象
