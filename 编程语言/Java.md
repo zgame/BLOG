@@ -114,6 +114,9 @@
 	3、Integer实际是对象的引用，当new一个Integer时，实际上是生成一个指针指向此对象；而int则是直接存储数据值 
 	4、Integer的默认值是null，int的默认值是0
 
+	Integer wrapperi = new Integer(0);		//转interger
+	int i = wrapperi.intValue();			//转int
+
 # String
 
 	 String s = "zsw ok";   // 注意String是不可变的
@@ -143,6 +146,10 @@
 	Vector类中的方法是同步的(线程安全)，而ArrayList中的方法不同步。
 	Vector<Integer> vv = new Vector<Integer>();
        vv.add(1);
+ 	   vv.remove(1);
+	ArrayList<Integer> aa = new ArrayList<>();
+        aa.add(3);
+        aa.remove(new Integer(1));
 
 
 # map
@@ -170,6 +177,7 @@
 	DeserializeDemo程序实例了反序列化
 	ObjectOutputStream 类用来序列化一个对象
 
+
 # 创建线程的三种方式的对比
 
 	1. 采用实现 Runnable、Callable 接口的方式创建多线程时，线程类只是实现了 Runnable 接口或 Callable 接口，还可以继承其他类。
@@ -182,6 +190,7 @@
 	A.  semaphore:信号量。用于表示共享资源数量。用acquire()获取资源，用release()释放资源。
 	B.  CyclicBarrier  线程到达屏障后等待，当一组线程都到达屏障后才一起恢复执行
 	C. CountDownLatch  初始时给定一个值，每次调用countDown值减1，当值为0时阻塞的线程恢复执行
+
 
 # 知识点
 
