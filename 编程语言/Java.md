@@ -140,6 +140,10 @@
 	//binarySearch 二分法查找，数组必须有序，且存在此数组中，否则返回负数下标
 	int binarySearch = Arrays.binarySearch(arr, 3);
 	
+# ++
+	
+	array[i++]  ==    	array[i]; i++;  //等价
+
 
 # 可变数组vector , arraylist
 
