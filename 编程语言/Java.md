@@ -143,6 +143,7 @@
 # ++
 	
 	array[i++]  ==    	array[i]; i++;  //等价
+	array[++i]  ==     i++; array[i];   
 
 
 # 可变数组vector , arraylist
