@@ -19,7 +19,7 @@
 
 # Brokers
 
-	经纪人(Brokers)是简单的系统，负责维护公布的数据。
+	经纪人(Brokers)是引用服务器，负责维护公布的数据。Kafka集群中的一台或多台服务器统称为broker。
 
 # Kafka Cluster
 
