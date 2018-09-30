@@ -146,4 +146,44 @@
 	基类定义，子类重复定义，但是还没有virtual修饰，就隐藏了， 采用基类的函数定义， 如果有virtual，那么就用子类的
 	隐藏触发的结果:指针对成员的函数调用取决于指针类型
 
-# 
+
+# STL 容器（Containers）
+	
+	//string
+	#include <string>
+	string s2 = s1; //拷贝初始化，深拷贝字符串
+	string s8 = s3 + s6;//将两个字符串合并成一个
+
+
+	//vector
+	vector<int> v1;
+	v1.push_back(i);
+	v5.pop_back(); //删除最后一个元素
+	v5.insert(v5.begin()+1,9); //在第二个位置插入新元素
+	
+	//set 红黑树实现，自动排序
+	set跟vector差不多，它跟vector的唯一区别就是，set里面的元素是有序的且唯一的，只要你往set里添加元素，它就会自动排序，而且，如果你添加的元素set里面本来就存在，那么这次添加操作就不执行。
+
+	//list
+	list<int> l1{ 1,2,3,4,5,5,6,7,7 };
+	l1.sort();
+
+	//map 红黑树实现，自动排序
+	map<string, int> m1; //<>里的第一个参数表示key的类型,第二个参数表示value的类型
+    m1["Kobe"] = 100;
+
+	//优先队列：使用最大堆实现，用 vector 存储。
+
+	
+# STL 算法（Algorithms）
+
+
+
+
+# STL 迭代器（iterators）
+
+	string str("hi sysu");
+	for (string::iterator it = str.begin(); it != str.end(); it++)
+	{
+	    cout << *it << endl;
+	}
