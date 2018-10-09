@@ -109,7 +109,7 @@
 	the value is:4
 
 
-# model
+# model 模块
 
 	-- 文件名为 module.lua
 	-- 定义一个名为 module 的模块
@@ -119,11 +119,11 @@
 	module.constant = "这是一个常量"
 	 
 	-- 定义一个函数
-	function module.func1()
+	function module.func1()						--外部可以调用该函数
 	    io.write("这是一个公有函数！\n")
 	end
 	 
-	local function func2()
+	local function func2()					--本地私有函数，外部无法调用
 	    print("这是一个私有函数！")
 	end
 	 
@@ -163,6 +163,7 @@
 	myshape = Shape:new(nil,10)		-- 创建对象
 	myshape:printArea()
 	
+
 	Square = Shape:new()		-- 派生类
 	function Square:new (o,side)
 	  o = o or Shape:new(o,side)

@@ -1097,3 +1097,52 @@
 	vet是一个优雅的工具，每个Go开发者都要知道并会使用它。它会做代码静态检查发现可能的bug或者可疑的构造。
 	go tool vet false.go  //命令
 
+
+# Lua
+
+	gopher-lua
+
+	go和lua互相调用，传递参数
+
+	L := lua.NewState()
+	defer L.Close()
+
+	// Lua调用go函数声明--------------------------------------------------------------
+	// 声明double函数为Lua的全局函数，绑定go函数Double
+	L.SetGlobal("double", L.NewFunction(Double))
+
+	// Lua调用的go函数
+	func Double(L *lua.LState) int {
+		lv := L.ToInt(1)             --第一个参数
+		lv2 :=  L.ToInt(2)			--第二个参数
+		str := L.ToString(3)
+	
+		L.Push(lua.LNumber(lv * lv2)) /* push result */
+		L.Push(lua.LString(str+"  call "+strconv.Itoa(lv * lv2))) /* push result */
+	
+		return 1                     /* number of results */
+	}
+
+	
+	// 执行lua文件---------------------------------------------------------------
+	if err := L.DoFile("hello.lua"); err != nil {
+		fmt.Println("---------------")
+		fmt.Println(err.Error())
+		fmt.Println("---------------")
+	}
+
+	// 这里是go调用lua的函数---------------------------------------------------------
+	if err := L.CallByParam(lua.P{
+		Fn: L.GetGlobal("Zsw2"),
+		NRet: 1,					//这里是返回几个参数，数量
+		Protect: true,
+	}, lua.LNumber(2),lua.LNumber(2)); err != nil {
+		fmt.Println("---------------")
+		fmt.Println("",err.Error())
+		fmt.Println("----------------")
+	}
+	ret := L.Get(-1) // returned value
+	L.Pop(1)  // remove received value			// pop 1个参数，如果上面是2个参数，就是2
+	fmt.Println("lua return: ",ret)
+
+
