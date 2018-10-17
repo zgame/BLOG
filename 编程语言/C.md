@@ -39,7 +39,9 @@
 	
 
 
-# dll clion制作
+# dll clion制作 
+
+	* 这里需要注意： windows下面用gcc，需要用mingw， 需要下载64位的版本，否则32位版本不兼容golang
 
 	library.h	
 	#define IO_XXX_DLL __declspec(export)
@@ -82,4 +84,26 @@
 
 
 # dll golang制作
+
+	import "C"   //必须加
+	需要导出的函数前面增加export+函数名
+	//export hello
+
+	编译:
+	go build -ldflags "-s -w" -buildmode=c-shared -o exportgo.dll dllmake.go
+
+
+# dll golang 调用
+
+	// 如果是C C++制作的dll， windows下面要用mingw64位的版本才可以
+
+	调用1:
+	DllTestDef := syscall.MustLoadDLL("libcppmakedll.dll")
+	add := DllTestDef.MustFindProc("hello")
+	ret, _, err := add.Call()
+
+	调用2：
+	lib := syscall.NewLazyDLL("libcppmakedll.dll")//exportgo  libcppmakedll
+	add := lib.NewProc("hello")
+	ret, _, err := add.Call()
 

@@ -1146,3 +1146,32 @@
 	fmt.Println("lua return: ",ret)
 
 
+# dll
+
+	go文件需要注意的地方：
+	import "C"   //必须加
+	需要导出的函数前面增加export+函数名
+	//export hello
+
+	编译:
+	go build -ldflags "-s -w" -buildmode=c-shared -o exportgo.dll dllmake.go
+
+
+	调用1:
+	DllTestDef := syscall.MustLoadDLL("libcppmakedll.dll")
+	add := DllTestDef.MustFindProc("hello")
+	ret, _, err := add.Call()
+
+	调用2：
+	lib := syscall.NewLazyDLL("libcppmakedll.dll")//exportgo  libcppmakedll
+	add := lib.NewProc("hello")
+	ret, _, err := add.Call()
+
+	调用3：
+	DllTestDef, _ := syscall.LoadLibrary("exportgo.dll")
+	defer syscall.FreeLibrary(DllTestDef)
+	add, err := syscall.GetProcAddress(DllTestDef, "Sum")
+	ret, _, err := syscall.Syscall(add,		2,		IntPtr(1),		IntPtr(27),		0)
+
+
+
