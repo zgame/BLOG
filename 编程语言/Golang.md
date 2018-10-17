@@ -1152,6 +1152,7 @@
 	import "C"   //必须加
 	需要导出的函数前面增加export+函数名
 	//export hello
+	fmt.Println 不能用，会报错
 
 	编译:
 	go build -ldflags "-s -w" -buildmode=c-shared -o exportgo.dll dllmake.go
