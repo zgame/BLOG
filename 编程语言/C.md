@@ -96,6 +96,14 @@
 # dll golang 调用
 
 	// 如果是C C++制作的dll， windows下面要用mingw64位的版本才可以
+	func IntPtr(n int) uintptr {
+		return uintptr(n)
+	}
+	func StrPtr(s string) uintptr {
+		ss,_:=syscall.UTF16PtrFromString(s)
+		return uintptr(unsafe.Pointer(ss))
+	}
+	
 
 	调用1:
 	DllTestDef := syscall.MustLoadDLL("libcppmakedll.dll")

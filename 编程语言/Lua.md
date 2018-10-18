@@ -205,3 +205,13 @@ xpcall(main, function(err)
     print(err)
     print(debug.traceback())
 end)
+
+
+
+# 引用路径
+
+	--方法1 只加载想要的目录
+	package.path = "../myLuaTest/myLuaCode/?.lua;"
+	--方法2 增加目录
+	package.path = "../myLuaTest/myLuaCode/?.lua;"..package.path
+	print(package.path);
