@@ -89,6 +89,8 @@
 	需要导出的函数前面增加export+函数名
 	//export hello
 
+	fmt.Println 不能用，会报错，可以用println
+
 	编译:
 	go build -ldflags "-s -w" -buildmode=c-shared -o exportgo.dll dllmake.go
 
@@ -96,14 +98,14 @@
 # dll golang 调用
 
 	// 如果是C C++制作的dll， windows下面要用mingw64位的版本才可以
+	
 	func IntPtr(n int) uintptr {
 		return uintptr(n)
 	}
 	func StrPtr(s string) uintptr {
-		ss,_:=syscall.UTF16PtrFromString(s)
-		return uintptr(unsafe.Pointer(ss))
+		p:=unsafe.Pointer(&s)
+		return uintptr(p)
 	}
-	
 
 	调用1:
 	DllTestDef := syscall.MustLoadDLL("libcppmakedll.dll")
@@ -115,3 +117,4 @@
 	add := lib.NewProc("hello")
 	ret, _, err := add.Call()
 
+	

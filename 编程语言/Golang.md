@@ -1152,10 +1152,23 @@
 	import "C"   //必须加
 	需要导出的函数前面增加export+函数名
 	//export hello
-	fmt.Println 不能用，会报错
+
+	注意事项：
+	fmt.Println 不能用，会报错，可以用println
+	return 需要是int
+
 
 	编译:
 	go build -ldflags "-s -w" -buildmode=c-shared -o exportgo.dll dllmake.go
+
+
+	func IntPtr(n int) uintptr {
+		return uintptr(n)
+	}
+	func StrPtr(s string) uintptr {
+		p:=unsafe.Pointer(&s)
+		return uintptr(p)
+	}
 
 
 	调用1:
