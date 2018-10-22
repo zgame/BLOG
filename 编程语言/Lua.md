@@ -215,3 +215,16 @@ end)
 	--方法2 增加目录
 	package.path = "../myLuaTest/myLuaCode/?.lua;"..package.path
 	print(package.path);
+
+
+
+# metatable
+
+	lua首先查找表，找不到就找元表， 判断元表有没有__index
+	__index可以是一个表，也可以是一个函数
+
+	__newindex 元方法用来对表更新，__index则用来对表访问 。
+	__call 元方法在 Lua 调用一个值时调用。
+	__tostring 元方法用于修改表的输出行为
+
+	
