@@ -42,6 +42,9 @@
 	#table
 
 
+	-- dumptable 打印table的函数，自己写的函数，可以打印table的内容
+
+
 # 条件判断
 
 	-- and or not	
