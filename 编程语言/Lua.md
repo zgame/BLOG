@@ -38,6 +38,9 @@
 	
 	table.sort(fruits)
 
+	-- 返回表的长度
+	#table
+
 
 # 条件判断
 
@@ -138,6 +141,12 @@
 	m.func3()
 
 
+	--- module调用系统函数
+	在module里 如果一个module里 可以把module(...)改成module(...,package.seeall) 
+	或者在module之前执行 local string = string
+	要注意： local string = string 调用系统的函数必须在module(...)前面
+
+
 
 # 类
 
@@ -198,13 +207,13 @@
 
 # 错误提示和堆栈
 
-Lua提供了xpcall来实现这个功能，xpcall接受两个参数：调用函数、错误处理函数。当错误发生时，Lua会在栈释放以前调用错误处理函数，因此可以使用debug库收集错误相关信息。有两个常用的debug处理函数：debug.debug和debug.traceback，前者给出Lua的提示符，你可以自己动手察看错误发生时的情况；后者通过traceback创建更多的错误信息，也是控制台解释器用来构建错误信息的函数。你可以在任何时候调用debug.traceback获取当前运行的traceback信息：
-
-
-xpcall(main, function(err)
-    print(err)
-    print(debug.traceback())
-end)
+	Lua提供了xpcall来实现这个功能，xpcall接受两个参数：调用函数、错误处理函数。当错误发生时，Lua会在栈释放以前调用错误处理函数，因此可以使用debug库收集错误相关信息。有两个常用的debug处理函数：debug.debug和debug.traceback，前者给出Lua的提示符，你可以自己动手察看错误发生时的情况；后者通过traceback创建更多的错误信息，也是控制台解释器用来构建错误信息的函数。你可以在任何时候调用debug.traceback获取当前运行的traceback信息：
+	
+	
+	xpcall(main, function(err)
+	    print(err)
+	    print(debug.traceback())
+	end)
 
 
 
