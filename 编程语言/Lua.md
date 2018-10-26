@@ -45,6 +45,13 @@
 	-- dumptable 打印table的函数，自己写的函数，可以打印table的内容
 
 
+	-- table.concat 返回 table 连接后的字符串
+	fruits = {"banana","orange","apple"}			--bananaorangeapple
+	print("连接后的字符串 ",table.concat(fruits))
+	print("连接后的字符串 ",table.concat(fruits,", "))
+	print("连接后的字符串 ",table.concat(fruits,", ", 2,3))
+
+
 # 条件判断
 
 	-- and or not	
