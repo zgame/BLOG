@@ -1028,6 +1028,10 @@
 	copy(bufferEnd, bufferT)
 	copy(bufferEnd[len(bufferT):], data)
 
+	// []byte 可以 append
+
+	// []byte转float   float转[]byte 去看示例代码里面的byte部分
+
 
 # ssh
 
