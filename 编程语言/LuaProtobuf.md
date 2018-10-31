@@ -12,11 +12,12 @@
 	protobuf.lua
 	encoder.lua
 	decoder.lua
+	pb.go
 
 
 # 为了调试方便，增加一个显示byte数组的函数
 
-	C++
+	C++版本
 
 	static int ZswShowLuaBuffer(lua_State *L)
 	{
@@ -30,7 +31,7 @@
 	}
 
 
-	Go
+	Go 版本
 	func ZswLuaShowBytesToString(L *lua.LState) int  {
 		str := L.ToString(1)
 	
@@ -77,16 +78,22 @@
 	bytes ad10 = 13;		//person.ad10 = string.char(112,113,114,115)
 	
 	
+# proto 3
+	
+	不需要required optional
 
 
-# protoc-gen-lua c 生成byte数组
+# repeated 用法
 
-	要注意，protoc-gen-lua c生成的跟go显示的不一样的 
-	Zswnameb:189,			// byte数组为 [8 67 1]
+	local zzz = person.zz:add()
+	zzz.name = "sdfsd这是"
+	zzz.id = 21343
+
 	
 	
+	
 
-# 上限
+# go的数值上限，跟lua版本略有不同
 
 	// int8 Range: -128 through 127.
 	// int16  Range: -32768 through 32767.
@@ -103,7 +110,7 @@
 
 
 
-# 数据类型
+# protobuf数据类型
 
 
 	int32使用可变长编码方式。编码负数时不够高效——如果你的字段可能含有负数，那么请使用sint32。
