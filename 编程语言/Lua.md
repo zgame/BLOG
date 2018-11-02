@@ -39,7 +39,7 @@
 	table.sort(fruits)
 
 	-- 返回表的长度
-	#table
+	#table  -- 这里要特别注意，#是找1开始的，如果没有1就找不到，顺序找，不连续也不行
 
 
 	-- dumptable 打印table的函数，自己写的函数，可以打印table的内容
@@ -116,10 +116,17 @@
 # 字符串
 
 	-- 字符串连接  ..
-	-- 字符串长度 #
+	-- 字符串长度 # 
 
 	string.format("the value is:%d",4)
 	the value is:4
+
+
+	tostrng(x) --x为数字 如：10
+	tonumber(x) --x为字符串 如： “10”
+
+	..链接两个字符串
+	string.len(arg)
 
 
 # model 模块
