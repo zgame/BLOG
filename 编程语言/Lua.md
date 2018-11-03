@@ -34,6 +34,9 @@
 	-- 删除最后一个
 	table.remove(fruits)
 	table.remove(fruits,1)	-- 删除1位置上的
+
+	-- 删除数组或者哈希都可以用
+	tt[**] = nil
 	
 	
 	table.sort(fruits)
