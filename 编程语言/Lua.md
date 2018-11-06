@@ -257,3 +257,14 @@
 	__tostring 元方法用于修改表的输出行为
 
 	
+
+# 获取时间，秒数
+
+	print(os.time())
+	print(os.time({year =2916, month = 11, day =23, hour =17, min =17, sec = 00}))
+
+
+# 随机数
+
+	math.randomseed(os.time())
+	math.random(3)  -- [1,3]
