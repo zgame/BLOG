@@ -59,17 +59,9 @@
 
 	-- and or not	
 
-	if( 布尔表达式 1)
-	then
-	   --[ 在布尔表达式 1 为 true 时执行该语句块 --]
-	
-	else if( 布尔表达式 2)
-	   --[ 在布尔表达式 2 为 true 时执行该语句块 --]
-	
-	else if( 布尔表达式 3)
-	   --[ 在布尔表达式 3 为 true 时执行该语句块 --]
+	if   ***	then
+	elseif ** then
 	else 
-	   --[ 如果以上布尔表达式都不为 true 则执行该语句块 --]
 	end	
 
 
