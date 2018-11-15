@@ -9,7 +9,10 @@
 	-- 可以多变量赋值 ，下面就可以进行两个值的交换
 	x, y = y, x                     -- swap 'x' for 'y'
 
-	
+
+# 类型转换
+
+	tonumber() tostring()	
 	
 
 # 表
