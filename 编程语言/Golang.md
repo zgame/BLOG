@@ -552,6 +552,11 @@
 # sync 同步
 
 	mutex 互斥锁
+	var mutex sync.Mutex
+	mutex.Lock()
+	mutex.Unlock()
+
+
 	WaitGroup总共有三个方法：Add(delta int),Done()相当于Add(-1),Wait()执行阻塞，直到所有的WaitGroup数量变成0
 	WaitGroup的特点是Wait()可以用来阻塞直到队列中的所有任务都完成时才解除阻塞，而不需要sleep一个固定的时间来等待
 
