@@ -1199,3 +1199,7 @@
 
 
 
+# windos下编译linux
+
+ 	SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build test.go
+
