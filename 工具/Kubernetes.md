@@ -1,4 +1,6 @@
+# kubernetes
 
+	Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用
 
 # pod
 
