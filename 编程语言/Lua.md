@@ -259,7 +259,14 @@
 	print(os.time({year =2916, month = 11, day =23, hour =17, min =17, sec = 00}))
 
 
+	os.date("%Y-%m-%d %H:%M:%S",os.time())    可以用于把系统时间打印出来给人看的
+
 # 随机数
 
 	math.randomseed(os.time())
 	math.random(3)  -- [1,3]
+
+
+# gc
+
+	collectgarbage()        -- 强制gc
