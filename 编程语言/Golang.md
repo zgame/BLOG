@@ -587,6 +587,10 @@
 	
 	解析命令行参数
 	-name=zsw -age=22 -married=false
+
+	wsPort := flag.Int("WebSocketPort", 0, "")
+	flag.Parse()
+	WebSocketPort = *wsPort
 	
 
 # 关键字
