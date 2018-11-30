@@ -38,7 +38,7 @@
 
 	sudo /etc/init.d/redis-server stop
 	sudo /etc/init.d/redis-server start
-	sudo /etc/init.d/redis-server restart
+	sudo /etc/init.d/redis-server restart			重启
 
 
 
