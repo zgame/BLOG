@@ -245,6 +245,15 @@
 	delete(countryCapitalMap,"France")			//删除
 
 
+	* 要注意， 多线程的时候，map不是线程安全的
+	GlobalVar.RWMutex.RLock()
+	GlobalVar.RWMutex.RUnlock()	// 读锁
+	luaUIDConnectMyServer[uid]	//读写都要加锁
+	GlobalVar.RWMutex.Lock()
+	GlobalVar.RWMutex.Unlock()   //写的锁
+	
+
+
 # switch
 
 	switch i { 
