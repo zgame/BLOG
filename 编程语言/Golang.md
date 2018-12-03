@@ -565,6 +565,8 @@
 	mutex.Lock()
 	mutex.Unlock()
 
+	RWMutex 是读写锁，它更适合读多写少的情况，性能要高一些
+
 
 	WaitGroup总共有三个方法：Add(delta int),Done()相当于Add(-1),Wait()执行阻塞，直到所有的WaitGroup数量变成0
 	WaitGroup的特点是Wait()可以用来阻塞直到队列中的所有任务都完成时才解除阻塞，而不需要sleep一个固定的时间来等待
