@@ -238,6 +238,8 @@
 
 	有redis windows的gui， RedisClient软件可以更方便的查看redis数据
 
+	因为window有一个服务，所以开机会自动启动，要设置redis.windows-service.conf的配置文件才可以
+
 
 
 # 分布式架构
