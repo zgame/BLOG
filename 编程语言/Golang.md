@@ -1218,3 +1218,18 @@
 
  	SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build test.go
 
+
+# 查看进程信息pprof
+
+	_ "net/http/pprof"			// 注意这里
+
+	//远程获取pprof数据打开浏览器http://localhost:8080/debug/pprof/
+	go func() {
+		log.Println(http.ListenAndServe("localhost:8080", nil))
+	}()
+
+
+	安装graphviz  ，添加系统目录
+	控制台输入go tool pprof http://localhost:8080/debug/pprof/profile
+
+	然后输入web
