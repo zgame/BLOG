@@ -1230,6 +1230,6 @@
 
 
 	安装graphviz  ，添加系统目录
-	控制台输入go tool pprof http://localhost:8080/debug/pprof/profile
-
+	控制台输入go tool pprof http://localhost:8080/debug/pprof/profile    // cpu
+	控制台输入go tool pprof http://localhost:8080/debug/pprof/heap      // heap
 	然后输入web
