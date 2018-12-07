@@ -1232,4 +1232,14 @@
 	安装graphviz  ，添加系统目录
 	控制台输入go tool pprof http://localhost:8080/debug/pprof/profile    // cpu
 	控制台输入go tool pprof http://localhost:8080/debug/pprof/heap      // heap
-	然后输入web
+
+
+
+	如果执行命令的时候加上 --inuse_objects 可以查看每个函数分配的对象数；--alloc-space 查看分配的内存空间大小。
+	命令时加上 --nodefration=0.05 参数，表示如果调用的子函数使用的 CPU、memory 不超过 5%，就忽略它，不要显示在图片中
+
+
+	输入web命令是生成svg图标
+	top命令是排序
+
+
