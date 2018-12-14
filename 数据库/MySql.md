@@ -256,3 +256,10 @@
 	insert语句对于主键来说，插入的行不管有没有存在，都会只有行锁。
 	简单的select操作，属于快照读，不加锁
 	如果没有索引，所以update会锁表，如果加了索引，就会锁行
+
+# 多列索引
+
+	索引可以建立单列，也可以建立多列索引，这个在多个条件查询的时候会一次性的查询出来
+	建立索引index（part1,part2,part3）,相当于建立了 index(part1),index(part1,part2)和index（part1,part2,part3）三个索引。
+	MySQL针对like语法必须如下格式才使用索引：SELECT * FROM t1 WHERE key_col LIKE 'ab%' ；
+
