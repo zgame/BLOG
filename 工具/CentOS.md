@@ -81,7 +81,7 @@
 	// 如果关闭出问题，process is already running or crashed
 	rm -rf /var/run/redis_6379.pid
 
-	设置里面绑定ip， 然后设置密码
+	设置里面绑定ip， 然后设置密码  etc/redis/6379.conf
 
 # 开放端口
 
@@ -142,7 +142,10 @@
 	docker run hello-world		//测试运行
 
 	docker pull mysql
+
 	docker run -p 3306:3306 --name mymysql -v $PWD/conf:/etc/mysql/conf.d -v $PWD/logs:/logs -v $PWD/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.6
+
+docker run -p 3306:3306 --name mymysql -v $PWD/conf:/etc/mysql/conf.d -v $PWD/logs:/logs -v $PWD/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.6
 	
 
 
@@ -150,4 +153,5 @@
 
 	ulimit -n      //默认是1024
 	ulimit -n 65534 
+
 
