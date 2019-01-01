@@ -3,6 +3,11 @@
 	java是import ， C#是using
 
 
+# 字符串
+
+	多行字符串  @"  ***  ";
+
+
 # 常量
 
 	const double pi = 3.14159; // 常量声明
@@ -18,10 +23,13 @@
 
 	
 
-# 引用ref
+# 引用ref,out
 
 	 public void swap(ref int x, ref int y)
  	 n.swap(ref a, ref b);
+
+	 都是引用传递， out不需要初始化 ，ref需要初始化
+	
 
 # 数组
 
