@@ -798,6 +798,8 @@
 
 # protocol buffer
 
+	安装protoc windows版本, github有release版本，下载然后设置bin到系统路径下
+
 	先下载编译工具
 	go get -u github.com/golang/protobuf/protoc-gen-go
 

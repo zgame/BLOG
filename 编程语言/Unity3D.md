@@ -12,7 +12,12 @@
 	plugins - unity
 	安装之后rider支持unity联机调试，rider设置断点，然后debug， 再点击运行unity run即可中断
 
-# 
+
+# asset bundle
+
+	asset bundle brower  
+	asset bundle manager
+	
 
 
 
