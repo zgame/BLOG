@@ -15,10 +15,18 @@
 
 # asset bundle
 
-	asset bundle brower  
-	asset bundle manager
+	asset bundle brower ：	unity官网提供的打包工具， 可以可视化的选择要打的包
+	asset bundle manager：  unity官网提供的管理工具， 模拟模式可以本地模拟运行
 	
 
+# 版本对应
+
+	unity2018  android sdk9  android studio3.2.1
+
+# unity设置
+
+	other settings  --  Internet Access 将auto改成require  // 设置网络权限
+	
 
 
 	
