@@ -15,8 +15,27 @@
 
 # 文件保存路径
 
+	Application.persistentDataPath保存文件尽量保存到这里，记得安卓要开放写sd卡权限
+
+	IOS Application.persistentDataPath  /var/mobile/Containers/Data/Application/app sandbox/Documents
 	android Application.persistentDataPath   /storage/emulated/0/Android/data/package name/files
-	windows Application.persistentDataPath:   C:\Users\username\AppData\LocalLow\company name\product name
+	windows Application.persistentDataPath:   C:\Users\soonyo\AppData\LocalLow\zgame\test1
+
+
+# 本地文件读写
+
+	// 文件写入
+	 FileInfo file= new FileInfo(localVersionPath);
+            if(!file.Exists)
+            {
+                //如果不存在就创建文件
+                var str=file.Create();
+                str.Write(System.Text.Encoding.Default.GetBytes ( wwwlogin.text) , 0  , wwwlogin.text.Length);
+                str.Close();
+                str.Dispose();//文件流释放
+            }
+	// 文件读出
+	var localVersionText = File.ReadAllText(localVersionPath);
 
 
 # asset bundle
@@ -86,5 +105,33 @@
     }
 	
 
-# 
+# www获取web文件 
+
+	//轻松获取文件内容
+	string urlPath = "http://118.89.188.193:8080/zswt/Android/lua.manifest";
+    WWW wwwlogin = new WWW(urlPath);
+    yield return wwwlogin;
+    if (wwwlogin.text != null){.......}
+
+
+# UI使用图集	
+
+	// 打包成图集
+	Editor->Project Settings -> Editor -> Sprite Packer -> Always Enabled(Legacy Sprite Packer)
+	在UI图片的目录下，全选点击， Texture Type 为Sprite(2D and UI) ， 把要打在一起的图集命名一致即可
+	菜单栏打开 Window -> 2D -> Sprite Packers
+	图集保存在和Assets文件夹同级的目录，Libary/AtlasCache里面
 	
+	// 编辑图片九宫格
+	菜单栏打开 Window -> 2D -> Sprite Editor 进行图片的边界设定, 是用来做九宫格的，直接选择图片的属性也可以编辑
+
+
+# json
+
+	var localList =  (List<object>)MiniJSON.Json.Deserialize(localVersionText);
+    foreach (var version in localList)
+     {
+        var value = (Dictionary<string, object>) version;
+		}
+
+# 

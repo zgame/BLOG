@@ -11,6 +11,9 @@
 	string str = System.Text.Encoding.Default.GetString ( byteArray );//byte[]转string：
 
 
+	webVersion.Equals(localVersion)   // 字符串是否一样
+
+
 # 常量
 
 	const double pi = 3.14159; // 常量声明
@@ -37,7 +40,9 @@
 # 数组
 
 	double[] balance = new double[10];
-	
+
+		
+
 
 # 结构
 
