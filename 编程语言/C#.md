@@ -179,3 +179,11 @@
 	5接口隔离原则，使用多个小的专门的接口，执行专门的功能
 
 
+# yield return
+
+	yield return request.Send();  // 协程会暂停等待request.send完成之后再继续执行
+
+
+
+
+	
