@@ -7,6 +7,9 @@
 
 	多行字符串  @"  ***  ";
 
+	byte[] byteArray = System.Text.Encoding.Default.GetBytes ( str );//string转byte[]:
+	string str = System.Text.Encoding.Default.GetString ( byteArray );//byte[]转string：
+
 
 # 常量
 
