@@ -813,6 +813,8 @@
 	注意： proto文件不要import文件， 编译之后，运行会报循环引用的错误
 		proto文件如果import其他proto文件，那么要修改一下编译好的go文件，把go的import “.”去掉，都改成同目录引用，然后冲突的命名要改一下，可以用1.2.3.4.5等
 
+	注意： 如果proto文件引用了其他文件，可以在编译的时候把引用的文件加上protoc --go_out=. a.proto b.proto
+
 	
 	test := &t.AddressBook {
 		People:[]* t.Person{

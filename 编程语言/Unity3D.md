@@ -12,6 +12,28 @@
 	plugins - unity
 	安装之后rider支持unity联机调试，rider设置断点，然后debug， 再点击运行unity run即可中断
 
+# 版本对应
+
+	unity2018 需要更新最新安卓sdk build tools 	android sdk9  android studio3.2.1
+
+# 安卓权限
+
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+	
+# gradle 错误
+
+	Unable to start the daemon process.
+	打开 gradle.properties 文件： 改成512M
+
+
+	连接不上https://dl.google.com/dl/android/maven2/com/android/tools/build/gradle/3.2.0
+	gradel.properties里面默认有一个代理服务器设置，自己有vpn需要关闭这个代理
+
+
 # ----------------------------------文件操作---------------------------------------------
 
 # 文件保存路径
@@ -22,6 +44,15 @@
 	IOS Application.persistentDataPath  /var/mobile/Containers/Data/Application/app sandbox/Documents
 	android Application.persistentDataPath   /storage/emulated/0/Android/data/package name/files
 	windows Application.persistentDataPath:   C:\Users\soonyo\AppData\LocalLow\zgame\test1
+
+# 文件夹操作
+
+	 var pathDir = Path.GetDirectoryName(localPath);  // 该函数从字符串中获取路径
+        if (!Directory.Exists(pathDir))
+        {
+            Directory.CreateDirectory(pathDir);            
+            Debug.Log(pathDir + "  目录被创建了");
+        }
 
 
 # 本地文件读写
@@ -72,33 +103,7 @@
     TextAsset cube = bundle.LoadAsset<TextAsset>("assets/resources/lua/test2.lua.txt");
 
 
-	
-
-# 版本对应
-
-	unity2018 需要更新最新安卓sdk build tools 	android sdk9  android studio3.2.1
-
-
-
-
-# 安卓权限
-
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-	
-# gradle 错误
-
-	Unable to start the daemon process.
-	打开 gradle.properties 文件： 改成512M
-
-
-	连接不上https://dl.google.com/dl/android/maven2/com/android/tools/build/gradle/3.2.0
-	gradel.properties里面默认有一个代理服务器设置，自己有vpn需要关闭这个代理
-
-
+# ---------------------------------- XLua---------------------------------------------	
 
 # XLua加载bundle文件用Loader
 
@@ -112,7 +117,28 @@
  		return System.Text.Encoding.Default.GetBytes ( "这里就是文件读取的字符串" );
     }
 	
+# lua调用C# 
 
+	local ReadBundles = CS.ReadBundles		//ReadBundles是c#的class
+	--print(ReadBundles:getsss())	// 调用ReadBundles的静态函数
+	--print(ReadBundles.getsss())	// 调用ReadBundles的静态函数 ， : .都可以
+
+
+# lua操作UI
+
+	local object = CS.UnityEngine.GameObject.Find('MainCanvas/DownLoadBundleFilePanel')  // 获取物体
+	CS.UnityEngine.GameObject.Destroy (DownLoadBundleFilePanelObject)	 //销毁物体
+
+
+
+
+# ----------------------------------UI---------------------------------------------
+# gameobject生成之后的初始化
+
+		// 生成物体，然后放到父物体下面，然后设置对齐位置
+		var obj = GameObject.Instantiate(prefab, GameObject.Find(parentDir).gameObject.transform, true);
+        obj.GetComponent<RectTransform>().offsetMin = new Vector2(0.0f, 0.0f);
+        obj.GetComponent<RectTransform>().offsetMax = new Vector2(0.0f, 0.0f);
 
 
 
@@ -128,6 +154,19 @@
 	菜单栏打开 Window -> 2D -> Sprite Editor 进行图片的边界设定, 是用来做九宫格的，直接选择图片的属性也可以编辑
 
 
+
+
+#  对齐方式
+
+	首先注意，控件的周围要设置锚点（十字花），可以将锚点跟控件大小保持一致，这样可以缩放
+	另外注意，left，right，top，bottom最好都置为0， 对齐
+	
+	大部分情况都是全屏进行缩放，文字也是，可以选择best fit来进行自动缩放
+
+
+
+
+
 # json
 
 	var localList =  (List<object>)MiniJSON.Json.Deserialize(localVersionText);
@@ -135,5 +174,3 @@
      {
         var value = (Dictionary<string, object>) version;
 		}
-
-#  
