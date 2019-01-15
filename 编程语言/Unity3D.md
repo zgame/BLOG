@@ -12,10 +12,12 @@
 	plugins - unity
 	安装之后rider支持unity联机调试，rider设置断点，然后debug， 再点击运行unity run即可中断
 
+# ----------------------------------文件操作---------------------------------------------
 
 # 文件保存路径
-
-	Application.persistentDataPath保存文件尽量保存到这里，记得安卓要开放写sd卡权限
+	Application.dataPath		Asset目录
+	Application.streamingAssetsPath	streamingAssets
+	Application.persistentDataPath  外部存储document保存文件尽量保存到这里，记得安卓要开放写sd卡权限
 
 	IOS Application.persistentDataPath  /var/mobile/Containers/Data/Application/app sandbox/Documents
 	android Application.persistentDataPath   /storage/emulated/0/Android/data/package name/files
@@ -35,8 +37,16 @@
                 str.Dispose();//文件流释放
             }
 	// 文件读出
-	var localVersionText = File.ReadAllText(localVersionPath);
+	var url = Application.dataPath + "/assetpackage/" + luaFileName + ".lua.txt";
+	var localVersionText = File.ReadAllText(url);
 
+# www获取web文件 
+
+	//轻松获取文件内容
+	string urlPath = "http://118.89.188.193:8080/zswt/Android/lua.manifest";
+    WWW wwwlogin = new WWW(urlPath);
+    yield return wwwlogin;
+    if (wwwlogin.text != null){.......}
 
 # asset bundle
 
@@ -69,9 +79,6 @@
 	unity2018 需要更新最新安卓sdk build tools 	android sdk9  android studio3.2.1
 
 
-# unity设置
-
-	
 
 
 # 安卓权限
@@ -92,6 +99,7 @@
 	gradel.properties里面默认有一个代理服务器设置，自己有vpn需要关闭这个代理
 
 
+
 # XLua加载bundle文件用Loader
 
 	luaenv = new LuaEnv();
@@ -105,13 +113,7 @@
     }
 	
 
-# www获取web文件 
 
-	//轻松获取文件内容
-	string urlPath = "http://118.89.188.193:8080/zswt/Android/lua.manifest";
-    WWW wwwlogin = new WWW(urlPath);
-    yield return wwwlogin;
-    if (wwwlogin.text != null){.......}
 
 
 # UI使用图集	
@@ -134,4 +136,4 @@
         var value = (Dictionary<string, object>) version;
 		}
 
-# 
+#  
