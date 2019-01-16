@@ -102,6 +102,13 @@
     Debug.Log(bundle.GetAllAssetNames()[0]);
     TextAsset cube = bundle.LoadAsset<TextAsset>("assets/resources/lua/test2.lua.txt");
 
+	---------------------------读取所有的依赖，自动加载依赖---------------------------
+	var AndroidManifest = GetAssetBundle("Android");
+    GlobalManifest = AndroidManifest.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+	var dependenciesList = GlobalManifest.GetAllDependencies(fileName);
+    if (dependenciesList.Length > 0)
+       foreach (var VARIABLE in dependenciesList)    
+
 
 # ---------------------------------- XLua---------------------------------------------	
 
@@ -128,7 +135,7 @@
 
 	local object = CS.UnityEngine.GameObject.Find('MainCanvas/DownLoadBundleFilePanel')  // 获取物体
 	CS.UnityEngine.GameObject.Destroy (DownLoadBundleFilePanelObject)	 //销毁物体
-
+	DownLoadBundleFilePanelObject:SetActive(false)			// 隐藏物体
 
 
 
