@@ -163,14 +163,31 @@
 
 
 
-#  对齐方式
+#  对齐方式 layout
+
+	canvas 设置成scale with screen size 
 
 	首先注意，控件的周围要设置锚点（十字花），可以将锚点跟控件大小保持一致，这样可以缩放
 	另外注意，left，right，top，bottom最好都置为0， 对齐
 	
 	大部分情况都是全屏进行缩放，文字也是，可以选择best fit来进行自动缩放
+	Content Size Fitter		自动识别
+	Layout Element		设定最大，最小
+	Aspect Ratio Fitter 根据宽高，根据父物体
 
 
+# scrollView的使用
+
+	horizontal 横向
+	vertical  纵向
+	elastic   默认就选这个，正常滑动
+
+	---ScrollView-ViewPort-Content增加下面2个控件--
+	vertical Layout Group 纵向排列用的，child controls size Height可以让子控件的大小进行自动缩放
+	Content Size Fitter	缩放用的，vertical fit选择preferred size，让列表可以识别里面子控件的数量而自动增加长度
+	
+	-----------Content增加Layout Element控件---------------------------
+	preferred Height 设置子元素的合适尺寸
 
 
 
