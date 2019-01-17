@@ -136,7 +136,7 @@
 	local object = CS.UnityEngine.GameObject.Find('MainCanvas/DownLoadBundleFilePanel')  // 获取物体
 	CS.UnityEngine.GameObject.Destroy (DownLoadBundleFilePanelObject)	 //销毁物体
 	DownLoadBundleFilePanelObject:SetActive(false)			// 隐藏物体
-
+	prefab:GetComponentInChildren(typeof(CS.UnityEngine.UI.Button)).onClick:AddListener(func) // 绑定按钮事件
 
 
 # ----------------------------------UI---------------------------------------------
