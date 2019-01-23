@@ -2,6 +2,10 @@
 
 	java是import ， C#是using
 
+# uint8 ,int8 
+
+	uint8 = byte
+	int8 = sbyte
 
 # 字符串
 
@@ -51,6 +55,12 @@
 	结构不支持继承。
 	结构不能声明默认的构造函数。
 	结构可定义构造函数，但不能定义析构函数。但是，您不能为结构定义默认的构造函数。默认的构造函数是自动定义的，且不能被改变。
+
+
+# [Serializable] 
+
+	当类可以序列化时，需要添加标签[Serializable] 
+
 
 # abstract抽象类和虚方法
 
