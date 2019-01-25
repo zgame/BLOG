@@ -123,12 +123,46 @@
 		// 进入游戏先缓存bundle到本地， 这里读取bundle文件， 最后返回文件的内容
  		return System.Text.Encoding.Default.GetBytes ( "这里就是文件读取的字符串" );
     }
+
+# lua增加第三方lua库
+
+	可以直接用xlua作者自己githbu上面的封装dll， 封装了lua protocol,  覆盖plgins里面dll
+	copy BuildInInit.cs是一些库的接口定义
+
+	luaenv.AddBuildin("rapidjson", XLua.LuaDLL.Lua.LoadRapidJson);
+    luaenv.AddBuildin("lpeg", XLua.LuaDLL.Lua.LoadLpeg);
+    luaenv.AddBuildin("pb", XLua.LuaDLL.Lua.LoadLuaProfobuf);
+    luaenv.AddBuildin("ffi", XLua.LuaDLL.Lua.LoadFFI);
+        
+    luaenv.DoString(@"require 'Lua/main'");
+
 	
 # lua调用C# 
 
 	local ReadBundles = CS.ReadBundles		//ReadBundles是c#的class
 	--print(ReadBundles:getsss())	// 调用ReadBundles的静态函数
 	--print(ReadBundles.getsss())	// 调用ReadBundles的静态函数 ， : .都可以
+
+
+# C#调用lua
+	
+	这里要注意一下，因为c# socket为异步回调多线程，所以要求线程安全， 不然会crash
+	1.在Unity-player setting-Scripting Define Symbols 增加THREAD_SAFE
+	2.然后调用代码写为：
+	
+	 [CSharpCallLua]
+	    public delegate void FDelegatezzz(int a, int b, string c, string d);
+	
+	......
+	#if THREAD_SAFE || HOTFIX_ENABLE
+	            lock (ReadBundles.luaenv.luaEnvLock)
+	#endif
+	            {
+	                FDelegatezzz f = ReadBundles.luaenv.Global.Get<FDelegatezzz>("GoCallLuaNetWorkReceive");
+	                f(1, 1, "", "");
+	            }
+	.....
+
 
 
 # lua操作UI
