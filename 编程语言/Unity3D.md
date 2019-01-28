@@ -110,6 +110,9 @@
        foreach (var VARIABLE in dependenciesList)    
 
 
+	AssetBundle打包出来会丢失Shader。要把可能用到的Shader加入到Edit->Project Settings->Graphics->Always Included Shaders这个列表里。
+
+
 # ---------------------------------- XLua---------------------------------------------	
 
 # XLua加载bundle文件用Loader
@@ -171,6 +174,13 @@
 	CS.UnityEngine.GameObject.Destroy (DownLoadBundleFilePanelObject)	 //销毁物体
 	DownLoadBundleFilePanelObject:SetActive(false)			// 隐藏物体
 	prefab:GetComponentInChildren(typeof(CS.UnityEngine.UI.Button)).onClick:AddListener(func) // 绑定按钮事件
+	
+	obj:GetComponent(typeof(CS.UnityEngine.RectTransform)).offsetMin = CS.UnityEngine.Vector2.zero;
+    obj:GetComponent(typeof(CS.UnityEngine.RectTransform)).offsetMax = CS.UnityEngine.Vector2.zero;
+    obj.transform.localScale = CS.UnityEngine.Vector3.one;
+    obj.transform.localPosition = CS.UnityEngine.Vector3.zero
+    obj:SetActive(true)
+
 
 
 # ----------------------------------UI---------------------------------------------
@@ -232,3 +242,8 @@
      {
         var value = (Dictionary<string, object>) version;
 		}
+
+
+# unity设定摄像机快捷键
+
+	ctrl+shift+f
