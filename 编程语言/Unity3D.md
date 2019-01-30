@@ -247,3 +247,18 @@
 # unity设定摄像机快捷键
 
 	ctrl+shift+f
+
+
+# animator controller 
+
+	设置状态机，也可以设置子状态机，分支树
+
+	如果一个动画有Conditions建议取消Has Exit Time，会出现无法及时触发的问题。
+	Has Exit Time就是必须过度的时间，处于这个时间时，是不允许任何对动画的操作的。
+	
+	local animator2 = monster2:GetComponent(typeof(CS.UnityEngine.Animator))
+	animator2:SetInteger("attack",1)    // 设定int参数值
+	animator2:SetTrigger("attack")		// trigger
+
+
+# 
