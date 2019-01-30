@@ -4,6 +4,14 @@
 
 	使用sublime text3， 最右下角选择识别语言， 可以选择菜单弹出的最上面open all with current extension as.. 保存文件类型识别
 
+	sublime运行lua，工具->编译系统->新编译系统，然后复制下面内容
+	{
+	"cmd": ["D:/lua-5.3.4_Win64_bin/lua53.exe", "$file"],  
+	"file_regex": "^(?:lua:)?[\t ](...*?):([0-9]*):?([0-9]*)",  
+	"selector": "source.lua"  
+	}
+	保存成zsw的编译系统， 然后选择该系统即可， 每次tool - build即可运行
+
 
 
 # 基础
