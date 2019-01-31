@@ -67,3 +67,27 @@
 
 	可以批量删除系统补丁
 
+
+
+# 删除文件夹
+
+	rd /s /q  E:\GitHub\Unity3DCode\test1\
+
+# copy 文件和文件夹
+
+
+	xcopy /s /y E:\unityProject\test1\Assets\AssetPackage\Lua  E:\GitHub\Unity3DCode\test1\Lua\
+	xcopy /s /y E:\unityProject\test1\Assets\script  E:\GitHub\Unity3DCode\test1\script\
+	xcopy /s /y E:\unityProject\test1\Assets\AssetPackage\UI\prefab  E:\GitHub\Unity3DCode\test1\prefab\
+
+
+# 文件重命名
+
+	ren *.lua.txt *.
+	:ren *.lua *.lua.txt
+	
+
+# 注释
+
+	rem  或者 :
+

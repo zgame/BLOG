@@ -1,6 +1,7 @@
 # ide
 
 	使用jetbrain系列，下载emmylua插件
+	Setting - Editor - File Types 将 .lua.txt 加入到lua files  这样就可以直接像lua一样编写
 
 	使用sublime text3， 最右下角选择识别语言， 可以选择菜单弹出的最上面open all with current extension as.. 保存文件类型识别
 
