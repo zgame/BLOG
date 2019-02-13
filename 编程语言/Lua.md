@@ -359,3 +359,40 @@
 
 	-- 调用
 	local BTPrecondition = class("BTPrecondition", BTNode)
+
+
+
+# io
+
+	function io.readfile(path)
+	    local file = io.open(path, "rb")
+	    if file then
+	        local content = file:read("*a")
+	        io.close(file)
+	        return content
+	    end
+	    return nil
+	end
+	function io.writefile(path,data)
+	    local file = io.open(path, "wb")
+	    if file then
+	        file:write(data)
+	        file:flush()
+	        io.close(file)
+	        return true
+	    end
+	    return nil
+	end
+	
+	
+	function io.exists(path)
+	    local file = io.open(path, "r")
+	    if file then
+	        io.close(file)
+	        return true
+	    end
+	    return false
+	end
+
+
+# 
