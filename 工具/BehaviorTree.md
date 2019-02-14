@@ -38,11 +38,15 @@ https://github.com/donnki/bttree
 
 # BTParallel并行与节点（要注意有一个失败全失败）
 
-	并行节点，有一个子节点失败，就返回
+	并行节点，有一个子节点失败，就返回(return false的每次都运行)
+	shouldEndWhenOneEnd 有一个节点结束，就结束(return true的每次都运行)
+
 
 # BTParallelFlexible 并行或节点
 
 	并行节点，全部执行成功的子节点
+	只要其中一个子结点评估成功，则BTParallelFlexible评估成功
+	当所有子结点返回Ended时，BTParallelFlexible返回Ended
 
 
 # RunAction
@@ -71,4 +75,4 @@ https://github.com/donnki/bttree
 	1.首先确定是单一执行分支，还是多个执行分支，就是子分支是否能够并行执行
 	2.确定是否有先后顺序，如果是基于条件的用优先
 	3.并行不要一死全死的话，用松散并行
-	4.注意循环
+	4.注意普通并行的shouldEndWhenOneEnd需要注意
