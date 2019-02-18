@@ -1,6 +1,9 @@
 https://github.com/donnki/bttree
 
 
+# 如果出现打不开的情况， 删掉C:\Users\soonyo\AppData\Roaming\b3editor目录
+
+
 # Behavior3 Editor
 
 	安装bower

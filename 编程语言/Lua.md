@@ -30,6 +30,11 @@
 	tonumber() tostring()	
 	
 
+# 命令行参数
+
+	arg[1]
+
+
 # 表
 
 	-- 定义表 
