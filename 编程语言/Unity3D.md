@@ -183,6 +183,10 @@
 
 
 
+	self.Model.transform.localPosition = CS.UnityEngine.Vector3(0, 0, self.Model.transform.localPosition.z + 1);
+
+
+
 # ----------------------------------UI---------------------------------------------
 # gameobject生成之后的初始化
 
@@ -260,5 +264,28 @@
 	animator2:SetInteger("attack",1)    // 设定int参数值
 	animator2:SetTrigger("attack")		// trigger
 
+	local info = self.Animator:GetCurrentAnimatorStateInfo(0)
+    if info:IsName("Attack")  then
 
-# 
+
+# 调试
+
+
+ 	print(type(info))					-- 查看类型
+    print(MySerpent.block(info))		-- 输出table
+
+
+
+# 协程
+
+	cs_coroutine.start(function()
+        coroutine.yield(CS.UnityEngine.WaitForSeconds(0.2))     -- 这里用协程暂停0.2秒
+		coroutine.yield(CS.UnityEngine.WaitForEndOfFrame())		--这里等待一帧
+
+
+
+# DoTween 
+
+	写好C#的映射文件之后，xlua生成代码
+	local tween = tauren.Model.transform:DOMoveX(1,3)		-- 移动
+	local tween = self.Model.transform:DOMove(CS.UnityEngine.Vector3(0, 0, self.Model.transform.localPosition.z + 2),0.5)						-- 第一个参数是目的地， 第二个参数是时间
