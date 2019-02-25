@@ -113,6 +113,12 @@
 	AssetBundle打包出来会丢失Shader。要把可能用到的Shader加入到Edit->Project Settings->Graphics->Always Included Shaders这个列表里。
 
 
+# asset bundle 贴图丢失问题
+
+	将用到的Shader加到Editor->Project Settings -> Graphics Settings
+	Always Included Shaders 的Shader列表里再进行打包即可。
+
+
 # ---------------------------------- XLua---------------------------------------------	
 
 # XLua加载bundle文件用Loader
