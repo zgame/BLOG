@@ -300,8 +300,20 @@
 	local tween = self.Model.transform:DOMove(CS.UnityEngine.Vector3(0, 0, self.Model.transform.localPosition.z + 2),0.5)						-- 第一个参数是目的地， 第二个参数是时间
 
 
+    tween:SetEase(CS.DG.Tweening.Ease.Linear)	-- 设置移动方式为平均移动， 不然默认是缓冲
+
+
 # Cinemachine
 
 	可以设定很多虚拟相机，进行不同情况下相机之间的切换
 	可以切换，融合，设定轨迹，围绕，震动，触发控制等相机控制机制
 
+	VirtualCamera 可以设置跟踪
+	FreeLook  自由旋转查看，设置follow和look at， 然后可以设定上，中，下，三个圆环的大小和高度
+	
+	DollyTrack和DollyCart 自动旋转镜头  
+	相机Auto Dolly开启，增加extension follow zoom, follow要跟着DollyCart,Aim设定Hard Look At
+	DollyTrack设定几个点，然后设定looped圆圈循环
+	DollyCart指定DollyTrack和移动速度
+
+	clearShot 适合有遮挡的地方，会自动切换其他视角的相机
