@@ -153,6 +153,9 @@
 	--print(ReadBundles.getsss())	// 调用ReadBundles的静态函数 ， : .都可以
 
 
+	typeof(CS.Cinemachine.CinemachineVirtualCamera)	-- 调用cs的第三方库文件
+
+
 # C#调用lua
 	
 	这里要注意一下，因为c# socket为异步回调多线程，所以要求线程安全， 不然会crash
@@ -295,3 +298,10 @@
 	写好C#的映射文件之后，xlua生成代码
 	local tween = tauren.Model.transform:DOMoveX(1,3)		-- 移动
 	local tween = self.Model.transform:DOMove(CS.UnityEngine.Vector3(0, 0, self.Model.transform.localPosition.z + 2),0.5)						-- 第一个参数是目的地， 第二个参数是时间
+
+
+# Cinemachine
+
+	可以设定很多虚拟相机，进行不同情况下相机之间的切换
+	可以切换，融合，设定轨迹，围绕，震动，触发控制等相机控制机制
+
