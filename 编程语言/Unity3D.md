@@ -193,7 +193,7 @@
 
 
 	self.Model.transform.localPosition = CS.UnityEngine.Vector3(0, 0, self.Model.transform.localPosition.z + 1);
-
+ 	self.Model.transform.localRotation = CS.UnityEngine.Quaternion.Euler(0, 180, 0);
 
 
 # ----------------------------------UI---------------------------------------------
