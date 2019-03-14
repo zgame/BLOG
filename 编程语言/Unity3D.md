@@ -113,10 +113,12 @@
 	AssetBundle打包出来会丢失Shader。要把可能用到的Shader加入到Edit->Project Settings->Graphics->Always Included Shaders这个列表里。
 
 
-# asset bundle 贴图丢失问题
+# asset bundle 贴图丢失问题，需要添加额外的shader到setting里面
 
 	将用到的Shader加到Editor->Project Settings -> Graphics Settings
 	Always Included Shaders 的Shader列表里再进行打包即可。
+
+	编辑里面andorid模式不行的，打包到手机ok的，所以编辑器用window模式
 
 
 # ---------------------------------- XLua---------------------------------------------	
@@ -194,6 +196,18 @@
 
 	self.Model.transform.localPosition = CS.UnityEngine.Vector3(0, 0, self.Model.transform.localPosition.z + 1);
  	self.Model.transform.localRotation = CS.UnityEngine.Quaternion.Euler(0, 180, 0);
+
+
+	damageNumber:GetComponent(typeof(CS.UnityEngine.UI.Text)).text = ""..damage
+	local mScreen= CS.UnityEngine.Camera.main:WorldToScreenPoint(parent.transform.position + CS.UnityEngine.Vector3(0,5,0))
+    damageNumber:GetComponent(typeof(CS.UnityEngine.RectTransform)).position = mScreen
+
+
+	local position = damageNumber:GetComponent(typeof(CS.UnityEngine.RectTransform)).position
+    local tween = damageNumber.transform:DOMove(CS.UnityEngine.Vector3(position.x  , position.y  + 30 , position.z ),0.5)
+    tween:SetEase(CS.DG.Tweening.Ease.OutQuad)       -- 设定移动方式
+
+	hpSlider:GetComponentInChildren(typeof(CS.UnityEngine.UI.Slider)).value = parentCharacter.HP/ parentCharacter.MaxHP
 
 
 # ----------------------------------UI---------------------------------------------
@@ -317,3 +331,19 @@
 	DollyCart指定DollyTrack和移动速度
 
 	clearShot 适合有遮挡的地方，会自动切换其他视角的相机
+
+
+
+# 制作伤害数字效果
+
+	一张0-9的数字图，将它的Texture Type 改为 Sprite(2D and UI)，Sprite Mode改为 Multiple，点击Apply保存后，打开 Sprite Editor 对字符图进行编辑，在Sprite Editor窗口下，点击左上角的Slice按钮就可以对当前图片进行自动切分。
+	
+	创建Material， 选择 GUI/Text Shader
+	创建Custom Font ,选择材质， 然后填写图片切分的数据, 设置Ascii Start Offset为48(因为ascii码0是48，1是49)
+	Uv x 0 y 0 w 0.1 H 1
+	Vert x 0 y 0 w 40 H -59（这里用负数） 
+	advance 40 间距
+	
+
+# 
+	
