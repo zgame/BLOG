@@ -316,6 +316,8 @@
 
     tween:SetEase(CS.DG.Tweening.Ease.Linear)	-- 设置移动方式为平均移动， 不然默认是缓冲
 
+	https://blog.csdn.net/u013762848/article/details/82256276	ease的集中方式
+
 
 # Cinemachine
 

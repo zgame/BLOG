@@ -235,6 +235,23 @@
 
 
 
+	----- 类的继承写法
+
+	o = Character:New()         -- 继承关系
+    setmetatable(o, self)
+    self.__index = self
+
+    self.type = "Monster"
+
+	------- 继承后，调用父类方法
+
+	local super_mt = getmetatable(o)
+    setmetatable(CharacterTank, super_mt)   -- 当方法在子类中查询不到时，再去父类中去查找。
+    o.super = setmetatable({}, super_mt) -- 这样设置后，可以通过self.super.method(self, ...) 调用父类的已被覆盖的方法。
+
+	self.super.showHp(self)		-- 注意写法，不能用语法糖， 只能传递self进去
+
+
 # 命名规范
 
 
@@ -362,9 +379,63 @@
 	    return cls
 	end
 
-	-- 调用
-	local BTPrecondition = class("BTPrecondition", BTNode)
+	
+	-- 父类
+	parent = class("parent")
 
+	function parent:ctor()
+	    self.name = "parent"
+	    self.tmp = 0
+	end
+	
+	
+	function parent:ShowTmp()
+	    print(self.name.."  "..self.tmp)
+	end
+	
+	
+	function parent:ShowName()
+	    print(self.name)
+	end
+	
+	function parent:Show()
+	    print("parent")
+	
+	end
+	-- 子类
+
+	child = class("child",parent)
+	function child:ctor()
+	    self.name = "child"
+	    self.tmp = 10
+	end
+	
+	
+	function child:ShowTmp()
+	    print(self.name.."  "..self.tmp)
+	end
+	
+	
+	function child:ShowName()
+	    print(self.name)
+	end
+	
+	
+	function child:SuperName()
+	    self.super.ShowName(self)		-- 注意这里的调用super的方式，必须传递self
+	end
+	-- 调用
+ 	local parent1 = parent:new()
+    parent1:ShowName()
+    parent1:ShowTmp()
+    parent1:Show()
+
+    local child1 = child:new()
+    child1:ShowName()
+    child1:ShowTmp()
+    child1:SuperName()
+	
+	
 
 
 # io
