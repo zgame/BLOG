@@ -9,12 +9,17 @@
 
 # rider 支持unity
 
+	rider安装之后，还需要安装NDP471-KB4033342-x86-x64-AllOS-ENU，  .net4.7
 	plugins - unity
 	安装之后rider支持unity联机调试，rider设置断点，然后debug， 再点击运行unity run即可中断
 
 # 版本对应
 
 	unity2018 需要更新最新安卓sdk build tools 	android sdk9  android studio3.2.1
+
+# 设置
+
+	有unsafe代码的话，可以在player setting里面设置allow unsafe code
 
 # 安卓权限
 

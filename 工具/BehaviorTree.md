@@ -3,6 +3,8 @@ https://github.com/donnki/bttree
 
 # 如果出现打不开的情况， 删掉C:\Users\soonyo\AppData\Roaming\b3editor目录
 
+# 工程文件b3会在最后一行保存绝对路径， 那么如果路径修改， 就死机了， 所以需要手动修改这个路径到新的路径
+
 
 # Behavior3 Editor
 
