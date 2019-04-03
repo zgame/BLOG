@@ -314,6 +314,8 @@
 
 # DoTween 
 
+	c# 映射文件Assets/Editor/XLuaCustormExport.cs  在里面编辑lua要用到的函数
+	
 	写好C#的映射文件之后，xlua生成代码
 	local tween = tauren.Model.transform:DOMoveX(1,3)		-- 移动
 	local tween = self.Model.transform:DOMove(CS.UnityEngine.Vector3(0, 0, self.Model.transform.localPosition.z + 2),0.5)						-- 第一个参数是目的地， 第二个参数是时间
@@ -352,5 +354,29 @@
 	advance 40 间距
 	
 
-# 
+# NGUI
+
+	c# 映射文件Assets/Editor/XLuaCustormExport.cs  在里面编辑lua要用到的函数
+	写好C#的映射文件之后，xlua生成代码
+	CS.UIEventListener.Get(***.gameObject).onClick = function() end
+
+
+# OnTriggerEnter
+
+	C# CallTriggerEnter.cs
+	public class CallTriggerEnter : MonoBehaviour
+	{
+	    public Action<Collider> handler;
+	    public void OnTriggerEnter(Collider other)
+	    {
+	        if (handler != null)
+	            handler(other);
+	    }
+	}
+
+	lua调用
+	gameObject:AddComponent(typeof(CS.CallTriggerEnter)).handler = function(other) end
+
+
+#
 	
