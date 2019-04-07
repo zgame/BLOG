@@ -214,6 +214,9 @@
 
 	hpSlider:GetComponentInChildren(typeof(CS.UnityEngine.UI.Slider)).value = parentCharacter.HP/ parentCharacter.MaxHP
 
+	transform:GetChild(i)	-- 获取第几个子物体
+	transform:SetSiblingIndex(i)	--设定在所有子物体中的排序
+
 
 # ----------------------------------UI---------------------------------------------
 # gameobject生成之后的初始化
@@ -378,5 +381,10 @@
 	gameObject:AddComponent(typeof(CS.CallTriggerEnter)).handler = function(other) end
 
 
-#
+# 刚体约束
+
+	 m_Rigidbody.constraints = RigidbodyConstraints.None;
+	m_Rigidbody.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationZ;
+
+
 	
