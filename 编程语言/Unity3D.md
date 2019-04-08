@@ -328,6 +328,9 @@
 
 	https://blog.csdn.net/u013762848/article/details/82256276	ease的集中方式
 
+	DOMove()			-- 绝对坐标
+	DOLocalMoveX()		-- 相对坐标
+
 
 # Cinemachine
 
