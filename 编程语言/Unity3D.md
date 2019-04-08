@@ -364,8 +364,9 @@
 
 	c# 映射文件Assets/Editor/XLuaCustormExport.cs  在里面编辑lua要用到的函数
 	写好C#的映射文件之后，xlua生成代码
-	CS.UIEventListener.Get(***.gameObject).onClick = function() end
 
+	CS.UIEventListener.Get(***.gameObject).onClick = function() end
+	GetComponent(typeof(CS.UISprite))
 
 # OnTriggerEnter
 
