@@ -366,7 +366,7 @@
 	写好C#的映射文件之后，xlua生成代码
 
 	CS.UIEventListener.Get(***.gameObject).onClick = function() end
-	GetComponent(typeof(CS.UISprite))
+	GetComponent(typeof(CS.UISprite)).spriteName = ""
 
 # OnTriggerEnter
 
