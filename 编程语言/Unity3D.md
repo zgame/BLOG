@@ -170,17 +170,10 @@
 	2.然后调用代码写为：
 	
 	 [CSharpCallLua]
-	    public delegate void FDelegatezzz(int a, int b, string c, string d);
+     public delegate void FDelegatezzz(int a, int b, string c, string d);
 	
-	......
-	#if THREAD_SAFE || HOTFIX_ENABLE
-	            lock (ReadBundles.luaenv.luaEnvLock)
-	#endif
-	            {
-	                FDelegatezzz f = ReadBundles.luaenv.Global.Get<FDelegatezzz>("GoCallLuaNetWorkReceive");
-	                f(1, 1, "", "");
-	            }
-	.....
+      FDelegatezzz f = ReadBundles.luaenv.Global.Get<FDelegatezzz>("GoCallLuaNetWorkReceive");
+      f(1, 1, "", "");
 
 
 
