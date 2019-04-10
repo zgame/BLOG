@@ -154,6 +154,11 @@
 	[[  字符串  ]]     -- 多行字符串
 
 
+	-- 字符串的分割
+	local str = "192.188.111.111:23093333"
+	print(  string.sub(str,string.find(str,":%d*")+1))
+
+
 # model 模块
 
 	-- 文件名为 module.lua
