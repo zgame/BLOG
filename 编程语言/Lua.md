@@ -80,7 +80,9 @@
 
 # 条件判断
 
-	-- and or not	
+	and  与 
+	or	或
+	not	非
 
 	if   ***	then
 	elseif ** then
@@ -313,7 +315,11 @@
 # 随机数
 
 	math.randomseed(os.time())
+
 	math.random(3)  -- [1,3]
+	1.无参调用，产生[0, 1)之间的浮点随机数。
+　　　2.一个参数n，产生[1, n]之间的整数。
+　　　3.两个参数，产生[n, m]之间的整数。
 
 
 # gc
