@@ -85,9 +85,13 @@
 
 # repeated 用法
 
+	-- 如果repeated是一个结构体
 	local zzz = person.zz:add()
 	zzz.name = "sdfsd这是"
 	zzz.id = 21343
+
+	-- 如果repeated是一个数字
+	person.zz:append(123)
 
 	
 	
