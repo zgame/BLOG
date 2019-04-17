@@ -384,4 +384,12 @@
 	m_Rigidbody.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationZ;
 
 
+# log view 
+
+	https://github.com/aliessmael/Unity-Logs-Viewer
+	导入unity包， 菜单点击Reporter->Create
+	Edit -> Project Settings 设置 Scrip execution order 里面优先级为最高级，即可使用
+	画一个圆圈， 就会进入log界面， 可以缩放，就有关闭按钮
+
+
 	
