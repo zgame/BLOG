@@ -482,6 +482,14 @@
 	end
 
 
-# 
+# 输出
+
+
+	print(type(info))					-- 查看类型
+
+	MySerpent = require("serpent")
+    print(MySerpent.block(info))		-- 输出table
+
+
 
 
