@@ -263,3 +263,18 @@
 	建立索引index（part1,part2,part3）,相当于建立了 index(part1),index(part1,part2)和index（part1,part2,part3）三个索引。
 	MySQL针对like语法必须如下格式才使用索引：SELECT * FROM t1 WHERE key_col LIKE 'ab%' ；
 
+
+
+# 存在就更新，不存在就插入
+
+	如果有主键的话，可以用duplicate 或者replace
+	insert into table (player_id,award_type,num)  values(20001,0,1) on  DUPLICATE key update num=num+values(num)
+
+	所以两者的区别只有一个，insert .. on deplicate udpate保留了所有字段的旧值，再覆盖然后一起insert进去，而replace没有保留旧值，直接删除再insert新值。
+ 	从底层执行效率上来讲，replace要比insert .. on deplicate update效率要高，但是在写replace的时候，字段要写全，防止老的字段数据被删除。
+
+
+	如果没有主键，采用的是多个索引搜索， 那么组合成一个唯一主键即可
+
+	其他方法就是用存储过程。麻烦。
+	

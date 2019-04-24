@@ -116,3 +116,11 @@
 		...
 	end
 
+
+
+# 存在就更新，不存在就插入，经常用于更新游戏房间的状态
+
+   if not exists (select 1 from t where id = 1)
+      insert into t(id, update_time) values(1, getdate())
+   else
+      update t set update_time = getdate() where id = 1
