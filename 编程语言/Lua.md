@@ -160,6 +160,14 @@
 	local str = "192.188.111.111:23093333"
 	print(  string.sub(str,string.find(str,":%d*")+1))
 
+	-- 字符串分割，迭代器返回每组字符串
+	for word in string.gmatch("Hello Lua user", "%a+") do print(word) end
+
+	-- 把数字分割开
+	local mystring = "123 983  909099 999 0 5"
+	for word in string.gmatch(mystring, "%d+") do
+    	print(word) end
+
 
 # model 模块
 
