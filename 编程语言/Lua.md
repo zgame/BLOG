@@ -146,6 +146,8 @@
 	string.format("the value is:%d",4)
 	the value is:4
 
+	-- 想避免转义的话，也可以%s，然后字符串里面写一些特殊字符 
+
 
 	tostrng(x) --x为数字 如：10
 	tonumber(x) --x为字符串 如： “10”
