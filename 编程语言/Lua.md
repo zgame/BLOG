@@ -503,3 +503,11 @@
 
 
 
+# 排序
+
+	1. 数组排序，默认升序table.sort(***)
+	2. key的排序，把key生成一个单独的table数组，然后排序key的数组，再遍历
+	3. 表单模式，table是一个数组，每个元素是多个键值对，排序的时候按照表单的固定key进行排序
+	table.sort(test2,function(a,b) return a.id<b.id end )
+
+

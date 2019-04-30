@@ -26,6 +26,9 @@
 
 # vue
 
+	npm install vue
+	
+
 	不支持ie8， 所以使用chrome浏览器
 
 	https://vuejs.org/js/vue.js		//可以下载开发版本到本地
