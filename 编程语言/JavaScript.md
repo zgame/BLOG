@@ -169,6 +169,7 @@
 
 # for
 
+	// 这个也支持key ，value格式，跟数组一样
 	for (x in person) 
 	{
 		 console.log(person[i]);

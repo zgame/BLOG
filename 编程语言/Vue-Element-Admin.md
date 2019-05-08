@@ -424,8 +424,28 @@
 	layout/components/Navbar.vue
 	
 	
+# vue核心代码
 
+	export default {
+		data(){
+		return{
+			// 这里定义页面的数据变量
+		}
+		},
+		created(){
+			// 页面初始化函数
+			},
+		filters:{
+		// 条件过滤，用于替换	
+		}，
+		methods:{
+			// 这里定义各种函数方法
+		}
+	}
 	
+
+
+# 
 
 
 
