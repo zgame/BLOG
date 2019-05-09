@@ -78,15 +78,20 @@
 	// 列表--------------------------------
 	lpush list_name sdfsdf			//增加元素到列表头部
 	rpush list_name value			// 增加元素到列表尾部
-	lrange list_name 0 10			// 列出列表
-	llen list_name					// 返回列表长度
 	LPOP key						//移出并获取列表的第一个元素
 	RPOP key			 			//移除并获取列表最后一个元素
-	
+
+	lrange list_name 0 10			// 列出列表
+	lrange list_name 0 -1				// 列出所有的元素
+	llen list_name					// 返回列表长度
+
+	LSET list_name 0 "bar"			// 设置指定位置上的元素
+	LREM list_name 0 "hello"		// 移除所有元素等于指定值的， 数量也可以是负数，表示从头还是从尾
 	
 
 	// set 集合--------------------------
 	sadd zsw_set value			// 增加元素
+	sismember zsw_set value		// 查询元素是否存在在集合中
 	smembers zsw_set			//列出所有元素
 	srem zsw_set value1 value2		//删除元素
 

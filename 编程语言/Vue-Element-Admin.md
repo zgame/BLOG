@@ -219,20 +219,38 @@
 
 	<el-form :rules="rules" ref="dataForm" :model="dlgData"   	//设置rules
 
-	<el-form-item label="账号" prop="username">			//设置prop验证用
+	<el-form-item label="账号" prop="username">			//设置prop验证用，这个名字对应下面的数组
           <el-input v-model="dlgData.username"></el-input>
         </el-form-item>
 
 	 rules: {
           username: [{ required: true, message: '必须有名字', trigger: 'change' }, { min: 5, max: 9, message: '长度在 5 到 9 个字符', trigger: 'blur' }],
           // timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
-          pwd: [{ required: true, message: '必须有密码', trigger: 'blur' }]
+          pwd: [{ required: true, message: '必须有密码', trigger: 'blur' },
+		{validator:isInteger}]
         }
 	 
 	this.$refs['dataForm'].validate((valid) => {
           if (valid) {
 	}
 	})
+
+	
+
+	第二种验证方法：
+	/utils/validate.js里面增加判断校验函数validatInteger
+
+	下面开始调用
+	data(){
+	const validatIntegerMy = (rule,value,callback)=>{
+	if(!validatInteger(value)){
+		callback(new Error('必须使用数字'))
+		}else{
+		callback()
+	}
+	
+	interval:[{required:true,triger:'blur',validator:validatIntegerMy}],
+
 
 
 
