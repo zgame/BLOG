@@ -463,7 +463,15 @@
 	
 
 
-# 
+# 时间选择器
+
+	 <el-date-picker
+      v-model="value2"
+      type="date"
+      placeholder="选择日期"
+      format="yyyy 年 MM 月 dd 日"		
+      value-format="yyyy-MM-dd">		// 设定文本格式
+    </el-date-picker>
 
 
 

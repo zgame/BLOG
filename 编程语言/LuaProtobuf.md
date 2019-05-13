@@ -130,3 +130,12 @@
 	bool 
 	string一个字符串必须是UTF-8编码或者7-bit ASCII编码的文本。
 	bytes可能包含任意顺序的字节数据。
+
+
+
+
+
+
+# lua-protobuf
+
+	https://github.com/starwing/lua-protobuf
