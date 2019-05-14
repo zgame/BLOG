@@ -126,6 +126,8 @@
 	编辑里面andorid模式不行的，打包到手机ok的，所以编辑器用window模式
 
 
+
+
 # ---------------------------------- XLua---------------------------------------------	
 
 # XLua加载bundle文件用Loader
@@ -394,4 +396,13 @@
 	画一个圆圈， 就会进入log界面， 可以缩放，就有关闭按钮
 
 
-	
+# xlua生成代码报错
+
+	需要把xlua的黑名单，加入到我们自己定义的XLuaCustormExport文件里面去
+	 BlackList = new List<List<string>>()
+	  {
+	     new List<string>(){"UnityEngine.Light", "shadowRadius"},
+	     new List<string>(){"UnityEngine.Light", "shadowAngle"},
+	  };
+
+
