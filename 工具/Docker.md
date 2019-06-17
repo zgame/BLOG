@@ -3,6 +3,8 @@
 	https://get.daocloud.io/
 
 
+
+
 # ubuntu 安装
 
 	curl -sSL https://get.docker.com/ | sh 
@@ -67,6 +69,10 @@
 
 # 命令
 
+	https://www.runoob.com/docker/docker-command-manual.html
+
+	docker ps   // 运行的容器
+
 	docker ps -a   //所有的容器
 
 	docker run -it ubuntu       //attach到ubuntu里面了  
@@ -80,3 +86,26 @@
 	docker rmi 镜像id前3-4即可		//删除对应id的镜像
 
 	
+
+
+# Centos 7 
+
+	http://www.runoob.com/docker/centos-docker-install.html
+	
+	sudo systemctl start docker
+
+	docker run hello-world		//测试运行
+
+	docker pull mysql
+
+	docker run -p 3306:3306 --name mymysql -v $PWD/conf:/etc/mysql/conf.d -v $PWD/logs:/logs -v $PWD/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.6
+
+	docker run -p 3306:3306 --name mymysql -v $PWD/conf:/etc/mysql/conf.d -v $PWD/logs:/logs -v $PWD/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.6
+	
+
+
+
+
+# docker run
+
+	docker run -i -t centos /bin/bash     // docker启动交互式镜像
