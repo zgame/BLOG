@@ -134,11 +134,24 @@
 	quit
 
 
-# docker
+# docker 安装
+
+	安装一些必要的系统工具：
+
+	sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+
+	sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+	
+	sudo yum makecache fast				//更新 yum 缓存：
+	
+	sudo yum -y install docker-ce    //安装 Docker-ce：
+
+# docker 运行
+
 
 	http://www.runoob.com/docker/centos-docker-install.html
 	
-	sudo systemctl start docker
+	sudo systemctl start docker		//启动 Docker 后台服务
 
 	docker run hello-world		//测试运行
 
