@@ -141,4 +141,5 @@
 
 # docker file
 
+	FROM centos
 	
