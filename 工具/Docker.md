@@ -87,8 +87,17 @@
 
 	
 
+# Centos 7 安装
 
-# Centos 7 
+	sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+
+	sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+	
+	sudo yum makecache fast				//更新 yum 缓存：
+	
+	sudo yum -y install docker-ce    //安装 Docker-ce：
+
+# Centos 7 运行
 
 	http://www.runoob.com/docker/centos-docker-install.html
 	
@@ -109,3 +118,21 @@
 # docker run
 
 	docker run -i -t centos /bin/bash     // docker启动交互式镜像
+
+
+# docker 修改保存
+
+	// 在运行的容器里面，安装软件等操作，然后
+	[root@190647a938a1 /]# exit
+	// exit docker
+	// 提交修改到新的镜像里面去
+	docker commit -m="zsw62611" --author="zsw" 190647a938a1 centos/zsw:62611
+
+	// 运行新的镜像
+	docker run -i -t centos/zsw:62611 /bin/bash
+
+
+# docker 文件copy
+
+	将主机/www/runoob目录拷贝到容器96f7f14e99ab的/www目录下。
+	docker cp /www/runoob 96f7f14e99ab:/www/
