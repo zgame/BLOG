@@ -43,11 +43,19 @@
 
 	ip address
 
+# wget
+	
+	yum install wget
+	wget https://dl.google.com/go/go1.12.6.linux-amd64.tar.gz
+	tar -C /usr/local -xzf go1.12.6.linux-amd64.tar.gz
+	解压后在目录 /usr/local/go中
+
 # 安装go
 
 	下载包https://golang.org/dl/
 	解压包到 /usr/local目录下
 	tar -C /usr/local -xzf go1.4.linux-amd64.tar.gz
+	解压后在目录 /usr/local/go中
 
 	将 /usr/local/go/bin 目录添加至PATH环境变量：
 	export PATH=$PATH:/usr/local/go/bin
@@ -57,7 +65,7 @@
 
 	echo $PATH
 
-# /etc/profile    设置goPath
+# vim /etc/profile    设置goPath
 
 	export GOROOT=/usr/local/go
 	export GOBIN=$GOROOT/bin
@@ -169,3 +177,10 @@
 	ulimit -n 65534 
 
 
+# nodejs
+
+	yum -y install nodejs
+	node
+	.exit
+
+	npm install express -g 

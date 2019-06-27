@@ -118,7 +118,7 @@
 # docker run
 
 	docker run -i -t centos /bin/bash     // docker启动交互式镜像
-
+	docker run -i -t centos/zsw:62712 /bin/bash 
 
 # docker 修改保存
 
@@ -136,3 +136,9 @@
 
 	将主机/www/runoob目录拷贝到容器96f7f14e99ab的/www目录下。
 	docker cp /www/runoob 96f7f14e99ab:/www/
+
+
+
+# docker file
+
+	
