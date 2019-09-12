@@ -88,9 +88,14 @@
 	(a, b) = (b, a)		//一行代码交换a， b的值
 	
 # 字典
-	dict.get(key, default=None)
+	dict.get(key, default=None)		# 获取字典值
 	key -- 这是要搜索在字典中的键。
 	default -- 这是要返回键不存在的的情况下默认值。
+
+	dict.has_key(key)		# 包含key
+	name in d.keys()		# 包含key
+	name not in d.keys()		# 不包含key
+
 
 	# 对字典进行遍历
 	for k,v in dict.iteritems():
@@ -99,6 +104,8 @@
 # 类型
 
 	利用isinstance函数，来判断一个对象是否是一个已知的类型。 
+	isinstance(key,int)
+	
 	数字变为字符串 str(4)
 	字符串变为数字 string.atoi(s,[，base]) //base为进制基数
 	浮点数转换 string.atof(s)
