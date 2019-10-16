@@ -131,6 +131,11 @@
  	f2 := fmt.Sprintf("He%03s","1")  	//格式化
  
 
+# interface{}类型强转
+
+	interface{}.(string)
+	interface{}.(int)
+
 
 # 变量声明和赋值
 
