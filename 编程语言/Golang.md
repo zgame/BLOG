@@ -129,7 +129,19 @@
 
 
  	f2 := fmt.Sprintf("He%03s","1")  	//格式化
- 
+
+# byte buffer 
+
+	var b bytes.Buffer //直接定义一个 Buffer 变量，而不用初始化 
+	b.Writer([]byte(“Hello “)) // 可以直接使用
+
+	b1 := new(bytes.Buffer) //直接使用 new 初始化，可以直接使用 
+	// 其它两种定义方式 
+	bytes.NewBuffer(buf []byte) *Buffer 
+	bytes.NewBufferString(s string) *Buffer
+	
+ 	b1.String()
+	b1.Bytes()
 
 # interface{}类型强转
 
