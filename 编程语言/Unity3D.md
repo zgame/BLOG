@@ -405,4 +405,11 @@
 	     new List<string>(){"UnityEngine.Light", "shadowAngle"},
 	  };
 
+# -------------------------------------------------------------------------------
 
+# GI 实时全局光照
+
+	Shrine Arch-viz Demo 官方示例
+	实时GI = 静态光照图Lightmaps、灯光探针Light Probes、反射探针Reflection Probes
+
+#
