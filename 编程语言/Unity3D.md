@@ -412,4 +412,26 @@
 	Shrine Arch-viz Demo 官方示例
 	实时GI = 静态光照图Lightmaps、灯光探针Light Probes、反射探针Reflection Probes
 
-#
+# Unity PostProcess 后处理
+
+	Anti-aliasing	FXAA：开销较低的一种抗锯齿方案
+					TAA对画质的改善较好，满足静态、动态的画面边缘平滑处理
+	Dithering		使用8-bit dithering像素点抖动技术，消除色阶。
+
+	HDRP Volume Profile
+	1) Ambient Occlusion 环境光影响，环境光吸收
+	2) Auto Exposure 自动曝光用于调整图像的亮度范围
+	3) Bloom 明亮区域扩散出来的柔光效果
+	4) Chromatic Aberration 色差效果，模拟相机镜头的颜色偏移
+	5) Color Grading 画面的色调
+	6) Depth of Field 景深
+	7) Grain 颗粒效果
+	8) Lens Distortion 镜头扭曲
+	9）Motion Blur 运动模糊
+	10）Screen Space Reflections屏幕空间反射是一种伪反射效果，模拟潮湿的地板或水坑的表面反射
+	11）Vignette 暗角效果 
+
+# 	
+	
+
+	
