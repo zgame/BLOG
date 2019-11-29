@@ -72,6 +72,7 @@
 	（3）[]：可以用来指定模式的选择区间。例如h[ae]llo可以匹配hello和hallo，但是不能匹配hillo。 
 	同时，可以使用“/”符号来转义特殊的字符
 
+	EXISTS key	是否存在key值
 	HEXISTS key field  hash中是否存在key值 
 
 
