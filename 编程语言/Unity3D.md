@@ -431,7 +431,10 @@
 	10）Screen Space Reflections屏幕空间反射是一种伪反射效果，模拟潮湿的地板或水坑的表面反射
 	11）Vignette 暗角效果 
 
-# 	
-	
+# IL2CPP
+
+	将mono转换成ILVM， 编译成C++代码之后，体积会变小，性能提升一倍
+
+# 
 
 	
