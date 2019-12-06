@@ -65,7 +65,9 @@
 
 	echo $PATH
 
-# vim /etc/profile    设置goPath
+#  设置goPath
+
+	vim /etc/profile 
 
 	export GOROOT=/usr/local/go
 	export GOBIN=$GOROOT/bin
@@ -183,4 +185,10 @@
 	node
 	.exit
 
-	npm install express -g 
+	npm install express -g
+
+
+# ftp
+
+	service vsftp start	
+	 

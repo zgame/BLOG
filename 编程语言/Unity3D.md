@@ -235,8 +235,6 @@
 	菜单栏打开 Window -> 2D -> Sprite Editor 进行图片的边界设定, 是用来做九宫格的，直接选择图片的属性也可以编辑
 
 
-
-
 #  对齐方式 layout
 
 	canvas 设置成scale with screen size 
@@ -344,8 +342,6 @@
 
 	clearShot 适合有遮挡的地方，会自动切换其他视角的相机
 
-
-
 # 制作伤害数字效果
 
 	一张0-9的数字图，将它的Texture Type 改为 Sprite(2D and UI)，Sprite Mode改为 Multiple，点击Apply保存后，打开 Sprite Editor 对字符图进行编辑，在Sprite Editor窗口下，点击左上角的Slice按钮就可以对当前图片进行自动切分。
@@ -384,7 +380,7 @@
 
 # 刚体约束
 
-	 m_Rigidbody.constraints = RigidbodyConstraints.None;
+	m_Rigidbody.constraints = RigidbodyConstraints.None;
 	m_Rigidbody.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationZ;
 
 
@@ -435,6 +431,73 @@
 
 	将mono转换成ILVM， 编译成C++代码之后，体积会变小，性能提升一倍
 
-# 
+# 正向渲染和延迟渲染
+
+	延迟渲染主要包含了两个Pass：
+	
+	第一个Pass用于渲染G缓冲，在这个Pass中，不进行光照计算，仅仅计算哪些片元是可见的，如果一个片元是可见的，就把它的相关信息（漫反射颜色、高光反射颜色、法线、自发光和深度等信息）存储到G缓冲区中。对于每一个物体，这个Pass仅会执行一次。
+	第二个Pass用于计算真正的光照模型。该Pass会使用上一个Pass渲染的数据来计算最终的光照颜色，再存储到帧缓冲中。
+	
+	延迟渲染可以用来加快渲染真实的光线计算，但是不允许我们渲染半透明物体，且没有抗锯齿，依赖显卡支持， 主要是光源越多，优势越好。
+	一般说来，如果我们的游戏有大量的实时光照、阴影和反射并允许在高端硬件上，延迟渲染(Deferred Rendering)是更好的选择。如果我们的游戏允许在低端硬件，并且并没有用到上面的特性，就应该旋转正向渲染(Forward Rendering)。
+
+# 渲染的步骤rendering pipeline
+
+	中央处理器器(CPU)，决定哪些对象需要渲染以及要怎么渲染。
+	CPU发送指令给图像处理器(GPU)。
+	GPU根据CPU指令进行渲染。
+
+	渲染管道(the rendering pipeline)
+
+	渲染一帧，CPU需要完成以下工作： 
+	1.CPU检测场景中的每一个物件，决定它是否需要被渲染。一个object只有达成某些特定的条件才能被渲染。例如，object的包围盒的一部分必须在摄像机的视锥体中。一个object被裁剪后也不会被渲染。
+	2.CPU收集每一个需要渲染的的object的信息，并将它们按顺序生成名为 draw calls 的命令。一个 draw call 包含了一个模型和如何渲染这个模型的信息。例如，使用哪一张贴图。在特定的情况下，使用同一种设置的objects将被合并成一个draw call。将不同的objects合并成一个draw call 被叫做合批(batching)。 CPU为每一个draw call创建个一个名为batch的数据包，数据包可能还会包含一些除了drawcalls的额外数据，但是这些一般和性能问题关系不大，所以在这里暂不讨论。
+
+	
+	为每一个drawcall,CPU将做如下工作： 
+	1.CPU将发送一个命令给GPU,告诉GPU改变某些被称为渲染状态( render state )的变量。这个命令变为称为( SetPass call )。一个SetPass call告诉GPU，下一个模型将使用什么设置来渲染。只有当下一个模型所需要的render state和前一个模型不应的时候，SetPass Call才会被发送。
+	2.CPU发送draw call给GPU。GPU使用最近的一次SetPass call设置的渲染状态，渲染draw call中的模型。
+	3.在某些情况下，一个 batch 可能有多个 pass。pass是shader代码中的一个片段。一个新的pass需要改变渲染状态。对batch中的每一个pass,CPU需要发送一个新的SetPass call和draw call。
+
+	GPU进行如下工作： 
+	1.GPU按顺序处理CPU发送过来的任务。
+	2.如果当前任务是SetPass call,GPU更新render state。
+	3.如果当期任务是Draw call,GPU渲染模型。这一步在shader code中分为不同的阶段。由于比较复杂，这篇文件中不更深入的讲解。但是我们有必要知道的是，shader代码中名为vertex shader的部分告诉GPU处理模型的顶点，名为fragment shader的部分告诉GPU处理像素。
+	4.一直重复上面的操作直到所有的CPU请求被处理。
+
+
+	在Unity渲染过程中，有三种不同的线程：主线程、渲染线程、工作线程。主线程承担游戏的大部分CPU任务，包括一些渲染任务。渲染线程专门用来给GPU发送渲染指令。工作线程主要用来剔除或模型蒙皮。
+
+
+# 加强渲染效率
+
+	降低需要渲染的objects的数量是降低batches和SetPass calls最简单的方法
+	1.用摄像机的 Layer Cull Distance属性。它针对不同layers的物体，可以设置不同的剔除距离。
+	2.遮挡剔除(occlusion culling)。
+	
+	降低objects的渲染次数 
+	少用动态光，用烘焙，少用反射探针.
+
+	合并Objects 
+	1. 使用同一个材质球，使用同样的材质球设置(贴图，shader和shader参数)
+	2. 静态合批(Static batching) 将那些不会移动的满足条件的objects合并成一个批次
+	3. 动态合批(Dynamic batching)
+	4. GPU instancing使用将大量相同的objects高效合批的技术，如果我们的游戏需要同时渲染大量相同的模型，这些技术将非常有用。
+	
+	在模型导入设置中，如果我们不勾选import animations选择，导入时Unity会使用MeshRender代替SkinnedMeshRenderer。
+
+	如果存储带宽是主要问题，我们应该降低贴图的内存使用，压缩或者降低贴图质量
+
+	
+#  Universal Render Pipeline通用渲染管线
+
+	URP是一种预置的可编程渲染管线。可以实现快速的渲染而不需要shader技术。URP使用简化的基于物理的光照和材质。
+	
+
+# 深度贴图
+
+	深度贴图类似于灰度图像，每个像素值表示的是传感器距离物体的实际距离。
+
+#
 
 	
