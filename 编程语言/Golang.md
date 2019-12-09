@@ -1282,3 +1282,15 @@
 	
 	    fmt.Println(string(body))
 	}
+
+
+# 函数指针， 回调函数
+
+	func TimerMillisecondCheckUpdate(f func(), timer time.Duration)
+
+	ztimer.TimerMillisecondCheckUpdate(func() {
+		ztimer.CheckRunTimeCost(func() {
+			LuaServer.QueueRun()
+		}, "LuaServer.QueueRun")
+	},  20)  //
+
