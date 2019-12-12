@@ -496,7 +496,7 @@
 
 	}
 
-	类型断言语法为：expression.(Type)
+	
 
 
 # 错误处理
@@ -526,6 +526,15 @@
 
 # 反射
 
+	类型断言语法为：expression.(Type)
+
+	TypeOf返回接口中保存的值的类型
+
+	获取变量的值：
+	reflect.ValueOf(x).Int()
+	reflect.ValueOf(x).Float() 
+	reflect.ValueOf(x).String()
+	reflect.ValueOf(x).Bool()
 
 # 单元测试
 
