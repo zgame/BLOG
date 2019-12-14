@@ -594,6 +594,8 @@
 	mutex.Unlock()
 
 	RWMutex 是读写锁，它更适合读多写少的情况，性能要高一些
+	多个goroutine可以同时读，读锁只会阻止写；只能一个同时写，写锁会同时阻止读写
+	Lock()加写锁，Unlock()解写锁，RLock()加读锁，RUnlock()解读锁
 
 
 	WaitGroup总共有三个方法：Add(delta int),Done()相当于Add(-1),Wait()执行阻塞，直到所有的WaitGroup数量变成0
