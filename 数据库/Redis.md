@@ -47,6 +47,9 @@
 	// 字符串-----------------------------
 	set name "yiibai.com" 	
 	get name
+	SETNX KEY_NAME VALUE	(SET if Not eXists , 1成功，0失败)		// 很重要，分布式锁可以用
+	SETEX key seconds value  将值 value 关联到 key ，并将 key 的过期时间设为 seconds (以秒为单位)。
+	PSETEX key milliseconds value  上面类似，毫秒的
 
 	//哈希表------------------------------------
 	hset:设置hash field为指定值，如果key不存在，则先创建。
@@ -62,7 +65,10 @@
 	//hdel:删除指定hash的field。
 	hdel user:002 sex
 
+	// 存在
+	HEXISTS key field  hash中是否存在key值 
 
+	// key --------------------------------
 	keys *zsw*	//列出所有包含zsw的key
 	keys ***    // list all
 	keys *    
@@ -73,7 +79,12 @@
 	同时，可以使用“/”符号来转义特殊的字符
 
 	EXISTS key	是否存在key值
-	HEXISTS key field  hash中是否存在key值 
+
+
+    EXPIRE <KEY> <TTL> : 将键的生存时间设为 ttl 秒
+    PEXPIRE <KEY> <TTL> :将键的生存时间设为 ttl 毫秒
+    EXPIREAT <KEY> <timestamp> :将键的过期时间设为 timestamp 所指定的秒数时间戳
+    PEXPIREAT <KEY> <timestamp>: 将键的过期时间设为 timestamp 所指定的毫秒数时间戳.
 
 
 	
@@ -99,13 +110,16 @@
 
 	//有序集合zset 和 set 一样也是string类型元素的集合,且不允许重复的成员。
 	zadd zsw_zset 0 value			// 插入到0位置
-	zrange zsw_zset 0 10			// 0-10范围的数据输出
+	zrange zsw_zset 0 10			// 0-10范围的数据输出， 从小到大排序
+	zrevrange zsw_zset 0,2, withscores	// 从大到小排序
 	zScore zsw_zset value			// 返回value的score（排序编号）
 	zRemRangeByRank zsw_zset 20 22   // 删除范围20-22的所有元素
 	zRangeByScore zsw_zset 0 22		// 按照范围返回排序之后的元素列表, 跟zrange一样啊
 
 	incr // 对存储在指定key的数值执行原子的加1操作。
 	INCR mykey
+
+	
 
 
 # 备份和恢复
@@ -300,3 +314,5 @@
 # redis 可以使用lua脚本
 
 	具体代码看golang里面redis的例子
+
+

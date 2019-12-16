@@ -220,6 +220,12 @@
 	 {8, 9, 10, 11},   /*  第三行索引为 2 */
 	}
 
+# 可变参数
+
+	arg ...interface{}
+	func xx(arg...)		传递可变参数
+
+
 # 切片
 
 	var identifier []type
@@ -529,6 +535,8 @@
 	类型断言语法为：expression.(Type)
 
 	TypeOf返回接口中保存的值的类型
+	if reflect.TypeOf(x).Kind() == reflect.String
+
 
 	获取变量的值：
 	reflect.ValueOf(x).Int()
