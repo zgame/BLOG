@@ -106,7 +106,7 @@
 	fmt.Printf("%c\n", p) 					// char
 
 
-# 字符串
+# 字符串string
 
 
 	int,err:=strconv.Atoi(string)  		//string到int  
@@ -121,7 +121,10 @@
 	string(bytes)				// []byte -> string
 	 []byte(str)			// string -> []byte
 
-	strings.Contains(str, "!!")  //字符串包含
+	strings.Contains(str, "!!")  //字符串包含，包含返回true
+	strings.ContainsAny(str, "xx") // 任何一个unicode代码点在str中
+	strings.ContainsRune(str, r)  // unicode代码点r在s中
+ 
 	strings.ToUpper				//转大写
 	strings.Split(s, ".")		//字符串分割
 
@@ -608,6 +611,12 @@
 
 	WaitGroup总共有三个方法：Add(delta int),Done()相当于Add(-1),Wait()执行阻塞，直到所有的WaitGroup数量变成0
 	WaitGroup的特点是Wait()可以用来阻塞直到队列中的所有任务都完成时才解除阻塞，而不需要sleep一个固定的时间来等待
+
+
+	sync.Pool临时对象池pool，只适合临时对象，持久对象不行，他会自动回收
+	sync.Once再多的协程也只执行一次就完事
+	sync.Cond是⽤来控制某个条件下，goroutine进⼊等待时期，等待信号到来
+		
 
 # context
 
