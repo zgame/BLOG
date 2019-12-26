@@ -511,4 +511,22 @@
 	6）混合
 
 	
-# 
+# Shader 
+
+	1. 属性，外部可以调节的参数，括号里面是外部显示的名字
+	Properties {
+	_Color ("Main Color", Color) = (1,1,1,0.5)
+	_SpecColor ("Spec Color", Color) = (1,1,1,1)
+	_Emission ("Emmisive Color", Color) = (0,0,0,0)
+	_Shininess ("Shininess", Range (0.01, 1)) = 0.7
+	_MainTex ("Base (RGB)", 2D) = "white" { }
+    }
+
+	2. subShader shader可包含多个子着色器 (SubShaders) Unity 渲染着色器时，将仔细查看所有子着色器，然后使用硬件支持的一个子着色器。
+	
+	3. pass 每个子着色器是一个通道集合。每个通道的对象几何图像需要渲染，因此必须至少有一个通道。顶点光照 (VertexLit) 着色器只有一个通道 .
+	4. 使用 Material 块将属性值绑定至固定功能照明材质设置。
+	5. 命令 Lighting On可打开标准顶点照明
+	6. SeparateSpecular On 可将单独的颜色用于高亮点。
+	7. SetTexture 定义我们需要使用的纹理以及如何在渲染中混合、组合和应用这些纹理。
+	8. Combine 命令执行此任务，此命令可指定此纹理与其他纹理或颜色混合的方式。
