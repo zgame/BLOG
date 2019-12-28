@@ -530,3 +530,42 @@
 	6. SeparateSpecular On 可将单独的颜色用于高亮点。
 	7. SetTexture 定义我们需要使用的纹理以及如何在渲染中混合、组合和应用这些纹理。
 	8. Combine 命令执行此任务，此命令可指定此纹理与其他纹理或颜色混合的方式。
+	9. Fallback 命令指出当用户图形硬件上没有运行当前着色器中的任何子着色器 (SubShaders) 时，应该使用哪种着色器。
+	10. 命令 UsePass 可以使用其他着色器中定义的通道可快速构建子着色器。
+
+
+	float、half、fixed (精度分别是高，中，低)
+	
+
+# CG 
+
+	CGPROGRAM
+		#pragma vertex name 说明给定函数的顶点程序包含的代码（此处为 vert）。
+		#pragma fragment name 说明给定函数的片段程序包含的代码（此处为 frag）。
+		#include "UnityCG.cginc"
+		struct v2f {		//定义一个“顶点至片段”结构,从顶点传递至片段程序的信息
+		float4 pos :SV_POSITION;
+		float3 color :COLOR0;
+		};		//传递位置和颜色参数
+
+		v2f vert (appdata_base v)
+		{
+		v2f o;
+		o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+		o.color = v.normal * 0.5 + 0.5;
+		return o;		//顶点程序计算出颜色并只在片段程序中输出
+		}
+		
+		half4 frag (v2f i) :COLOR
+		{
+		//法线组件位于 -1..1 范围之间，但颜色位于 0..1 范围之间，所以我们微调并微移上述代码中的法线
+		return half4 (i.color, 1);//只输出计算的颜色和 1 作为 alpha 组件
+		}	
+	ENDCG
+
+# GLSL
+
+
+# HLSL 
+
+
