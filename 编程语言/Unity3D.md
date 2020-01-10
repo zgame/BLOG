@@ -569,3 +569,22 @@
 # HLSL 
 
 
+# 表面着色器 Surface Shader
+
+	用它来编写光照着色器比用低级的顶点/像素着色器程序容易得多
+
+	struct SurfaceOutput {
+	    half3 Albedo;			表面反射率
+	    half3 Normal;			法线
+	    half3 Emission;			发射量
+	    half Specular;			高光
+	    half Gloss;				光泽
+	    half Alpha;				透明
+	};
+
+	void myvert (inout appdata_full v, out Input data)
+	void vert (inout appdata_full v, out Input o) 
+	void mycolor (Input IN, SurfaceOutput o, inout fixed4 color)
+	void surf (Input IN, inout SurfaceOutput o)
+
+
