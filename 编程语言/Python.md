@@ -189,6 +189,7 @@ map也支持多个sequence，这就要求function也支持相应数量的参数�
 
 # 随机数
 
+	import random
 	random.randint
 	print random.randint(12,20)#生成的随机数n:12<=n<=20
 
