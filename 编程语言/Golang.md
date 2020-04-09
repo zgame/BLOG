@@ -213,7 +213,7 @@
 	numbers := [6]int{1, 2, 3, 5} 
 	var balance = []float32{1000.0, 2.0, 3.4, 7.0, 50.0}	//[]或者[...]都可以
 
-	bb := []int{2,3,4}
+	bb := [...]int{2,3,4}
 	fmt.Printf("%v",list2)
 
 	//初始化二维数组
@@ -548,6 +548,8 @@
 	reflect.ValueOf(x).Bool()
 
 # 单元测试
+
+	函数名Test... 文件名..._test ，编辑器直接运行，命令行go test
 
 	GoConvey
 	是一款针对Golang的测试框架，可以管理和运行测试用例，同时提供了丰富的断言函数，并支持很多 Web 界面特性。

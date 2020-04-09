@@ -18,7 +18,7 @@
 	s.upper()		# 大写
 	s.title()		# 大写首字母
 
-<font color=#A52A2A size=2>字符串支持 +（连接字符串） 和 *（乘法，重复字符串）</font>
+	字符串支持 +（连接字符串） 和 *（乘法，重复字符串）
 
 <font color=#A52A2A size=2>如果你不想让反斜杠发生转义，可以在字符串前面添加一个r，表示原始字符串：</font>
 
@@ -73,6 +73,10 @@
 	list(seq)		# 元组变列表
 
 
+	for i in list:
+	for i in range(len(list)):
+
+
 # 正则表达式
 
 	# 删除非数字的字符串 
@@ -99,6 +103,9 @@
 
 	# 对字典进行遍历
 	for k,v in dict.iteritems():
+	for kv in dict.items():	# items函数，将一个字典以列表的形式返回，因为字典是无序的，所以返回的列表也是无序的。
+	for k in dict.keys():
+	for v in dict.values():
 
 
 # 类型
