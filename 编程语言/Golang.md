@@ -1326,3 +1326,9 @@
 		}, "LuaServer.QueueRun")
 	},  20)  //
 
+
+# nsq
+
+	类似kafka的高性能消息队列
+	https://nsq.io/
+
