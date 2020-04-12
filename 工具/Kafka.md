@@ -31,7 +31,8 @@
 
 # Consumers - 
 
-	消费者从经纪人那里读取数据。 多个消费者可以组成消费者组
+	消费者从经纪人那里读取数据。 多个消费者可以组成消费者组。
+	
 
 # Leader - 
 
@@ -47,6 +48,9 @@
 	ZooKeeper用于管理和协调Kafka经纪人。
 
  
+# golang结合
+
+	https://blog.csdn.net/tflasd1157/article/details/81985722
 
 # 跟storm的结合
 
