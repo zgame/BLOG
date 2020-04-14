@@ -598,6 +598,10 @@
 
 	信道如果没有缓冲， 那么如果里面有数据而没有取走的话， 就会阻塞等待数据取走，容易形成死锁
 
+	for x := range naturals {
+		squares <- x * x
+	}	// 用range来遍历信道
+
 
 # sync 同步
 
@@ -623,8 +627,13 @@
 # context
 
 	使用context可以使开发者方便的在这些goroutine里传递request相关的数据、取消goroutine的signal或timeout
-	 ctx, _ := context.WithTimeout(context.Background(), timeout)
- 	 ctx, cancel := context.WithCancel(context.Background())
+	 ctx, _ := context.WithTimeout(context.Background(), timeout)		// 到时间自动停止
+ 	 ctx, cancel := context.WithCancel(context.Background())	// 通过函数cancel()通知
+
+	select {
+		case <-ctx.Done():
+			return
+		}
 
 
 
@@ -1275,6 +1284,7 @@
 # 查看进程信息pprof
 
 	_ "net/http/pprof"			// 注意这里
+
 
 	//远程获取pprof数据打开浏览器http://localhost:8080/debug/pprof/
 	go func() {
