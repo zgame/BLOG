@@ -135,6 +135,14 @@
 
  	f2 := fmt.Sprintf("He%03s","1")  	//格式化
 
+
+	str := "ff68b4ff"
+	b, _ := hex.DecodeString(str)		//将16进制字符串转换成对应的byte数组
+	encodedStr := hex.EncodeToString(b)		// 再转回来
+
+
+
+
 # byte buffer 
 
 	var b bytes.Buffer //直接定义一个 Buffer 变量，而不用初始化 
@@ -1341,4 +1349,10 @@
 
 	类似kafka的高性能消息队列
 	https://nsq.io/
+
+
+
+# GUI框架
+
+	https://github.com/fyne-io/fyne
 
