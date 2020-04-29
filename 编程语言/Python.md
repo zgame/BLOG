@@ -205,6 +205,8 @@ map也支持多个sequence，这就要求function也支持相应数量的参数�
 	row_day = datetime.datetime.strptime(str(row_date),'%Y-%m-%d')  #将date转换为str，在由str转换为datetime
 	(create_time-row_day).days
 
+	字符串日期跟时间戳之间的互转，见代码sqlserverdata/util/time
+
 	
 # time
 
