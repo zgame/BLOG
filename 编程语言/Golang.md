@@ -127,6 +127,7 @@
  
 	strings.ToUpper				//转大写
 	strings.Split(s, ".")		//字符串分割
+	strings.Replace(day1,"-","",-1)		// 替换
 
 
 	enc := mahonia.NewDecoder("gb2312")		// 转换一下编码格式 decoder是解码 ， encoder是编码成**格式，默认utf-8
@@ -843,13 +844,22 @@
 	t3 := t1.UnixNano()	//1524378448727395600
 	t4 := t1.String()	//2018-04-22 14:27:28.7273956 +0800 CST m=+0.005000301
 	t5 := time.Millisecond		//1ms
-	t6:=time.Now().UnixNano() / int64(time.Millisecond)	//1524378448805
+	t6 := time.Now().UnixNano() / int64(time.Millisecond)	//1524378448805
 	t7 := t1.Year()		//2018
 	t8 := t1.Format("2006-01-02 15:04:05")		//2018-04-22 14:32:05
 	t9 := time.Date(2017,2,4,5,7,8,0,time.Local)	//2017-02-04 05:07:08 +0800 CST
 
+	// 时间增加， 可以增加日期
 	time.Now().Add(time.Second)
+	startTime.AddDate(0,0,1)
 	time.Now().After(time.Now().Add(time.Second))
+
+
+	// 字符串变时间
+	startTime,err := time.ParseInLocation("2006-01-02", start, time.Local)
+
+	// 字符串变日期
+	
 
 
 	//定时器
@@ -860,6 +870,10 @@
 			fmt.Println("",t)
 		}
 	
+
+	// 时间戳转日期
+	timeLayout := "2006-01-02 15:04:05"     
+	dataTimeStr := time.Unix(时间戳, 0).Format(timeLayout) //设置时间戳 使用模板格式化为日期字符串
 
 
 # protocol buffer
