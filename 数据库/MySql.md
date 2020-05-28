@@ -243,12 +243,17 @@
 
 	SELECT user_id,sum(rmb) FROM by_statis_db.player_charge_rmb where time between '2016-01-01' and '2016-11-01' group by user_id     // 按照user_id来进行分组统计单个uid的充值金额汇总
 
- 
+
+
 
 # 插入或者更新 
 	
 	insert into t3(xx,xx) on duplicate key update `xx`='XX';
 	key是主键
+
+
+
+	 
 
 
 # 锁

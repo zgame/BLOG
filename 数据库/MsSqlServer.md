@@ -86,13 +86,18 @@
 	
 # select
 
-	DISTINCT关键字与SELECT语句一起使用，以消除所有重复的记录和获取的唯一记录。
-	as 别名用法
-	TOP(1)	返回最上面的一行数据
+	DISTINCT 	去重
+	as 			别名用法
+	TOP(1)		返回最上面的一行数据
 	count(*)	返回行数
 	select * from dbo.accounts where UserID like %zsw%   查找包含zsw字段的
 	select id=identity(int,1,1) ,name into #regtemp11 from table(nolock)	copy表到临时表，并新增一列列名为id的自增加列
 
+ 
+# order by
+
+	排序 
+	desc 倒序
 
 # update
 
@@ -105,6 +110,9 @@
 # delete
 
 	DELETE FROM runoob_tbl WHERE runoob_id=3;
+
+
+
 
 
 # 存储过程和函数
