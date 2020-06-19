@@ -27,6 +27,13 @@
 	https://github.com/codegangsta/martini 
 
 
+# gin
+
+	https://www.kancloud.cn/shuangdeyu/gin_book/949451
+
+# fiber 
+	https://github.com/gofiber/fiber
+
 ---
 
 # 游戏框架
@@ -1371,3 +1378,18 @@
 
 	https://github.com/fyne-io/fyne
 
+
+# Modules
+
+	在terminal里面输入 go mod init 项目名字，自动生成go.mod文件
+	
+	配置goland 环境增加  GOPROXY=https://goproxy.io 
+
+	运行就会自动下载需要的插件
+	
+	自己的package目录引用“项目名/”即可
+
+
+
+	
+	
