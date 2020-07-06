@@ -56,6 +56,10 @@
 	设定好GOROOT和GOPATH到系统路径
 	GOPATH是引入库文件的存放地点
 
+
+# init 包初始化
+
+	init函数不能被其他函数调用，而是在main函数执行之前，自动被调用
   
 # import
 
@@ -639,6 +643,12 @@
 	sync.Pool临时对象池pool，只适合临时对象，持久对象不行，他会自动回收
 	sync.Once再多的协程也只执行一次就完事
 	sync.Cond是⽤来控制某个条件下，goroutine进⼊等待时期，等待信号到来
+
+	sync.map 
+	sync.Map 有以下特性：
+	无须初始化，直接声明即可。
+	sync.Map 不能使用 map 的方式进行取值和设置等操作，而是使用 sync.Map 的方法进行调用，Store 表示存储，Load 表示获取，Delete 表示删除。range的用法比较特殊，参考map_test
+	使用 Range 配合一个回调函数进行遍历操作，通过回调函数返回内部遍历出来的值，Range 参数中回调函数的返回值在需要继续迭代遍历时，返回 true，终止迭代遍历时，返回 false。
 		
 
 # context
@@ -1087,7 +1097,7 @@
 
 		
 
-# ini
+# ini配置文件
 
 	go get github.com/go-ini/ini
 
