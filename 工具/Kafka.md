@@ -58,3 +58,51 @@
 # 跟spark的结合
 
 
+
+# 安装
+	
+	tar -zxf kafka_2.11.0.9.0.0 tar.gz
+	config\server.properties 配置文件，改log地址
+	bin/kafka-server-start.sh config/server.properties  启动服务器
+	bin/kafka-server-stop.sh config/server.properties  停止服务器
+	
+
+	创建主题
+	bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic Hello-Kafka
+
+	获取主题列表
+	bin/kafka-topics.sh --list --zookeeper localhost:2181
+
+	删除主题
+	bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic topic_name
+
+	启动生产者
+	bin/kafka-console-producer.sh --broker-list localhost:9092 --topic Hello-Kafka
+
+	启动消费者
+	bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic Hello-zsw --from-beginning
+
+
+# 多节点
+
+	复制多个server.properties文件
+	修改broker.id分别为0，1，2
+
+	listeners=PLAINTEXT://:9092
+	advertised.listeners=PLAINTEXT://172.16.140.110:9092   
+	修改多个节点，多个log地址
+
+	启动多个节点kafka用不同的配置文件
+	
+	创建主题
+	bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 -partitions 1 --topic Hello-zswc
+	
+	查看主题
+	bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic Hello-zswc -cation
+
+	启动生产者
+	bin/kafka-console-producer.sh --broker-list localhost:9092 --topic Hello-zswc
+
+	启动消费者
+	bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic Hello-zswc
+

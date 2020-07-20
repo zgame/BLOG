@@ -37,3 +37,15 @@
 # hbase
 
 	HBase遵循主从架构，HBase主控制所有从机。从机称为区域服务器。HBase分布式应用程序安装取决于运行的ZooKeeper集群。
+
+
+# 安装
+
+	tar -zxf zookeeper-3.4.6.tar.gz
+	mkdir data
+	conf / zoo.cfg  编辑文件设置dataDir
+	sh bin/zkServer.sh start  启动服务器
+	sh bin/zkCli.sh   启动客户端
+	sh bin/zkServer.sh stop 关闭服务器
+
+	

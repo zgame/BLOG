@@ -100,6 +100,9 @@
 
 	firewall-cmd --add-port=6379/tcp	// 开放端口
 
+	
+	systemctl stop firewalld.service   // 关闭所有防火墙
+
 
 # 编译运行
 
@@ -192,3 +195,18 @@
 
 	service vsftp start	
 	 
+
+# 安装java
+
+	tar -zxf jdk-8u60-linux-x64.gz
+	export JAVA_HOME=/usr/local/java/jdk1.8.0_261
+	export PATH=$PATH:$JAVA_HOME/bin
+	source ~/.bashrc
+
+	jps 查看守护进程
+
+	
+# 换行符问题
+
+	yum install dos2unix 
+	dos2unix  window编辑器保存之后， 用这个名字转成unix换行符
