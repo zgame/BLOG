@@ -15,7 +15,7 @@
 
 # Partition - 
 
-	主题可能有很多分区
+	主题可能有很多分区,Producer发送消息到broker时，会根据Paritition机制选择将其存储到哪一个Partition。如果Partition机制设置合理，所有消息可以均匀分布到不同的Partition里，这样就实现了负载均衡。如果一个Topic对应一个文件，那这个文件所在的机器I/O将会成为这个Topic的性能瓶颈，而有了Partition后，不同的消息可以并行写入不同broker的不同Partition里，极大的提高了吞吐率。可以在$KAFKA_HOME/config/server.properties中通过配置项num.partitions来指定新建Topic的默认Partition数量，也可在创建Topic时通过参数指定，同时也可以在Topic创建之后通过Kafka提供的工具修改。
 
 # Brokers
 
@@ -33,6 +33,11 @@
 
 	消费者从经纪人那里读取数据。 多个消费者可以组成消费者组。
 	
+# 消费组
+
+	在高并发方面，可以使用多个台服务器放在同一个消费组中，就可以保证所有的消费者拉取的消费不会重复并且完整，这样就可以提高消费者的执行效率。
+	启动消费者的时候 –consumer-property group.id=group1  
+
 
 # Leader - 
 
@@ -106,3 +111,15 @@
 	启动消费者
 	bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic Hello-zswc
 
+
+
+
+
+# 数据清理
+
+	Kafka提供两种策略删除旧数据。一是基于时间，二是基于Partition文件大小。
+    例如可以通过配置$KAFKA_HOME/config/server.properties，让Kafka删除一周前的数据，也可在Partition文件超过1GB时删除旧数据
+
+
+
+# 
