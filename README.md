@@ -37,7 +37,7 @@ https://github.com/zgame
 负责中国公司的技术团队管理，技术框架设计。主要产品有《盟军敢死队》《跑跑卡丁车手机版》《劲舞团手机版》《雷电3》《tinyfarm》《越狱兔》《魔灵召唤》等。主要使用技术为 Java ,  C# , Unity3D , MySql  ，Wrapper
 
 # 日本Square Enix中国公司
-负责MMORPG项目的技术研发工作。主要产品有《世界之树》。主要使用技术为C/C++ ,   DirectX, Direct3D, MySQL , Perl , Ruby , Java
+负责MMORPG项目的技术研发工作。主要产品有《世界之树》《最终幻想11》。主要使用技术为C/C++ ,   DirectX, Direct3D, MySQL , Perl , Ruby , Java
 
 # 北京新天地互动多媒体
 负责多款PC游戏的研发工作。主要产品有《英雄传说》《伊苏2》《双星物语》。主要使用技术为VC++6.0 ,  DirectX, Direct3D, SQLServer
