@@ -13,5 +13,15 @@
 
 	git config --list 查看配置和认证
 
-	git config [--global] user.name "[name]"
-	git config [--global] user.email "[email address]"
+	git config --global user.name "[name]"
+	git config --global user.email "[email address]"
+
+
+	git config --global http.sslVerify false
+	git config --system http.sslbackend openssl
+
+# 克隆
+
+	git clone https://192.168.10.89/fishing1/freefishing.git localwork
+
+
