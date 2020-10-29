@@ -3,6 +3,11 @@
 	pb.c
 	pb.go	//自己写的
 
+
+	https://github.com/sean-lin/protoc-gen-lua
+	https://blog.csdn.net/huutu/article/details/49672225
+
+
 # 概念
 
 	用c或者go，写module，然后注册到lua中，让lua可以调用c或者go的函数
