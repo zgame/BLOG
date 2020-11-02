@@ -665,3 +665,35 @@ Python2的写法用的是
 	import paramiko
 	execmd = 'cmd.exe /c "cd d:/server && d:/zsw/zsw.bat"'		// windows
 
+
+# scrapy
+
+	创建项目：scrapy startproject xxx
+	进入项目：cd xxx #进入某个文件夹下
+	创建爬虫：scrapy genspider scrapy_test1 xxx.com （爬取域）
+	生成文件：scrapy crawl xxx -o xxx.json (生成json类型的文件)
+	运行爬虫：scrapy crawl XXX
+	列出所有爬虫：scrapy list
+	获得配置信息：scrapy settings [options]
+
+
+#  scrapy xpath 选择器
+
+	area_list = response.xpath('//div[@class="left-list"]/div[contains(@class,"item")]')
+	area_name = area.xpath('./div[@class="title"]/span/text()').get()
+
+#  scrapy yeild 
+	
+	scrapy框架会根据 yield 返回的实例类型来执行不同的操作，如果是 scrapy.Request 对象，scrapy框架会去获得该对象指向的链接并在请求完成后调用该对象的回调函数。
+	如果是 scrapy.Item 对象，scrapy框架会将这个对象传递给 pipelines.py做进一步处理。
+
+# scrapy pipelines
+
+	每个项目管道组件是一个Python类，必须实现以下方法
+    def process_item(self, item, spider):
+        table_name = item.get('table_name')	
+	
+    def open_spider(self, spider):
+        self.db = records.Database('mysql+pymysql://root:Abc123!!!@192.168.10.88:3306/sport')
+
+
