@@ -18,4 +18,23 @@
 	java + 原生渲染	快应用，Weex（不是很好）,React Native
 
 
+#  设置编译环境
+
+	1. 修改flutter sdk 里 flutter.gradle，参考路径：C:\flutter_windows_1.17.1-stable\flutter\packages\flutter_tools\gradle
+
+	buildscript {
+	    repositories {
+	        google()
+	        jcenter()
+	        //添加内容
+	        //maven { url 'https://maven.aliyun.com/repository/google' }
+	        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+	        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+		}
+
+
+	2. 同样也要修改项目build.gradle，注意这里2个地方都要修改
+
+
 # 
+
