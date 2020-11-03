@@ -18,7 +18,7 @@
 	java + 原生渲染	快应用，Weex（不是很好）,React Native
 
 
-#  设置编译环境
+#  设置编译环境，用国内镜像
 
 	1. 修改flutter sdk 里 flutter.gradle，参考路径：C:\flutter_windows_1.17.1-stable\flutter\packages\flutter_tools\gradle
 
@@ -36,5 +36,16 @@
 	2. 同样也要修改项目build.gradle，注意这里2个地方都要修改
 
 
-# 
+# 设置模拟器
 
+	android studio tools -> 设置sdk manager 和avd manager
+
+	
+# flutter web
+
+	flutter config --enable-web
+	flutter create .
+	flutter run -d chrome
+
+
+# 
