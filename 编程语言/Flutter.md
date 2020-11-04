@@ -24,10 +24,9 @@
 
 	buildscript {
 	    repositories {
-	        google()
-	        jcenter()
-	        //添加内容
-	        //maven { url 'https://maven.aliyun.com/repository/google' }
+	        //google()
+	        //jcenter()
+	        maven { url 'https://maven.aliyun.com/repository/google' }
 	        maven { url 'https://maven.aliyun.com/repository/jcenter' }
 	        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
 		}
