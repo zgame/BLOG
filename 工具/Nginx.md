@@ -104,3 +104,8 @@
 # apache配置
 
 	把require local修改为Require all granted
+
+
+# apache tomcat
+
+	apache是web服务器,Tomcat是应用（java）服务器，它只是一个servlet(jsp也翻译成servlet)容器，可以认为是apache的扩展，但是可以独立于apache运行。  
