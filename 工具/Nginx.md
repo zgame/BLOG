@@ -97,3 +97,10 @@
 
 	ps -ef | grep nginx
 	service nginx -s  reload
+
+
+
+
+# apache配置
+
+	把require local修改为Require all granted
