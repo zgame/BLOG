@@ -1,6 +1,14 @@
 # Spring
 
 	Spring框架是Java平台上的一种开源应用框架，提供具有控制反转特性的容器。
+	
+# Spring Bean
+
+	
+
+# 依赖注入
+
+	
 
 # Spring cloud
 
@@ -38,8 +46,20 @@
 
 	
 
-# Web
+# Web 设置
 
 	resources 下的 application.properties
 	server.port= 8080	
-	  
+
+# 获取参数
+
+	resources 下的 application.yml （name : zsw）
+
+	@Value("${name}")
+    private String name;
+	
+# 设置路径
+
+	@RequestMapping("/hello")   // 路径映射
+
+# 	  
