@@ -96,6 +96,10 @@
 
 # 开放端口
 
+	测试端口可以用windows下面的tcping ip 端口来测试是否ping通
+
+	systemctl status firewalld		// 查看防火墙是否开启
+	systemctl start firewalld      // 开启防火墙
 	firewall-cmd --query-port=6379/tcp 	// 查看端口是否开放
 
 	firewall-cmd --add-port=6379/tcp	// 开放端口
