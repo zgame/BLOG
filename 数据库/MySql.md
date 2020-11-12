@@ -55,6 +55,12 @@
 	Administrative Roles: 全选
 
 	
+# 创建用户及设置权限
+
+	CREATE USER 'zsw'@'%' IDENTIFIED BY 'Pathea111';
+	GRANT ALL ON *.* TO 'zsw'@'%';
+
+
 #游标
 
 	实际上是一种能从包括多条数据记录的结果集中每次提取一条记录的机制。游标充当指针的作用。尽管游标能遍历结果中的所有行，但他一次只指向一行。
