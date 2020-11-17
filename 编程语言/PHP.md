@@ -230,7 +230,18 @@
 
 	直接下载安装到php的目录下即可https://getcomposer.org/download/
 
+	如果出现ssl连接不上的问题
+	1、下载证书 
+	curl http://curl.haxx.se/ca/cacert.pem -o /usr/local/ssl/cert.pem
+	
+	2、 配置 php.ini ， 指定证书的路径 
+	openssl.cafile=/usr/local/ssl/cert.pem
 
+
+	改为国内镜像
+	composer config -g repo.packagist composer https://packagist.phpcomposer.com
+	解除镜像
+	composer config -g --unset repos.packagist
 
 -----
 

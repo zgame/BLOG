@@ -2,7 +2,9 @@
 
 # Laravel
 
-	composer global require "laravel/installer"		//安装    
+	composer global require laravel/installer		//安装    
+
+	C:\Users\zhushiwei\AppData\Roaming\Composer\vendor\bin 加入到系统path中
 
 	laravel new blog		//创建项目
 
@@ -21,11 +23,21 @@
 	    return 'Hello World';
 	});
 
+	
+	注意：
+	Laravel 8路由配置方式：
+	use App\Http\Controllers\UserController;
+	
+	Route::get('/users', [UserController::class, 'index']); 
+
 # 中间件
 
 	app/Http/Middleware
 
 # 控制器
+
+	命令行生成一个控制器
+	php artisan make:controller ArticleController
 
 	class UserController extends Controller {
 
@@ -129,3 +141,13 @@
 
 	serve --port=5000
 
+
+# 跨站请求伪造（CSRF）
+
+
+
+# 配置参数
+
+	.env增加参数ALI_APP_ID=2016110200785785
+	获取env('ALI_APP_ID', ''),
+	
