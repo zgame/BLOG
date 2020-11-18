@@ -36,3 +36,9 @@
 # token与cookie
 
 	Cookie是不允许垮域访问的，但是token是支持的， 前提是传输的用户认证信息通过HTTP头传输；
+
+
+# post
+
+	form 为key，value形式的
+
