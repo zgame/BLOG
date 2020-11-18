@@ -463,7 +463,7 @@
 # json
 
 	将一个Go语言中类似movies的
-	结构体slice转为JSON的过程叫编组（marshaling）。
+	结构体slice转为JSON的过程叫编组（marshaling）。MarshalIndent把json加入了格式的编排更好看
 
 	type book struct {
 		Id   int			//结构体的成员首字母一定要大写

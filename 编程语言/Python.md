@@ -1,7 +1,7 @@
 # 包管理
 
 	python的包在Lib/site-packages目录下面， 自己的目录copy给别人就可以了
-
+	python setup.py install
 
 
 # 字符串也是数组
