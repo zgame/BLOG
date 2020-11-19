@@ -110,3 +110,9 @@
     set "Today=%%i"
 	)
 	go build  -o portia_shop_%Today%.exe
+
+
+# 启动多个可执行程序
+
+	start "" portia_shop_%Today%.exe -https=1
+	start "" portia_shop_%Today%.exe -https=0

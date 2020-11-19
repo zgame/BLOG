@@ -244,6 +244,21 @@
 	 {8, 9, 10, 11},   /*  第三行索引为 2 */
 	}
 
+	// 数组增加元素
+	mylist := make([]int, 0, 10)
+	mylist1 := []int{1, 2, 3}
+	mylist = append(mylist, mylist1...) //加上'...'就可以追加一个数组， 否则只能追加一个元素
+
+	// 数组排重
+		var strMap map[int]string = make(map[int]string,0)
+		for _,v:= range arrItem {
+			strMap[v] = "true"
+		}
+		var shopList []int= make([]int,0)
+		for k,_:=range strMap{
+			shopList = append(shopList,k)
+		}
+
 # 可变参数
 
 	arg ...interface{}
