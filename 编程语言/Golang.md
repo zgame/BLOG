@@ -119,6 +119,7 @@
 
 # 字符串string
 
+	字符串定义，反引号``中间的是原始字符串
 
 	int,err:=strconv.Atoi(string)  		//string到int  
 	int64, err := strconv.ParseInt(string, 10, 64)  	//string到int64  
@@ -1424,4 +1425,6 @@
 
 
 
-	
+# 正则表达式
+
+		
