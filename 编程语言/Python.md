@@ -3,6 +3,10 @@
 	python的包在Lib/site-packages目录下面， 自己的目录copy给别人就可以了
 	python setup.py install
 
+	安装crypto
+	https://blog.csdn.net/weixin_42345642/article/details/95305159
+	或者直接安装pycryptodome，然后改名Crypto
+
 
 # 字符串也是数组
 
