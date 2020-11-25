@@ -1,3 +1,6 @@
+# 下载
+
+	http://dl.mongodb.org/dl/win32/x86_64
 
 # 安装和设置
 
@@ -5,6 +8,24 @@
 	使用--dbpath选项为mongod.exe指定数据文件的路径
 	如果不使用 --dbpath 指定数据存储的目录，那么 MongoDB 默认使用的是 “C:\data\db“ 目录
 
+# 开放远程登录
+	
+	配置文件修改
+	外围可以访问
+	bindIp: 0.0.0.0
+
+	开启登录认证	
+	security:
+	  authorization: enabled
+	
+
+# 客户端
+
+	可以使用jetbrain datagrip
+	或者https://nosqlbooster.com/downloads
+
+	robot 3t可视化工具
+	https://www.robomongo.org/
 	
 
 # 启动
@@ -13,6 +34,16 @@
 
 	客户端
 	mongo.exe
+
+# 权限
+
+	用mongo客户端进入
+	show dbs
+	use admin
+	db.createUser({user:"root",pwd:"root123",roles:[{role:"root",db:"admin"}]})
+	db.createUser({user:"zsw",pwd:"zsw123",roles:[{role:"userAdminAnyDatabase",db:"admin"}]})
+
+	关闭数据库，然后启动mongod.exe --dbpath "C:\Program Files\mongodb-win32-x86_64-windows-4.4.2\data\db" --auth
 
 
 # 命令
