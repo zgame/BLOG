@@ -38,6 +38,10 @@
 # 权限
 
 	用mongo客户端进入
+	use admin
+	db.auth("root", "root123" )
+	
+
 	show dbs
 	use admin
 	db.createUser({user:"root",pwd:"root123",roles:[{role:"root",db:"admin"}]})
@@ -53,15 +57,17 @@
 	db				// 查看当前选择的数据库是哪一个
 	db.dropDatabase()	//删除当前的数据库
 
+	db.createCollection("Package")		//创建集合
+	show collections    		//集合列表
+	db.COLLECTION_NAME.drop()  	//删除集合
 
 # 查询
 
 	// 插入数据到集合中， 如果没有集合，就创建该集合
 	db.COLLECTION_NAME.insert({"name":"zsw"})
-	show collections    		//集合列表
-	db.COLLECTION_NAME.drop()  	//删除集合
-	db.mycol.find().pretty()	// 查询集合内容
+	
 
+	db.mycol.find().pretty()	// 查询集合内容
 	db.mycol.find({"by":"yiibai tutorials"}).pretty()		// by = 'yiibai tutorials'
 	db.mycol.find({"likes":{$lte:50}}).pretty()				// likes <= 50
 	db.mycol.find({"likes":{$gte:50}}).pretty()				// likes >= 50
