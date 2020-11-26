@@ -2,6 +2,8 @@
 
 	http://dl.mongodb.org/dl/win32/x86_64
 
+
+
 # 安装和设置
 
 	安装完成以后， 建目录MongoDB\Server\3.4\data\db
@@ -19,7 +21,7 @@
 	  authorization: enabled
 	
 
-# 客户端
+# 客户端工具
 
 	可以使用jetbrain datagrip
 	或者https://nosqlbooster.com/downloads
