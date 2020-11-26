@@ -1427,4 +1427,22 @@
 
 # 正则表达式
 
+
+
+# mongo db
+
+	http://labix.org/mgo
+
+	Bulk() 方法进行一次性批量操作
+	
+
+	// session的复用
+	s := session.Copy()
+    defer s.Close()
 		
+
+	// 登录认证
+	dialInfo := &mgo.DialInfo{里面写具体信息}
+
+	bson 类似json的格式
+	
