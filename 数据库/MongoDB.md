@@ -84,6 +84,8 @@
 
 	update()方法将现有的文档中的值更新，而save()方法使用传递到save()方法的文档替换现有的文档。
 	db.mycol.update({'title':'MongoDB Overview'},{$set:{'title':'New MongoDB Tutorial'}})
+	$set:  这个是只更新更新的值，其他的不动
+
 	db.mycol.save({"_id" : ObjectId(5983548781331adf45ec7), "title":"Yiibai Yiibai New Topic", "by":"Yiibai Yiibai"   })
 
 
