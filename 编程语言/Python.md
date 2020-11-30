@@ -47,6 +47,21 @@
 	str = str.format("place0", "place1")
 
 
+
+# byte
+
+	文件和网络经常读取数据流，读出到byte数组之后， 可以通过byte[:10]对数组进行分割， 然后struct进行转换和处理
+
+	bytes跟string之间的转换
+	bytes_gb2312 = base_str.encode(encoding="gb2312")
+	str_from_gb2312 = bytes_gb2312.decode(encoding="gb2312")
+
+	2个bytes要连接在一起，+就可以了
+
+	ord('a')  >>   97		//获取char的十进制整数
+ 	chr(0x61) >>   a		// 返回值是当前整数对应的ascii字符
+
+
 # 数组操作
 
 	list[::-1][:3]
@@ -377,19 +392,6 @@ Python2的写法用的是
 	!	network (= big-endian)
 
 
-# byte
-
-	文件和网络经常读取数据流，读出到byte数组之后， 可以通过byte[:10]对数组进行分割， 然后struct进行转换和处理
-
-	bytes跟string之间的转换
-	bytes_gb2312 = base_str.encode(encoding="gb2312")
-	str_from_gb2312 = bytes_gb2312.decode(encoding="gb2312")
-
-	2个bytes要连接在一起，+就可以了
-
-
-	ord('a')  >>   97		//获取char的十进制整数
- 	chr(0x61) >>   a		// 返回值是当前整数对应的ascii字符
 
 
 # 协程

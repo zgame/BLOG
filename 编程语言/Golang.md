@@ -1446,3 +1446,10 @@
 
 	bson 类似json的格式
 	
+
+	err := Collection.Update(options,bson.M{"$set":updateO})
+	err := Collection.Update(options,bson.M{"$inc":updateO})
+	err := Collection.Update(options,bson.M{"$push":updateO})
+	err := Collection.Update(options,bson.M{"$pull":updateO})
+
+	c.Find(bson.M{"$or": []bson.M{bson.M{"name": "Jimmy Kuu"}, bson.M{"age": 31}}}).All(&users)

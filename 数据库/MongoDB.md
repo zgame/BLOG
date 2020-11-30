@@ -102,6 +102,7 @@
 	
 
 # 索引
+	索引通常能够极大的提高查询的效率
 
 	db.mycol.ensureIndex({"title":1})		//创建title的索引，1用于升序，而-1是用于降序。
 	db.mycol.ensureIndex({"title":1,"description":-1})   // 多字段索引
@@ -109,6 +110,17 @@
 
 # 聚合
 
+	MongoDB 中聚合(aggregate)主要用于处理数据(诸如统计平均值，求和等)，并返回计算后的数据结果。
  	db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$sum : 1}}}])
 	// 按照by_user， 统计数量
+
+
+
+# 原子操作
+
+	$set	用来指定一个键并更新键值，若键不存在并创建。
+	$inc	可以对文档的某个值为数字型（只能为满足要求的数字）的键进行增减的操作
+	$push	把value追加到field里面去，field一定要是数组类型才行，如果field不存在，会新增一个数组类型加进去。
+	$pull	从数组field内删除一个等于value值。
+	$addToSet	增加一个值到数组内，而且只有当这个值不在数组内才增加。
 
