@@ -131,7 +131,7 @@
 
 
 	#float到string
-	s_score := fmt.Sprintf("%.3f", f_score)
+	s_score := fmt.Sprintf("%.3f", 0.03)
 
 	string := strconv.FormatFloat(float32,'E',-1,32)
 	string := strconv.FormatFloat(float64,'E',-1,64)
