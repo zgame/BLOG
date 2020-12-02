@@ -909,6 +909,8 @@
 	// 时间增加， 可以增加日期
 	time.Now().Add(time.Second)
 	startTime.AddDate(0,0,1)
+
+	//时间比较
 	time.Now().After(time.Now().Add(time.Second))
 
 
