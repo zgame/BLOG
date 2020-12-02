@@ -115,6 +115,9 @@
 	fmt.Printf("%x\n", p) 					// 十六进制
 	fmt.Printf("%s\n", p) 					// 字符串
 	fmt.Printf("%c\n", p) 					// char
+	fmt.Printf("%f\n", p) 					// float
+
+
 
 
 # 字符串string
@@ -125,6 +128,24 @@
 	int64, err := strconv.ParseInt(string, 10, 64)  	//string到int64  
 	string:=strconv.Itoa(int)  				//int到string 
 	string:=strconv.FormatInt(int64,10)			//int64到string 
+
+
+	#float到string
+	string := strconv.FormatFloat(float32,'E',-1,32)
+	string := strconv.FormatFloat(float64,'E',-1,64)
+	// 'b' (-ddddp±ddd，二进制指数)
+	// 'e' (-d.dddde±dd，十进制指数)
+	// 'E' (-d.ddddE±dd，十进制指数)
+	// 'f' (-ddd.dddd，没有指数)
+	// 'g' ('e':大指数，'f':其它情况)
+	// 'G' ('E':大指数，'f':其它情况)
+	
+	#string到float64
+	float,err := strconv.ParseFloat(string,64)
+	
+	#string到float32
+	float,err := strconv.ParseFloat(string,32)
+
 
 
 	string -> int -> int32(int)			// string 到int32
@@ -317,6 +338,33 @@
 	GlobalVar.RWMutex.Lock()
 	GlobalVar.RWMutex.Unlock()   //写的锁
 	
+# json
+
+	将一个Go语言中类似movies的
+	结构体slice转为JSON的过程叫编组（marshaling）。MarshalIndent把json加入了格式的编排更好看
+
+	type book struct {
+		Id   int			//结构体的成员首字母一定要大写
+		Name string			//结构体的成员首字母一定要大写
+		Li   []int			//结构体的成员首字母一定要大写
+	}
+
+	var book1 book
+	book1.Id = 31
+	book1.Name = "SS"
+	book1.Li = []int{1,2,3,4}
+
+	data, err := json.MarshalIndent(book1, "", " ")
+	if err != nil {
+		log.Fatalf("JSON marshaling failed: %s", err)
+	}
+	fmt.Printf("%s\n", data)
+
+	var book2 book
+	if err := json.Unmarshal(data, &book2); err != nil {
+		log.Fatalf("JSON unmarshaling failed: %s", err)
+	}
+	fmt.Println(book2) 
 
 
 # switch
@@ -476,33 +524,6 @@
 	NewTable(uid uint64, gameid int)  TableInterface
 
 
-# json
-
-	将一个Go语言中类似movies的
-	结构体slice转为JSON的过程叫编组（marshaling）。MarshalIndent把json加入了格式的编排更好看
-
-	type book struct {
-		Id   int			//结构体的成员首字母一定要大写
-		Name string			//结构体的成员首字母一定要大写
-		Li   []int			//结构体的成员首字母一定要大写
-	}
-
-	var book1 book
-	book1.Id = 31
-	book1.Name = "SS"
-	book1.Li = []int{1,2,3,4}
-
-	data, err := json.MarshalIndent(book1, "", " ")
-	if err != nil {
-		log.Fatalf("JSON marshaling failed: %s", err)
-	}
-	fmt.Printf("%s\n", data)
-
-	var book2 book
-	if err := json.Unmarshal(data, &book2); err != nil {
-		log.Fatalf("JSON unmarshaling failed: %s", err)
-	}
-	fmt.Println(book2) 
 
 
 # 接口 有点类似模板，泛型
