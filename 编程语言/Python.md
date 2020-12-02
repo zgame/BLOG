@@ -7,6 +7,9 @@
 	https://blog.csdn.net/weixin_42345642/article/details/95305159
 	或者直接安装pycryptodome，然后改名Crypto
 
+	wheel下载列表
+	https://www.lfd.uci.edu/~gohlke/pythonlibs/#python-snappy
+
 
 # 字符串也是数组
 
