@@ -195,7 +195,7 @@
 
 # interface{}类型强转
 
-	interface{}.(string)
+	value, ok ：= interface{}.(string)    //ok 是否成功，  value值
 	interface{}.(int)
 
 
