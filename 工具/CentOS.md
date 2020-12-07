@@ -214,3 +214,5 @@
 
 	yum install dos2unix 
 	dos2unix  window编辑器保存之后， 用这个名字转成unix换行符
+
+# 

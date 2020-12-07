@@ -8,10 +8,19 @@
 # 配置文件
 
 	/etc/redis/redis.conf		//编辑文件
+	windows下面通常为redis.windows-service.conf，而不是redis.windows.conf
+
 	requirepass zsw123	//设置密码
 	bing 127.0.0.1
 	
 	CONFIG GET *	//命令行获取
+
+
+	
+# 远程连接
+	
+	注释掉bind 127.0.0.0
+	注释掉protected-mode yes
 	
 
 # 安全
@@ -25,6 +34,7 @@
 	auth zsw123	//客户端输入登录验证的命令，zsw123是自己设置的密码
 	
 
+	
 
 
 # 启动，重启
@@ -39,6 +49,12 @@
 	sudo /etc/init.d/redis-server stop
 	sudo /etc/init.d/redis-server start
 	sudo /etc/init.d/redis-server restart			重启
+
+
+	windows 启动
+	redis-server.exe redis.windows.conf
+	windows关闭
+	redis-cli -h 127.0.0.1 -p 6379 shutdown
 
 
 

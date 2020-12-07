@@ -98,6 +98,23 @@
 	ps -ef | grep nginx
 	service nginx -s  reload
 
+	目录到nginx下面
+	./nginx -s  reload
+
+
+# windows版本
+
+	直接解压到目录下
+	cd 到nginx的目录下，再敲命令
+	
+	start nginx （不要多次运行）
+	
+	tasklist /fi "imagename eq nginx.exe" （查看进程）
+
+	nginx -s  reload
+
+	nginx -s  quit
+	
 
 
 

@@ -57,9 +57,13 @@
 	
 # 创建用户及设置权限
 
-	CREATE USER 'zsw'@'%' IDENTIFIED BY 'Pathea111';
+	CREATE USER 'zsw'@'%' IDENTIFIED BY 'zsw123';
 	GRANT ALL ON *.* TO 'zsw'@'%';
 
+	drop user zsw@'%';
+
+	update mysql.user set password = password('zsw123') where user = 'zsw' and host = '%';
+	flush privileges;
 
 #游标
 

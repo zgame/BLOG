@@ -84,8 +84,8 @@
 	or	或
 	not	非
 
-	if   ***	then
-	elseif ** then
+	if   ==	then
+	elseif ~= then
 	else 
 	end	
 
