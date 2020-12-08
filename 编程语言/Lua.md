@@ -157,6 +157,12 @@
 
 	[[  字符串  ]]     -- 多行字符串
 
+	-- 替换
+	string.gsub("aaaa","a","z",3);   --zzza    3
+
+	-- 查找
+	string.find("Hello Lua user", "Lua", 1)  --7    9
+
 
 	-- 字符串的分割
 	local str = "192.188.111.111:23093333"

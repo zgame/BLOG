@@ -164,6 +164,7 @@
 	strings.Split(s, ".")		//字符串分割
 	strings.Replace(day1,"-","",-1)		// 替换
 	str[0:5]			// 字符串子串
+	strings.Join(list,"&")
 
 
 	enc := mahonia.NewDecoder("gb2312")		// 转换一下编码格式 decoder是解码 ， encoder是编码成**格式，默认utf-8
