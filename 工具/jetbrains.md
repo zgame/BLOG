@@ -5,7 +5,7 @@
 
 #  jetbrain的账号
 
-	19665944@qq.com
+	740782192@qq.com
 	
-	20160955@stu.nmu.edu.cn
+	20160955@stu.nmu.edu.cn 被封号
 	208***Z**!@

@@ -139,17 +139,17 @@
 
 
 
+# 配置protoc-gen-lua
+
+	解压protoc-3.5.1-win32， 设置系统路径
+	安装protobuf的python库
+	系统路径里面设置python2.7优先
+
+
 
 
 # lua-protobuf
 
 	https://github.com/starwing/lua-protobuf
 
-
-
-# 配置protoc-gen-lua
-
-	解压protoc-3.5.1-win32， 设置系统路径
-	安装protobuf的python库
-	系统路径里面设置python2.7优先
 
