@@ -146,6 +146,12 @@
 	系统路径里面设置python2.7优先
 
 
+# protoc-gen-lua嵌套
+
+	proto文件里面要import
+
+	lua调用的时候正常调用即可，但是要注意不能设置第一个位置，否则会卡住; 第一个位置可以设置别的int或者占位符
+
 
 
 # lua-protobuf
