@@ -46,6 +46,7 @@
 
 	show dbs
 	use admin
+	db.createUser({user:"patheaDev",pwd:"LncDnQaR502NWaFdCVXMeKacglgnf3",roles:[{role:"root",db:"admin"}]})
 	db.createUser({user:"root",pwd:"root123",roles:[{role:"root",db:"admin"}]})
 	db.createUser({user:"zsw",pwd:"zsw123",roles:[{role:"userAdminAnyDatabase",db:"admin"}]})
 

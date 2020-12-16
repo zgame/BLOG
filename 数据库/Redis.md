@@ -10,7 +10,7 @@
 	/etc/redis/redis.conf		//编辑文件
 	windows下面通常为redis.windows-service.conf，而不是redis.windows.conf
 
-	requirepass zsw123	//设置密码
+	requirepass LncDnQaR502NWaFdCVXMeKacglgnf3	//设置密码
 	bing 127.0.0.1
 	
 	CONFIG GET *	//命令行获取
@@ -28,10 +28,10 @@
 	比较安全的办法是采用绑定IP的方式来进行控制。
 	bind 127.0.0.1    // 修改配置
 
-	requirepass zsw123
-	zsw123就是redis验证密码，设置密码以后发现可以登陆，但是无法执行命令了，因为要登录验证密码。
+	requirepass xxx
+	xxx就是redis验证密码，设置密码以后发现可以登陆，但是无法执行命令了，因为要登录验证密码。
 
-	auth zsw123	//客户端输入登录验证的命令，zsw123是自己设置的密码
+	auth xxx	//客户端输入登录验证的命令，后面是自己设置的密码
 	
 
 	

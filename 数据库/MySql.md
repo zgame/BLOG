@@ -57,12 +57,14 @@
 	
 # 创建用户及设置权限
 
-	CREATE USER 'zsw'@'%' IDENTIFIED BY 'zsw123';
-	GRANT ALL ON *.* TO 'zsw'@'%';
+	// 新建一个用户
+	CREATE USER 'patheaDev'@'%' IDENTIFIED BY 'LncDnQaR502NWaFdCVXMeKacglgnf3';
+	// 给与权限
+	GRANT ALL ON *.* TO 'patheaDev'@'%';
 
-	drop user zsw@'%';
+	drop user zsw@'%';		//删除用户
 
-	update mysql.user set password = password('zsw123') where user = 'zsw' and host = '%';
+	update mysql.user set password = password('zsw1234') where user = 'zsw' and host = '%';
 	flush privileges;
 
 #游标
