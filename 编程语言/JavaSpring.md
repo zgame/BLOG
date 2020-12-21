@@ -51,15 +51,31 @@
 	resources 下的 application.properties
 	server.port= 8080	
 
+	或者application.yml
+	server:
+	  port: 8080
+	  servlet:
+    	context-path: /demo
+
 # 获取参数
 
 	resources 下的 application.yml （name : zsw）
 
 	@Value("${name}")
-    private String name;
+    private String name;  // 这个name就是获取的内容
 	
 # 设置路径
 
-	@RequestMapping("/hello")   // 路径映射
+	@RestController    // 返回json
+	@Controller			// 返回视图
+	@RequestMapping(value = "/", method = RequestMethod.GET)   // 路径映射
+ 	@GetMapping("/hello")		//简略写法
+	@RequestParam(required = false, name = "who") String who //获取参数who的值
 
-# 	  
+# hutool工具包	  
+
+# idea打包
+	
+	右边侧栏有maven，里面点lifecycle->package run就可以打包jar
+	然后java -jar 目录/**.jar  可以运行
+
