@@ -2,17 +2,20 @@
 
 	npm run dev
 
+	npm config set registry https://registry.npm.taobao.org
+	npm install --registry=https://registry.npm.taobao.org
+
 # config配置
 
 	config/index.js
 	host: '172.16.140.131',		//定义我的ip
 
 	config/dev.env.js
-	BASE_API:'"http://172.16.140.131:5000"',   // 数据从哪里获取
+	BASE_API:'"http://localhost:5000"',   // 数据从哪里获取
 
 	后端express配置
 	app.js的跨域设置
-	res.header('Access-Control-Allow-Origin', 'http://172.16.140.131:9528'); //必须重新设置，把origin的域加上去
+	res.header('Access-Control-Allow-Origin', 'http://0.0.0.0:9528'); //必须重新设置，把origin的域加上去
 
 
 
