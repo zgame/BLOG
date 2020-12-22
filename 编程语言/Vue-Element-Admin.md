@@ -5,6 +5,10 @@
 	npm config set registry https://registry.npm.taobao.org
 	npm install --registry=https://registry.npm.taobao.org
 
+# 发布
+
+	npm run build 会打包dist目录， 然后copy到tomcat等web目录下即可
+
 # config配置
 
 	config/index.js
