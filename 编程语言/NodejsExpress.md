@@ -220,7 +220,11 @@
 	    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
 	    res.header('Access-Control-Allow-Headers', 'x-custom');
 	    res.header('Access-Control-Allow-Credentials', 'true');//和客户端对应，必须设置以后，才能接收cookie.
-	    next();
+	    if (req.method.toLowerCase() === 'options') {
+        	res.send(200);  // 让options尝试请求快速结束
+	    } else {
+	        next();
+	    }
 	};
 	app.use(allowCrossDomain);
 
