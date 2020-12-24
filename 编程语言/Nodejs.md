@@ -132,6 +132,9 @@
 	新一代npm包管理器，npm install yarn -g
 	yarn config set registry https://registry.npm.taobao.org
 
+	yarn install  安装依赖包
+	yarn start
+	yarn run dev
 
 
 # promise 把异步的语法， 写成同步处理语法
