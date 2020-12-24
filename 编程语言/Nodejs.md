@@ -126,6 +126,14 @@
 	package.json文件记录项目的配置信息， 在部署的时候，运行npm install 即可安装依赖， 自动下载node_modules内容
 
 
+
+# yarn
+
+	新一代npm包管理器，npm install yarn -g
+	yarn config set registry https://registry.npm.taobao.org
+
+
+
 # promise 把异步的语法， 写成同步处理语法
 
 	http://liubin.org/promises-book/        教程电子书
