@@ -80,6 +80,8 @@
 	xcopy /s /y E:\unityProject\test1\Assets\script  E:\GitHub\Unity3DCode\test1\script\
 	xcopy /s /y E:\unityProject\test1\Assets\AssetPackage\UI\prefab  E:\GitHub\Unity3DCode\test1\prefab\
 
+	copy .\Script\Const\constCmd.lua ..\..\Cmd
+
 
 # 文件重命名
 
