@@ -33,6 +33,17 @@
 	GOPATH是引入库文件的存放地点
 
 
+# Modules
+
+	在terminal里面输入 go mod init 项目名字，自动生成go.mod文件
+	
+	配置goland 环境增加  GOPROXY=https://goproxy.io 
+
+	运行就会自动下载需要的插件
+	
+	自己的package目录引用“项目名/”即可
+
+
 # init 包初始化
 
 	init函数不能被其他函数调用，而是在main函数执行之前，自动被调用
@@ -1406,16 +1417,6 @@
 
 	https://github.com/fyne-io/fyne
 
-
-# Modules
-
-	在terminal里面输入 go mod init 项目名字，自动生成go.mod文件
-	
-	配置goland 环境增加  GOPROXY=https://goproxy.io 
-
-	运行就会自动下载需要的插件
-	
-	自己的package目录引用“项目名/”即可
 
 
 
