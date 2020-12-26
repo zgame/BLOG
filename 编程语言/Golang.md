@@ -32,6 +32,9 @@
 	设定好GOROOT和GOPATH到系统路径
 	GOPATH是引入库文件的存放地点
 
+	go env -w GO111MODULE=on
+	go env -w GOPROXY=https://goproxy.io,direct
+
 
 # Modules
 
