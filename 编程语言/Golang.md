@@ -35,6 +35,11 @@
 	go env -w GO111MODULE=on
 	go env -w GOPROXY=https://goproxy.io,direct
 
+# ide环境设置
+	1.将goland.vmoptions内JMV内存限制改成
+	-Xmx4096m
+	2.help ->edit custome properties 增加
+	idea.max.intellisense.filesize=999999
 
 # Modules
 
