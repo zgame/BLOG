@@ -63,6 +63,14 @@
 	console.log("程序执行结束!");
 
 
+# undefined
+
+	typeof(exp) == "undefined"
+
+# 转换
+
+	Number(str)
+
 # 事件
 
 	var EventEmitter = require('events').EventEmitter; 
