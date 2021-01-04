@@ -333,3 +333,6 @@
 	cd /path/to/my/app/folder
 	npm link mongodb
 
+
+	npm install mongodb	加入到package.json里面
+
