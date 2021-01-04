@@ -326,3 +326,10 @@
 	
 	
 	module.exports = dbRedis;
+
+# mongodb
+
+	npm install mongodb -g
+	cd /path/to/my/app/folder
+	npm link mongodb
+
