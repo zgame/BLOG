@@ -295,4 +295,11 @@
 
 
 
-
+# ssh2
+	Ubuntu默认是没有装ssh服务的，ssh分为客户端和服务器。
+	Ubuntu安装ssh服务：sudo apt-get install openssh-server
+	确认ssh服务是否启动：ps -e |grep ssh
+	启动：sudo /etc/init.d/ssh start
+	停止：sudo /etc/init.d/ssh stop
+	ssh-server配置文件位于/ etc/ssh/sshd_config
+	登录ssh：ssh tuns@ip tuns
