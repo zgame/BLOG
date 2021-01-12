@@ -160,6 +160,7 @@
 	strings.Replace(day1,"-","",-1)		// 替换
 	str[0:5]			// 字符串子串
 	strings.Join(list,"&")
+	strings.Trim(str, cut)	// 字符串修剪，去掉前面和后面的cut字符
 
 
 	enc := mahonia.NewDecoder("gb2312")		// 转换一下编码格式 decoder是解码 ， encoder是编码成**格式，默认utf-8
