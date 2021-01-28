@@ -3,12 +3,20 @@
 	http://dl.mongodb.org/dl/win32/x86_64
 
 
-
-# 安装和设置
+# windows安装和设置
 
 	安装完成以后， 建目录MongoDB\Server\3.4\data\db
 	使用--dbpath选项为mongod.exe指定数据文件的路径
 	如果不使用 --dbpath 指定数据存储的目录，那么 MongoDB 默认使用的是 “C:\data\db“ 目录
+
+
+# ubuntu安装
+
+	sudo apt-get install -y mongodb
+
+	启动和停止:
+	sudo service mongodb stop 　　
+	sudo service mongodb start
 
 # 开放远程登录
 	
@@ -56,7 +64,8 @@
 # 命令
 
 	show dbs
-	use  ***     // 有就切换， 没有就创建
+	use  ***     // 有就切换， 没有就创建数据库
+	
 	db				// 查看当前选择的数据库是哪一个
 	db.dropDatabase()	//删除当前的数据库
 
