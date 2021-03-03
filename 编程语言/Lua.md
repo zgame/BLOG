@@ -517,3 +517,35 @@
 	table.sort(test2,function(a,b) return a.id>b.id end )	-- 由大到小
 
 
+# go lua debug
+
+	install EmmyLua
+	go get github.com/edolphin-ydf/gopherlua-debugger
+	edit your go.mod, add this line replace github.com/yuin/gopher-lua => github.com/edolphin-ydf/gopher-lua v0.0.0-20191105142246-92ca436742b9
+	go code, after L := lua.NewState() add a new line lua_debugger.Preload(L)
+
+	lua code 
+	local dbg = require('emmy_core')
+	dbg.tcpConnect('localhost', 9966)
+
+	run configurations
+	new Emmy debugger
+	go build
+	两个run先后启动即可调试
+
+# goperlua bug
+
+	table.go  210
+	//-------------------- add
+		lkey := LString(key)
+		if oldIndex,ok :=  tb.k2i[lkey];ok {	              // check key
+			tb.keys = append(tb.keys[:oldIndex],tb.keys[oldIndex+1:]...)	              // remove  keys
+			delete(tb.k2i, lkey)											// remove  k2i
+			for k,v:=range tb.k2i{
+				if v > oldIndex {
+					tb.k2i[k] --
+				}
+			}
+		}
+		//-------------------- end
+	
