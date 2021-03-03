@@ -535,7 +535,7 @@
 
 # goperlua bug
 
-	table.go  210
+	table.go  203
 	//-------------------- add
 		lkey := LString(key)
 		if oldIndex,ok :=  tb.k2i[lkey];ok {	              // check key
@@ -547,5 +547,5 @@
 				}
 			}
 		}
-		//-------------------- end
+	//-------------------- end
 	
